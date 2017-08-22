@@ -8,14 +8,10 @@ namespace ControlApp.Entities.Objects
 {
     public class Users
     {
-
         public int ID_User { get; set; }
         public string User_name { get; set; }
-
         public int ID_Area { get; set; }
-
         public string User_state { get; set; }
-
         public Users()
         {
             ID_User = 0;
@@ -30,7 +26,5 @@ namespace ControlApp.Entities.Objects
             this.ID_Area = pID_Area;
             this.User_state = pUser_name;
         }
-
-     
     }
 }

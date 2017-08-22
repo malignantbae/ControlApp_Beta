@@ -11,11 +11,8 @@ namespace ControlApp.Entities.Objects
         public int ID_User { get; set; }
         public string  User_nickname { get; set; }
         public string Password { get; set; }
-
         public int ID_Area { get; set; }
-
         public string Authentic_State { get; set; }
-
         public Authentications()
         {
             ID_User = 0;
@@ -24,16 +21,13 @@ namespace ControlApp.Entities.Objects
             ID_Area = 0;
             Authentic_State = null;
         }
-
         public Authentications(int pID_User, string pUser_nickname, string pPassword, int pID_Area, string pAuthentic_State)
         {
-            ID_User = pID_User;
-            User_nickname = pUser_nickname;
-            Password = pPassword;
-            ID_Area = pID_Area;
-            Authentic_State = pAuthentic_State;
+            this.ID_User = pID_User;
+            this.User_nickname = pUser_nickname;
+            this.Password = pPassword;
+            this.ID_Area = pID_Area;
+            this.Authentic_State = pAuthentic_State;
         }
-
-
     }
 }

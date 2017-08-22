@@ -42,6 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Crud\AreasManagement.cs" />
+    <Compile Include="Crud\AuthenticationsManagement.cs" />
+    <Compile Include="Crud\CustomersManagement.cs" />
+    <Compile Include="Crud\PricetagsManagement.cs" />
+    <Compile Include="Crud\ReceiptsManagement.cs" />
     <Compile Include="sqlConnection.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

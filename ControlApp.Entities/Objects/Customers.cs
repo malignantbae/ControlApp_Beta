@@ -11,14 +11,12 @@ namespace ControlApp.Entities.Objects
         public int ID_Customer { get; set; }
         public string Customer_name { get; set; }
         public string Customer_state { get; set; }
-           
         public Customers()
         {
             ID_Customer = 0;
             Customer_name = null;
             Customer_state = null;
         }
-
         public Customers(int pID_Customer, string pCustomer_name, string pCustomer_state)
         {
             ID_Customer = pID_Customer;

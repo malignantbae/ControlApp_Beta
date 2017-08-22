@@ -30,21 +30,21 @@ namespace ControlApp.DataAccess
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertTBLAreas(TBLAreas instance);
-    partial void UpdateTBLAreas(TBLAreas instance);
-    partial void DeleteTBLAreas(TBLAreas instance);
-    partial void InsertTBLCustomers(TBLCustomers instance);
-    partial void UpdateTBLCustomers(TBLCustomers instance);
-    partial void DeleteTBLCustomers(TBLCustomers instance);
-    partial void InsertTBLPrice_tags(TBLPrice_tags instance);
-    partial void UpdateTBLPrice_tags(TBLPrice_tags instance);
-    partial void DeleteTBLPrice_tags(TBLPrice_tags instance);
-    partial void InsertTBLReceipts(TBLReceipts instance);
-    partial void UpdateTBLReceipts(TBLReceipts instance);
-    partial void DeleteTBLReceipts(TBLReceipts instance);
-    partial void InsertTBLUsers(TBLUsers instance);
-    partial void UpdateTBLUsers(TBLUsers instance);
-    partial void DeleteTBLUsers(TBLUsers instance);
+    partial void InsertAREA(AREA instance);
+    partial void UpdateAREA(AREA instance);
+    partial void DeleteAREA(AREA instance);
+    partial void InsertCUSTOMER(CUSTOMER instance);
+    partial void UpdateCUSTOMER(CUSTOMER instance);
+    partial void DeleteCUSTOMER(CUSTOMER instance);
+    partial void InsertPRICE_TAG(PRICE_TAG instance);
+    partial void UpdatePRICE_TAG(PRICE_TAG instance);
+    partial void DeletePRICE_TAG(PRICE_TAG instance);
+    partial void InsertRECEIPT(RECEIPT instance);
+    partial void UpdateRECEIPT(RECEIPT instance);
+    partial void DeleteRECEIPT(RECEIPT instance);
+    partial void InsertUSER(USER instance);
+    partial void UpdateUSER(USER instance);
+    partial void DeleteUSER(USER instance);
     #endregion
 		
 		public ContextDataContext() : 
@@ -77,51 +77,51 @@ namespace ControlApp.DataAccess
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<TBLAreas> TBLAreas
+		public System.Data.Linq.Table<AREA> AREAs
 		{
 			get
 			{
-				return this.GetTable<TBLAreas>();
+				return this.GetTable<AREA>();
 			}
 		}
 		
-		public System.Data.Linq.Table<TBLAuthenticacios> TBLAuthenticacios
+		public System.Data.Linq.Table<AUTHENTICATION> AUTHENTICATIONs
 		{
 			get
 			{
-				return this.GetTable<TBLAuthenticacios>();
+				return this.GetTable<AUTHENTICATION>();
 			}
 		}
 		
-		public System.Data.Linq.Table<TBLCustomers> TBLCustomers
+		public System.Data.Linq.Table<CUSTOMER> CUSTOMERs
 		{
 			get
 			{
-				return this.GetTable<TBLCustomers>();
+				return this.GetTable<CUSTOMER>();
 			}
 		}
 		
-		public System.Data.Linq.Table<TBLPrice_tags> TBLPrice_tags
+		public System.Data.Linq.Table<PRICE_TAG> PRICE_TAGs
 		{
 			get
 			{
-				return this.GetTable<TBLPrice_tags>();
+				return this.GetTable<PRICE_TAG>();
 			}
 		}
 		
-		public System.Data.Linq.Table<TBLReceipts> TBLReceipts
+		public System.Data.Linq.Table<RECEIPT> RECEIPTs
 		{
 			get
 			{
-				return this.GetTable<TBLReceipts>();
+				return this.GetTable<RECEIPT>();
 			}
 		}
 		
-		public System.Data.Linq.Table<TBLUsers> TBLUsers
+		public System.Data.Linq.Table<USER> USERs
 		{
 			get
 			{
-				return this.GetTable<TBLUsers>();
+				return this.GetTable<USER>();
 			}
 		}
 		
@@ -147,14 +147,14 @@ namespace ControlApp.DataAccess
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CREATE_PRICE_TAG")]
-		public int SP_CREATE_PRICE_TAG([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> pTOTAL_PRICE, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string pDESCRIP_PRICE)
+		public int SP_CREATE_PRICE_TAG([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Decimal(18,0)")] System.Nullable<decimal> pTOTAL_PRICE, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string pDESCRIP_PRICE)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pTOTAL_PRICE, pDESCRIP_PRICE);
 			return ((int)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CREATE_RECEIPT")]
-		public int SP_CREATE_RECEIPT([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(25)")] string pCUSTOMER_NAME, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> pDATE_RECEIPT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pQUANTITY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> pTOTAL_RECEIPT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_PRICE_TAG, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_USER)
+		public int SP_CREATE_RECEIPT([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(25)")] string pCUSTOMER_NAME, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> pDATE_RECEIPT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pQUANTITY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Decimal(18,0)")] System.Nullable<decimal> pTOTAL_RECEIPT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_PRICE_TAG, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_USER)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pCUSTOMER_NAME, pDATE_RECEIPT, pQUANTITY, pTOTAL_RECEIPT, pID_PRICE_TAG, pID_USER);
 			return ((int)(result.ReturnValue));
@@ -350,14 +350,14 @@ namespace ControlApp.DataAccess
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_UPDATE_PRICE_TAG")]
-		public int SP_UPDATE_PRICE_TAG([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_PRICE_TAG, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> pTOTAL_PRICE, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string pDESCRIP_PRICE)
+		public int SP_UPDATE_PRICE_TAG([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_PRICE_TAG, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Decimal(18,0)")] System.Nullable<decimal> pTOTAL_PRICE, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string pDESCRIP_PRICE)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pID_PRICE_TAG, pTOTAL_PRICE, pDESCRIP_PRICE);
 			return ((int)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_UPDATE_RECEIPT")]
-		public int SP_UPDATE_RECEIPT([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_RECEIPT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(25)")] string pCUSTOMER_NAME, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> pDATE_RECEIPT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pQUANTITY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> pTOTAL_RECEIPT)
+		public int SP_UPDATE_RECEIPT([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_RECEIPT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(25)")] string pCUSTOMER_NAME, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> pDATE_RECEIPT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pQUANTITY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Decimal(18,0)")] System.Nullable<decimal> pTOTAL_RECEIPT)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pID_RECEIPT, pCUSTOMER_NAME, pDATE_RECEIPT, pQUANTITY, pTOTAL_RECEIPT);
 			return ((int)(result.ReturnValue));
@@ -372,7 +372,7 @@ namespace ControlApp.DataAccess
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AREAS")]
-	public partial class TBLAreas : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class AREA : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -383,7 +383,7 @@ namespace ControlApp.DataAccess
 		
 		private string _AREA_STATE;
 		
-		private EntitySet<TBLUsers> _TBLUsers;
+		private EntitySet<USER> _USERs;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -397,9 +397,9 @@ namespace ControlApp.DataAccess
     partial void OnAREA_STATEChanged();
     #endregion
 		
-		public TBLAreas()
+		public AREA()
 		{
-			this._TBLUsers = new EntitySet<TBLUsers>(new Action<TBLUsers>(this.attach_TBLUsers), new Action<TBLUsers>(this.detach_TBLUsers));
+			this._USERs = new EntitySet<USER>(new Action<USER>(this.attach_USERs), new Action<USER>(this.detach_USERs));
 			OnCreated();
 		}
 		
@@ -463,16 +463,16 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBLAreas_TBLUsers", Storage="_TBLUsers", ThisKey="ID_AREA", OtherKey="ID_AREA")]
-		public EntitySet<TBLUsers> TBLUsers
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="AREA_USER", Storage="_USERs", ThisKey="ID_AREA", OtherKey="ID_AREA")]
+		public EntitySet<USER> USERs
 		{
 			get
 			{
-				return this._TBLUsers;
+				return this._USERs;
 			}
 			set
 			{
-				this._TBLUsers.Assign(value);
+				this._USERs.Assign(value);
 			}
 		}
 		
@@ -496,21 +496,21 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
-		private void attach_TBLUsers(TBLUsers entity)
+		private void attach_USERs(USER entity)
 		{
 			this.SendPropertyChanging();
-			entity.TBLAreas = this;
+			entity.AREA = this;
 		}
 		
-		private void detach_TBLUsers(TBLUsers entity)
+		private void detach_USERs(USER entity)
 		{
 			this.SendPropertyChanging();
-			entity.TBLAreas = null;
+			entity.AREA = null;
 		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AUTHENTICATIONS")]
-	public partial class TBLAuthenticacios
+	public partial class AUTHENTICATION
 	{
 		
 		private int _ID_USER;
@@ -523,7 +523,7 @@ namespace ControlApp.DataAccess
 		
 		private string _AUTHENTIC_STATE;
 		
-		public TBLAuthenticacios()
+		public AUTHENTICATION()
 		{
 		}
 		
@@ -609,7 +609,7 @@ namespace ControlApp.DataAccess
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CUSTOMERS")]
-	public partial class TBLCustomers : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class CUSTOMER : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -632,7 +632,7 @@ namespace ControlApp.DataAccess
     partial void OnCUSTOMER_STATEChanged();
     #endregion
 		
-		public TBLCustomers()
+		public CUSTOMER()
 		{
 			OnCreated();
 		}
@@ -719,20 +719,20 @@ namespace ControlApp.DataAccess
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PRICE_TAGS")]
-	public partial class TBLPrice_tags : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class PRICE_TAG : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _ID_PRICE_TAG;
 		
-		private System.Nullable<decimal> _TOTAL_PRICE;
+		private decimal _TOTAL_PRICE;
 		
 		private string _DESCRIP_PRICE;
 		
 		private string _PRICE_TAG_STATE;
 		
-		private EntitySet<TBLReceipts> _TBLReceipts;
+		private EntitySet<RECEIPT> _RECEIPTs;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -740,7 +740,7 @@ namespace ControlApp.DataAccess
     partial void OnCreated();
     partial void OnID_PRICE_TAGChanging(int value);
     partial void OnID_PRICE_TAGChanged();
-    partial void OnTOTAL_PRICEChanging(System.Nullable<decimal> value);
+    partial void OnTOTAL_PRICEChanging(decimal value);
     partial void OnTOTAL_PRICEChanged();
     partial void OnDESCRIP_PRICEChanging(string value);
     partial void OnDESCRIP_PRICEChanged();
@@ -748,9 +748,9 @@ namespace ControlApp.DataAccess
     partial void OnPRICE_TAG_STATEChanged();
     #endregion
 		
-		public TBLPrice_tags()
+		public PRICE_TAG()
 		{
-			this._TBLReceipts = new EntitySet<TBLReceipts>(new Action<TBLReceipts>(this.attach_TBLReceipts), new Action<TBLReceipts>(this.detach_TBLReceipts));
+			this._RECEIPTs = new EntitySet<RECEIPT>(new Action<RECEIPT>(this.attach_RECEIPTs), new Action<RECEIPT>(this.detach_RECEIPTs));
 			OnCreated();
 		}
 		
@@ -774,8 +774,8 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TOTAL_PRICE", DbType="Money")]
-		public System.Nullable<decimal> TOTAL_PRICE
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TOTAL_PRICE", DbType="Money NOT NULL")]
+		public decimal TOTAL_PRICE
 		{
 			get
 			{
@@ -834,16 +834,16 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBLPricetags_TBLReceipts", Storage="_TBLReceipts", ThisKey="ID_PRICE_TAG", OtherKey="ID_PRICE_TAG")]
-		public EntitySet<TBLReceipts> TBLReceipts
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PRICE_TAG_RECEIPT", Storage="_RECEIPTs", ThisKey="ID_PRICE_TAG", OtherKey="ID_PRICE_TAG")]
+		public EntitySet<RECEIPT> RECEIPTs
 		{
 			get
 			{
-				return this._TBLReceipts;
+				return this._RECEIPTs;
 			}
 			set
 			{
-				this._TBLReceipts.Assign(value);
+				this._RECEIPTs.Assign(value);
 			}
 		}
 		
@@ -867,21 +867,21 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
-		private void attach_TBLReceipts(TBLReceipts entity)
+		private void attach_RECEIPTs(RECEIPT entity)
 		{
 			this.SendPropertyChanging();
-			entity.TBLPrice_tags = this;
+			entity.PRICE_TAG = this;
 		}
 		
-		private void detach_TBLReceipts(TBLReceipts entity)
+		private void detach_RECEIPTs(RECEIPT entity)
 		{
 			this.SendPropertyChanging();
-			entity.TBLPrice_tags = null;
+			entity.PRICE_TAG = null;
 		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.RECEIPTS")]
-	public partial class TBLReceipts : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class RECEIPT : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -894,17 +894,17 @@ namespace ControlApp.DataAccess
 		
 		private int _QUANTITY;
 		
-		private System.Nullable<decimal> _TOTAL_RECEIPT;
+		private decimal _TOTAL_RECEIPT;
 		
-		private System.Nullable<int> _ID_PRICE_TAG;
+		private int _ID_PRICE_TAG;
 		
 		private int _ID_USER;
 		
 		private string _RECEIPT_STATE;
 		
-		private EntityRef<TBLPrice_tags> _TBLPricetags;
+		private EntityRef<PRICE_TAG> _PRICE_TAG;
 		
-		private EntityRef<TBLUsers> _TBLUsers;
+		private EntityRef<USER> _USER;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -918,9 +918,9 @@ namespace ControlApp.DataAccess
     partial void OnDATE_RECEIPTChanged();
     partial void OnQUANTITYChanging(int value);
     partial void OnQUANTITYChanged();
-    partial void OnTOTAL_RECEIPTChanging(System.Nullable<decimal> value);
+    partial void OnTOTAL_RECEIPTChanging(decimal value);
     partial void OnTOTAL_RECEIPTChanged();
-    partial void OnID_PRICE_TAGChanging(System.Nullable<int> value);
+    partial void OnID_PRICE_TAGChanging(int value);
     partial void OnID_PRICE_TAGChanged();
     partial void OnID_USERChanging(int value);
     partial void OnID_USERChanged();
@@ -928,10 +928,10 @@ namespace ControlApp.DataAccess
     partial void OnRECEIPT_STATEChanged();
     #endregion
 		
-		public TBLReceipts()
+		public RECEIPT()
 		{
-			this._TBLPricetags = default(EntityRef<TBLPrice_tags>);
-			this._TBLUsers = default(EntityRef<TBLUsers>);
+			this._PRICE_TAG = default(EntityRef<PRICE_TAG>);
+			this._USER = default(EntityRef<USER>);
 			OnCreated();
 		}
 		
@@ -1015,8 +1015,8 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TOTAL_RECEIPT", DbType="Money")]
-		public System.Nullable<decimal> TOTAL_RECEIPT
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TOTAL_RECEIPT", DbType="Money NOT NULL")]
+		public decimal TOTAL_RECEIPT
 		{
 			get
 			{
@@ -1035,8 +1035,8 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PRICE_TAG", DbType="Int")]
-		public System.Nullable<int> ID_PRICE_TAG
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PRICE_TAG", DbType="Int NOT NULL")]
+		public int ID_PRICE_TAG
 		{
 			get
 			{
@@ -1046,7 +1046,7 @@ namespace ControlApp.DataAccess
 			{
 				if ((this._ID_PRICE_TAG != value))
 				{
-					if (this._TBLPricetags.HasLoadedOrAssignedValue)
+					if (this._PRICE_TAG.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -1070,7 +1070,7 @@ namespace ControlApp.DataAccess
 			{
 				if ((this._ID_USER != value))
 				{
-					if (this._TBLUsers.HasLoadedOrAssignedValue)
+					if (this._USER.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -1103,70 +1103,70 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBLPricetags_TBLReceipts", Storage="_TBLPricetags", ThisKey="ID_PRICE_TAG", OtherKey="ID_PRICE_TAG", IsForeignKey=true)]
-		public TBLPrice_tags TBLPrice_tags
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PRICE_TAG_RECEIPT", Storage="_PRICE_TAG", ThisKey="ID_PRICE_TAG", OtherKey="ID_PRICE_TAG", IsForeignKey=true)]
+		public PRICE_TAG PRICE_TAG
 		{
 			get
 			{
-				return this._TBLPricetags.Entity;
+				return this._PRICE_TAG.Entity;
 			}
 			set
 			{
-				TBLPrice_tags previousValue = this._TBLPricetags.Entity;
+				PRICE_TAG previousValue = this._PRICE_TAG.Entity;
 				if (((previousValue != value) 
-							|| (this._TBLPricetags.HasLoadedOrAssignedValue == false)))
+							|| (this._PRICE_TAG.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._TBLPricetags.Entity = null;
-						previousValue.TBLReceipts.Remove(this);
+						this._PRICE_TAG.Entity = null;
+						previousValue.RECEIPTs.Remove(this);
 					}
-					this._TBLPricetags.Entity = value;
+					this._PRICE_TAG.Entity = value;
 					if ((value != null))
 					{
-						value.TBLReceipts.Add(this);
+						value.RECEIPTs.Add(this);
 						this._ID_PRICE_TAG = value.ID_PRICE_TAG;
 					}
 					else
 					{
-						this._ID_PRICE_TAG = default(Nullable<int>);
+						this._ID_PRICE_TAG = default(int);
 					}
-					this.SendPropertyChanged("TBLPrice_tags");
+					this.SendPropertyChanged("PRICE_TAG");
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBLUsers_TBLReceipts", Storage="_TBLUsers", ThisKey="ID_USER", OtherKey="ID_USER", IsForeignKey=true)]
-		public TBLUsers TBLUsers
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="USER_RECEIPT", Storage="_USER", ThisKey="ID_USER", OtherKey="ID_USER", IsForeignKey=true)]
+		public USER USER
 		{
 			get
 			{
-				return this._TBLUsers.Entity;
+				return this._USER.Entity;
 			}
 			set
 			{
-				TBLUsers previousValue = this._TBLUsers.Entity;
+				USER previousValue = this._USER.Entity;
 				if (((previousValue != value) 
-							|| (this._TBLUsers.HasLoadedOrAssignedValue == false)))
+							|| (this._USER.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._TBLUsers.Entity = null;
-						previousValue.TBLReceipts.Remove(this);
+						this._USER.Entity = null;
+						previousValue.RECEIPTs.Remove(this);
 					}
-					this._TBLUsers.Entity = value;
+					this._USER.Entity = value;
 					if ((value != null))
 					{
-						value.TBLReceipts.Add(this);
+						value.RECEIPTs.Add(this);
 						this._ID_USER = value.ID_USER;
 					}
 					else
 					{
 						this._ID_USER = default(int);
 					}
-					this.SendPropertyChanged("TBLUsers");
+					this.SendPropertyChanged("USER");
 				}
 			}
 		}
@@ -1193,22 +1193,22 @@ namespace ControlApp.DataAccess
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.USERS")]
-	public partial class TBLUsers : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class USER : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _ID_USER;
 		
-		private string _USER_NAME;
+		private string _USER_NAMEX;
 		
-		private System.Nullable<int> _ID_AREA;
+		private int _ID_AREA;
 		
 		private string _USER_STATE;
 		
-		private EntitySet<TBLReceipts> _TBLReceipts;
+		private EntitySet<RECEIPT> _RECEIPTs;
 		
-		private EntityRef<TBLAreas> _TBLAreas;
+		private EntityRef<AREA> _AREA;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1216,18 +1216,18 @@ namespace ControlApp.DataAccess
     partial void OnCreated();
     partial void OnID_USERChanging(int value);
     partial void OnID_USERChanged();
-    partial void OnUSER_NAMEChanging(string value);
-    partial void OnUSER_NAMEChanged();
-    partial void OnID_AREAChanging(System.Nullable<int> value);
+    partial void OnUSER_NAMEXChanging(string value);
+    partial void OnUSER_NAMEXChanged();
+    partial void OnID_AREAChanging(int value);
     partial void OnID_AREAChanged();
     partial void OnUSER_STATEChanging(string value);
     partial void OnUSER_STATEChanged();
     #endregion
 		
-		public TBLUsers()
+		public USER()
 		{
-			this._TBLReceipts = new EntitySet<TBLReceipts>(new Action<TBLReceipts>(this.attach_TBLReceipts), new Action<TBLReceipts>(this.detach_TBLReceipts));
-			this._TBLAreas = default(EntityRef<TBLAreas>);
+			this._RECEIPTs = new EntitySet<RECEIPT>(new Action<RECEIPT>(this.attach_RECEIPTs), new Action<RECEIPT>(this.detach_RECEIPTs));
+			this._AREA = default(EntityRef<AREA>);
 			OnCreated();
 		}
 		
@@ -1251,28 +1251,28 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USER_NAME", DbType="VarChar(25)")]
-		public string USER_NAME
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USER_NAMEX", DbType="VarChar(25)")]
+		public string USER_NAMEX
 		{
 			get
 			{
-				return this._USER_NAME;
+				return this._USER_NAMEX;
 			}
 			set
 			{
-				if ((this._USER_NAME != value))
+				if ((this._USER_NAMEX != value))
 				{
-					this.OnUSER_NAMEChanging(value);
+					this.OnUSER_NAMEXChanging(value);
 					this.SendPropertyChanging();
-					this._USER_NAME = value;
-					this.SendPropertyChanged("USER_NAME");
-					this.OnUSER_NAMEChanged();
+					this._USER_NAMEX = value;
+					this.SendPropertyChanged("USER_NAMEX");
+					this.OnUSER_NAMEXChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_AREA", DbType="Int")]
-		public System.Nullable<int> ID_AREA
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_AREA", DbType="Int NOT NULL")]
+		public int ID_AREA
 		{
 			get
 			{
@@ -1282,7 +1282,7 @@ namespace ControlApp.DataAccess
 			{
 				if ((this._ID_AREA != value))
 				{
-					if (this._TBLAreas.HasLoadedOrAssignedValue)
+					if (this._AREA.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -1315,49 +1315,49 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBLUsers_TBLReceipts", Storage="_TBLReceipts", ThisKey="ID_USER", OtherKey="ID_USER")]
-		public EntitySet<TBLReceipts> TBLReceipts
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="USER_RECEIPT", Storage="_RECEIPTs", ThisKey="ID_USER", OtherKey="ID_USER")]
+		public EntitySet<RECEIPT> RECEIPTs
 		{
 			get
 			{
-				return this._TBLReceipts;
+				return this._RECEIPTs;
 			}
 			set
 			{
-				this._TBLReceipts.Assign(value);
+				this._RECEIPTs.Assign(value);
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBLAreas_TBLUsers", Storage="_TBLAreas", ThisKey="ID_AREA", OtherKey="ID_AREA", IsForeignKey=true)]
-		public TBLAreas TBLAreas
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="AREA_USER", Storage="_AREA", ThisKey="ID_AREA", OtherKey="ID_AREA", IsForeignKey=true)]
+		public AREA AREA
 		{
 			get
 			{
-				return this._TBLAreas.Entity;
+				return this._AREA.Entity;
 			}
 			set
 			{
-				TBLAreas previousValue = this._TBLAreas.Entity;
+				AREA previousValue = this._AREA.Entity;
 				if (((previousValue != value) 
-							|| (this._TBLAreas.HasLoadedOrAssignedValue == false)))
+							|| (this._AREA.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._TBLAreas.Entity = null;
-						previousValue.TBLUsers.Remove(this);
+						this._AREA.Entity = null;
+						previousValue.USERs.Remove(this);
 					}
-					this._TBLAreas.Entity = value;
+					this._AREA.Entity = value;
 					if ((value != null))
 					{
-						value.TBLUsers.Add(this);
+						value.USERs.Add(this);
 						this._ID_AREA = value.ID_AREA;
 					}
 					else
 					{
-						this._ID_AREA = default(Nullable<int>);
+						this._ID_AREA = default(int);
 					}
-					this.SendPropertyChanged("TBLAreas");
+					this.SendPropertyChanged("AREA");
 				}
 			}
 		}
@@ -1382,16 +1382,16 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
-		private void attach_TBLReceipts(TBLReceipts entity)
+		private void attach_RECEIPTs(RECEIPT entity)
 		{
 			this.SendPropertyChanging();
-			entity.TBLUsers = this;
+			entity.USER = this;
 		}
 		
-		private void detach_TBLReceipts(TBLReceipts entity)
+		private void detach_RECEIPTs(RECEIPT entity)
 		{
 			this.SendPropertyChanging();
-			entity.TBLUsers = null;
+			entity.USER = null;
 		}
 	}
 	
@@ -1468,9 +1468,9 @@ namespace ControlApp.DataAccess
 		
 		private int _QUANTITY;
 		
-		private System.Nullable<decimal> _TOTAL_RECEIPT;
+		private decimal _TOTAL_RECEIPT;
 		
-		private System.Nullable<int> _ID_PRICE_TAG;
+		private int _ID_PRICE_TAG;
 		
 		private int _ID_USER;
 		
@@ -1542,8 +1542,8 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TOTAL_RECEIPT", DbType="Money")]
-		public System.Nullable<decimal> TOTAL_RECEIPT
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TOTAL_RECEIPT", DbType="Money NOT NULL")]
+		public decimal TOTAL_RECEIPT
 		{
 			get
 			{
@@ -1558,8 +1558,8 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PRICE_TAG", DbType="Int")]
-		public System.Nullable<int> ID_PRICE_TAG
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PRICE_TAG", DbType="Int NOT NULL")]
+		public int ID_PRICE_TAG
 		{
 			get
 			{
@@ -1596,9 +1596,9 @@ namespace ControlApp.DataAccess
 		
 		private int _ID_USER;
 		
-		private string _USER_NAME;
+		private string _USER_NAMEX;
 		
-		private System.Nullable<int> _ID_AREA;
+		private int _ID_AREA;
 		
 		private string _USER_STATE;
 		
@@ -1622,24 +1622,24 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USER_NAME", DbType="VarChar(25)")]
-		public string USER_NAME
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USER_NAMEX", DbType="VarChar(25)")]
+		public string USER_NAMEX
 		{
 			get
 			{
-				return this._USER_NAME;
+				return this._USER_NAMEX;
 			}
 			set
 			{
-				if ((this._USER_NAME != value))
+				if ((this._USER_NAMEX != value))
 				{
-					this._USER_NAME = value;
+					this._USER_NAMEX = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_AREA", DbType="Int")]
-		public System.Nullable<int> ID_AREA
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_AREA", DbType="Int NOT NULL")]
+		public int ID_AREA
 		{
 			get
 			{
@@ -1744,9 +1744,9 @@ namespace ControlApp.DataAccess
 		
 		private int _QUANTITY;
 		
-		private System.Nullable<decimal> _TOTAL_RECEIPT;
+		private decimal _TOTAL_RECEIPT;
 		
-		private System.Nullable<int> _ID_PRICE_TAG;
+		private int _ID_PRICE_TAG;
 		
 		private int _ID_USER;
 		
@@ -1818,8 +1818,8 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TOTAL_RECEIPT", DbType="Money")]
-		public System.Nullable<decimal> TOTAL_RECEIPT
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TOTAL_RECEIPT", DbType="Money NOT NULL")]
+		public decimal TOTAL_RECEIPT
 		{
 			get
 			{
@@ -1834,8 +1834,8 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PRICE_TAG", DbType="Int")]
-		public System.Nullable<int> ID_PRICE_TAG
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PRICE_TAG", DbType="Int NOT NULL")]
+		public int ID_PRICE_TAG
 		{
 			get
 			{
@@ -1872,9 +1872,9 @@ namespace ControlApp.DataAccess
 		
 		private int _ID_USER;
 		
-		private string _USER_NAME;
+		private string _USER_NAMEX;
 		
-		private System.Nullable<int> _ID_AREA;
+		private int _ID_AREA;
 		
 		private string _USER_STATE;
 		
@@ -1898,24 +1898,24 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USER_NAME", DbType="VarChar(25)")]
-		public string USER_NAME
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USER_NAMEX", DbType="VarChar(25)")]
+		public string USER_NAMEX
 		{
 			get
 			{
-				return this._USER_NAME;
+				return this._USER_NAMEX;
 			}
 			set
 			{
-				if ((this._USER_NAME != value))
+				if ((this._USER_NAMEX != value))
 				{
-					this._USER_NAME = value;
+					this._USER_NAMEX = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_AREA", DbType="Int")]
-		public System.Nullable<int> ID_AREA
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_AREA", DbType="Int NOT NULL")]
+		public int ID_AREA
 		{
 			get
 			{
@@ -2076,7 +2076,7 @@ namespace ControlApp.DataAccess
 		
 		private int _ID_PRICE_TAG;
 		
-		private System.Nullable<decimal> _TOTAL_PRICE;
+		private decimal _TOTAL_PRICE;
 		
 		private string _DESCRIP_PRICE;
 		
@@ -2102,8 +2102,8 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TOTAL_PRICE", DbType="Money")]
-		public System.Nullable<decimal> TOTAL_PRICE
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TOTAL_PRICE", DbType="Money NOT NULL")]
+		public decimal TOTAL_PRICE
 		{
 			get
 			{
@@ -2162,9 +2162,9 @@ namespace ControlApp.DataAccess
 		
 		private int _QUANTITY;
 		
-		private System.Nullable<decimal> _TOTAL_RECEIPT;
+		private decimal _TOTAL_RECEIPT;
 		
-		private System.Nullable<int> _ID_PRICE_TAG;
+		private int _ID_PRICE_TAG;
 		
 		private int _ID_USER;
 		
@@ -2236,8 +2236,8 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TOTAL_RECEIPT", DbType="Money")]
-		public System.Nullable<decimal> TOTAL_RECEIPT
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TOTAL_RECEIPT", DbType="Money NOT NULL")]
+		public decimal TOTAL_RECEIPT
 		{
 			get
 			{
@@ -2252,8 +2252,8 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PRICE_TAG", DbType="Int")]
-		public System.Nullable<int> ID_PRICE_TAG
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PRICE_TAG", DbType="Int NOT NULL")]
+		public int ID_PRICE_TAG
 		{
 			get
 			{
@@ -2290,9 +2290,9 @@ namespace ControlApp.DataAccess
 		
 		private int _ID_USER;
 		
-		private string _USER_NAME;
+		private string _USER_NAMEX;
 		
-		private System.Nullable<int> _ID_AREA;
+		private int _ID_AREA;
 		
 		private string _USER_STATE;
 		
@@ -2316,24 +2316,24 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USER_NAME", DbType="VarChar(25)")]
-		public string USER_NAME
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USER_NAMEX", DbType="VarChar(25)")]
+		public string USER_NAMEX
 		{
 			get
 			{
-				return this._USER_NAME;
+				return this._USER_NAMEX;
 			}
 			set
 			{
-				if ((this._USER_NAME != value))
+				if ((this._USER_NAMEX != value))
 				{
-					this._USER_NAME = value;
+					this._USER_NAMEX = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_AREA", DbType="Int")]
-		public System.Nullable<int> ID_AREA
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_AREA", DbType="Int NOT NULL")]
+		public int ID_AREA
 		{
 			get
 			{
@@ -2592,7 +2592,7 @@ namespace ControlApp.DataAccess
 		
 		private int _ID_PRICE_TAG;
 		
-		private System.Nullable<decimal> _TOTAL_PRICE;
+		private decimal _TOTAL_PRICE;
 		
 		private string _DESCRIP_PRICE;
 		
@@ -2616,8 +2616,8 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TOTAL_PRICE", DbType="Money")]
-		public System.Nullable<decimal> TOTAL_PRICE
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TOTAL_PRICE", DbType="Money NOT NULL")]
+		public decimal TOTAL_PRICE
 		{
 			get
 			{
@@ -2660,9 +2660,9 @@ namespace ControlApp.DataAccess
 		
 		private int _QUANTITY;
 		
-		private System.Nullable<decimal> _TOTAL_RECEIPT;
+		private decimal _TOTAL_RECEIPT;
 		
-		private System.Nullable<int> _ID_PRICE_TAG;
+		private int _ID_PRICE_TAG;
 		
 		private int _ID_USER;
 		
@@ -2734,8 +2734,8 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TOTAL_RECEIPT", DbType="Money")]
-		public System.Nullable<decimal> TOTAL_RECEIPT
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TOTAL_RECEIPT", DbType="Money NOT NULL")]
+		public decimal TOTAL_RECEIPT
 		{
 			get
 			{
@@ -2750,8 +2750,8 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PRICE_TAG", DbType="Int")]
-		public System.Nullable<int> ID_PRICE_TAG
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PRICE_TAG", DbType="Int NOT NULL")]
+		public int ID_PRICE_TAG
 		{
 			get
 			{
@@ -2788,9 +2788,9 @@ namespace ControlApp.DataAccess
 		
 		private int _ID_USER;
 		
-		private string _USER_NAME;
+		private string _USER_NAMEX;
 		
-		private System.Nullable<int> _ID_AREA;
+		private int _ID_AREA;
 		
 		private string _USER_STATE;
 		
@@ -2814,24 +2814,24 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USER_NAME", DbType="VarChar(25)")]
-		public string USER_NAME
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USER_NAMEX", DbType="VarChar(25)")]
+		public string USER_NAMEX
 		{
 			get
 			{
-				return this._USER_NAME;
+				return this._USER_NAMEX;
 			}
 			set
 			{
-				if ((this._USER_NAME != value))
+				if ((this._USER_NAMEX != value))
 				{
-					this._USER_NAME = value;
+					this._USER_NAMEX = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_AREA", DbType="Int")]
-		public System.Nullable<int> ID_AREA
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_AREA", DbType="Int NOT NULL")]
+		public int ID_AREA
 		{
 			get
 			{
