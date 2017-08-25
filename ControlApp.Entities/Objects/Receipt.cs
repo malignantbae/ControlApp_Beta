@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ControlApp.Entities.Objects
 {
-    public class Receipts
+    public class Receipt
     {
         public int ID_Receipt { get; set; }
         public string Customer_name { get; set; }
@@ -16,7 +16,7 @@ namespace ControlApp.Entities.Objects
         public int ID_Price_tag { get; set; }
         public int ID_User { get; set; }
         public string Receipt_state { get; set; }
-        public Receipts()
+        public Receipt()
         {
             ID_Receipt = 0;
             Customer_name = null;
@@ -27,7 +27,7 @@ namespace ControlApp.Entities.Objects
             ID_User = 0;
             Receipt_state = null;
         }
-        public Receipts(int pID_Receipt,string pCustomer_name, DateTime pDate_receipt, int pQuantity, decimal pTotal_Receipt, int pID_Price_Tag, int pID_User)
+        public Receipt(int pID_Receipt,string pCustomer_name, DateTime pDate_receipt, int pQuantity, decimal pTotal_Receipt, int pID_Price_Tag, int pID_User)
         {
             this.ID_Receipt = pID_Receipt;
             this.Customer_name = pCustomer_name;
@@ -37,7 +37,7 @@ namespace ControlApp.Entities.Objects
             this.ID_Price_tag = pID_Price_Tag;
             this.ID_User = pID_User;
         }
-        public Receipts(string pCustomer_name, DateTime pDate_receipt, int pQuantity,decimal pTotal_Receipt, int pID_Price_Tag, int pID_User)
+        public Receipt(string pCustomer_name, DateTime pDate_receipt, int pQuantity,decimal pTotal_Receipt, int pID_Price_Tag, int pID_User)
         {
             this.Customer_name = pCustomer_name;
             this.Date_receipt = pDate_receipt;

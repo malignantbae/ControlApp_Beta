@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace ControlApp.Entities.Objects
 {
-    public class Customers
+    public class Customer
     {
         public int ID_Customer { get; set; }
         public string Customer_name { get; set; }
         public string Customer_state { get; set; }
-        public Customers()
+        public Customer()
         {
             ID_Customer = 0;
             Customer_name = null;
             Customer_state = null;
         }
-        public Customers(int pID_Customer, string pCustomer_name, string pCustomer_state)
+        public Customer(int pID_Customer, string pCustomer_name, string pCustomer_state)
         {
             ID_Customer = pID_Customer;
             Customer_name = pCustomer_name;

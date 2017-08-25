@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace ControlApp.Entities.Objects
 {
-    public class Users
+    public class User
     {
         public int ID_User { get; set; }
         public string User_name { get; set; }
         public int ID_Area { get; set; }
         public string User_state { get; set; }
-        public Users()
+        public User()
         {
             ID_User = 0;
             User_name = null;
             ID_Area = 0;
             User_state = null;
         }
-        public Users(int pID_User, string pUser_name, int pID_Area, string pUser_state)
+        public User(int pID_User, string pUser_name, int pID_Area, string pUser_state)
         {
             this.ID_User = pID_User;
             this.User_name = pUser_name;

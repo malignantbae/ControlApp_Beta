@@ -8,35 +8,33 @@ using System.Data.Linq.Mapping; // otra clase por importar para la Manipulacion
 using ControlApp.Entities.Objects;
 
 
-namespace ControlApp.DataAccess.CRUD
+namespace ControlApp.DataAccess.Crud
 {
-    public class UserManagement
+    public class CrudUser
     {
-        public string CreateUser(Users Obj)
+        ContextDataContext Context = new ContextDataContext();
+        public bool CreateUser(User Obj)
         {
-            string Message = "";
             try
             {
-                ContextDataContext Context = new ContextDataContext();
                 Context.SP_CREATE_USER(Obj.ID_User, Obj.User_name, Obj.ID_Area);
-                return Message = "Insert Complete";
+                return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-               return Message = "Error Insert" + ex;
+               return false;
             }
         }
-        public List<Users> RetrieveAll()
+        public List<User> RetrieveAll()
         {
-            List<Users> MyList = new List<Users>();
+            List<User> MyList = new List<User>();
             try
             {
-                ContextDataContext Context = new ContextDataContext();
                 var Query = Context.SP_RETRIEVE_ALL_USER().ToList();
 
                 foreach (SP_RETRIEVE_ALL_USERResult Element in Query)
                 {
-                    Users Obj = new Users(Element.ID_USER, Element.USER_NAMEX, Element.ID_AREA, Element.USER_STATE);
+                    User Obj = new User(Element.ID_USER, Element.USER_NAMEX, Element.ID_AREA, Element.USER_STATE);
                     MyList.Add(Obj);
                 }
             }
@@ -46,17 +44,16 @@ namespace ControlApp.DataAccess.CRUD
             }
             return MyList;
         }
-        public List<Users> Retrieve()
+        public List<User> Retrieve()
         {
-            List<Users> MyList = new List<Users>();
+            List<User> MyList = new List<User>();
             try
             {
-                ContextDataContext Context = new ContextDataContext();
                 var Query = Context.SP_RETRIEVE_USER().ToList();
 
                 foreach (SP_RETRIEVE_USERResult Element in Query)
                 {
-                    Users Obj = new Users(Element.ID_USER,Element.USER_NAMEX,Element.ID_AREA,Element.USER_STATE);
+                    User Obj = new User(Element.ID_USER,Element.USER_NAMEX,Element.ID_AREA,Element.USER_STATE);
                     MyList.Add(Obj);
                 }
                 return MyList;
@@ -68,17 +65,16 @@ namespace ControlApp.DataAccess.CRUD
             }
             
         }
-        public List<Users> pRetrieveALL(int pID)
+        public List<User> pRetrieveALL(int pID)
         {
-            List<Users> MyList = new List<Users>();
+            List<User> MyList = new List<User>();
             try
             {
-                ContextDataContext Context = new ContextDataContext();
                 var Query = Context.SP_pRETRIEVE_ALL_USER(pID).ToList();
 
                 foreach (SP_pRETRIEVE_ALL_USERResult Element in Query)
                 {
-                    Users Obj = new Users(Element.ID_USER, Element.USER_NAMEX, Element.ID_AREA, Element.USER_STATE);
+                    User Obj = new User(Element.ID_USER, Element.USER_NAMEX, Element.ID_AREA, Element.USER_STATE);
                     MyList.Add(Obj);
                 }
                 return MyList;
@@ -90,17 +86,16 @@ namespace ControlApp.DataAccess.CRUD
             
             
         }
-        public List<Users> pRetrieve(int pID)
+        public List<User> pRetrieve(int pID)
         {
-            List<Users> MyList = new List<Users>();
+            List<User> MyList = new List<User>();
             try
             {
-                ContextDataContext Context = new ContextDataContext();
                 var Query = Context.SP_pRETRIEVE_USER(pID).ToList();
 
                 foreach (SP_pRETRIEVE_USERResult Element in Query)
                 {
-                    Users Obj = new Users(Element.ID_USER, Element.USER_NAMEX, Element.ID_AREA, Element.USER_STATE);
+                    User Obj = new User(Element.ID_USER, Element.USER_NAMEX, Element.ID_AREA, Element.USER_STATE);
                     MyList.Add(Obj);
                 }
                 return MyList;
@@ -111,33 +106,28 @@ namespace ControlApp.DataAccess.CRUD
             }
             
         }
-        public string UpdateUser(Users Obj)
+        public bool UpdateUser(User Obj)
         {
-            string Message = "";
             try
             {
-                ContextDataContext Context = new ContextDataContext();
                 Context.SP_UPDATE_USER(Obj.ID_User, Obj.User_name, Obj.ID_Area);
-                return Message = "Update Complete";
+                return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return Message = "Error Update" + ex;
+                return true;
             }
         }       
-        public string DeleteUser(int pID)
+        public bool DeleteUser(int pID)
         {
-            string Message = "";
             try
             {
-                ContextDataContext Context = new ContextDataContext();
                 Context.SP_DELETE_USER(pID);
-                return Message = "Delete Complete" ;
+                return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
-                return Message = "Delete Error" + ex;
+                return false;
             }
         }
     }

@@ -9,33 +9,30 @@ using ControlApp.Entities.Objects;
 
 namespace ControlApp.DataAccess.Crud
 {
-    public class ReceiptsManagement
+    public class CrudReceipt
     {
-        public string CreateUser(Receipts Obj)
+        ContextDataContext Context = new ContextDataContext();
+        public bool CreateUser(Receipt Obj)
         {
-            string Message = "";
             try
             {
-                ContextDataContext Context = new ContextDataContext();
                 Context.SP_CREATE_RECEIPT(Obj.Customer_name,Obj.Date_receipt,Obj.Quantity,Obj.Total_Receipt,Obj.ID_Price_tag,Obj.ID_User);
-                return Message = "Insert Complete";
+                return true;
             }
-            catch (Exception ex)
+            catch (Exception )
             {
-                return Message = "Error Insert" + ex;
+                return false;
             }
         }
-        public List<Receipts> RetrieveAll()
+        public List<Receipt> RetrieveAll()
         {
-            List<Receipts> MyList = new List<Receipts>();
+            List<Receipt> MyList = new List<Receipt>();
             try
             {
-                ContextDataContext Context = new ContextDataContext();
                 var Query = Context.SP_RETRIEVE_ALL_RECEIPT().ToList();
-
                 foreach (SP_RETRIEVE_ALL_RECEIPTResult Element in Query)
                 {
-                    Receipts Obj = new Receipts(Element.ID_RECEIPT,Element.CUSTOMER_NAME,Element.DATE_RECEIPT,Element.QUANTITY,Element.TOTAL_RECEIPT,Element.ID_PRICE_TAG,Element.ID_USER);
+                    Receipt Obj = new Receipt(Element.ID_RECEIPT,Element.CUSTOMER_NAME,Element.DATE_RECEIPT,Element.QUANTITY,Element.TOTAL_RECEIPT,Element.ID_PRICE_TAG,Element.ID_USER);
                     MyList.Add(Obj);
                 }
             }
@@ -45,17 +42,15 @@ namespace ControlApp.DataAccess.Crud
             }
             return MyList;
         }
-        public List<Receipts> Retrieve()
+        public List<Receipt> Retrieve()
         {
-            List<Receipts> MyList = new List<Receipts>();
+            List<Receipt> MyList = new List<Receipt>();
             try
             {
-                ContextDataContext Context = new ContextDataContext();
                 var Query = Context.SP_RETRIEVE_RECEIPT().ToList();
-
                 foreach (SP_RETRIEVE_RECEIPTResult Element in Query)
                 {
-                    Receipts Obj = new Receipts(Element.ID_RECEIPT, Element.CUSTOMER_NAME, Element.DATE_RECEIPT, Element.QUANTITY, Element.TOTAL_RECEIPT, Element.ID_PRICE_TAG, Element.ID_USER);
+                    Receipt Obj = new Receipt(Element.ID_RECEIPT, Element.CUSTOMER_NAME, Element.DATE_RECEIPT, Element.QUANTITY, Element.TOTAL_RECEIPT, Element.ID_PRICE_TAG, Element.ID_USER);
                     MyList.Add(Obj);
                 }
             }
@@ -65,17 +60,15 @@ namespace ControlApp.DataAccess.Crud
             }
             return MyList;
         }
-        public List<Receipts> pRetrieveALL(int pID)
+        public List<Receipt> pRetrieveALL(int pID)
         {
-            List<Receipts> MyList = new List<Receipts>();
+            List<Receipt> MyList = new List<Receipt>();
             try
             {
-                ContextDataContext Context = new ContextDataContext();
                 var Query = Context.SP_pRETRIEVE_ALL_RECEIPT(pID).ToList();
-
                 foreach (SP_pRETRIEVE_ALL_RECEIPTResult Element in Query)
                 {
-                    Receipts Obj = new Receipts(Element.ID_RECEIPT, Element.CUSTOMER_NAME, Element.DATE_RECEIPT, Element.QUANTITY, Element.TOTAL_RECEIPT, Element.ID_PRICE_TAG, Element.ID_USER);
+                    Receipt Obj = new Receipt(Element.ID_RECEIPT, Element.CUSTOMER_NAME, Element.DATE_RECEIPT, Element.QUANTITY, Element.TOTAL_RECEIPT, Element.ID_PRICE_TAG, Element.ID_USER);
                     MyList.Add(Obj);
                 }
                 return MyList;
@@ -87,17 +80,15 @@ namespace ControlApp.DataAccess.Crud
 
 
         }
-        public List<Receipts> pRetrieve(int pID)
+        public List<Receipt> pRetrieve(int pID)
         {
-            List<Receipts> MyList = new List<Receipts>();
+            List<Receipt> MyList = new List<Receipt>();
             try
             {
-                ContextDataContext Context = new ContextDataContext();
                 var Query = Context.SP_pRETRIEVE_RECEIPT(pID).ToList();
-
                 foreach (SP_pRETRIEVE_RECEIPTResult Element in Query)
                 {
-                    Receipts Obj = new Receipts(Element.ID_RECEIPT, Element.CUSTOMER_NAME, Element.DATE_RECEIPT, Element.QUANTITY, Element.TOTAL_RECEIPT, Element.ID_PRICE_TAG, Element.ID_USER);
+                    Receipt Obj = new Receipt(Element.ID_RECEIPT, Element.CUSTOMER_NAME, Element.DATE_RECEIPT, Element.QUANTITY, Element.TOTAL_RECEIPT, Element.ID_PRICE_TAG, Element.ID_USER);
                     MyList.Add(Obj);
                 }
                 return MyList;
@@ -107,33 +98,28 @@ namespace ControlApp.DataAccess.Crud
                 return MyList = null;
             }
         }
-        public string UpdateReceipt(Receipts Obj)
+        public bool UpdateReceipt(Receipt Obj)
         {
-            string Message = "";
             try
             {
-                ContextDataContext Context = new ContextDataContext();
                 Context.SP_UPDATE_RECEIPT(Obj.ID_Receipt,Obj.Customer_name,Obj.Date_receipt,Obj.Quantity,Obj.Total_Receipt);
-                return Message = "Update Complete";
+                return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return Message = "Error Update" + ex;
+                return false;
             }
         }
-        public string DeleteReceipt(int pID)
+        public bool DeleteReceipt(int pID)
         {
-            string Message = "";
             try
             {
-                ContextDataContext Context = new ContextDataContext();
                 Context.SP_DELETE_RECEIPT(pID);
-                return Message = "Delete Complete";
+                return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
-                return Message = "Delete Error" + ex;
+                return false;
             }
         }
     }

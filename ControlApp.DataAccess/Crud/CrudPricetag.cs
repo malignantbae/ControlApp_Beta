@@ -9,33 +9,31 @@ using ControlApp.Entities.Objects;
 
 namespace ControlApp.DataAccess.Crud
 {
-    public class PricetagsManagement
+    public class CrudPricetag
     {
-        public string CreatePriceTag(Price_tags Obj)
+        ContextDataContext Context = new ContextDataContext();
+        public bool CreatePriceTag(Price_tag Obj)
         {
-            string Message = "";
             try
             {
-                ContextDataContext Context = new ContextDataContext();
                 Context.SP_CREATE_PRICE_TAG(Obj.Total_Price, Obj.Descrip_Price);
-                return Message = "Insert Complete";
+                return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return Message = "Error Insert" + ex;
+                return false;
             }
         }
-        public List<Price_tags> RetrieveAll()
+        public List<Price_tag> RetrieveAll()
         {
-            List<Price_tags> MyList = new List<Price_tags>();
+            List<Price_tag> MyList = new List<Price_tag>();
             try
             {
-                ContextDataContext Context = new ContextDataContext();
                 var Query = Context.SP_RETRIEVE_ALL_PRICE_TAG().ToList();
 
                 foreach (SP_RETRIEVE_ALL_PRICE_TAGResult Element in Query)
                 {
-                    Price_tags Obj = new Price_tags(Element.ID_PRICE_TAG,Element.TOTAL_PRICE,Element.DESCRIP_PRICE,Element.PRICE_TAG_STATE);
+                    Price_tag Obj = new Price_tag(Element.ID_PRICE_TAG,Element.TOTAL_PRICE,Element.DESCRIP_PRICE,Element.PRICE_TAG_STATE);
                     MyList.Add(Obj);
                 }
             }
@@ -45,17 +43,16 @@ namespace ControlApp.DataAccess.Crud
             }
             return MyList;
         }
-        public List<Price_tags> Retrieve()
+        public List<Price_tag> Retrieve()
         {
-            List<Price_tags> MyList = new List<Price_tags>();
+            List<Price_tag> MyList = new List<Price_tag>();
             try
             {
-                ContextDataContext Context = new ContextDataContext();
                 var Query = Context.SP_RETRIEVE_PRICE_TAG().ToList();
 
                 foreach (SP_RETRIEVE_PRICE_TAGResult Element in Query)
                 {
-                    Price_tags Obj = new Price_tags(Element.ID_PRICE_TAG, Element.TOTAL_PRICE, Element.DESCRIP_PRICE);
+                    Price_tag Obj = new Price_tag(Element.ID_PRICE_TAG, Element.TOTAL_PRICE, Element.DESCRIP_PRICE);
                     MyList.Add(Obj);
                 }
             }
@@ -66,12 +63,11 @@ namespace ControlApp.DataAccess.Crud
             return MyList;
 
         }
-        public string UpdatePrice_Tag(Price_tags Obj)
+        public string UpdatePrice_Tag(Price_tag Obj)
         {
             string Message = "";
             try
             {
-                ContextDataContext Context = new ContextDataContext();
                 Context.SP_UPDATE_PRICE_TAG(Obj.ID_Price_Tag,Obj.Total_Price,Obj.Descrip_Price);
                 return Message = "Update Complete";
             }
@@ -80,21 +76,17 @@ namespace ControlApp.DataAccess.Crud
                 return Message = "Error Update" + ex;
             }
         }
-        public string DeletePriceTag(int pID)
+        public bool DeletePriceTag(int pID)
         {
-            string Message = "";
             try
             {
-                ContextDataContext Context = new ContextDataContext();
                 Context.SP_DELETE_PRICE_TAG(pID);
-                return Message = "Delete Complete";
+                return true;
             }
-            catch (Exception ex)
+            catch (Exception )
             {
-
-                return Message = "Delete Error" + ex;
+                return false;
             }
         }
-
     }
 }

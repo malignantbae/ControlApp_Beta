@@ -10,33 +10,31 @@ using ControlApp.Entities.Objects;
 
 namespace ControlApp.DataAccess.Crud
 {
-    public class AreasManagement
+    public class CrudArea
     {
-        public string CreateArea(Areas Obj)
+        ContextDataContext Context = new ContextDataContext();
+        public bool CreateArea(Area Obj)
         {
-            string Message = "";
             try
             {
-                ContextDataContext Context = new ContextDataContext();
                 Context.SP_CREATE_AREA(Obj.Area_name);
-                return Message = "Insert Complete";
+                return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return Message = "Error Insert" + ex;
+                return false;
             }
         }
-        public List<Areas> RetrieveAll()
+        public List<Area> RetrieveAll()
         {
-            List<Areas> MyList = new List<Areas>();
+            List<Area> MyList = new List<Area>();
             try
             {
-                ContextDataContext Context = new ContextDataContext();
                 var Query = Context.SP_RETRIEVE_ALL_AREA().ToList();
 
                 foreach (SP_RETRIEVE_ALL_AREAResult Element in Query)
                 {
-                    Areas Obj = new Areas(Element.ID_AREA, Element.AREA_NAME, Element.AREA_STATE);
+                    Area Obj = new Area(Element.ID_AREA, Element.AREA_NAME, Element.AREA_STATE);
                     MyList.Add(Obj);
                 }
             }
@@ -46,45 +44,41 @@ namespace ControlApp.DataAccess.Crud
             }
             return MyList;
         }
-        public List<Areas> Retrieve()
+        public List<Area> Retrieve()
         {
-            List<Areas> MyList = new List<Areas>();
+            List<Area> MyList = new List<Area>();
             ContextDataContext Context = new ContextDataContext();
             var Query = Context.SP_RETRIEVE_AREA().ToList();
 
             foreach (SP_RETRIEVE_AREAResult Element in Query)
             {
-                Areas Obj = new Areas(Element.ID_AREA, Element.AREA_NAME, Element.AREA_STATE);
+                Area Obj = new Area(Element.ID_AREA, Element.AREA_NAME, Element.AREA_STATE);
                 MyList.Add(Obj);
             }
             return MyList;
         }
-        public string UpdateArea(Areas Obj)
-        {
-            string Message = "";
+        public bool UpdateArea(Area Obj)
+        {            
             try
             {
-                ContextDataContext Context = new ContextDataContext();
                 Context.SP_UPDATE_AREA(Obj.ID_Area, Obj.Area_name);
-                return Message = "Insert Complete";
+                return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return Message = "Error Update" + ex;
+                return false;
             }
         }
-        public string DeleteArea(int pID)
-        {
-            string Message = "";
+        public bool DeleteArea(int pID)
+        {            
             try
-            {
-                ContextDataContext Context = new ContextDataContext();
+            {    
                 Context.SP_DELETE_AREA(pID);
-                return Message = "Delete Complete";
+                return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return Message = "Error Update" + ex;
+                return false;
             }
         }
     }

@@ -41,17 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Crud\AreasManagement.cs" />
-    <Compile Include="Crud\AuthenticationsManagement.cs" />
-    <Compile Include="Crud\CustomersManagement.cs" />
-    <Compile Include="Crud\PricetagsManagement.cs" />
-    <Compile Include="Crud\ReceiptsManagement.cs" />
+    <Compile Include="Crud\CrudArea.cs" />
+    <Compile Include="Crud\CrudAuthentication.cs" />
+    <Compile Include="Crud\CrudCustomer.cs" />
+    <Compile Include="Crud\CrudPricetag.cs" />
+    <Compile Include="Crud\CrudReceipt.cs" />
     <Compile Include="sqlConnection.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>sqlConnection.dbml</DependentUpon>
     </Compile>
-    <Compile Include="Crud\UsersManagement.cs" />
+    <Compile Include="Crud\CrudUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

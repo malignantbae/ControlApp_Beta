@@ -9,33 +9,30 @@ using ControlApp.Entities.Objects;
 
 namespace ControlApp.DataAccess.Crud
 {
-    public class CustomersManagement
+    public class CrudCustomer
     {
-        public string CreateCustomer(Customers Obj)
-        {
-            string Message = "";
+        ContextDataContext Context = new ContextDataContext();
+        public bool CreateCustomer(Customer Obj)
+        {           
             try
             {
-                ContextDataContext Context = new ContextDataContext();
                 Context.SP_CREATE_CUSTOMER(Obj.ID_Customer,Obj.Customer_name);
-                return Message = "Insert Complete";
+                return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return Message = "Error Insert" + ex;
+                return false;
             }
         }
-        public List<Customers> RetrieveAll()
+        public List<Customer> RetrieveAll()
         {
-            List<Customers> MyList = new List<Customers>();
+            List<Customer> MyList = new List<Customer>();
             try
             {
-                ContextDataContext Context = new ContextDataContext();
                 var Query = Context.SP_RETRIEVE_ALL_CUSTOMER().ToList();
-
                 foreach (SP_RETRIEVE_ALL_CUSTOMERResult Element in Query)
                 {
-                    Customers Obj = new Customers(Element.ID_CUSTOMER,Element.CUSTOMER_NAME,Element.CUSTOMER_STATE);
+                    Customer Obj = new Customer(Element.ID_CUSTOMER,Element.CUSTOMER_NAME,Element.CUSTOMER_STATE);
                     MyList.Add(Obj);
                 }
             }
@@ -45,17 +42,16 @@ namespace ControlApp.DataAccess.Crud
             }
             return MyList;
         }
-        public List<Customers> pRetrieveAll(string pName)
+        public List<Customer> pRetrieveAll(string pName)
         {
-            List<Customers> MyList = new List<Customers>();
+            List<Customer> MyList = new List<Customer>();
             try
             {
-                ContextDataContext Context = new ContextDataContext();
                 var Query = Context.SP_pRETRIEVE_ALL_CUSTOMER(pName).ToList();
 
                 foreach (SP_pRETRIEVE_ALL_CUSTOMERResult Element in Query)
                 {
-                    Customers Obj = new Customers(Element.ID_CUSTOMER, Element.CUSTOMER_NAME, Element.CUSTOMER_STATE);
+                    Customer Obj = new Customer(Element.ID_CUSTOMER, Element.CUSTOMER_NAME, Element.CUSTOMER_STATE);
                     MyList.Add(Obj);
                 }
             }
@@ -65,17 +61,15 @@ namespace ControlApp.DataAccess.Crud
             }
             return MyList;
         }
-        public List<Customers> Retrieve()
+        public List<Customer> Retrieve()
         {
-            List<Customers> MyList = new List<Customers>();
+            List<Customer> MyList = new List<Customer>();
             try
             {
-                ContextDataContext Context = new ContextDataContext();
                 var Query = Context.SP_RETRIEVE_CUSTOMER().ToList();
-
                 foreach (SP_RETRIEVE_CUSTOMERResult Element in Query)
                 {
-                    Customers Obj = new Customers(Element.ID_CUSTOMER, Element.CUSTOMER_NAME, Element.CUSTOMER_STATE);
+                    Customer Obj = new Customer(Element.ID_CUSTOMER, Element.CUSTOMER_NAME, Element.CUSTOMER_STATE);
                     MyList.Add(Obj);
                 }
             }
@@ -85,17 +79,15 @@ namespace ControlApp.DataAccess.Crud
             }
             return MyList;
         }
-        public List<Customers> pRetrieve(string pName)
+        public List<Customer> pRetrieve(string pName)
         {
-            List<Customers> MyList = new List<Customers>();
+            List<Customer> MyList = new List<Customer>();
             try
             {
-                ContextDataContext Context = new ContextDataContext();
                 var Query = Context.SP_pRETRIEVE_CUSTOMER(pName).ToList();
-
                 foreach (SP_pRETRIEVE_CUSTOMERResult Element in Query)
                 {
-                    Customers Obj = new Customers(Element.ID_CUSTOMER, Element.CUSTOMER_NAME, Element.CUSTOMER_STATE);
+                    Customer Obj = new Customer(Element.ID_CUSTOMER, Element.CUSTOMER_NAME, Element.CUSTOMER_STATE);
                     MyList.Add(Obj);
                 }
             }
@@ -105,32 +97,28 @@ namespace ControlApp.DataAccess.Crud
             }
             return MyList;
         }
-        public string UpdateCustomer(Customers Obj)
-        {
-            string Message = "";
+        public bool UpdateCustomer(Customer Obj)
+        {            
             try
             {
-                ContextDataContext Context = new ContextDataContext();
                 Context.SP_CREATE_CUSTOMER(Obj.ID_Customer, Obj.Customer_name);
-                return Message = "Update Complete";
+                return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return Message = "Error Update" + ex;
+                return false;
             }
         }
-        public string DeleteCustomer(int pID)
-        {
-            string Message = "";
+        public bool DeleteCustomer(int pID)
+        {            
             try
             {
-                ContextDataContext Context = new ContextDataContext();
                 Context.SP_DELETE_CUSTOMER(pID);
-                return Message = "Delete Complete";
+                return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return Message = "Error Update" + ex;
+                return false;
             }
         }
     }

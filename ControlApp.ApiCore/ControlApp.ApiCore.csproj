@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AF1DFB1B-6012-42F9-8608-49FAF8371551}</ProjectGuid>
+    <ProjectGuid>{826D98DF-2482-4611-B265-BED324F65CDC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ControlApp.Entities</RootNamespace>
-    <AssemblyName>ControlApp.Entities</AssemblyName>
+    <RootNamespace>ControlApp.ApiCore</RootNamespace>
+    <AssemblyName>ControlApp.ApiCore</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,13 +40,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Objects\Area.cs" />
-    <Compile Include="Objects\Authentication.cs" />
-    <Compile Include="Objects\Customer.cs" />
-    <Compile Include="Objects\Price_tag.cs" />
-    <Compile Include="Objects\Receipt.cs" />
-    <Compile Include="Objects\User.cs" />
+    <Compile Include="Management\AreaManagement.cs" />
+    <Compile Include="Management\AuthenticationManagement.cs" />
+    <Compile Include="Management\CustomerManagement.cs" />
+    <Compile Include="Management\PricetagManagement.cs" />
+    <Compile Include="Management\ReceiptManagement.cs" />
+    <Compile Include="Management\UserManagement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ControlApp.DataAccess\ControlApp.DataAccess.csproj">
+      <Project>{a8abfed1-3865-4426-861a-a60b7110b3c3}</Project>
+      <Name>ControlApp.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ControlApp.Entities\ControlApp.Entities.csproj">
+      <Project>{af1dfb1b-6012-42f9-8608-49faf8371551}</Project>
+      <Name>ControlApp.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
