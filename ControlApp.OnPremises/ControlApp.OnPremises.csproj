@@ -46,6 +46,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\frmArea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmArea.Designer.cs">
+      <DependentUpon>frmArea.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmAuthentication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAuthentication.Designer.cs">
+      <DependentUpon>frmAuthentication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCustomer.Designer.cs">
+      <DependentUpon>frmCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPricetag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPricetag.Designer.cs">
+      <DependentUpon>frmPricetag.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmReceipt.cs">
       <SubType>Form</SubType>
     </Compile>
