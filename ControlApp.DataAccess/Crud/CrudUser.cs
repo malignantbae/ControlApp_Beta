@@ -34,7 +34,7 @@ namespace ControlApp.DataAccess.Crud
 
                 foreach (SP_RETRIEVE_ALL_USERResult Element in Query)
                 {
-                    User Obj = new User(Element.ID_USER, Element.USER_NAMEX, Element.ID_AREA, Element.USER_STATE);
+                    User Obj = new User(Element.ID_USER, Element.USER_NAME, Element.ID_AREA, Element.USER_STATE);
                     MyList.Add(Obj);
                 }
             }
@@ -53,7 +53,7 @@ namespace ControlApp.DataAccess.Crud
 
                 foreach (SP_RETRIEVE_USERResult Element in Query)
                 {
-                    User Obj = new User(Element.ID_USER,Element.USER_NAMEX,Element.ID_AREA,Element.USER_STATE);
+                    User Obj = new User(Element.ID_USER,Element.USER_NAME,Element.ID_AREA,Element.USER_STATE);
                     MyList.Add(Obj);
                 }
                 return MyList;
@@ -74,7 +74,7 @@ namespace ControlApp.DataAccess.Crud
 
                 foreach (SP_pRETRIEVE_ALL_USERResult Element in Query)
                 {
-                    User Obj = new User(Element.ID_USER, Element.USER_NAMEX, Element.ID_AREA, Element.USER_STATE);
+                    User Obj = new User(Element.ID_USER, Element.USER_NAME, Element.ID_AREA, Element.USER_STATE);
                     MyList.Add(Obj);
                 }
                 return MyList;
@@ -95,7 +95,7 @@ namespace ControlApp.DataAccess.Crud
 
                 foreach (SP_pRETRIEVE_USERResult Element in Query)
                 {
-                    User Obj = new User(Element.ID_USER, Element.USER_NAMEX, Element.ID_AREA, Element.USER_STATE);
+                    User Obj = new User(Element.ID_USER, Element.USER_NAME, Element.ID_AREA, Element.USER_STATE);
                     MyList.Add(Obj);
                 }
                 return MyList;

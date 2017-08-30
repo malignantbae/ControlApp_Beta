@@ -16,7 +16,7 @@ namespace ControlApp.DataAccess.Crud
         {
             try
             {
-                Context.SP_CREATE_RECEIPT(Obj.Customer_name,Obj.Date_receipt,Obj.Quantity,Obj.Total_Receipt,Obj.ID_Price_tag,Obj.ID_User);
+                Context.SP_CREATE_RECEIPT(Obj.Customer_name,Obj.Quantity,Obj.Total_Receipt,Obj.ID_Price_tag,Obj.ID_User);
                 return true;
             }
             catch (Exception )
@@ -102,7 +102,7 @@ namespace ControlApp.DataAccess.Crud
         {
             try
             {
-                Context.SP_UPDATE_RECEIPT(Obj.ID_Receipt,Obj.Customer_name,Obj.Date_receipt,Obj.Quantity,Obj.Total_Receipt);
+                Context.SP_UPDATE_RECEIPT(Obj.ID_Receipt,Obj.Customer_name,Obj.Quantity,Obj.Total_Receipt);
                 return true;
             }
             catch (Exception)
