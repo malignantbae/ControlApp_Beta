@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ControlApp.Entities.Objects
 {
-    public class Receipt
+    public class Receipt : BaseEntity
     {
         public int ID_Receipt { get; set; }
         public string Customer_name { get; set; }
@@ -14,20 +14,18 @@ namespace ControlApp.Entities.Objects
         public int Quantity { get; set; }
         public decimal Total_Receipt { get; set; }
         public int ID_Price_tag { get; set; }
-        public int ID_User { get; set; }
-        public string Receipt_state { get; set; }
+        public decimal Unit_Price { get; set; }
         public Receipt()
         {
             ID_Receipt = 0;
-            Customer_name = null;
+            Customer_name = "N/A";
             Date_receipt = DateTime.Today;
             Quantity = 0;
             Total_Receipt = 0;
             ID_Price_tag = 0;
-            ID_User = 0;
-            Receipt_state = null;
+            Unit_Price = 0;
         }
-        public Receipt(int pID_Receipt,string pCustomer_name, DateTime pDate_receipt, int pQuantity, decimal pTotal_Receipt, int pID_Price_Tag, int pID_User)
+        public Receipt(int pID_Receipt,string pCustomer_name, DateTime pDate_receipt, int pQuantity, decimal pTotal_Receipt, int pID_Price_Tag,decimal pUnit_Price)
         {
             this.ID_Receipt = pID_Receipt;
             this.Customer_name = pCustomer_name;
@@ -35,17 +33,21 @@ namespace ControlApp.Entities.Objects
             this.Quantity = pQuantity;
             this.Total_Receipt = pTotal_Receipt;
             this.ID_Price_tag = pID_Price_Tag;
-            this.ID_User = pID_User;
+            this.Unit_Price = pUnit_Price;
         }
-        public Receipt(string pCustomer_name, DateTime pDate_receipt, int pQuantity,decimal pTotal_Receipt, int pID_Price_Tag, int pID_User)
+        public Receipt(int pID_Receipt, string pCustomer_name, DateTime pDate_receipt, int pQuantity, decimal pTotal_Receipt, int pID_Price_Tag, decimal pUnit_Price,bool pState, string pCreateBy, string pUpdatedBy, DateTime pCreateDate)
         {
+            this.ID_Receipt = pID_Receipt;
             this.Customer_name = pCustomer_name;
             this.Date_receipt = pDate_receipt;
             this.Quantity = pQuantity;
             this.Total_Receipt = pTotal_Receipt;
             this.ID_Price_tag = pID_Price_Tag;
-            this.ID_User = pID_User;
+            this.Unit_Price = pUnit_Price;
+            this.State = pState;
+            this.CreateBy = pCreateBy;
+            this.UpdateBy = pUpdatedBy;
+            this.CreateDate = pCreateDate;
         }
-
     }
 }

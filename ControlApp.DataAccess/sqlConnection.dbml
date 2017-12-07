@@ -1,307 +1,232 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="dbo.Receipts" Class="ContextDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=dbo.Receipts;Integrated Security=True" SettingsObjectName="ControlApp.DataAccess.Properties.Settings" SettingsPropertyName="dbo_ReceiptsConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ControlApp" Class="sqlConnectionDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=ControlApp;Integrated Security=True" SettingsObjectName="ControlApp.DataAccess.Properties.Settings" SettingsPropertyName="ControlAppConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.TBL_ADDRESS" Member="TBL_ADDRESSes">
+    <Type Name="TBL_ADDRESS">
+      <Column Name="ID_ADDRESS" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NAME_ADDRESS" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRIP_ADDRESS" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="ADDRESS_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ADDRESS_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ADDRESS_UPDATEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ADDRESS_CREATEDATE" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Association Name="TBL_ADDRESS_TBL_USER" Member="TBL_USERs" ThisKey="ID_ADDRESS" OtherKey="ID_ADDRESS" Type="TBL_USER" />
+    </Type>
+  </Table>
   <Table Name="dbo.TBL_AREA" Member="TBL_AREAs">
     <Type Name="TBL_AREA">
       <Column Name="ID_AREA" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="AREA_NAME" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="AREA_STATE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Association Name="TBL_AREA_TBL_AUTHENTICATION" Member="TBL_AUTHENTICATIONs" ThisKey="ID_AREA" OtherKey="ID_AREA" Type="TBL_AUTHENTICATION" />
+      <Column Name="AREA_NAME" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="AREA_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AREA_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AREA_UPDATEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AREA_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Association Name="TBL_AREA_TBL_USER" Member="TBL_USERs" ThisKey="ID_AREA" OtherKey="ID_AREA" Type="TBL_USER" />
-    </Type>
-  </Table>
-  <Table Name="dbo.TBL_AUTHENTICATION" Member="TBL_AUTHENTICATIONs">
-    <Type Name="TBL_AUTHENTICATION">
-      <Column Name="ID_USER" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="USER_NICKNAME" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
-      <Column Name="PASSWORD" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="ID_AREA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="AUTHENTIC_STATE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Association Name="TBL_AREA_TBL_AUTHENTICATION" Member="TBL_AREA" ThisKey="ID_AREA" OtherKey="ID_AREA" Type="TBL_AREA" IsForeignKey="true" />
-      <Association Name="TBL_USER_TBL_AUTHENTICATION" Member="TBL_USER" ThisKey="ID_USER" OtherKey="ID_USER" Type="TBL_USER" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.TBL_CUSTOMER" Member="TBL_CUSTOMERs">
     <Type Name="TBL_CUSTOMER">
       <Column Name="ID_CUSTOMER" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="CUSTOMER_NAME" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="CUSTOMER_STATE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="CUSTOMER_NAME" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="CUSTOMER_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CUSTOMER_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CUSTOMER_UPDATEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CREATE_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TBL_PERMISSION" Member="TBL_PERMISSIONs">
+    <Type Name="TBL_PERMISSION">
+      <Column Name="ID_PERMISSION" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NAME_PERMISSION" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="DESCRIP_PERMISSION" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="ROLE_STATE" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ROLE_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ROLE_UPDATEDBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ROLE_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TBL_POSITION" Member="TBL_POSITIONs">
+    <Type Name="TBL_POSITION">
+      <Column Name="ID_POSITION" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NAME_POSITION" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRIP_POSITION" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="POSITION_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="POSITION_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="POSITION_UPDATEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="POSITION_CREATEDATE" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Association Name="TBL_POSITION_TBL_USER" Member="TBL_USERs" ThisKey="ID_POSITION" OtherKey="ID_POSITION" Type="TBL_USER" />
     </Type>
   </Table>
   <Table Name="dbo.TBL_PRICE_TAG" Member="TBL_PRICE_TAGs">
     <Type Name="TBL_PRICE_TAG">
       <Column Name="ID_PRICE_TAG" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="TOTAL_PRICE" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-      <Column Name="DESCRIP_PRICE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="PRICE_TAG_STATE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="DESCRIP_PRICE" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PRICE_TAG_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PRICE_TAG_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PRICE_TAG_UPDATEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PRICE_TAG_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Association Name="TBL_PRICE_TAG_TBL_RECEIPT" Member="TBL_RECEIPTs" ThisKey="ID_PRICE_TAG" OtherKey="ID_PRICE_TAG" Type="TBL_RECEIPT" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TBL_ROLE" Member="TBL_ROLEs">
+    <Type Name="TBL_ROLE">
+      <Column Name="ID_ROLE" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NAME_ROLE" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRIP_ROLE" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ROLE_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ROLE_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ROLE_UPDATEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ROLE_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="TBL_ROLE_TBL_USER" Member="TBL_USERs" ThisKey="ID_ROLE" OtherKey="ID_ROLE" Type="TBL_USER" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TBL_SESSION" Member="TBL_SESSIONs">
+    <Type Name="TBL_SESSION">
+      <Column Name="ID_SESION" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_USER" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DATE_SESSION" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EDIT_SESSION" Type="System.String" DbType="VarChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="SESSION_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="SESSION_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SESSION_UPDATEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SESSION_CREATEDATE" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Association Name="TBL_USER_TBL_SESSION" Member="TBL_USER" ThisKey="ID_USER" OtherKey="ID_USER" Type="TBL_USER" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TBL_USER" Member="TBL_USERs">
+    <Type Name="TBL_USER">
+      <Column Name="ID_USER" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="USER_NAME" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="USER_PHONE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="USER_PHONE_EXT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="USER_EMAIL" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_AREA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_POSITION" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_ROLE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_ADDRESS" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="USER_NICKNAME" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="USER_PASSWORD" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="USER_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="USER_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="USER_UPDATEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="USER_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="TBL_USER_TBL_SESSION" Member="TBL_SESSIONs" ThisKey="ID_USER" OtherKey="ID_USER" Type="TBL_SESSION" />
+      <Association Name="TBL_ADDRESS_TBL_USER" Member="TBL_ADDRESS" ThisKey="ID_ADDRESS" OtherKey="ID_ADDRESS" Type="TBL_ADDRESS" IsForeignKey="true" />
+      <Association Name="TBL_AREA_TBL_USER" Member="TBL_AREA" ThisKey="ID_AREA" OtherKey="ID_AREA" Type="TBL_AREA" IsForeignKey="true" />
+      <Association Name="TBL_POSITION_TBL_USER" Member="TBL_POSITION" ThisKey="ID_POSITION" OtherKey="ID_POSITION" Type="TBL_POSITION" IsForeignKey="true" />
+      <Association Name="TBL_ROLE_TBL_USER" Member="TBL_ROLE" ThisKey="ID_ROLE" OtherKey="ID_ROLE" Type="TBL_ROLE" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.TBL_RECEIPT" Member="TBL_RECEIPTs">
     <Type Name="TBL_RECEIPT">
       <Column Name="ID_RECEIPT" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="CUSTOMER_NAME" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
-      <Column Name="DATE_RECEIPT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="NAME_CUSTOMER" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DATE_RECEIPT" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
       <Column Name="QUANTITY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="TOTAL_RECEIPT" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
       <Column Name="ID_PRICE_TAG" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ID_USER" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="RECEIPT_STATE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="UNIT_PRICE" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="RECEIPT_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="RECEIPT_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RECEIPT_UPDATEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RECEIPT_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Association Name="TBL_PRICE_TAG_TBL_RECEIPT" Member="TBL_PRICE_TAG" ThisKey="ID_PRICE_TAG" OtherKey="ID_PRICE_TAG" Type="TBL_PRICE_TAG" IsForeignKey="true" />
-      <Association Name="TBL_USER_TBL_RECEIPT" Member="TBL_USER" ThisKey="ID_USER" OtherKey="ID_USER" Type="TBL_USER" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.TBL_USER" Member="TBL_USERs">
-    <Type Name="TBL_USER">
-      <Column Name="ID_USER" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="USER_NAME" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="ID_AREA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="USER_STATE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Association Name="TBL_USER_TBL_AUTHENTICATION" Member="TBL_AUTHENTICATIONs" ThisKey="ID_USER" OtherKey="ID_USER" Type="TBL_AUTHENTICATION" />
-      <Association Name="TBL_USER_TBL_RECEIPT" Member="TBL_RECEIPTs" ThisKey="ID_USER" OtherKey="ID_USER" Type="TBL_RECEIPT" />
-      <Association Name="TBL_AREA_TBL_USER" Member="TBL_AREA" ThisKey="ID_AREA" OtherKey="ID_AREA" Type="TBL_AREA" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Function Name="dbo.SP_CREATE_AREA" Method="SP_CREATE_AREA">
-    <Parameter Name="pAREA_NAME" Type="System.String" DbType="VarChar(25)" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.SP_CREATE_AUTHENTICATION" Method="SP_CREATE_AUTHENTICATION">
-    <Parameter Name="pID_USER" Type="System.Int32" DbType="Int" />
-    <Parameter Name="pUSER_NICKNAME" Type="System.String" DbType="VarChar(40)" />
-    <Parameter Name="pPASSWORD" Type="System.String" DbType="VarChar(20)" />
+  <Function Name="dbo.SP_CRUD_AREA" Method="SP_CRUD_AREA">
+    <Parameter Name="p_ACTION" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pID_BY" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="pID_AREA" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
+    <Parameter Name="pAREA_NAME" Type="System.String" DbType="VarChar(25)" />
+    <ElementType Name="SP_CRUD_AREAResult">
+      <Column Name="ID_AREA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AREA_NAME" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="AREA_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AREA_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AREA_UPDATEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AREA_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
   </Function>
-  <Function Name="dbo.SP_CREATE_CUSTOMER" Method="SP_CREATE_CUSTOMER">
+  <Function Name="dbo.SP_CRUD_CUSTOMER" Method="SP_CRUD_CUSTOMER">
+    <Parameter Name="p_ACTION" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pID_BY" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="pID_CUSTOMER" Type="System.Int32" DbType="Int" />
     <Parameter Name="pCUSTOMER_NAME" Type="System.String" DbType="VarChar(25)" />
-    <Return Type="System.Int32" />
+    <ElementType Name="SP_CRUD_CUSTOMERResult">
+      <Column Name="ID_CUSTOMER" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CUSTOMER_NAME" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="CUSTOMER_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CUSTOMER_STATE1" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CUSTOMER_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CUSTOMER_UPDATEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CREATE_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
   </Function>
-  <Function Name="dbo.SP_CREATE_PRICE_TAG" Method="SP_CREATE_PRICE_TAG">
+  <Function Name="dbo.SP_CRUD_PRICE_TAG" Method="SP_CRUD_PRICE_TAG">
+    <Parameter Name="p_ACTION" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pID_BY" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="pID_PRICE_TAG" Type="System.Int32" DbType="Int" />
     <Parameter Name="pTOTAL_PRICE" Type="System.Decimal" DbType="Money" />
-    <Parameter Name="pDESCRIP_PRICE" Type="System.String" DbType="VarChar(10)" />
-    <Return Type="System.Int32" />
+    <Parameter Name="pDESCRIP_PRICE" Type="System.String" DbType="VarChar(30)" />
+    <ElementType Name="SP_CRUD_PRICE_TAGResult">
+      <Column Name="ID_PRICE_TAG" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TOTAL_PRICE" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRIP_PRICE" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PRICE_TAG_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PRICE_TAG_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PRICE_TAG_UPDATEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PRICE_TAG_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
   </Function>
-  <Function Name="dbo.SP_CREATE_RECEIPT" Method="SP_CREATE_RECEIPT">
+  <Function Name="dbo.SP_CRUD_RECEIPT" Method="SP_CRUD_RECEIPT">
+    <Parameter Name="p_ACTION" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pID_RECEIPT" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pID_BY" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="pCUSTOMER_NAME" Type="System.String" DbType="VarChar(25)" />
     <Parameter Name="pQUANTITY" Type="System.Int32" DbType="Int" />
     <Parameter Name="pTOTAL_RECEIPT" Type="System.Decimal" DbType="Money" />
     <Parameter Name="pID_PRICE_TAG" Type="System.Int32" DbType="Int" />
-    <Parameter Name="pID_USER" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.SP_CREATE_USER" Method="SP_CREATE_USER">
-    <Parameter Name="pID_USER" Type="System.Int32" DbType="Int" />
-    <Parameter Name="pUSER_NAME" Type="System.String" DbType="VarChar(25)" />
-    <Parameter Name="pID_AREA" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.SP_DELETE_AREA" Method="SP_DELETE_AREA">
-    <Parameter Name="pID_AREA" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.SP_DELETE_AUTHENTICATION" Method="SP_DELETE_AUTHENTICATION">
-    <Parameter Name="pID_USER" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.SP_DELETE_CUSTOMER" Method="SP_DELETE_CUSTOMER">
-    <Parameter Name="pID_CUSTOMER" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.SP_DELETE_PRICE_TAG" Method="SP_DELETE_PRICE_TAG">
-    <Parameter Name="pID_PRICE_TAG" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.SP_DELETE_RECEIPT" Method="SP_DELETE_RECEIPT">
-    <Parameter Name="pID_RECEIPT" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.SP_DELETE_USER" Method="SP_DELETE_USER">
-    <Parameter Name="pID_USER" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.SP_pRETRIEVE_ALL_CUSTOMER" Method="SP_pRETRIEVE_ALL_CUSTOMER">
-    <Parameter Name="pCUSTOMER_NAME" Type="System.String" DbType="VarChar(25)" />
-    <ElementType Name="SP_pRETRIEVE_ALL_CUSTOMERResult">
-      <Column Name="ID_CUSTOMER" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CUSTOMER_NAME" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="CUSTOMER_STATE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.SP_pRETRIEVE_ALL_RECEIPT" Method="SP_pRETRIEVE_ALL_RECEIPT">
-    <Parameter Name="pID_RECEIPT" Type="System.Int32" DbType="Int" />
-    <ElementType Name="SP_pRETRIEVE_ALL_RECEIPTResult">
+    <Parameter Name="pUNIT_PRICE" Type="System.Decimal" DbType="Money" />
+    <ElementType Name="SP_CRUD_RECEIPTResult">
       <Column Name="ID_RECEIPT" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CUSTOMER_NAME" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
-      <Column Name="DATE_RECEIPT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="NAME_CUSTOMER" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DATE_RECEIPT" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
       <Column Name="QUANTITY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="TOTAL_RECEIPT" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
       <Column Name="ID_PRICE_TAG" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ID_USER" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RECEIPT_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="RECEIPT_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RECEIPT_UPDATEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RECEIPT_UPDATEDBY1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RECEIPT_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.SP_pRETRIEVE_ALL_USER" Method="SP_pRETRIEVE_ALL_USER">
+  <Function Name="dbo.SP_CRUD_USER" Method="SP_CRUD_USER">
+    <Parameter Name="p_ACTION" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pID_BY" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="pID_USER" Type="System.Int32" DbType="Int" />
-    <ElementType Name="SP_pRETRIEVE_ALL_USERResult">
-      <Column Name="ID_USER" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="USER_NAME" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="ID_AREA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="USER_STATE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.SP_pRETRIEVE_CUSTOMER" Method="SP_pRETRIEVE_CUSTOMER">
-    <Parameter Name="pCUSTOMER_NAME" Type="System.String" DbType="VarChar(25)" />
-    <ElementType Name="SP_pRETRIEVE_CUSTOMERResult">
-      <Column Name="ID_CUSTOMER" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CUSTOMER_NAME" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="CUSTOMER_STATE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.SP_pRETRIEVE_RECEIPT" Method="SP_pRETRIEVE_RECEIPT">
-    <Parameter Name="pID_RECEIPT" Type="System.Int32" DbType="Int" />
-    <ElementType Name="SP_pRETRIEVE_RECEIPTResult">
-      <Column Name="ID_RECEIPT" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CUSTOMER_NAME" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
-      <Column Name="DATE_RECEIPT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="QUANTITY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="TOTAL_RECEIPT" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-      <Column Name="ID_PRICE_TAG" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ID_USER" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.SP_pRETRIEVE_USER" Method="SP_pRETRIEVE_USER">
-    <Parameter Name="pID_USER" Type="System.Int32" DbType="Int" />
-    <ElementType Name="SP_pRETRIEVE_USERResult">
-      <Column Name="ID_USER" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="USER_NAME" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="ID_AREA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="USER_STATE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.SP_RETRIEVE_ALL_AREA" Method="SP_RETRIEVE_ALL_AREA">
-    <ElementType Name="SP_RETRIEVE_ALL_AREAResult">
-      <Column Name="ID_AREA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="AREA_NAME" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="AREA_STATE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.SP_RETRIEVE_ALL_CUSTOMER" Method="SP_RETRIEVE_ALL_CUSTOMER">
-    <ElementType Name="SP_RETRIEVE_ALL_CUSTOMERResult">
-      <Column Name="ID_CUSTOMER" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CUSTOMER_NAME" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="CUSTOMER_STATE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.SP_RETRIEVE_ALL_PRICE_TAG" Method="SP_RETRIEVE_ALL_PRICE_TAG">
-    <ElementType Name="SP_RETRIEVE_ALL_PRICE_TAGResult">
-      <Column Name="ID_PRICE_TAG" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="TOTAL_PRICE" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-      <Column Name="DESCRIP_PRICE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="PRICE_TAG_STATE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.SP_RETRIEVE_ALL_RECEIPT" Method="SP_RETRIEVE_ALL_RECEIPT">
-    <ElementType Name="SP_RETRIEVE_ALL_RECEIPTResult">
-      <Column Name="ID_RECEIPT" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CUSTOMER_NAME" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
-      <Column Name="DATE_RECEIPT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="QUANTITY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="TOTAL_RECEIPT" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-      <Column Name="ID_PRICE_TAG" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ID_USER" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.SP_RETRIEVE_ALL_USER" Method="SP_RETRIEVE_ALL_USER">
-    <ElementType Name="SP_RETRIEVE_ALL_USERResult">
-      <Column Name="ID_USER" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="USER_NAME" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="ID_AREA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="USER_STATE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.SP_RETRIEVE_AREA" Method="SP_RETRIEVE_AREA">
-    <ElementType Name="SP_RETRIEVE_AREAResult">
-      <Column Name="ID_AREA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="AREA_NAME" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="AREA_STATE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.SP_RETRIEVE_AUTHENTICATION" Method="SP_RETRIEVE_AUTHENTICATION">
-    <ElementType Name="SP_RETRIEVE_AUTHENTICATIONResult">
-      <Column Name="ID_USER" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="USER_NICKNAME" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
-      <Column Name="PASSWORD" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="ID_AREA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="AUTHENTIC_STATE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.SP_RETRIEVE_CUSTOMER" Method="SP_RETRIEVE_CUSTOMER">
-    <ElementType Name="SP_RETRIEVE_CUSTOMERResult">
-      <Column Name="ID_CUSTOMER" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CUSTOMER_NAME" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="CUSTOMER_STATE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.SP_RETRIEVE_PRICE_TAG" Method="SP_RETRIEVE_PRICE_TAG">
-    <ElementType Name="SP_RETRIEVE_PRICE_TAGResult">
-      <Column Name="ID_PRICE_TAG" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="TOTAL_PRICE" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-      <Column Name="DESCRIP_PRICE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.SP_RETRIEVE_RECEIPT" Method="SP_RETRIEVE_RECEIPT">
-    <ElementType Name="SP_RETRIEVE_RECEIPTResult">
-      <Column Name="ID_RECEIPT" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CUSTOMER_NAME" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
-      <Column Name="DATE_RECEIPT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="QUANTITY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="TOTAL_RECEIPT" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-      <Column Name="ID_PRICE_TAG" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ID_USER" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.SP_RETRIEVE_USER" Method="SP_RETRIEVE_USER">
-    <ElementType Name="SP_RETRIEVE_USERResult">
-      <Column Name="ID_USER" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="USER_NAME" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="ID_AREA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="USER_STATE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.SP_UPDATE_AREA" Method="SP_UPDATE_AREA">
+    <Parameter Name="pUSER_NAME" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="pUSER_PHONE" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pUSER_PHONE_EXT" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pUSER_EMAIL" Type="System.Int32" DbType="Int" />
     <Parameter Name="pID_AREA" Type="System.Int32" DbType="Int" />
-    <Parameter Name="pAREA_NAME" Type="System.String" DbType="VarChar(25)" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.SP_UPDATE_AUTHENTICATION" Method="SP_UPDATE_AUTHENTICATION">
-    <Parameter Name="pID_USER" Type="System.Int32" DbType="Int" />
-    <Parameter Name="pUSER_NICKNAME" Type="System.String" DbType="VarChar(40)" />
-    <Parameter Name="pPASSWORD" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="pID_AREA" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.SP_UPDATE_CUSTOMER" Method="SP_UPDATE_CUSTOMER">
-    <Parameter Name="pID_CUSTOMER" Type="System.Int32" DbType="Int" />
-    <Parameter Name="pCUSTOMER_NAME" Type="System.String" DbType="VarChar(25)" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.SP_UPDATE_PRICE_TAG" Method="SP_UPDATE_PRICE_TAG">
-    <Parameter Name="pID_PRICE_TAG" Type="System.Int32" DbType="Int" />
-    <Parameter Name="pTOTAL_PRICE" Type="System.Decimal" DbType="Money" />
-    <Parameter Name="pDESCRIP_PRICE" Type="System.String" DbType="VarChar(10)" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.SP_UPDATE_RECEIPT" Method="SP_UPDATE_RECEIPT">
-    <Parameter Name="pID_RECEIPT" Type="System.Int32" DbType="Int" />
-    <Parameter Name="pCUSTOMER_NAME" Type="System.String" DbType="VarChar(25)" />
-    <Parameter Name="pQUANTITY" Type="System.Int32" DbType="Int" />
-    <Parameter Name="pTOTAL_RECEIPT" Type="System.Decimal" DbType="Money" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.SP_UPDATE_USER" Method="SP_UPDATE_USER">
-    <Parameter Name="pID_USER" Type="System.Int32" DbType="Int" />
-    <Parameter Name="pUSER_NAME" Type="System.String" DbType="VarChar(25)" />
-    <Parameter Name="pID_AREA" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
+    <Parameter Name="pID_ROLE" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pID_ADDRESS" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pUSER_PASSWORD" Type="System.String" DbType="VarChar(15)" />
+    <ElementType Name="SP_CRUD_USERResult">
+      <Column Name="ID_USER" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="USER_NAME" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="USER_PHONE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="USER_PHONE_EXT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="USER_EMAIL" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_AREA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_ROLE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_ADDRESS" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="USER_PASSWORD" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="USER_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="USER_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="USER_UPDATEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="USER_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
   </Function>
 </Database>

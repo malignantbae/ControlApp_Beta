@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ControlApp.Entities.Objects
 {
-    public class Customer
+    public class Customer : BaseEntity
     {
         public int ID_Customer { get; set; }
         public string Customer_name { get; set; }

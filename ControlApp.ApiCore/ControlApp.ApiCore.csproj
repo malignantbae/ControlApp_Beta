@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Management\AreaManagement.cs" />
     <Compile Include="Management\AuthenticationManagement.cs" />
+    <Compile Include="Management\BaseManagement.cs" />
     <Compile Include="Management\CustomerManagement.cs" />
     <Compile Include="Management\PricetagManagement.cs" />
     <Compile Include="Management\ReceiptManagement.cs" />

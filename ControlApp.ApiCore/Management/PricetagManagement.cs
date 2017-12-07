@@ -8,69 +8,174 @@ using ControlApp.Entities.Objects;
 
 namespace ControlApp.ApiCore.Management
 {
-    public class PricetagManagement
+    public class PricetagManagement : BaseManagement
     {
-        CrudPricetag c = new CrudPricetag(); // Generate the object
+       public PricetagManagement()
+        {
+            _factory = new CrudPricetag();
+        }
         string ExcepMessage = null; // Management Exception
-        public string CreateReceipt(Price_tag Obj)
+
+        public void CreatePriceTag(Price_tag Obj)
         {
             try
             {
-                c.CreatePriceTag(Obj);
+                _factory.Create(Obj);
             }
             catch (Exception ex)
             {
-                return ExcepMessage = "Logic Error" + ex;
+                ExcepMessage = "Logic Error" + ex;
             }
-            return ExcepMessage;
         }
-        public List<Price_tag> RetrieveAll()
+        public List<T> SuperRetrievePriceTag<T>()
         {
+            var lst = new List<T>();
             try
             {
-                return c.RetrieveAll();
+                var ret = _factory.SuperRetrieve<Price_tag>();
+                foreach (var obj in ret)
+                {
+                    lst.Add((T)Convert.ChangeType(obj, typeof(T)));
+                }
+            }
+            catch (Exception ex)
+            {
+
+                ExcepMessage = "Logic Error" + ex;
+            }
+            return lst;
+        }
+        public List<T> SuperRetrieveAllByIdPrice<T>(Price_tag Obj)
+        {
+            var lst = new List<T>();
+            try
+            {
+                var list = _factory.SuperRetrieveById<Price_tag>(Obj);
+                if (list.Count > 0)
+                {
+                    foreach (var obj in list)
+                    {
+                        lst.Add((T)Convert.ChangeType(obj, typeof(T)));
+                    }
+                }
             }
             catch (Exception)
             {
-
-                return null;
+                //_exMan.ManageException(ex);
             }
+            return lst;
         }
-        public List<Price_tag> Retrieve()
+        public List<T> SuperRetrieveAllByNameDescrip<T>(Price_tag Obj)
         {
+            var lst = new List<T>();
             try
             {
-                return c.Retrieve();
+                var list = _factory.SuperRetrieveByName<Price_tag>(Obj);
+                if (list.Count > 0)
+                {
+                    foreach (var obj in list)
+                    {
+                        lst.Add((T)Convert.ChangeType(obj, typeof(T)));
+                    }
+                }
             }
             catch (Exception)
             {
-                return null;
+                //_exMan.ManageException(ex);
             }
+            return lst;
+        }
+        public List<T> RetrieveAllPriceTag<T>()
+        {
+            var lst = new List<T>();
+            try
+            {
+                var ret = _factory.RetrieveAll<Price_tag>();
+                foreach (var obj in ret)
+                {
+                    lst.Add((T)Convert.ChangeType(obj, typeof(T)));
+                }
+            }
+            catch (Exception ex)
+            {
 
+                ExcepMessage = "Logic Error" + ex;
+            }
+            return lst;
         }
-        public string UpdateReceipt(Price_tag Obj)
+        public List<T> RetrieveAllByNameDescrip<T>(Price_tag Obj)
+        {
+            var lst = new List<T>();
+            try
+            {
+                var list = _factory.RetrieveByName<Price_tag>(Obj);
+                if (list.Count > 0)
+                {
+                    foreach (var obj in list)
+                    {
+                        lst.Add((T)Convert.ChangeType(obj, typeof(T)));
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                //_exMan.ManageException(ex);
+            }
+            return lst;
+        }
+        public List<T> RetrieveAllByIdPriceTag<T>(Price_tag Obj)
+        {
+            var lst = new List<T>();
+            try
+            {
+                var list = _factory.RetrieveById<Price_tag>(Obj);
+                if (list.Count > 0)
+                {
+                    foreach (var obj in list)
+                    {
+                        lst.Add((T)Convert.ChangeType(obj, typeof(T)));
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                //_exMan.ManageException(ex);
+            }
+            return lst;
+        }
+        public void UpdatePriceTag(Price_tag Obj)
         {
             try
             {
-                c.UpdatePrice_Tag(Obj);
+                _factory.Update(Obj);
             }
             catch (Exception ex)
             {
-                return ExcepMessage = "Logic Error" + ex;
+                ExcepMessage = "Logic Error" + ex;
             }
-            return ExcepMessage;
         }
-        public string DeleteReceipt(int pID)
+        public void DeletePriceTag(Price_tag Obj)
         {
             try
             {
-                c.DeletePriceTag(pID);
+                _factory.Delete(Obj);
             }
             catch (Exception ex)
             {
-                return ExcepMessage = "Logic Error" + ex;
+                ExcepMessage = "Logic Error" + ex;
             }
-            return ExcepMessage;
         }
+        public void ActivatePriceTag(Price_tag Obj)
+        {
+            try
+            {
+                _factory.Activate(Obj);
+            }
+            catch (Exception ex)
+            {
+                ExcepMessage = "Logic Error" + ex;
+            }
+        }
+
     }
 }

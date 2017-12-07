@@ -8,58 +8,75 @@ using ControlApp.Entities.Objects;
 
 namespace ControlApp.ApiCore.Management
 {
-    public class AuthenticationManagement
+    public class AuthenticationManagement : BaseManagement
     {
         CrudAuthentication c = new CrudAuthentication(); // Generate the object
         string ExcepMessage = null; // Management Exception
-        public string CreatAuthentication(Authentication Obj)
+        public void CreateAuthentication(Authentication Obj)
         {
             try
             {
-                c.CreateAuthentication(Obj);
+                _factory.Create(Obj);
             }
             catch (Exception ex)
             {
-                return ExcepMessage = "Logic Error" + ex;
+                ExcepMessage = "Logic Error" + ex;
             }
-            return ExcepMessage;
         }
-        public List<Authentication> Retrieve()
+        public List<T> RetrieveAllAuthentication<T>()
         {
+            var lst = new List<T>();
             try
             {
-                return c.Retrieve();
+                var ret = _factory.RetrieveAll<Authentication>();
+                foreach (var obj in ret)
+                {
+                    lst.Add((T)Convert.ChangeType(obj, typeof(T)));
+                }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                return null;
+                ExcepMessage = "Logic Error" + ex;
             }
+            return lst;
+        }
+        public Authentication RetrieveAuthentication(Authentication Obj)
+        {
+            var ret = new Authentication();
+            try
+            {
+                //ret = _factory.Retrieve<Authentication>(Obj);
+            }
+            catch (Exception ex)
+            {
 
+                ExcepMessage = "Logic Error" + ex;
+            }
+            return ret;
         }
-        public string UpdateAuthentication(Authentication Obj)
+        public void UpdateAuthentication(Authentication Obj)
         {
             try
             {
-                c.UpdateAuthentication(Obj);
+                _factory.Update(Obj);
             }
             catch (Exception ex)
             {
-                return ExcepMessage = "Logic Error" + ex;
+                ExcepMessage = "Logic Error" + ex;
             }
-            return ExcepMessage;
         }
-        public string DeleteAuthentication(int pID)
+        public void DeleteAuthentication(Authentication Obj)
         {
             try
             {
-                c.DeleteAuthentication(pID);
+                _factory.Delete(Obj);
             }
             catch (Exception ex)
             {
-                return ExcepMessage = "Logic Error" + ex;
+                ExcepMessage = "Logic Error" + ex;
             }
-            return ExcepMessage;
         }
+
     }
 }

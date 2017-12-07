@@ -6,74 +6,88 @@ using System.Threading.Tasks;
 using System.Data.Linq; // Manipulacion de bases de datos SQL
 using System.Data.Linq.Mapping; // otra clase por importar para la Manipulacion
 using ControlApp.Entities.Objects;
+using ControlApp.DataAccess.Mapper;
 
 namespace ControlApp.DataAccess.Crud
 {
-    public class CrudAuthentication
+    public class CrudAuthentication : CrudFactory
     {
-        ContextDataContext Context = new ContextDataContext();
-        public bool CreateAuthentication(Authentication Obj)
+        sqlConnectionDataContext Context = new sqlConnectionDataContext();
+        public CrudAuthentication()
         {
-            try
-            {
-                Context.SP_CREATE_AUTHENTICATION(Obj.ID_User, Obj.User_nickname, Obj.Password, Obj.ID_Area);
-                return true;
-            }
-            catch (Exception)
-            {
-
-                return false;
-            }
-            
+            _mapper = new AuthenticationMapper();
         }
-        public List<Authentication> Retrieve()
+        private readonly AuthenticationMapper _mapper;
+        public override bool Create(BaseEntity entity)
         {
-            try
-            {
-                List<Authentication> MyList = new List<Authentication>();
-
-                var Query = Context.SP_RETRIEVE_AUTHENTICATION().ToList();
-
-                foreach (SP_RETRIEVE_AUTHENTICATIONResult Element in Query)
-                {
-                    Authentication Obj = new Authentication(Element.ID_USER, Element.USER_NICKNAME, Element.PASSWORD, Element.ID_AREA, Element.AUTHENTIC_STATE);
-                    MyList.Add(Obj);
-                }
-
-                return MyList;
-            }
-            catch (Exception)
-            {
-
-                return null;
-            }
-            
+            //var Obj = (Authentication)entity;
+            //Context.SP_CREATE_AUTHENTICATION(Obj.ID_User, Obj.User_nickname, Obj.Password, Obj.ID_Area);
+            //return true;
+            throw new NotImplementedException();
         }
-        public bool UpdateAuthentication(Authentication Obj)
+        public override List<T> RetrieveAll<T>()
         {
-            try
-            {
-                Context.SP_UPDATE_AUTHENTICATION(Obj.ID_User, Obj.User_nickname, Obj.Password, Obj.ID_Area);
-                return true;
-            }
-            catch (Exception)
-            {
+            //var lst = new List<T>();
+            //List<Authentication> MyList = new List<Authentication>();
+            //var Query = Context.SP_RETRIEVE_ALL_AUTHENTICATION().ToList();
+            //foreach (SP_RETRIEVE_ALL_AUTHENTICATIONResult Element in Query)
+            //{
 
-                return false;
-            }
-                
-            }
-        public bool DeleteAuthentication(int pID)
+            //    Authentication Obj = new Authentication(Element.ID_USER, Element.USER_NICKNAME, Element.PASSWORD, Element.ID_AREA, Element.AUTHENTIC_STATE);
+            //    MyList.Add(Obj);
+            //    if (MyList.Count > 0)
+            //    {
+            //        foreach (var obj in MyList)
+            //        {
+            //            lst.Add((T)Convert.ChangeType(obj, typeof(T)));
+            //        }
+            //    }
+            //}
+            //return lst;
+            throw new NotImplementedException();
+        }
+        public override bool Update(BaseEntity entity)
         {
-            try
-            {
-                Context.SP_DELETE_AUTHENTICATION(pID);
-                return true;
-            }
-            catch (Exception)
-            {
-                return false; 
-            }
+            //var Obj = (Authentication)entity;
+            //Context.SP_UPDATE_AUTHENTICATION(Obj.ID_User, Obj.User_nickname, Obj.Password, Obj.ID_Area);
+            //return true;
+            throw new NotImplementedException();
+        }
+        public override bool Delete(BaseEntity entity)
+        {
+            //var Obj = (Authentication)entity;
+            //Context.SP_DELETE_AUTHENTICATION(Obj.ID_User);
+            return true;
+        }
+
+        public override List<T> SuperRetrieve<T>()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override List<T> SuperRetrieveById<T>(BaseEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override List<T> SuperRetrieveByName<T>(BaseEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override List<T> RetrieveById<T>(BaseEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override List<T> RetrieveByName<T>(BaseEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool Activate(BaseEntity entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

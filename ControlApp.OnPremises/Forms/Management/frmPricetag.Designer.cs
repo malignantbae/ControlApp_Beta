@@ -1,6 +1,6 @@
-﻿namespace ControlApp.OnPremises
+﻿namespace ControlApp.OnPremises.Forms
 {
-    partial class frmReceipt
+    partial class frmPricetag
     {
         /// <summary>
         /// Required designer variable.
@@ -57,11 +57,11 @@
             // 
             this.tabfrmRecibos.Controls.Add(this.tabcreateReceipt);
             this.tabfrmRecibos.Controls.Add(this.tabupdateReceipt);
-            this.tabfrmRecibos.Location = new System.Drawing.Point(12, 12);
+            this.tabfrmRecibos.Location = new System.Drawing.Point(36, 29);
             this.tabfrmRecibos.Name = "tabfrmRecibos";
             this.tabfrmRecibos.SelectedIndex = 0;
             this.tabfrmRecibos.Size = new System.Drawing.Size(514, 289);
-            this.tabfrmRecibos.TabIndex = 10;
+            this.tabfrmRecibos.TabIndex = 11;
             this.tabfrmRecibos.Tag = "";
             // 
             // tabcreateReceipt
@@ -244,14 +244,14 @@
             this.dgvReceipt.Size = new System.Drawing.Size(495, 214);
             this.dgvReceipt.TabIndex = 0;
             // 
-            // frmReceipt
+            // frmPricetag
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(536, 311);
+            this.ClientSize = new System.Drawing.Size(673, 440);
             this.Controls.Add(this.tabfrmRecibos);
-            this.Name = "frmReceipt";
-            this.Text = "Formulario Recibos";
+            this.Name = "frmPricetag";
+            this.Text = "frmPricetag";
             this.tabfrmRecibos.ResumeLayout(false);
             this.tabcreateReceipt.ResumeLayout(false);
             this.tabcreateReceipt.PerformLayout();
@@ -266,6 +266,7 @@
 
         private System.Windows.Forms.TabControl tabfrmRecibos;
         private System.Windows.Forms.TabPage tabcreateReceipt;
+        private System.Windows.Forms.Label lblPrice_tag;
         private System.Windows.Forms.TextBox txtQuantity;
         private System.Windows.Forms.Label lblQuantity;
         private System.Windows.Forms.Button btnPrint;
@@ -278,11 +279,9 @@
         private System.Windows.Forms.TextBox txtDate;
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.TabPage tabupdateReceipt;
-        private System.Windows.Forms.Label lblPrice_tag;
         private System.Windows.Forms.Button btnDestroy;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvReceipt;
     }
 }
-

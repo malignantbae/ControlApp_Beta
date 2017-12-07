@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ControlApp.Entities.Objects
 {
-    public class Authentication
+    public class Authentication : BaseEntity
     {
         public int ID_User { get; set; }
         public string  User_nickname { get; set; }

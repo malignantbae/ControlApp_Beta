@@ -6,120 +6,86 @@ using System.Threading.Tasks;
 using System.Data.Linq; // Manipulacion de bases de datos SQL
 using System.Data.Linq.Mapping; // otra clase por importar para la Manipulacion
 using ControlApp.Entities.Objects;
+using ControlApp.DataAccess.Mapper;
 
 namespace ControlApp.DataAccess.Crud
 {
-    public class CrudCustomer
+    public class CrudCustomer : CrudFactory
     {
-        ContextDataContext Context = new ContextDataContext();
-        public bool CreateCustomer(Customer Obj)
-        {           
-            try
-            {
-                Context.SP_CREATE_CUSTOMER(Obj.ID_Customer,Obj.Customer_name);
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-        public List<Customer> RetrieveAll()
+        sqlConnectionDataContext Context = new sqlConnectionDataContext();
+        public CrudCustomer()
         {
-            List<Customer> MyList = new List<Customer>();
-            try
-            {
-                var Query = Context.SP_RETRIEVE_ALL_CUSTOMER().ToList();
-                foreach (SP_RETRIEVE_ALL_CUSTOMERResult Element in Query)
-                {
-                    Customer Obj = new Customer(Element.ID_CUSTOMER,Element.CUSTOMER_NAME,Element.CUSTOMER_STATE);
-                    MyList.Add(Obj);
-                }
-            }
-            catch (Exception)
-            {
-                MyList = null;
-            }
-            return MyList;
+            _mapper = new CustomerMapper();
         }
-        public List<Customer> pRetrieveAll(string pName)
+        private readonly CustomerMapper _mapper;
+        public override bool Create(BaseEntity entity)
         {
-            List<Customer> MyList = new List<Customer>();
-            try
-            {
-                var Query = Context.SP_pRETRIEVE_ALL_CUSTOMER(pName).ToList();
+            //var Obj = (Customer)entity;
+            //Context.SP_CREATE_CUSTOMER(Obj.ID_Customer, Obj.Customer_name);
+            return true;
+        }
 
-                foreach (SP_pRETRIEVE_ALL_CUSTOMERResult Element in Query)
-                {
-                    Customer Obj = new Customer(Element.ID_CUSTOMER, Element.CUSTOMER_NAME, Element.CUSTOMER_STATE);
-                    MyList.Add(Obj);
-                }
-            }
-            catch (Exception)
-            {
-                MyList = null;
-            }
-            return MyList;
-        }
-        public List<Customer> Retrieve()
+        public override List<T> RetrieveAll<T>()
         {
-            List<Customer> MyList = new List<Customer>();
-            try
-            {
-                var Query = Context.SP_RETRIEVE_CUSTOMER().ToList();
-                foreach (SP_RETRIEVE_CUSTOMERResult Element in Query)
-                {
-                    Customer Obj = new Customer(Element.ID_CUSTOMER, Element.CUSTOMER_NAME, Element.CUSTOMER_STATE);
-                    MyList.Add(Obj);
-                }
-            }
-            catch (Exception)
-            {
-                MyList = null;
-            }
-            return MyList;
+            var lst = new List<T>();
+            //List<Customer> MyList = new List<Customer>();
+            //var Query = Context.SP_RETRIEVE_ALL_CUSTOMER().ToList();
+            //foreach (SP_RETRIEVE_ALL_CUSTOMERResult Element in Query)
+            //{
+
+            //    Customer Obj = new Customer(Element.ID_CUSTOMER,Element.CUSTOMER_NAME,Element.CUSTOMER_STATE);
+            //    MyList.Add(Obj);
+            //    if (MyList.Count > 0)
+            //    {
+            //        foreach (var obj in MyList)
+            //        {
+            //            lst.Add((T)Convert.ChangeType(obj, typeof(T)));
+            //        }
+            //    }
+            //}
+            return lst;
         }
-        public List<Customer> pRetrieve(string pName)
+        public override bool Update(BaseEntity entity)
         {
-            List<Customer> MyList = new List<Customer>();
-            try
-            {
-                var Query = Context.SP_pRETRIEVE_CUSTOMER(pName).ToList();
-                foreach (SP_pRETRIEVE_CUSTOMERResult Element in Query)
-                {
-                    Customer Obj = new Customer(Element.ID_CUSTOMER, Element.CUSTOMER_NAME, Element.CUSTOMER_STATE);
-                    MyList.Add(Obj);
-                }
-            }
-            catch (Exception)
-            {
-                MyList = null;
-            }
-            return MyList;
+            //var Obj = (Customer)entity;
+            //Context.SP_UPDATE_CUSTOMER(Obj.ID_Customer,Obj.Customer_name);
+            return true;
         }
-        public bool UpdateCustomer(Customer Obj)
-        {            
-            try
-            {
-                Context.SP_CREATE_CUSTOMER(Obj.ID_Customer, Obj.Customer_name);
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+        public override bool Delete(BaseEntity entity)
+        {
+            //var Obj = (Customer)entity;
+            //Context.SP_DELETE_CUSTOMER(Obj.ID_Customer);
+            return true;
         }
-        public bool DeleteCustomer(int pID)
-        {            
-            try
-            {
-                Context.SP_DELETE_CUSTOMER(pID);
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+
+        public override List<T> SuperRetrieve<T>()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override List<T> SuperRetrieveById<T>(BaseEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override List<T> SuperRetrieveByName<T>(BaseEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override List<T> RetrieveById<T>(BaseEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override List<T> RetrieveByName<T>(BaseEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool Activate(BaseEntity entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

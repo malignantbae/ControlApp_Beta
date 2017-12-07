@@ -8,91 +8,173 @@ using ControlApp.Entities.Objects;
 
 namespace ControlApp.ApiCore.Management
 {
-    public class ReceiptManagement
+    public class ReceiptManagement : BaseManagement
     {
-        CrudReceipt c = new CrudReceipt(); // Generate the object
+        
+        public ReceiptManagement()
+        {
+            _factory = new CrudReceipt();
+        }
         string ExcepMessage = null; // Management Exception
-        public string CreateReceipt(Receipt Obj)
+        public void CreateReceipt(Receipt Obj)
         {
             try
             {
-                c.CreateUser(Obj);
+                _factory.Create(Obj);
             }
             catch (Exception ex)
             {
-                return ExcepMessage = "Logic Error" + ex;
+                ExcepMessage = "Logic Error" + ex;
             }
-            return ExcepMessage;
         }
-        public List<Receipt> RetrieveAll()
+        public List<T> SuperRetrieveReceipt<T>()
         {
+            var lst = new List<T>();
             try
             {
-                return c.RetrieveAll();
+                var ret = _factory.SuperRetrieve<Receipt>();
+                foreach (var obj in ret)
+                {
+                    lst.Add((T)Convert.ChangeType(obj, typeof(T)));
+                }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                return null;
+                ExcepMessage = "Logic Error" + ex;
             }
+            return lst;
         }
-        public List<Receipt> Retrieve()
+        public List<T> SuperRetrieveByIdReceipt<T>(Receipt Obj)
         {
+            var lst = new List<T>();
             try
             {
-                return c.Retrieve();
+                var list = _factory.SuperRetrieveById<Receipt>(Obj);
+                if (list.Count > 0)
+                {
+                    foreach (var obj in list)
+                    {
+                        lst.Add((T)Convert.ChangeType(obj, typeof(T)));
+                    }
+                }
             }
             catch (Exception)
             {
-                return null;
+                //_exMan.ManageException(ex);
             }
+            return lst;
+        }
+        public List<T> SuperRetrieveByNameDescripReceipt<T>(Receipt Obj)
+        {
+            var lst = new List<T>();
+            try
+            {
+                var list = _factory.SuperRetrieveByName<Receipt>(Obj);
+                if (list.Count > 0)
+                {
+                    foreach (var obj in list)
+                    {
+                        lst.Add((T)Convert.ChangeType(obj, typeof(T)));
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                //_exMan.ManageException(ex);
+            }
+            return lst;
+        }
+        public List<T> RetrieveAllReceipt<T>()
+        {
+            var lst = new List<T>();
+            try
+            {
+                var ret = _factory.RetrieveAll<Receipt>();
+                foreach (var obj in ret)
+                {
+                    lst.Add((T)Convert.ChangeType(obj, typeof(T)));
+                }
+            }
+            catch (Exception ex)
+            {
 
+                ExcepMessage = "Logic Error" + ex;
+            }
+            return lst;
         }
-        public List<Receipt> pRetrieveALL(int pID)
+        public List<T> RetrieveAllByNameDescrip<T>(Receipt Obj)
         {
+            var lst = new List<T>();
             try
             {
-                return c.pRetrieveALL(pID);
+                var list = _factory.RetrieveByName<Receipt>(Obj);
+                if (list.Count > 0)
+                {
+                    foreach (var obj in list)
+                    {
+                        lst.Add((T)Convert.ChangeType(obj, typeof(T)));
+                    }
+                }
             }
             catch (Exception)
             {
-                return null;
+                //_exMan.ManageException(ex);
             }
+            return lst;
         }
-        public List<Receipt> pRetrieve(int pID)
+        public List<T> RetrieveAllByIdReceipt<T>(Receipt Obj)
         {
+            var lst = new List<T>();
             try
             {
-                return c.pRetrieve(pID);
+                var list = _factory.RetrieveById<Receipt>(Obj);
+                if (list.Count > 0)
+                {
+                    foreach (var obj in list)
+                    {
+                        lst.Add((T)Convert.ChangeType(obj, typeof(T)));
+                    }
+                }
             }
             catch (Exception)
             {
-                return null;
+                //_exMan.ManageException(ex);
             }
+            return lst;
         }
-        public string UpdateReceipt(Receipt Obj)
+        public void UpdateReceipt(Receipt Obj)
         {
             try
             {
-                c.UpdateReceipt(Obj);
+                _factory.Update(Obj);
             }
             catch (Exception ex)
             {
-                return ExcepMessage = "Logic Error" + ex;
+                ExcepMessage = "Logic Error" + ex;
             }
-            return ExcepMessage;
         }
-        public string DeleteReceipt(int pID)
+        public void DeleteReceipt(Receipt Obj)
         {
             try
             {
-                c.DeleteReceipt(pID);
+                _factory.Delete(Obj);
             }
             catch (Exception ex)
             {
-                return ExcepMessage = "Logic Error" + ex;
+                ExcepMessage = "Logic Error" + ex;
             }
-            return ExcepMessage;
+        }
+        public void ActivateReceipt(Receipt Obj)
+        {
+            try
+            {
+                _factory.Activate(Obj);
+            }
+            catch (Exception ex)
+            {
+                ExcepMessage = "Logic Error" + ex;
+            }
         }
     }
 }

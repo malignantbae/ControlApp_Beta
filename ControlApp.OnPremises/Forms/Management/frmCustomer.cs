@@ -8,15 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ControlApp.OnPremises
+namespace ControlApp.OnPremises.Forms
 {
-    public partial class frmReceipt : Form
+    public partial class frmCustomer : MetroFramework.Forms.MetroForm 
     {
-        public frmReceipt()
+        public frmCustomer()
         {
             InitializeComponent();
+            this.ControlBox = false;
         }
-
-        
     }
 }

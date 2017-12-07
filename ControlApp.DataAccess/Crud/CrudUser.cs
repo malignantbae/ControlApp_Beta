@@ -10,125 +10,58 @@ using ControlApp.Entities.Objects;
 
 namespace ControlApp.DataAccess.Crud
 {
-    public class CrudUser
+    public class CrudUser : CrudFactory
     {
-        ContextDataContext Context = new ContextDataContext();
-        public bool CreateUser(User Obj)
-        {
-            try
-            {
-                Context.SP_CREATE_USER(Obj.ID_User, Obj.User_name, Obj.ID_Area);
-                return true;
-            }
-            catch (Exception)
-            {
-               return false;
-            }
-        }
-        public List<User> RetrieveAll()
-        {
-            List<User> MyList = new List<User>();
-            try
-            {
-                var Query = Context.SP_RETRIEVE_ALL_USER().ToList();
+        sqlConnectionDataContext Context = new sqlConnectionDataContext();
 
-                foreach (SP_RETRIEVE_ALL_USERResult Element in Query)
-                {
-                    User Obj = new User(Element.ID_USER, Element.USER_NAME, Element.ID_AREA, Element.USER_STATE);
-                    MyList.Add(Obj);
-                }
-            }
-            catch (Exception)
-            {
-                MyList = null;
-            }
-            return MyList;
+        public override bool Activate(BaseEntity entity)
+        {
+            throw new NotImplementedException();
         }
-        public List<User> Retrieve()
+
+        public override bool Create(BaseEntity entity)
         {
-            List<User> MyList = new List<User>();
-            try
-            {
-                var Query = Context.SP_RETRIEVE_USER().ToList();
-
-                foreach (SP_RETRIEVE_USERResult Element in Query)
-                {
-                    User Obj = new User(Element.ID_USER,Element.USER_NAME,Element.ID_AREA,Element.USER_STATE);
-                    MyList.Add(Obj);
-                }
-                return MyList;
-            }
-            catch (Exception)
-            {
-
-                return MyList = null;
-            }
-            
+            throw new NotImplementedException();
         }
-        public List<User> pRetrieveALL(int pID)
-        {
-            List<User> MyList = new List<User>();
-            try
-            {
-                var Query = Context.SP_pRETRIEVE_ALL_USER(pID).ToList();
 
-                foreach (SP_pRETRIEVE_ALL_USERResult Element in Query)
-                {
-                    User Obj = new User(Element.ID_USER, Element.USER_NAME, Element.ID_AREA, Element.USER_STATE);
-                    MyList.Add(Obj);
-                }
-                return MyList;
-            }
-            catch (Exception)
-            {
-                return MyList = null;
-            }
-            
-            
-        }
-        public List<User> pRetrieve(int pID)
+        public override bool Delete(BaseEntity entity)
         {
-            List<User> MyList = new List<User>();
-            try
-            {
-                var Query = Context.SP_pRETRIEVE_USER(pID).ToList();
+            throw new NotImplementedException();
+        }
 
-                foreach (SP_pRETRIEVE_USERResult Element in Query)
-                {
-                    User Obj = new User(Element.ID_USER, Element.USER_NAME, Element.ID_AREA, Element.USER_STATE);
-                    MyList.Add(Obj);
-                }
-                return MyList;
-            }
-            catch (Exception)
-            {
-                return MyList = null;
-            }
-            
+        public override List<T> RetrieveAll<T>()
+        {
+            throw new NotImplementedException();
         }
-        public bool UpdateUser(User Obj)
+
+        public override List<T> RetrieveById<T>(BaseEntity entity)
         {
-            try
-            {
-                Context.SP_UPDATE_USER(Obj.ID_User, Obj.User_name, Obj.ID_Area);
-                return true;
-            }
-            catch (Exception)
-            {
-                return true;
-            }
-        }       
-        public bool DeleteUser(int pID)
+            throw new NotImplementedException();
+        }
+
+        public override List<T> RetrieveByName<T>(BaseEntity entity)
         {
-            try
-            {
-                Context.SP_DELETE_USER(pID);
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            throw new NotImplementedException();
+        }
+
+        public override List<T> SuperRetrieve<T>()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override List<T> SuperRetrieveById<T>(BaseEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override List<T> SuperRetrieveByName<T>(BaseEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool Update(BaseEntity entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

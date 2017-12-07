@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ControlApp.Entities.Objects
 {
-    public class User
+    public class User : BaseEntity
     {
         public int ID_User { get; set; }
         public string User_name { get; set; }

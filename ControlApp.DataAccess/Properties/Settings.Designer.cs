@@ -32,5 +32,15 @@ namespace ControlApp.DataAccess.Properties {
                 return ((string)(this["dbo_ReceiptsConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=ControlApp;Integrated Security=True")]
+        public string ControlAppConnectionString {
+            get {
+                return ((string)(this["ControlAppConnectionString"]));
+            }
+        }
     }
 }

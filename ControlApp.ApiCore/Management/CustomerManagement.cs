@@ -8,81 +8,77 @@ using ControlApp.Entities.Objects;
 
 namespace ControlApp.ApiCore.Management
 {
-    public class CustomerManagement
+    public class CustomerManagement : BaseManagement
     {
-        CrudCustomer c = new CrudCustomer(); // Generate the object
+        public CustomerManagement()
+        {
+            _factory = new CrudCustomer();
+        }
         string ExcepMessage = null; // Management Exception
-        public string CreateCustomer(Customer Obj)
+        public void CreateCustomer(Customer Obj)
         {
             try
             {
-                c.CreateCustomer(Obj);
+                _factory.Create(Obj);
             }
             catch (Exception ex)
             {
-                return ExcepMessage = "Logic Error" + ex;
-            }
-            return ExcepMessage;
-        }
-        public List<Customer> RetrieveAll()
-        {
-            try
-            {
-                return c.RetrieveAll();
-            }
-            catch (Exception)
-            {
-
-                return null;
+                ExcepMessage = "Logic Error" + ex;
             }
         }
-        public List<Customer> Retrieve()
+        public List<T> RetrieveAllCustomer<T>()
         {
+            var lst = new List<T>();
             try
             {
-                return c.Retrieve();
-            }
-            catch (Exception)
-            {
-
-                return null;
-            }
-
-        }
-        public List<Customer> pRetrieve(string pNombre)
-        {
-            try
-            {
-                return c.pRetrieve(pNombre);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-        public string UpdateCustomer(Customer Obj)
-        {
-            try
-            {
-                c.UpdateCustomer(Obj);
+                var ret = _factory.RetrieveAll<Customer>();
+                foreach (var obj in ret)
+                {
+                    lst.Add((T)Convert.ChangeType(obj, typeof(T)));
+                }
             }
             catch (Exception ex)
             {
-                return ExcepMessage = "Logic Error" + ex;
+
+                ExcepMessage = "Logic Error" + ex;
             }
-            return ExcepMessage;
+            return lst;
         }
-        public string DeleteCustomer(int pID)
+        public Customer RetrieveCustomer(Customer Obj)
         {
+            var ret = new Customer();
             try
             {
-                c.DeleteCustomer(pID);
+                //ret = _factory.RetrieveAll<Customer>(Obj);
             }
             catch (Exception ex)
             {
-                return ExcepMessage = "Logic Error" + ex;
+
+                ExcepMessage = "Logic Error" + ex;
             }
-            return ExcepMessage;
+            return ret;
+        }
+        public void UpdateCustomer(Customer Obj)
+        {
+            try
+            {
+                _factory.Update(Obj);
+            }
+            catch (Exception ex)
+            {
+                ExcepMessage = "Logic Error" + ex;
+            }
+        }
+        public void DeleteCustomer(Customer Obj)
+        {
+            try
+            {
+                _factory.Delete(Obj);
+            }
+            catch (Exception ex)
+            {
+                ExcepMessage = "Logic Error" + ex;
+            }
         }
     }
 }

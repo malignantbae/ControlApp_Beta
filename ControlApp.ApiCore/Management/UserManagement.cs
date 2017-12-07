@@ -9,92 +9,78 @@ using ControlApp.Entities.Objects;
 
 namespace ControlApp.ApiCore.Management
 {
-    public class UserManagement
+    public class UserManagement : BaseManagement
     {
-        CrudUser c = new CrudUser(); // Generate the object
+        public UserManagement()
+        {
+            _factory = new CrudUser();
+        }
         string ExcepMessage = null; // Management Exception
-        public string CreateUser(User Obj)
+        public void CreateUser(User Obj)
         {
             try
             {
-                c.CreateUser(Obj);
+                _factory.Create(Obj);
             }
             catch (Exception ex)
             {
-                return ExcepMessage = "Logic Error" + ex;
-            }
-            return ExcepMessage;
-        }
-        public List<User> RetrieveAll()
-        {
-            try
-            {
-                return c.RetrieveAll();
-            }
-            catch (Exception)
-            {
-
-                return null;
+                ExcepMessage = "Logic Error" + ex;
             }
         }
-        public List<User> Retrieve()
+        public List<T> RetrieveAllUser<T>()
         {
+            var lst = new List<T>();
             try
             {
-                return c.Retrieve();
-            }
-            catch (Exception)
-            {
-
-                return null;
-            }  
-
-        }
-        public List<User> pRetrieveALL(int pID)
-        {
-            try
-            {
-                return c.pRetrieveALL(pID);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-        public List<User> pRetrieve(int pID)
-        {
-            try
-            {
-                return c.pRetrieve(pID);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-        public string UpdateUser(User Obj)
-        {
-            try
-            {
-                c.UpdateUser(Obj);
+                var ret = _factory.RetrieveAll<User>();
+                foreach (var obj in ret)
+                {
+                    lst.Add((T)Convert.ChangeType(obj, typeof(T)));
+                }
             }
             catch (Exception ex)
             {
-                return ExcepMessage = "Logic Error" + ex;
+
+                ExcepMessage = "Logic Error" + ex;
             }
-            return ExcepMessage;
+            return lst;
         }
-        public string DeleteUser(int pID)
+        public User RetrieveUser(User Obj)
         {
+            var ret = new User();
             try
             {
-                c.DeleteUser(pID);
+                //ret = _factory.Retrieve<User>(Obj);
             }
             catch (Exception ex)
             {
-                return ExcepMessage = "Logic Error" + ex;
+
+                ExcepMessage = "Logic Error" + ex;
             }
-            return ExcepMessage;
+            return ret;
         }
+        public void UpdateUser(User Obj)
+        {
+            try
+            {
+                _factory.Update(Obj);
+            }
+            catch (Exception ex)
+            {
+                ExcepMessage = "Logic Error" + ex;
+            }
+        }
+        public void DeleteUser(User Obj)
+        {
+            try
+            {
+                _factory.Delete(Obj);
+            }
+            catch (Exception ex)
+            {
+                ExcepMessage = "Logic Error" + ex;
+            }
+        }
+
     }
 }
