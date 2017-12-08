@@ -35,6 +35,12 @@
             this.txtRetrieveByName = new MetroFramework.Controls.MetroTextBox();
             this.lblRetrieve = new MetroFramework.Controls.MetroLabel();
             this.dgvArea = new MetroFramework.Controls.MetroGrid();
+            this.ID_AREA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AREA_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AREA_STATE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AREA_CREATYBY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AREA_UPDATEBY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AREA_CREATEDATE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnUpdate = new MetroFramework.Controls.MetroTile();
             this.txtAreaname = new MetroFramework.Controls.MetroTextBox();
             this.mtlblArea = new MetroFramework.Controls.MetroLabel();
@@ -42,12 +48,6 @@
             this.btnDelete = new MetroFramework.Controls.MetroTile();
             this.btnActivate = new MetroFramework.Controls.MetroTile();
             this.btnCreate = new MetroFramework.Controls.MetroTile();
-            this.ID_AREA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AREA_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AREA_STATE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AREA_CREATYBY = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AREA_UPDATEBY = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AREA_CREATEDATE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArea)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
             this.SuspendLayout();
@@ -130,7 +130,7 @@
             this.dgvArea.EnableHeadersVisualStyles = false;
             this.dgvArea.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgvArea.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.dgvArea.Location = new System.Drawing.Point(12, 98);
+            this.dgvArea.Location = new System.Drawing.Point(3, 98);
             this.dgvArea.Name = "dgvArea";
             this.dgvArea.ReadOnly = true;
             this.dgvArea.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -144,10 +144,50 @@
             this.dgvArea.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvArea.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvArea.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvArea.Size = new System.Drawing.Size(658, 332);
+            this.dgvArea.Size = new System.Drawing.Size(667, 212);
             this.dgvArea.TabIndex = 27;
             this.dgvArea.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.dgvArea.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArea_CellClick);
+            // 
+            // ID_AREA
+            // 
+            this.ID_AREA.FillWeight = 70F;
+            this.ID_AREA.HeaderText = "ID";
+            this.ID_AREA.Name = "ID_AREA";
+            this.ID_AREA.ReadOnly = true;
+            this.ID_AREA.Width = 50;
+            // 
+            // AREA_NAME
+            // 
+            this.AREA_NAME.HeaderText = "Area";
+            this.AREA_NAME.Name = "AREA_NAME";
+            this.AREA_NAME.ReadOnly = true;
+            // 
+            // AREA_STATE
+            // 
+            this.AREA_STATE.FillWeight = 60F;
+            this.AREA_STATE.HeaderText = "Estado";
+            this.AREA_STATE.Name = "AREA_STATE";
+            this.AREA_STATE.ReadOnly = true;
+            this.AREA_STATE.Width = 60;
+            // 
+            // AREA_CREATYBY
+            // 
+            this.AREA_CREATYBY.HeaderText = "Creado por";
+            this.AREA_CREATYBY.Name = "AREA_CREATYBY";
+            this.AREA_CREATYBY.ReadOnly = true;
+            // 
+            // AREA_UPDATEBY
+            // 
+            this.AREA_UPDATEBY.HeaderText = "Modificado por";
+            this.AREA_UPDATEBY.Name = "AREA_UPDATEBY";
+            this.AREA_UPDATEBY.ReadOnly = true;
+            // 
+            // AREA_CREATEDATE
+            // 
+            this.AREA_CREATEDATE.HeaderText = "Fecha de Creación";
+            this.AREA_CREATEDATE.Name = "AREA_CREATEDATE";
+            this.AREA_CREATEDATE.ReadOnly = true;
             // 
             // btnUpdate
             // 
@@ -237,46 +277,6 @@
             this.btnCreate.Text = "Agregar";
             this.btnCreate.UseSelectable = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
-            // 
-            // ID_AREA
-            // 
-            this.ID_AREA.FillWeight = 70F;
-            this.ID_AREA.HeaderText = "ID";
-            this.ID_AREA.Name = "ID_AREA";
-            this.ID_AREA.ReadOnly = true;
-            this.ID_AREA.Width = 50;
-            // 
-            // AREA_NAME
-            // 
-            this.AREA_NAME.HeaderText = "Area";
-            this.AREA_NAME.Name = "AREA_NAME";
-            this.AREA_NAME.ReadOnly = true;
-            // 
-            // AREA_STATE
-            // 
-            this.AREA_STATE.FillWeight = 60F;
-            this.AREA_STATE.HeaderText = "Estado";
-            this.AREA_STATE.Name = "AREA_STATE";
-            this.AREA_STATE.ReadOnly = true;
-            this.AREA_STATE.Width = 60;
-            // 
-            // AREA_CREATYBY
-            // 
-            this.AREA_CREATYBY.HeaderText = "Creado por";
-            this.AREA_CREATYBY.Name = "AREA_CREATYBY";
-            this.AREA_CREATYBY.ReadOnly = true;
-            // 
-            // AREA_UPDATEBY
-            // 
-            this.AREA_UPDATEBY.HeaderText = "Modificado por";
-            this.AREA_UPDATEBY.Name = "AREA_UPDATEBY";
-            this.AREA_UPDATEBY.ReadOnly = true;
-            // 
-            // AREA_CREATEDATE
-            // 
-            this.AREA_CREATEDATE.HeaderText = "Fecha de Creación";
-            this.AREA_CREATEDATE.Name = "AREA_CREATEDATE";
-            this.AREA_CREATEDATE.ReadOnly = true;
             // 
             // pnlAdminArea
             // 
