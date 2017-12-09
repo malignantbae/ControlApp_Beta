@@ -14,7 +14,7 @@ namespace ControlApp.Entities.Objects
         public int Quantity { get; set; }
         public decimal Total_Receipt { get; set; }
         public int ID_Price_tag { get; set; }
-        public decimal Unit_Price { get; set; }
+        public decimal Unit_Price { get; set; } 
         public Receipt()
         {
             ID_Receipt = 0;
@@ -31,9 +31,9 @@ namespace ControlApp.Entities.Objects
             this.Customer_name = pCustomer_name;
             this.Date_receipt = pDate_receipt;
             this.Quantity = pQuantity;
-            this.Total_Receipt = pTotal_Receipt;
+            this.Total_Receipt = Math.Round(pTotal_Receipt, 2);
             this.ID_Price_tag = pID_Price_Tag;
-            this.Unit_Price = pUnit_Price;
+            this.Unit_Price = Math.Round(pUnit_Price, 2);
         }
         public Receipt(int pID_Receipt, string pCustomer_name, DateTime pDate_receipt, int pQuantity, decimal pTotal_Receipt, int pID_Price_Tag, decimal pUnit_Price,bool pState, string pCreateBy, string pUpdatedBy, DateTime pCreateDate)
         {
@@ -41,9 +41,9 @@ namespace ControlApp.Entities.Objects
             this.Customer_name = pCustomer_name;
             this.Date_receipt = pDate_receipt;
             this.Quantity = pQuantity;
-            this.Total_Receipt = pTotal_Receipt;
+            this.Total_Receipt = Math.Round(pTotal_Receipt,2);
             this.ID_Price_tag = pID_Price_Tag;
-            this.Unit_Price = pUnit_Price;
+            this.Unit_Price = Math.Round(pUnit_Price,2);
             this.State = pState;
             this.CreateBy = pCreateBy;
             this.UpdateBy = pUpdatedBy;

@@ -97,7 +97,7 @@
         <elementListCompartment Id="b2dd18aa-592b-4ba4-818d-f8c1b2d798af" absoluteBounds="9.265, 5.335, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(8.40625 : 2.90549967447917); (8.40625 : 7.41750325520833); (9.25 : 7.41750325520833)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8.40625 : 2.90549967447917); (8.40625 : 7.41750325520833); (9.25 : 7.41750325520833)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/sqlConnectionDataContext/TBL_PRICE_TAG/TBL_PRICE_TAG_TBL_RECEIPT" />
       <nodes>
         <classShapeMoniker Id="d2d2e225-69e3-4acc-aa3b-a1c891d03afb" />
