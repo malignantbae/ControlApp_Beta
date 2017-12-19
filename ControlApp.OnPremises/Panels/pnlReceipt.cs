@@ -112,15 +112,10 @@ namespace ControlApp.OnPremises.Panels
             LoadDataGrid();
             CleanFields();
         }
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-
-        }
         private void pnlReceipt_Load(object sender, EventArgs e)
         {
             LoadDataGrid();
             LoadPriceTag();
-            btnUpdate.Enabled = false;
             btnPrint.Enabled = false;
         }
         private void btnPrint_Click(object sender, EventArgs e)

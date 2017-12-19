@@ -6,16 +6,17 @@
     <DataSource Name="ControlAppDB">
       <DataSourceReference>ControlAppDB</DataSourceReference>
       <rd:SecurityType>None</rd:SecurityType>
-      <rd:DataSourceID>9944f8dc-d3c2-4af6-8f95-3aa83f9a22d2</rd:DataSourceID>
+      <rd:DataSourceID>06d1a5ad-abb6-4836-af40-5d67136c9814</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="DataSet1">
       <Query>
         <DataSourceName>ControlAppDB</DataSourceName>
-        <CommandText>SELECT        ID_RECEIPT, NAME_CUSTOMER, DATE_RECEIPT, QUANTITY, TOTAL_RECEIPT, RECEIPT_CREATEBY
-FROM            TBL_RECEIPT
-WHERE        (RECEIPT_STATE = 1)</CommandText>
+        <CommandText>SELECT        R.ID_RECEIPT, R.NAME_CUSTOMER, R.DATE_RECEIPT, R.QUANTITY, CAST(R.TOTAL_RECEIPT AS numeric(10, 2)) AS TOTAL_RECEIPT, U.USER_NICKNAME
+FROM            TBL_RECEIPT AS R INNER JOIN
+                         TBL_USER AS U ON R.RECEIPT_CREATEBY = U.ID_USER
+WHERE        (R.RECEIPT_STATE = 1)</CommandText>
       </Query>
       <Fields>
         <Field Name="ID_RECEIPT">
@@ -38,8 +39,8 @@ WHERE        (RECEIPT_STATE = 1)</CommandText>
           <DataField>TOTAL_RECEIPT</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="RECEIPT_CREATEBY">
-          <DataField>RECEIPT_CREATEBY</DataField>
+        <Field Name="USER_NICKNAME">
+          <DataField>USER_NICKNAME</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
@@ -56,7 +57,7 @@ WHERE        (RECEIPT_STATE = 1)</CommandText>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Reporte General Recibos</Value>
+                    <Value>Reporte General De Recibos</Value>
                     <Style>
                       <FontFamily>Segoe UI Light</FontFamily>
                       <FontSize>24pt</FontSize>
@@ -83,7 +84,7 @@ WHERE        (RECEIPT_STATE = 1)</CommandText>
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1in</Width>
+                  <Width>0.79167in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1in</Width>
@@ -98,7 +99,7 @@ WHERE        (RECEIPT_STATE = 1)</CommandText>
                   <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1in</Width>
+                  <Width>1.20833in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -114,7 +115,7 @@ WHERE        (RECEIPT_STATE = 1)</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>N-Recibo</Value>
+                                  <Value>N-°</Value>
                                   <Style>
                                     <FontFamily />
                                     <FontSize>11pt</FontSize>
@@ -125,7 +126,7 @@ WHERE        (RECEIPT_STATE = 1)</CommandText>
                               </TextRuns>
                               <Style>
                                 <FontFamily />
-                                <TextAlign>Right</TextAlign>
+                                <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -164,7 +165,9 @@ WHERE        (RECEIPT_STATE = 1)</CommandText>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox3</rd:DefaultName>
@@ -288,20 +291,6 @@ WHERE        (RECEIPT_STATE = 1)</CommandText>
                                 <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value />
-                                  <Style>
-                                    <FontFamily />
-                                    <FontSize>11pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
-                                    <Color>#666666</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox6</rd:DefaultName>
                           <Style>
@@ -329,7 +318,7 @@ WHERE        (RECEIPT_STATE = 1)</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Hecho Por</Value>
+                                  <Value>Realizado por</Value>
                                   <Style>
                                     <FontFamily />
                                     <FontSize>11pt</FontSize>
@@ -338,7 +327,9 @@ WHERE        (RECEIPT_STATE = 1)</CommandText>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox7</rd:DefaultName>
@@ -417,7 +408,9 @@ WHERE        (RECEIPT_STATE = 1)</CommandText>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>NAME_CUSTOMER</rd:DefaultName>
@@ -553,24 +546,26 @@ WHERE        (RECEIPT_STATE = 1)</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="RECEIPT_CREATEBY">
+                        <Textbox Name="USER_NICKNAME">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!RECEIPT_CREATEBY.Value</Value>
+                                  <Value>=Fields!USER_NICKNAME.Value</Value>
                                   <Style>
                                     <FontFamily />
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>RECEIPT_CREATEBY</rd:DefaultName>
+                          <rd:DefaultName>USER_NICKNAME</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -594,7 +589,7 @@ WHERE        (RECEIPT_STATE = 1)</CommandText>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox20">
+                        <Textbox Name="Textbox42">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -608,10 +603,12 @@ WHERE        (RECEIPT_STATE = 1)</CommandText>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox20</rd:DefaultName>
+                          <rd:DefaultName>Textbox42</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -629,7 +626,7 @@ WHERE        (RECEIPT_STATE = 1)</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox21">
+                        <Textbox Name="Textbox43">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -644,10 +641,12 @@ WHERE        (RECEIPT_STATE = 1)</CommandText>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox21</rd:DefaultName>
+                          <rd:DefaultName>Textbox43</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -665,7 +664,7 @@ WHERE        (RECEIPT_STATE = 1)</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox22">
+                        <Textbox Name="Textbox44">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -684,7 +683,7 @@ WHERE        (RECEIPT_STATE = 1)</CommandText>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox22</rd:DefaultName>
+                          <rd:DefaultName>Textbox44</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -702,7 +701,7 @@ WHERE        (RECEIPT_STATE = 1)</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox23">
+                        <Textbox Name="Textbox45">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -721,7 +720,7 @@ WHERE        (RECEIPT_STATE = 1)</CommandText>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox23</rd:DefaultName>
+                          <rd:DefaultName>Textbox45</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -739,7 +738,7 @@ WHERE        (RECEIPT_STATE = 1)</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox24">
+                        <Textbox Name="Textbox46">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -753,10 +752,12 @@ WHERE        (RECEIPT_STATE = 1)</CommandText>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox24</rd:DefaultName>
+                          <rd:DefaultName>Textbox46</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -774,7 +775,7 @@ WHERE        (RECEIPT_STATE = 1)</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox25">
+                        <Textbox Name="Textbox47">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -788,10 +789,12 @@ WHERE        (RECEIPT_STATE = 1)</CommandText>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox25</rd:DefaultName>
+                          <rd:DefaultName>Textbox47</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -852,7 +855,7 @@ WHERE        (RECEIPT_STATE = 1)</CommandText>
             <Style />
           </Tablix>
         </ReportItems>
-        <Height>1.44333in</Height>
+        <Height>1.36in</Height>
         <Style />
       </Body>
       <Width>6in</Width>
@@ -874,5 +877,5 @@ WHERE        (RECEIPT_STATE = 1)</CommandText>
   <Language>en-US</Language>
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>43a1bc83-1ed9-4967-8b3e-5ae0fa05274a</rd:ReportID>
+  <rd:ReportID>4fc4e499-428a-4c3a-8389-a63334c347b1</rd:ReportID>
 </Report>

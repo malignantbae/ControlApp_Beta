@@ -37,6 +37,7 @@
             this.mtAdmArea = new MetroFramework.Controls.MetroTile();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
             this.metroStyleManager1 = new MetroFramework.Components.MetroStyleManager(this.components);
+            this.mtAdmReceipt = new MetroFramework.Controls.MetroTile();
             this.metroPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
             this.SuspendLayout();
@@ -44,9 +45,10 @@
             // metroPanel1
             // 
             this.metroPanel1.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.metroPanel1.Controls.Add(this.mtAdmReceipt);
             this.metroPanel1.Controls.Add(this.btnReceipt);
-            this.metroPanel1.Controls.Add(this.mtPriceTag);
             this.metroPanel1.Controls.Add(this.mtAdPrecios);
+            this.metroPanel1.Controls.Add(this.mtPriceTag);
             this.metroPanel1.Controls.Add(this.mtArea);
             this.metroPanel1.Controls.Add(this.mtAdmArea);
             this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -65,7 +67,7 @@
             // btnReceipt
             // 
             this.btnReceipt.ActiveControl = null;
-            this.btnReceipt.Location = new System.Drawing.Point(0, 373);
+            this.btnReceipt.Location = new System.Drawing.Point(0, 468);
             this.btnReceipt.Name = "btnReceipt";
             this.btnReceipt.Size = new System.Drawing.Size(200, 89);
             this.btnReceipt.TabIndex = 4;
@@ -76,7 +78,7 @@
             // mtPriceTag
             // 
             this.mtPriceTag.ActiveControl = null;
-            this.mtPriceTag.Location = new System.Drawing.Point(0, 183);
+            this.mtPriceTag.Location = new System.Drawing.Point(0, 278);
             this.mtPriceTag.Name = "mtPriceTag";
             this.mtPriceTag.Size = new System.Drawing.Size(200, 89);
             this.mtPriceTag.TabIndex = 8;
@@ -87,7 +89,7 @@
             // mtAdPrecios
             // 
             this.mtAdPrecios.ActiveControl = null;
-            this.mtAdPrecios.Location = new System.Drawing.Point(0, 278);
+            this.mtAdPrecios.Location = new System.Drawing.Point(0, 183);
             this.mtAdPrecios.Name = "mtAdPrecios";
             this.mtAdPrecios.Size = new System.Drawing.Size(200, 89);
             this.mtAdPrecios.TabIndex = 7;
@@ -137,6 +139,16 @@
             this.metroStyleManager1.Owner = this;
             this.metroStyleManager1.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
+            // mtAdmReceipt
+            // 
+            this.mtAdmReceipt.ActiveControl = null;
+            this.mtAdmReceipt.Location = new System.Drawing.Point(0, 373);
+            this.mtAdmReceipt.Name = "mtAdmReceipt";
+            this.mtAdmReceipt.Size = new System.Drawing.Size(200, 89);
+            this.mtAdmReceipt.TabIndex = 9;
+            this.mtAdmReceipt.Text = "Ad Recibos";
+            this.mtAdmReceipt.UseSelectable = true;
+            // 
             // frmDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -166,5 +178,6 @@
         private MetroFramework.Controls.MetroTile btnReceipt;
         private MetroFramework.Components.MetroStyleManager metroStyleManager1;
         private MetroFramework.Controls.MetroTile mtPriceTag;
+        private MetroFramework.Controls.MetroTile mtAdmReceipt;
     }
 }

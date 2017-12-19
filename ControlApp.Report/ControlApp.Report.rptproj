@@ -17,10 +17,6 @@
       <Name>Receipt.rdl</Name>
       <FullPath>Receipt.rdl</FullPath>
     </ProjectItem>
-    <ProjectItem>
-      <Name>Report1.rdl</Name>
-      <FullPath>Report1.rdl</FullPath>
-    </ProjectItem>
   </Reports>
   <Configurations>
     <Configuration>
@@ -29,7 +25,7 @@
       <Options>
         <OutputPath>bin\Debug</OutputPath>
         <TargetServerVersion>SSRS2016</TargetServerVersion>
-        <TargetServerURL>http://localhost/reportserver</TargetServerURL>
+        <TargetServerURL>http://tecnico-pc:8282/ReportServer</TargetServerURL>
         <TargetFolder>ControlApp.Report</TargetFolder>
         <TargetDataSourceFolder>Data Sources</TargetDataSourceFolder>
         <TargetDatasetFolder>Datasets</TargetDatasetFolder>
@@ -55,7 +51,7 @@
       <Options>
         <OutputPath>bin\Release</OutputPath>
         <TargetServerVersion>SSRS2016</TargetServerVersion>
-        <TargetServerURL>http://localhost/reportserver</TargetServerURL>
+        <TargetServerURL>http://localhost:8282/ReportServer</TargetServerURL>
         <TargetFolder>ControlApp.Report</TargetFolder>
         <TargetDataSourceFolder>Data Sources</TargetDataSourceFolder>
         <TargetDatasetFolder>Datasets</TargetDatasetFolder>

@@ -1,6 +1,6 @@
-﻿namespace ControlApp.OnPremises.Panels
+﻿namespace ControlApp.OnPremises.Panels.Admin
 {
-    partial class pnlReceipt
+    partial class pnlAdminReceipt
     {
         /// <summary> 
         /// Required designer variable.
@@ -31,7 +31,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.btnCreate = new MetroFramework.Controls.MetroTile();
+            this.btnPrint = new MetroFramework.Controls.MetroTile();
+            this.txtRetrieveByName = new MetroFramework.Controls.MetroTextBox();
+            this.lblRetrieve = new MetroFramework.Controls.MetroLabel();
             this.lblTotal = new MetroFramework.Controls.MetroLabel();
             this.txtTotalReceipt = new MetroFramework.Controls.MetroTextBox();
             this.txtQuantity = new MetroFramework.Controls.MetroTextBox();
@@ -46,22 +48,64 @@
             this.ID_PRICE_TAG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UNIT_PRICE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DATE_RECEIPT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtRetrieveByName = new MetroFramework.Controls.MetroTextBox();
-            this.lblRetrieve = new MetroFramework.Controls.MetroLabel();
-            this.btnPrint = new MetroFramework.Controls.MetroTile();
+            this.btnCreate = new MetroFramework.Controls.MetroTile();
+            this.btnUpdate = new MetroFramework.Controls.MetroTile();
+            this.btnActivate = new MetroFramework.Controls.MetroTile();
+            this.btnDelete = new MetroFramework.Controls.MetroTile();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceipt)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnCreate
+            // btnPrint
             // 
-            this.btnCreate.ActiveControl = null;
-            this.btnCreate.Location = new System.Drawing.Point(96, 3);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(83, 60);
-            this.btnCreate.TabIndex = 13;
-            this.btnCreate.Text = "Agregar";
-            this.btnCreate.UseSelectable = true;
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            this.btnPrint.ActiveControl = null;
+            this.btnPrint.Location = new System.Drawing.Point(274, 3);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(83, 60);
+            this.btnPrint.TabIndex = 52;
+            this.btnPrint.Text = "Imprimir";
+            this.btnPrint.UseSelectable = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // txtRetrieveByName
+            // 
+            // 
+            // 
+            // 
+            this.txtRetrieveByName.CustomButton.Image = null;
+            this.txtRetrieveByName.CustomButton.Location = new System.Drawing.Point(113, 1);
+            this.txtRetrieveByName.CustomButton.Name = "";
+            this.txtRetrieveByName.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtRetrieveByName.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtRetrieveByName.CustomButton.TabIndex = 1;
+            this.txtRetrieveByName.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtRetrieveByName.CustomButton.UseSelectable = true;
+            this.txtRetrieveByName.CustomButton.Visible = false;
+            this.txtRetrieveByName.Lines = new string[0];
+            this.txtRetrieveByName.Location = new System.Drawing.Point(542, 69);
+            this.txtRetrieveByName.MaxLength = 32767;
+            this.txtRetrieveByName.Name = "txtRetrieveByName";
+            this.txtRetrieveByName.PasswordChar = '\0';
+            this.txtRetrieveByName.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtRetrieveByName.SelectedText = "";
+            this.txtRetrieveByName.SelectionLength = 0;
+            this.txtRetrieveByName.SelectionStart = 0;
+            this.txtRetrieveByName.ShortcutsEnabled = true;
+            this.txtRetrieveByName.Size = new System.Drawing.Size(135, 23);
+            this.txtRetrieveByName.TabIndex = 50;
+            this.txtRetrieveByName.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.txtRetrieveByName.UseSelectable = true;
+            this.txtRetrieveByName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtRetrieveByName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // lblRetrieve
+            // 
+            this.lblRetrieve.AutoSize = true;
+            this.lblRetrieve.Location = new System.Drawing.Point(489, 73);
+            this.lblRetrieve.Name = "lblRetrieve";
+            this.lblRetrieve.Size = new System.Drawing.Size(47, 19);
+            this.lblRetrieve.TabIndex = 51;
+            this.lblRetrieve.Text = "Buscar";
+            this.lblRetrieve.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // lblTotal
             // 
@@ -69,7 +113,7 @@
             this.lblTotal.Location = new System.Drawing.Point(45, 131);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(36, 19);
-            this.lblTotal.TabIndex = 21;
+            this.lblTotal.TabIndex = 49;
             this.lblTotal.Text = "Total";
             this.lblTotal.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
@@ -98,7 +142,7 @@
             this.txtTotalReceipt.SelectionStart = 0;
             this.txtTotalReceipt.ShortcutsEnabled = true;
             this.txtTotalReceipt.Size = new System.Drawing.Size(139, 23);
-            this.txtTotalReceipt.TabIndex = 20;
+            this.txtTotalReceipt.TabIndex = 48;
             this.txtTotalReceipt.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.txtTotalReceipt.UseSelectable = true;
             this.txtTotalReceipt.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -129,7 +173,7 @@
             this.txtQuantity.SelectionStart = 0;
             this.txtQuantity.ShortcutsEnabled = true;
             this.txtQuantity.Size = new System.Drawing.Size(139, 23);
-            this.txtQuantity.TabIndex = 19;
+            this.txtQuantity.TabIndex = 47;
             this.txtQuantity.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.txtQuantity.UseSelectable = true;
             this.txtQuantity.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -143,7 +187,7 @@
             this.lblCantidad.Location = new System.Drawing.Point(19, 102);
             this.lblCantidad.Name = "lblCantidad";
             this.lblCantidad.Size = new System.Drawing.Size(62, 19);
-            this.lblCantidad.TabIndex = 18;
+            this.lblCantidad.TabIndex = 46;
             this.lblCantidad.Text = "Cantidad";
             this.lblCantidad.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
@@ -172,7 +216,7 @@
             this.txtNameCustomer.SelectionStart = 0;
             this.txtNameCustomer.ShortcutsEnabled = true;
             this.txtNameCustomer.Size = new System.Drawing.Size(139, 23);
-            this.txtNameCustomer.TabIndex = 17;
+            this.txtNameCustomer.TabIndex = 45;
             this.txtNameCustomer.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.txtNameCustomer.UseSelectable = true;
             this.txtNameCustomer.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -184,7 +228,7 @@
             this.lblNameCustomer.Location = new System.Drawing.Point(32, 73);
             this.lblNameCustomer.Name = "lblNameCustomer";
             this.lblNameCustomer.Size = new System.Drawing.Size(49, 19);
-            this.lblNameCustomer.TabIndex = 16;
+            this.lblNameCustomer.TabIndex = 44;
             this.lblNameCustomer.Text = "Cliente";
             this.lblNameCustomer.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
@@ -240,8 +284,9 @@
             this.dgvReceipt.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvReceipt.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvReceipt.Size = new System.Drawing.Size(631, 376);
-            this.dgvReceipt.TabIndex = 15;
+            this.dgvReceipt.TabIndex = 43;
             this.dgvReceipt.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.dgvReceipt.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReceipt_CellClick);
             // 
             // ID_RECEIPT
             // 
@@ -287,62 +332,56 @@
             this.DATE_RECEIPT.Name = "DATE_RECEIPT";
             this.DATE_RECEIPT.ReadOnly = true;
             // 
-            // txtRetrieveByName
+            // btnCreate
             // 
+            this.btnCreate.ActiveControl = null;
+            this.btnCreate.Location = new System.Drawing.Point(96, 3);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(83, 60);
+            this.btnCreate.TabIndex = 41;
+            this.btnCreate.Text = "Agregar";
+            this.btnCreate.UseSelectable = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
+            // btnUpdate
             // 
+            this.btnUpdate.ActiveControl = null;
+            this.btnUpdate.Location = new System.Drawing.Point(185, 3);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(83, 60);
+            this.btnUpdate.TabIndex = 42;
+            this.btnUpdate.Text = "Actualizar";
+            this.btnUpdate.UseSelectable = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            this.txtRetrieveByName.CustomButton.Image = null;
-            this.txtRetrieveByName.CustomButton.Location = new System.Drawing.Point(113, 1);
-            this.txtRetrieveByName.CustomButton.Name = "";
-            this.txtRetrieveByName.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.txtRetrieveByName.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtRetrieveByName.CustomButton.TabIndex = 1;
-            this.txtRetrieveByName.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtRetrieveByName.CustomButton.UseSelectable = true;
-            this.txtRetrieveByName.CustomButton.Visible = false;
-            this.txtRetrieveByName.Lines = new string[0];
-            this.txtRetrieveByName.Location = new System.Drawing.Point(542, 69);
-            this.txtRetrieveByName.MaxLength = 32767;
-            this.txtRetrieveByName.Name = "txtRetrieveByName";
-            this.txtRetrieveByName.PasswordChar = '\0';
-            this.txtRetrieveByName.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtRetrieveByName.SelectedText = "";
-            this.txtRetrieveByName.SelectionLength = 0;
-            this.txtRetrieveByName.SelectionStart = 0;
-            this.txtRetrieveByName.ShortcutsEnabled = true;
-            this.txtRetrieveByName.Size = new System.Drawing.Size(135, 23);
-            this.txtRetrieveByName.TabIndex = 38;
-            this.txtRetrieveByName.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.txtRetrieveByName.UseSelectable = true;
-            this.txtRetrieveByName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtRetrieveByName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // btnActivate
             // 
-            // lblRetrieve
+            this.btnActivate.ActiveControl = null;
+            this.btnActivate.Location = new System.Drawing.Point(453, 3);
+            this.btnActivate.Name = "btnActivate";
+            this.btnActivate.Size = new System.Drawing.Size(83, 60);
+            this.btnActivate.TabIndex = 54;
+            this.btnActivate.Text = "Activar";
+            this.btnActivate.UseSelectable = true;
+            this.btnActivate.Click += new System.EventHandler(this.btnActivate_Click);
             // 
-            this.lblRetrieve.AutoSize = true;
-            this.lblRetrieve.Location = new System.Drawing.Point(489, 73);
-            this.lblRetrieve.Name = "lblRetrieve";
-            this.lblRetrieve.Size = new System.Drawing.Size(47, 19);
-            this.lblRetrieve.TabIndex = 39;
-            this.lblRetrieve.Text = "Buscar";
-            this.lblRetrieve.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // btnDelete
             // 
-            // btnPrint
+            this.btnDelete.ActiveControl = null;
+            this.btnDelete.Location = new System.Drawing.Point(364, 3);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(83, 60);
+            this.btnDelete.TabIndex = 53;
+            this.btnDelete.Text = "Inactivar";
+            this.btnDelete.UseSelectable = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            this.btnPrint.ActiveControl = null;
-            this.btnPrint.Location = new System.Drawing.Point(185, 3);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(83, 60);
-            this.btnPrint.TabIndex = 40;
-            this.btnPrint.Text = "Imprimir";
-            this.btnPrint.UseSelectable = true;
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
-            // 
-            // pnlReceipt
+            // pnlAdminReceipt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnActivate);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.txtRetrieveByName);
             this.Controls.Add(this.lblRetrieve);
@@ -354,10 +393,11 @@
             this.Controls.Add(this.lblNameCustomer);
             this.Controls.Add(this.dgvReceipt);
             this.Controls.Add(this.btnCreate);
-            this.Name = "pnlReceipt";
+            this.Controls.Add(this.btnUpdate);
+            this.Name = "pnlAdminReceipt";
             this.Size = new System.Drawing.Size(697, 574);
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Load += new System.EventHandler(this.pnlReceipt_Load);
+            this.Load += new System.EventHandler(this.pnlAdminReceipt_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceipt)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -365,7 +405,10 @@
         }
 
         #endregion
-        private MetroFramework.Controls.MetroTile btnCreate;
+
+        private MetroFramework.Controls.MetroTile btnPrint;
+        private MetroFramework.Controls.MetroTextBox txtRetrieveByName;
+        private MetroFramework.Controls.MetroLabel lblRetrieve;
         private MetroFramework.Controls.MetroLabel lblTotal;
         private MetroFramework.Controls.MetroTextBox txtTotalReceipt;
         private MetroFramework.Controls.MetroTextBox txtQuantity;
@@ -373,9 +416,6 @@
         private MetroFramework.Controls.MetroTextBox txtNameCustomer;
         private MetroFramework.Controls.MetroLabel lblNameCustomer;
         private MetroFramework.Controls.MetroGrid dgvReceipt;
-        private MetroFramework.Controls.MetroTextBox txtRetrieveByName;
-        private MetroFramework.Controls.MetroLabel lblRetrieve;
-        private MetroFramework.Controls.MetroTile btnPrint;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_RECEIPT;
         private System.Windows.Forms.DataGridViewTextBoxColumn NAME_CUSTOMER;
         private System.Windows.Forms.DataGridViewTextBoxColumn QUANTITY;
@@ -383,5 +423,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_PRICE_TAG;
         private System.Windows.Forms.DataGridViewTextBoxColumn UNIT_PRICE;
         private System.Windows.Forms.DataGridViewTextBoxColumn DATE_RECEIPT;
+        private MetroFramework.Controls.MetroTile btnCreate;
+        private MetroFramework.Controls.MetroTile btnUpdate;
+        private MetroFramework.Controls.MetroTile btnActivate;
+        private MetroFramework.Controls.MetroTile btnDelete;
     }
 }
