@@ -38,19 +38,23 @@ namespace ControlApp.OnPremises.Panels.Admin
             txtNameCustomer.Text = "";
             txtQuantity.Text = "";
             txtRetrieveByName.Text = "";
+            btnUpdate.Enabled = false;
+            btnPrint.Enabled = false;
+            btnActivate.Enabled = false;
+            btnDelete.Enabled = false;
         }
         public void LoadDataGrid()
         {
             try
             {
                 dgvReceipt.Rows.Clear();
-                var ListReceipt = ApiAccess.RetrieveAllReceipt<Receipt>();
+                var ListReceipt = ApiAccess.SuperRetrieveReceipt<Receipt>();
                 foreach (Receipt element in ListReceipt)
                 {
                     string[] RowPrice;
                     RowPrice = new string[] { element.ID_Receipt.ToString(), element.Customer_name,
                          element.Quantity.ToString(), element.Total_Receipt.ToString(), element.ID_Price_tag.ToString(),
-                         element.Unit_Price.ToString(), element.Date_receipt.ToString() };
+                         element.Unit_Price.ToString(), element.Date_receipt.ToString(),element.State.ToString(), element.CreateBy, element.UpdateBy, element.CreateDate.ToString()};
                     dgvReceipt.Rows.Add(RowPrice);
                 }
             }
@@ -235,6 +239,10 @@ namespace ControlApp.OnPremises.Panels.Admin
         }
         private void dgvReceipt_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            btnUpdate.Enabled = true;
+            btnPrint.Enabled = true;
+            btnActivate.Enabled = true;
+            btnDelete.Enabled = true;
             int Row = dgvReceipt.CurrentRow.Index;
             txtNameCustomer.Text = dgvReceipt[1, Row].Value.ToString();
             txtQuantity.Text = dgvReceipt[2, Row].Value.ToString();

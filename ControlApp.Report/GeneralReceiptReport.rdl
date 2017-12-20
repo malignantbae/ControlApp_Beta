@@ -14,7 +14,7 @@
       <Query>
         <DataSourceName>ControlAppDB</DataSourceName>
         <CommandText>SELECT        R.ID_RECEIPT, R.NAME_CUSTOMER, R.DATE_RECEIPT, R.QUANTITY, CAST(R.TOTAL_RECEIPT AS numeric(10, 2)) AS TOTAL_RECEIPT, U.USER_NICKNAME
-FROM            TBL_RECEIPT AS R INNER JOIN
+            FROM            TBL_RECEIPT AS R INNER JOIN
                          TBL_USER AS U ON R.RECEIPT_CREATEBY = U.ID_USER
 WHERE        (R.RECEIPT_STATE = 1)</CommandText>
       </Query>

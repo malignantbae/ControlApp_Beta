@@ -73,5 +73,13 @@ namespace ControlApp.OnPremises.Forms.Dashboard
             this.metroPanel2.Controls.Add(_pnlPriceTag);
             _pnlPriceTag.swipe();
         }
+
+        private void mtAdmReceipt_Click(object sender, EventArgs e)
+        {
+            this.metroPanel2.Controls.Clear();
+            pnlAdminReceipt _pnlAdminReceipt = new pnlAdminReceipt(this);
+            this.metroPanel2.Controls.Add(_pnlAdminReceipt);
+            _pnlAdminReceipt.swipe();
+        }
     }
 }

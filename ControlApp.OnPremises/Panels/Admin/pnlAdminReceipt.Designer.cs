@@ -41,6 +41,10 @@
             this.txtNameCustomer = new MetroFramework.Controls.MetroTextBox();
             this.lblNameCustomer = new MetroFramework.Controls.MetroLabel();
             this.dgvReceipt = new MetroFramework.Controls.MetroGrid();
+            this.btnCreate = new MetroFramework.Controls.MetroTile();
+            this.btnUpdate = new MetroFramework.Controls.MetroTile();
+            this.btnActivate = new MetroFramework.Controls.MetroTile();
+            this.btnDelete = new MetroFramework.Controls.MetroTile();
             this.ID_RECEIPT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NAME_CUSTOMER = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QUANTITY = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,10 +52,10 @@
             this.ID_PRICE_TAG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UNIT_PRICE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DATE_RECEIPT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnCreate = new MetroFramework.Controls.MetroTile();
-            this.btnUpdate = new MetroFramework.Controls.MetroTile();
-            this.btnActivate = new MetroFramework.Controls.MetroTile();
-            this.btnDelete = new MetroFramework.Controls.MetroTile();
+            this.RECEIPT_STATE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RECEIPT_CREATEBY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RECEIPT_UPDATEBY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RECEIPT_CREATEDATE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceipt)).BeginInit();
             this.SuspendLayout();
             // 
@@ -257,7 +261,11 @@
             this.TOTAL_RECEIPT,
             this.ID_PRICE_TAG,
             this.UNIT_PRICE,
-            this.DATE_RECEIPT});
+            this.DATE_RECEIPT,
+            this.RECEIPT_STATE,
+            this.RECEIPT_CREATEBY,
+            this.RECEIPT_UPDATEBY,
+            this.RECEIPT_CREATEDATE});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -283,54 +291,10 @@
             this.dgvReceipt.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvReceipt.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvReceipt.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvReceipt.Size = new System.Drawing.Size(631, 376);
+            this.dgvReceipt.Size = new System.Drawing.Size(658, 376);
             this.dgvReceipt.TabIndex = 43;
             this.dgvReceipt.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.dgvReceipt.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReceipt_CellClick);
-            // 
-            // ID_RECEIPT
-            // 
-            this.ID_RECEIPT.HeaderText = "Número ";
-            this.ID_RECEIPT.Name = "ID_RECEIPT";
-            this.ID_RECEIPT.ReadOnly = true;
-            // 
-            // NAME_CUSTOMER
-            // 
-            this.NAME_CUSTOMER.HeaderText = "Cliente";
-            this.NAME_CUSTOMER.Name = "NAME_CUSTOMER";
-            this.NAME_CUSTOMER.ReadOnly = true;
-            // 
-            // QUANTITY
-            // 
-            this.QUANTITY.HeaderText = "Cantidad";
-            this.QUANTITY.Name = "QUANTITY";
-            this.QUANTITY.ReadOnly = true;
-            // 
-            // TOTAL_RECEIPT
-            // 
-            this.TOTAL_RECEIPT.HeaderText = "Total";
-            this.TOTAL_RECEIPT.Name = "TOTAL_RECEIPT";
-            this.TOTAL_RECEIPT.ReadOnly = true;
-            // 
-            // ID_PRICE_TAG
-            // 
-            this.ID_PRICE_TAG.HeaderText = "ID_PRICE_TAG";
-            this.ID_PRICE_TAG.Name = "ID_PRICE_TAG";
-            this.ID_PRICE_TAG.ReadOnly = true;
-            this.ID_PRICE_TAG.Visible = false;
-            // 
-            // UNIT_PRICE
-            // 
-            this.UNIT_PRICE.HeaderText = "UNIT_PRICE";
-            this.UNIT_PRICE.Name = "UNIT_PRICE";
-            this.UNIT_PRICE.ReadOnly = true;
-            this.UNIT_PRICE.Visible = false;
-            // 
-            // DATE_RECEIPT
-            // 
-            this.DATE_RECEIPT.HeaderText = "Fecha";
-            this.DATE_RECEIPT.Name = "DATE_RECEIPT";
-            this.DATE_RECEIPT.ReadOnly = true;
             // 
             // btnCreate
             // 
@@ -376,6 +340,77 @@
             this.btnDelete.UseSelectable = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // ID_RECEIPT
+            // 
+            this.ID_RECEIPT.FillWeight = 50F;
+            this.ID_RECEIPT.HeaderText = "Número ";
+            this.ID_RECEIPT.Name = "ID_RECEIPT";
+            this.ID_RECEIPT.ReadOnly = true;
+            this.ID_RECEIPT.Width = 50;
+            // 
+            // NAME_CUSTOMER
+            // 
+            this.NAME_CUSTOMER.FillWeight = 65F;
+            this.NAME_CUSTOMER.HeaderText = "Cliente";
+            this.NAME_CUSTOMER.Name = "NAME_CUSTOMER";
+            this.NAME_CUSTOMER.ReadOnly = true;
+            this.NAME_CUSTOMER.Width = 65;
+            // 
+            // QUANTITY
+            // 
+            this.QUANTITY.HeaderText = "Cantidad";
+            this.QUANTITY.Name = "QUANTITY";
+            this.QUANTITY.ReadOnly = true;
+            // 
+            // TOTAL_RECEIPT
+            // 
+            this.TOTAL_RECEIPT.HeaderText = "Total";
+            this.TOTAL_RECEIPT.Name = "TOTAL_RECEIPT";
+            this.TOTAL_RECEIPT.ReadOnly = true;
+            // 
+            // ID_PRICE_TAG
+            // 
+            this.ID_PRICE_TAG.HeaderText = "ID_PRICE_TAG";
+            this.ID_PRICE_TAG.Name = "ID_PRICE_TAG";
+            this.ID_PRICE_TAG.ReadOnly = true;
+            // 
+            // UNIT_PRICE
+            // 
+            this.UNIT_PRICE.HeaderText = "UNIT_PRICE";
+            this.UNIT_PRICE.Name = "UNIT_PRICE";
+            this.UNIT_PRICE.ReadOnly = true;
+            this.UNIT_PRICE.Visible = false;
+            // 
+            // DATE_RECEIPT
+            // 
+            this.DATE_RECEIPT.HeaderText = "Fecha";
+            this.DATE_RECEIPT.Name = "DATE_RECEIPT";
+            this.DATE_RECEIPT.ReadOnly = true;
+            // 
+            // RECEIPT_STATE
+            // 
+            this.RECEIPT_STATE.HeaderText = "Estado";
+            this.RECEIPT_STATE.Name = "RECEIPT_STATE";
+            this.RECEIPT_STATE.ReadOnly = true;
+            // 
+            // RECEIPT_CREATEBY
+            // 
+            this.RECEIPT_CREATEBY.HeaderText = "Creado Por";
+            this.RECEIPT_CREATEBY.Name = "RECEIPT_CREATEBY";
+            this.RECEIPT_CREATEBY.ReadOnly = true;
+            // 
+            // RECEIPT_UPDATEBY
+            // 
+            this.RECEIPT_UPDATEBY.HeaderText = "Modificado Por";
+            this.RECEIPT_UPDATEBY.Name = "RECEIPT_UPDATEBY";
+            this.RECEIPT_UPDATEBY.ReadOnly = true;
+            // 
+            // RECEIPT_CREATEDATE
+            // 
+            this.RECEIPT_CREATEDATE.HeaderText = "Creado el";
+            this.RECEIPT_CREATEDATE.Name = "RECEIPT_CREATEDATE";
+            this.RECEIPT_CREATEDATE.ReadOnly = true;
+            // 
             // pnlAdminReceipt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -416,6 +451,10 @@
         private MetroFramework.Controls.MetroTextBox txtNameCustomer;
         private MetroFramework.Controls.MetroLabel lblNameCustomer;
         private MetroFramework.Controls.MetroGrid dgvReceipt;
+        private MetroFramework.Controls.MetroTile btnCreate;
+        private MetroFramework.Controls.MetroTile btnUpdate;
+        private MetroFramework.Controls.MetroTile btnActivate;
+        private MetroFramework.Controls.MetroTile btnDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_RECEIPT;
         private System.Windows.Forms.DataGridViewTextBoxColumn NAME_CUSTOMER;
         private System.Windows.Forms.DataGridViewTextBoxColumn QUANTITY;
@@ -423,9 +462,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_PRICE_TAG;
         private System.Windows.Forms.DataGridViewTextBoxColumn UNIT_PRICE;
         private System.Windows.Forms.DataGridViewTextBoxColumn DATE_RECEIPT;
-        private MetroFramework.Controls.MetroTile btnCreate;
-        private MetroFramework.Controls.MetroTile btnUpdate;
-        private MetroFramework.Controls.MetroTile btnActivate;
-        private MetroFramework.Controls.MetroTile btnDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RECEIPT_STATE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RECEIPT_CREATEBY;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RECEIPT_UPDATEBY;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RECEIPT_CREATEDATE;
     }
 }

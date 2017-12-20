@@ -148,6 +148,7 @@
             this.mtAdmReceipt.TabIndex = 9;
             this.mtAdmReceipt.Text = "Ad Recibos";
             this.mtAdmReceipt.UseSelectable = true;
+            this.mtAdmReceipt.Click += new System.EventHandler(this.mtAdmReceipt_Click);
             // 
             // frmDashboard
             // 
