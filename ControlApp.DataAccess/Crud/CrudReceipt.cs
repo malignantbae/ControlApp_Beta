@@ -48,6 +48,9 @@ namespace ControlApp.DataAccess.Crud
         public override bool Update(BaseEntity entity)
         {
             var Obj = (Receipt)entity;
+            //Calculo
+            Obj.Total_Receipt = Obj.Unit_Price * Obj.Quantity;
+            //\\
             Context.SP_CRUD_RECEIPT((int)CrudActionEnum.Update, Obj.ID_Receipt, Obj.IdSession,
                 Obj.Customer_name, Obj.Quantity, Obj.Total_Receipt, Obj.ID_Price_tag, Obj.Unit_Price);
             return true;

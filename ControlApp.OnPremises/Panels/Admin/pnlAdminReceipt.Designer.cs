@@ -342,11 +342,11 @@
             // 
             // ID_RECEIPT
             // 
-            this.ID_RECEIPT.FillWeight = 50F;
+            this.ID_RECEIPT.FillWeight = 60F;
             this.ID_RECEIPT.HeaderText = "Número ";
             this.ID_RECEIPT.Name = "ID_RECEIPT";
             this.ID_RECEIPT.ReadOnly = true;
-            this.ID_RECEIPT.Width = 50;
+            this.ID_RECEIPT.Width = 60;
             // 
             // NAME_CUSTOMER
             // 
@@ -358,9 +358,11 @@
             // 
             // QUANTITY
             // 
+            this.QUANTITY.FillWeight = 60F;
             this.QUANTITY.HeaderText = "Cantidad";
             this.QUANTITY.Name = "QUANTITY";
             this.QUANTITY.ReadOnly = true;
+            this.QUANTITY.Width = 60;
             // 
             // TOTAL_RECEIPT
             // 
@@ -370,28 +372,36 @@
             // 
             // ID_PRICE_TAG
             // 
+            this.ID_PRICE_TAG.FillWeight = 45F;
             this.ID_PRICE_TAG.HeaderText = "ID_PRICE_TAG";
             this.ID_PRICE_TAG.Name = "ID_PRICE_TAG";
             this.ID_PRICE_TAG.ReadOnly = true;
+            this.ID_PRICE_TAG.Width = 45;
             // 
             // UNIT_PRICE
             // 
+            this.UNIT_PRICE.FillWeight = 45F;
             this.UNIT_PRICE.HeaderText = "UNIT_PRICE";
             this.UNIT_PRICE.Name = "UNIT_PRICE";
             this.UNIT_PRICE.ReadOnly = true;
             this.UNIT_PRICE.Visible = false;
+            this.UNIT_PRICE.Width = 45;
             // 
             // DATE_RECEIPT
             // 
+            this.DATE_RECEIPT.FillWeight = 75F;
             this.DATE_RECEIPT.HeaderText = "Fecha";
             this.DATE_RECEIPT.Name = "DATE_RECEIPT";
             this.DATE_RECEIPT.ReadOnly = true;
+            this.DATE_RECEIPT.Width = 75;
             // 
             // RECEIPT_STATE
             // 
+            this.RECEIPT_STATE.FillWeight = 45F;
             this.RECEIPT_STATE.HeaderText = "Estado";
             this.RECEIPT_STATE.Name = "RECEIPT_STATE";
             this.RECEIPT_STATE.ReadOnly = true;
+            this.RECEIPT_STATE.Width = 45;
             // 
             // RECEIPT_CREATEBY
             // 
@@ -407,9 +417,11 @@
             // 
             // RECEIPT_CREATEDATE
             // 
+            this.RECEIPT_CREATEDATE.FillWeight = 75F;
             this.RECEIPT_CREATEDATE.HeaderText = "Creado el";
             this.RECEIPT_CREATEDATE.Name = "RECEIPT_CREATEDATE";
             this.RECEIPT_CREATEDATE.ReadOnly = true;
+            this.RECEIPT_CREATEDATE.Width = 75;
             // 
             // pnlAdminReceipt
             // 

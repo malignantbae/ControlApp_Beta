@@ -90,7 +90,7 @@ namespace ControlApp.OnPremises.Panels.Admin
                 txtNameCustomer.Focus();
                 return;
             }
-            if (string.IsNullOrEmpty(Quantity.Trim()))
+            if (string.IsNullOrEmpty(Quantity.Trim()) || Convert.ToInt32(Quantity) == 0)
             {
                 MetroMessageBox.Show(this, "La Cantidad -" + Quantity + "- no es Valida. \n Favor Digite un valor Valido", "Error en Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtQuantity.Focus();
@@ -124,7 +124,7 @@ namespace ControlApp.OnPremises.Panels.Admin
                 txtNameCustomer.Focus();
                 return;
             }
-            if (string.IsNullOrEmpty(Quantity.Trim()))
+            if (string.IsNullOrEmpty(Quantity.Trim()) || Convert.ToInt32(Quantity) == 0)
             {
                 MetroMessageBox.Show(this, "La Cantidad -" + Quantity + "- no es Valida. \n Favor Digite un valor Valido", "Error en Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtQuantity.Focus();

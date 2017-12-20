@@ -242,6 +242,7 @@
             this.dgvReceipt.Size = new System.Drawing.Size(631, 376);
             this.dgvReceipt.TabIndex = 15;
             this.dgvReceipt.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.dgvReceipt.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReceipt_CellClick);
             // 
             // ID_RECEIPT
             // 

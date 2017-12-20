@@ -88,9 +88,9 @@ namespace ControlApp.OnPremises.Panels
                 txtNameCustomer.Focus();
                 return;
             }
-            if (string.IsNullOrEmpty(Quantity.Trim()))
+            if (string.IsNullOrEmpty(Quantity.Trim()) || Convert.ToInt32(Quantity) == 0)
             {
-                MetroMessageBox.Show(this, "La Cantidad -" + Quantity  + "- no es Valida. \n Favor Digite un valor Valido", "Error en Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MetroMessageBox.Show(this, "La Cantidad -" + Quantity + "- no es Valida. \n Favor Digite un valor Valido", "Error en Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtQuantity.Focus();
                 return;
             }
@@ -140,6 +140,13 @@ namespace ControlApp.OnPremises.Panels
                 int Quantity = Convert.ToInt32(txtQuantity.Text);
                 txtTotalReceipt.Text = (Quantity * gUnit_Price).ToString();
             }
+        }
+        private void dgvReceipt_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnPrint.Enabled = true;
+            int Row = dgvReceipt.CurrentRow.Index;
+            txtNameCustomer.Text = dgvReceipt[1, Row].Value.ToString();
+            txtQuantity.Text = dgvReceipt[2, Row].Value.ToString();
         }
     }
 }

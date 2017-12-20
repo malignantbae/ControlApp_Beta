@@ -63,7 +63,7 @@
         <classShapeMoniker Id="64cf1bd0-7075-4d01-b860-bb3653baedd0" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 10.7780989583333); (3.49478916666667 : 10.7780989583333 : JumpStart); (3.66145583333333 : 10.7780989583333 : JumpEnd); (3.71875 : 10.7780989583333); (3.71875 : 7.6939111328125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 10.7780989583333); (3.71875 : 10.7780989583333); (3.71875 : 7.6939111328125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/sqlConnectionDataContext/TBL_ADDRESS/TBL_ADDRESS_TBL_USER" />
       <nodes>
         <classShapeMoniker Id="05f67e17-cc11-4a83-b68a-492e30ac3fe9" />
