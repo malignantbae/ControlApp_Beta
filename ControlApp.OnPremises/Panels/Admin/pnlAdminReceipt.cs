@@ -13,10 +13,17 @@ using MetroFramework;
 using static ControlApp.OnPremises.Program;
 using System.Globalization;
 using System.Text.RegularExpressions;
+using Microsoft.Reporting.WinForms;
+using System.Drawing.Printing;
+using System.Drawing.Imaging;
+using System.IO;
+using ControlApp.OnPremises.Panels.Admin;
+
+using ControlApp.OnPremises.Forms.Dashboard;
 
 namespace ControlApp.OnPremises.Panels.Admin
 {
-    public partial class pnlAdminReceipt : pnlSlider
+    public partial class pnlAdminReceipt : pnlSlider , IDisposable
     {
         ReceiptManagement ApiAccess = new ReceiptManagement(); //ApiAcces Of Class
         PricetagManagement ApiAccess_PriceTag = new PricetagManagement(); //ApiAccess Aux
@@ -149,8 +156,25 @@ namespace ControlApp.OnPremises.Panels.Admin
         }
         private void btnPrint_Click(object sender, EventArgs e)
         {
+            frmDashboard _frmDashBoard = new frmDashboard();
+            _frmDashBoard.metroPanel2.Controls.Clear();
+
+            
+            ////pnlPrintReport _pnlPrintReport = new pnlPrintReport(_frmDashBoard);
+            //_frmDashBoard.metroPanel2.Controls.Add(_pnlPrintReport);
+            //_pnlPrintReport.swipe();
+
+            //_pnlPrintReport.Show();
+
+
+            //this.metroPanel2.Controls.Clear();
+            //pnlArea _pnlArea = new pnlArea(this);
+            //this.metroPanel2.Controls.Add(_pnlArea);
+            //_pnlArea.swipe();
 
         }
+
+
         private void btnDelete_Click(object sender, EventArgs e)
         {
             int Row = dgvReceipt.CurrentRow.Index;

@@ -7,7 +7,12 @@
       <FullPath>ControlAppDB.rds</FullPath>
     </ProjectItem>
   </DataSources>
-  <DataSets />
+  <DataSets>
+    <ProjectItem>
+      <Name>DataSetReceipt.rsd</Name>
+      <FullPath>DataSetReceipt.rsd</FullPath>
+    </ProjectItem>
+  </DataSets>
   <Reports>
     <ProjectItem>
       <Name>GeneralReceiptReport.rdl</Name>

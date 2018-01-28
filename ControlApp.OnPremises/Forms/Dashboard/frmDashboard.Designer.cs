@@ -172,7 +172,7 @@
         #endregion
 
         private MetroFramework.Controls.MetroPanel metroPanel1;
-        private MetroFramework.Controls.MetroPanel metroPanel2;
+        public MetroFramework.Controls.MetroPanel metroPanel2;
         private MetroFramework.Controls.MetroTile mtAdmArea;
         private MetroFramework.Controls.MetroTile mtAdPrecios;
         private MetroFramework.Controls.MetroTile mtArea;
