@@ -13,7 +13,7 @@ using MetroFramework;
 using static ControlApp.OnPremises.Program;
 using System.Globalization;
 using System.Text.RegularExpressions;
-
+using Microsoft.Reporting.WinForms;
 
 namespace ControlApp.OnPremises.Panels
 {
@@ -120,6 +120,10 @@ namespace ControlApp.OnPremises.Panels
         }
         private void btnPrint_Click(object sender, EventArgs e)
         {
+            //LocalReport report = new LocalReport();
+            //report.ReportEmbeddedResource = "Your.Reports.Path.rdlc";
+            //report.DataSources.Add(new ReportDataSource("DataSet1", getYourDatasource()));
+            //report.PrintToPrinter();
 
         }
         private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
@@ -138,7 +142,7 @@ namespace ControlApp.OnPremises.Panels
             else
             {
                 int Quantity = Convert.ToInt32(txtQuantity.Text);
-                txtTotalReceipt.Text = (Quantity * gUnit_Price).ToString();
+                txtTotalReceipt.Text = Math.Round((Quantity * gUnit_Price),2).ToString();
             }
         }
         private void dgvReceipt_CellClick(object sender, DataGridViewCellEventArgs e)

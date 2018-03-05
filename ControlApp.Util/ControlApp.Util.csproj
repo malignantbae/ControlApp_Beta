@@ -32,6 +32,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,9 +44,141 @@
   <ItemGroup>
     <Compile Include="ManagementSsrsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\ControlApp_SsrsService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.DocumentMapNode.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.ExecutionHeader.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.ExecutionInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.ExecutionInfo2.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.Extension.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.FindStringResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.GetDocumentMapResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.GetExecutionInfo2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.GetExecutionInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.GetRenderResourceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.ListRenderingExtensionsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.ListSecureMethodsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.LoadDrillthroughTarget2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.LoadDrillthroughTargetResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.LoadReport2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.LoadReportDefinition2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.LoadReportDefinitionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.LoadReportResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.LogoffResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.LogonUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.NavigateBookmarkResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.NavigateDocumentMapResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.Render2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.RenderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.RenderStreamResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.ResetExecution2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.ResetExecutionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.ServerInfoHeader.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.SetExecutionCredentials2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.SetExecutionCredentialsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.SetExecutionParameters2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.SetExecutionParametersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.Sort2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.SortResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.ToggleItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ControlApp.Util.ControlApp_SsrsService.Warning.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ControlApp_SsrsService\ReportExecution2005.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ControlApp_SsrsService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ControlApp_SsrsService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ControlApp_SsrsService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ControlApp_SsrsService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

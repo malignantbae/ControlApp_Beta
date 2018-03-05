@@ -3,7 +3,6 @@
   <ConnectionProperties>
     <Extension>SQL</Extension>
     <ConnectString>Data Source=.;Initial Catalog=ControlApp</ConnectString>
-    <IntegratedSecurity>true</IntegratedSecurity>
   </ConnectionProperties>
   <DataSourceID>276f9cdd-3564-437f-be66-13c674ca72bb</DataSourceID>
 </RptDataSource>

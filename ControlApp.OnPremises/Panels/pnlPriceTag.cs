@@ -42,7 +42,7 @@ namespace ControlApp.OnPremises.Panels
                     string[] RowPrice;
                     RowPrice = new string[] { element.ID_Price_Tag.ToString(), element.Descrip_Price ,element.Total_Price.ToString()};
                     dgvPriceTag.Rows.Add(RowPrice);
-                }
+                } 
             }
             catch (Exception)
             {

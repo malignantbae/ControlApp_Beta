@@ -27,7 +27,7 @@ namespace ControlApp.Entities.Objects
         public Price_tag(int pID_Price_Tag, decimal pTotal_Price, string pDescrip_Price, bool pState, string pCreateBy, string pUpdatedBy, DateTime pCreateDate)
         {
             this.ID_Price_Tag = pID_Price_Tag;
-            this.Total_Price = pTotal_Price;
+            this.Total_Price = Math.Round(pTotal_Price, 2);
             this.Descrip_Price = pDescrip_Price;
             this.State = pState;
             this.CreateBy = pCreateBy;
@@ -38,7 +38,7 @@ namespace ControlApp.Entities.Objects
         {
             this.ID_Price_Tag = pID_Price_Tag;
             this.IdSession = pIdSession;
-            this.Total_Price = pTotal_Price;
+            this.Total_Price = Math.Round(pTotal_Price,2);
             this.Descrip_Price = pDescrip_Price;
             this.State = pState;
             this.CreateBy = pCreateBy;

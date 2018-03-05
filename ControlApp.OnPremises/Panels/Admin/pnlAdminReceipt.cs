@@ -251,7 +251,7 @@ namespace ControlApp.OnPremises.Panels.Admin
             else
             {
                 int Quantity = Convert.ToInt32(txtQuantity.Text);
-                txtTotalReceipt.Text = (Quantity * gUnit_Price).ToString();
+                txtTotalReceipt.Text = Math.Round((Quantity * gUnit_Price), 2).ToString();
             }
         }
         private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)

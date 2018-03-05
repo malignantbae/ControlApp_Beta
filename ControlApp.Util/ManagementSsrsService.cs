@@ -8,72 +8,72 @@ namespace ControlApp.Util
 {
     public class ManagementSsrsService
     {
-        public string RunReport(string path, string reportCode, Dictionary<string, string> dicParams)
-        {
-            //var format = "";
-            //var result = "";
-            //try
-            //{
-                //string encoding;
-                //string mimeType;
-                //string extension;
-                //Warning[] warnings;
-                //string[] streamIDs;
+        //public string RunReport(string path, string reportCode, Dictionary<string, string> dicParams)
+        //{
+        //    //var format = "";
+        //    //var result = "";
+        //    //try
+        //    //{
+        //        //string encoding;
+        //        //string mimeType;
+        //        //string extension;
+        //        //Warning[] warnings;
+        //        //string[] streamIDs;
 
-                //string historyID = null;
-                //byte[] reportResult;
-                //var devInfo = @"<DeviceInfo><Toolbar>False</Toolbar></DeviceInfo>";
+        //        //string historyID = null;
+        //        //byte[] reportResult;
+        //        //var devInfo = @"<DeviceInfo><Toolbar>False</Toolbar></DeviceInfo>";
 
-                //var rs = new ReportExecutionServiceSoapClient(GetDefaultBinding(), new EndpointAddress(@"http://localhost:8282/ReportServer/ReportExecution2005.asmx"));
-                //if (rs.ClientCredentials != null)
-                //{
-                //    rs.ClientCredentials.Windows.AllowedImpersonationLevel = System.Security.Principal.TokenImpersonationLevel.Impersonation;
-                //    rs.ClientCredentials.Windows.ClientCredential = System.Net.CredentialCache.DefaultNetworkCredentials;
-                //}
+        //        //var rs = new ReportExecutionServiceSoapClient(GetDefaultBinding(), new EndpointAddress(@"http://localhost:8282/ReportServer/ReportExecution2005.asmx"));
+        //        //if (rs.ClientCredentials != null)
+        //        //{
+        //        //    rs.ClientCredentials.Windows.AllowedImpersonationLevel = System.Security.Principal.TokenImpersonationLevel.Impersonation;
+        //        //    rs.ClientCredentials.Windows.ClientCredential = System.Net.CredentialCache.DefaultNetworkCredentials;
+        //        //}
 
-                //// Render arguments                                                        
-                //ExecutionInfo execInfo;
-                //var execHeader = new ExecutionHeader();
-                //var trustedHeader = new TrustedUserHeader();
-                //ServerInfoHeader serverInfo;
+        //        //// Render arguments                                                        
+        //        //ExecutionInfo execInfo;
+        //        //var execHeader = new ExecutionHeader();
+        //        //var trustedHeader = new TrustedUserHeader();
+        //        //ServerInfoHeader serverInfo;
 
-                //var path2 = "/" + path + "/" + reportCode;
-                //rs.LoadReport(trustedHeader, path2, historyID, out serverInfo, out execInfo);
+        //        //var path2 = "/" + path + "/" + reportCode;
+        //        //rs.LoadReport(trustedHeader, path2, historyID, out serverInfo, out execInfo);
 
-                //// Genera los parametros apartir de un diccionario
-                //var parameters = new ParameterValue[dicParams.Count];
-                //var index = 0;
+        //        //// Genera los parametros apartir de un diccionario
+        //        //var parameters = new ParameterValue[dicParams.Count];
+        //        //var index = 0;
 
-                //foreach (var param in dicParams)
-                //{
-                //    var paramValue = new ParameterValue
-                //    {
+        //        //foreach (var param in dicParams)
+        //        //{
+        //        //    var paramValue = new ParameterValue
+        //        //    {
 
-                //        Name = param.Key,
-                //        Value = param.Value
-                //    };
-                //    parameters[index] = paramValue;
-                //    index++;
-                //}
+        //        //        Name = param.Key,
+        //        //        Value = param.Value
+        //        //    };
+        //        //    parameters[index] = paramValue;
+        //        //    index++;
+        //        //}
 
-            //    execHeader.ExecutionID = execInfo.ExecutionID;
-            //    rs.SetExecutionParameters(execHeader, trustedHeader, parameters, "en-us", out execInfo);
+        //    //    execHeader.ExecutionID = execInfo.ExecutionID;
+        //    //    rs.SetExecutionParameters(execHeader, trustedHeader, parameters, "en-us", out execInfo);
 
-            //    //Invocacion del reporte
-            //    format = "PDF";
+        //    //    //Invocacion del reporte
+        //    //    format = "PDF";
 
-            //    rs.Render(execHeader, trustedHeader, format, devInfo, out reportResult, out extension, out mimeType, out encoding, out warnings, out streamIDs);
+        //    //    rs.Render(execHeader, trustedHeader, format, devInfo, out reportResult, out extension, out mimeType, out encoding, out warnings, out streamIDs);
 
-            //    result = Convert.ToBase64String(reportResult);
+        //    //    result = Convert.ToBase64String(reportResult);
 
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw ex;
-            //}
+        //    //}
+        //    //catch (Exception ex)
+        //    //{
+        //    //    throw ex;
+        //    //}
 
-            return result;
-        }
+        //    //return result;
+        //}
 
         //internal static Binding GetDefaultBinding()
         //{
