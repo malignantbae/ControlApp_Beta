@@ -28,23 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.reportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.rptViewer = new Microsoft.Reporting.WinForms.ReportViewer();
             this.SuspendLayout();
             // 
-            // reportViewer
+            // rptViewer
             // 
-            this.reportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reportViewer.Location = new System.Drawing.Point(20, 60);
-            this.reportViewer.Name = "reportViewer";
-            this.reportViewer.Size = new System.Drawing.Size(657, 494);
-            this.reportViewer.TabIndex = 1;
+            this.rptViewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rptViewer.Location = new System.Drawing.Point(20, 60);
+            this.rptViewer.Name = "rptViewer";
+            this.rptViewer.Size = new System.Drawing.Size(657, 494);
+            this.rptViewer.TabIndex = 1;
             // 
             // frmReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(697, 574);
-            this.Controls.Add(this.reportViewer);
+            this.Controls.Add(this.rptViewer);
             this.Name = "frmReport";
             this.Text = "Reportes";
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -55,6 +55,6 @@
 
         #endregion
 
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer;
+        private Microsoft.Reporting.WinForms.ReportViewer rptViewer;
     }
 }

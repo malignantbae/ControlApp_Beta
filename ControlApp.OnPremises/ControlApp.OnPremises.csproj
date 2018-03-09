@@ -193,6 +193,10 @@
       <Project>{af1dfb1b-6012-42f9-8608-49faf8371551}</Project>
       <Name>ControlApp.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ControlApp.Util\ControlApp.Util.csproj">
+      <Project>{517c402b-f51a-4bbe-ae02-d0356e37e6df}</Project>
+      <Name>ControlApp.Util</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -14,6 +14,8 @@ using static ControlApp.OnPremises.Program;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using Microsoft.Reporting.WinForms;
+using ControlApp.Util;
+using ControlApp.OnPremises.Forms.Report;
 
 namespace ControlApp.OnPremises.Panels
 {
@@ -27,8 +29,10 @@ namespace ControlApp.OnPremises.Panels
         Price_tag ObjPrice_Tag = new Price_tag();
         string pIdSession = MystaticValues.IdSession;
         //Global Variables
-        int gIdPrice_Tag = 0; 
+        int gIdPrice_Tag = 0;
         decimal gUnit_Price = 0;
+        
+
         public pnlReceipt(Form owner) : base(owner)
         {
             InitializeComponent();
@@ -120,10 +124,8 @@ namespace ControlApp.OnPremises.Panels
         }
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            //LocalReport report = new LocalReport();
-            //report.ReportEmbeddedResource = "Your.Reports.Path.rdlc";
-            //report.DataSources.Add(new ReportDataSource("DataSet1", getYourDatasource()));
-            //report.PrintToPrinter();
+            frmReport rpt = new frmReport();
+            rpt.Show();
 
         }
         private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
@@ -152,5 +154,8 @@ namespace ControlApp.OnPremises.Panels
             txtNameCustomer.Text = dgvReceipt[1, Row].Value.ToString();
             txtQuantity.Text = dgvReceipt[2, Row].Value.ToString();
         }
+
+        
+
     }
 }
