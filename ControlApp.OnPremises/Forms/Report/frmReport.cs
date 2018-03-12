@@ -30,20 +30,25 @@ namespace ControlApp.OnPremises.Forms.Report
         {
             try
             {
+                var IdReceipt = 6;
                 string urlReportServer = "http://localhost:8282/ReportServer";
                 rptViewer.ProcessingMode = ProcessingMode.Remote; // ProcessingMode will be Either Remote or Local
                 rptViewer.ServerReport.ReportServerUrl = new Uri(urlReportServer); //Set the ReportServer Url
-                rptViewer.ServerReport.ReportPath = "/ControlApp.Report/GeneralReceiptReport"; //Passing the Report Path                
+                rptViewer.ServerReport.ReportPath = "/ControlApp.Report/Receipt"; //Passing the Report Path                
 
-                //Creating an ArrayList for combine the Parameters which will be passed into SSRS Report
-                ArrayList reportParam = new ArrayList();
-                //reportParam = ReportDefaultPatam();
+                ////Creating an ArrayList for combine the Parameters which will be passed into SSRS Report
+                //ArrayList reportParam = new ArrayList();
+                //reportParam = reportParam.Add(new ReportParameter (Convert.ToInt32(IdReceipt)));
+                List<ReportParameter> param = new List<ReportParameter>();
+                param.Add(new ReportParameter("pID_RECEIPT", IdReceipt.ToString()));
 
-                ReportParameter[] param = new ReportParameter[reportParam.Count];
-                for (int k = 0; k < reportParam.Count; k++)
-                {
-                    param[k] = (ReportParameter)reportParam[k];
-                }
+
+
+                //ReportParameter[] param = new ReportParameter[reportParam.Count];
+                //for (int k = 0; k < reportParam.Count; k++)
+                //{
+                //    param[k] = (ReportParameter)reportParam[k];
+                //}
                 // pass crendentitilas
                 //rptViewer.ServerReport.ReportServerCredentials = 
                 //  new ReportServerCredentials("uName", "PassWORD", "doMain");
@@ -51,6 +56,7 @@ namespace ControlApp.OnPremises.Forms.Report
                 //pass parmeters to report
                 rptViewer.ServerReport.SetParameters(param); //Set Report Parameters
                 rptViewer.ServerReport.Refresh();
+                
             }
             catch (Exception ex)
             {

@@ -125,6 +125,9 @@ namespace ControlApp.OnPremises.Panels
         private void btnPrint_Click(object sender, EventArgs e)
         {
             frmReport rpt = new frmReport();
+            //int Row = dgvReceipt.CurrentRow.Index;
+            //var IdReceipt = dgvReceipt[0, Row].Value.ToString();
+            //rpt.txtidReceipt.Text = IdReceipt;
             rpt.Show();
 
         }
