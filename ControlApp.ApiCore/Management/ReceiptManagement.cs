@@ -14,6 +14,7 @@ namespace ControlApp.ApiCore.Management
         public ReceiptManagement()
         {
             _factory = new CrudReceipt();
+            
         }
         string ExcepMessage = null; // Management Exception
         public void CreateReceipt(Receipt Obj)
@@ -129,6 +130,26 @@ namespace ControlApp.ApiCore.Management
             try
             {
                 var list = _factory.RetrieveById<Receipt>(Obj);
+                if (list.Count > 0)
+                {
+                    foreach (var obj in list)
+                    {
+                        lst.Add((T)Convert.ChangeType(obj, typeof(T)));
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                //_exMan.ManageException(ex);
+            }
+            return lst;
+        }
+        public List<T> RetrieveAllByIdUser<T>(Receipt Obj)
+        {
+            var lst = new List<T>();
+            try
+            {
+                var list = _factory.RetrieveByIdUser<Receipt>(Obj);
                 if (list.Count > 0)
                 {
                     foreach (var obj in list)

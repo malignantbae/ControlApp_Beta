@@ -59,7 +59,10 @@ namespace ControlApp.DataAccess.Crud
             //Context.SP_DELETE_AUTHENTICATION(Obj.ID_User);
             return true;
         }
-
+        public override List<T> RetrieveByIdUser<T>(BaseEntity entity)
+        {
+            throw new NotImplementedException();
+        }
         public override List<T> SuperRetrieve<T>()
         {
             throw new NotImplementedException();

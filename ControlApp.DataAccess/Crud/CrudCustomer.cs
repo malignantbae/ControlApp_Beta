@@ -24,7 +24,10 @@ namespace ControlApp.DataAccess.Crud
             //Context.SP_CREATE_CUSTOMER(Obj.ID_Customer, Obj.Customer_name);
             return true;
         }
-
+        public override List<T> RetrieveByIdUser<T>(BaseEntity entity)
+        {
+            throw new NotImplementedException();
+        }
         public override List<T> RetrieveAll<T>()
         {
             var lst = new List<T>();

@@ -63,5 +63,10 @@ namespace ControlApp.DataAccess.Crud
         {
             throw new NotImplementedException();
         }
+
+        public override List<T> RetrieveByIdUser<T>(BaseEntity entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

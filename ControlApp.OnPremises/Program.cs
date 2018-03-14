@@ -15,6 +15,7 @@ namespace ControlApp.OnPremises
         public static class MystaticValues
         {
            public static string IdSession = "186200492318";
+           public static int rptSsrs = 0;
            
         }
     /// <summary>

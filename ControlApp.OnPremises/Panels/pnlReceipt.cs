@@ -50,7 +50,8 @@ namespace ControlApp.OnPremises.Panels
             try
             {
                 dgvReceipt.Rows.Clear();
-                var ListReceipt = ApiAccess.RetrieveAllReceipt<Receipt>();
+                ObjReceipt.IdSession = pIdSession;
+                var ListReceipt = ApiAccess.RetrieveAllByIdUser<Receipt>(ObjReceipt);
                 foreach (Receipt element in ListReceipt)
                 {
                     string[] RowPrice;
@@ -59,6 +60,27 @@ namespace ControlApp.OnPremises.Panels
                          element.Unit_Price.ToString(), element.Date_receipt.ToString() };
                     dgvReceipt.Rows.Add(RowPrice);
                 }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public int GetlastIdReceipt()
+        {
+            try
+            {
+                dgvReceipt.Rows.Clear();
+                ObjReceipt.IdSession = pIdSession;
+                int pIdReceipt = 0;
+                var ListReceipt = ApiAccess.RetrieveAllByIdUser<Receipt>(ObjReceipt);
+                foreach (Receipt element in ListReceipt)
+                {
+                   
+                    pIdReceipt = element.ID_Receipt;
+                    break;
+                }
+                return pIdReceipt;
             }
             catch (Exception)
             {
@@ -113,6 +135,7 @@ namespace ControlApp.OnPremises.Panels
 
                 throw;
             }
+            Print();
             LoadDataGrid();
             CleanFields();
         }
@@ -124,11 +147,31 @@ namespace ControlApp.OnPremises.Panels
         }
         private void btnPrint_Click(object sender, EventArgs e)
         {
+
+            PrintAF();
+        }
+
+        private void Print() // Principal Flow
+        {
+            GetIdSsrs();
             frmReport rpt = new frmReport();
-            //int Row = dgvReceipt.CurrentRow.Index;
-            //var IdReceipt = dgvReceipt[0, Row].Value.ToString();
-            //rpt.txtidReceipt.Text = IdReceipt;
             rpt.Show();
+        }
+        private void GetIdSsrs() // Principal Flow
+        {
+            int Row = dgvReceipt.CurrentRow.Index;
+            MystaticValues.rptSsrs = GetlastIdReceipt();
+        }
+        private void PrintAF() // Alternate Flow
+        {
+            GetIdSsrsAF();
+            frmReport rpt = new frmReport();
+            rpt.Show();
+        }
+        private void GetIdSsrsAF() // Alternate Flow
+        {
+            int Row = dgvReceipt.CurrentRow.Index;
+            MystaticValues.rptSsrs = Convert.ToInt32(dgvReceipt[0, Row].Value);
 
         }
         private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
@@ -158,7 +201,40 @@ namespace ControlApp.OnPremises.Panels
             txtQuantity.Text = dgvReceipt[2, Row].Value.ToString();
         }
 
-        
+        private void btnCleanFields_Click(object sender, EventArgs e)
+        {
+            CleanFields();
+            LoadDataGrid();
+        }
 
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            int Row = dgvReceipt.CurrentRow.Index;
+            int IdReceipt = Convert.ToInt32(dgvReceipt[0, Row].Value);
+            if (dgvReceipt[0, Row].Value == null)
+            {
+                MetroMessageBox.Show(this, "Debe Seleccionar Al menos Algún Valor para Inactivar. \n Favor Intentelo Nuevamente", "Error en Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dgvReceipt.Focus();
+                return;
+            }
+            else
+            {
+                if (MetroFramework.MetroMessageBox.Show(this, "¿Desea Anular el Recibo N-° : " + IdReceipt.ToString() + "?", "Confirmación de Acción", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    try
+                    {
+                        ObjReceipt.ID_Receipt = IdReceipt;
+                        ObjReceipt.IdSession = pIdSession;
+                        ApiAccess.DeleteReceipt(ObjReceipt);
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+                    CleanFields();
+                    LoadDataGrid();
+                }
+            }
+        }
     }
 }

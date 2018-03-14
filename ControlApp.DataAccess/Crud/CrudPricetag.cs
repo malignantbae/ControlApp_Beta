@@ -161,5 +161,9 @@ namespace ControlApp.DataAccess.Crud
             Context.SP_CRUD_PRICE_TAG((int)CrudActionEnum.Activate, Obj.IdSession, Obj.ID_Price_Tag, Obj.Total_Price, Obj.Descrip_Price);
             return true;
         }
+        public override List<T> RetrieveByIdUser<T>(BaseEntity entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

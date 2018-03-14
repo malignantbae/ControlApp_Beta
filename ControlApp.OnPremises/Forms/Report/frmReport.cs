@@ -9,15 +9,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static ControlApp.OnPremises.Program;
 
 namespace ControlApp.OnPremises.Forms.Report
 {
     public partial class frmReport : MetroFramework.Forms.MetroForm
     {
+        
         public frmReport()
         {
             InitializeComponent();
             ShowReport();
+             
         }
 
         private void frmReport_Load(object sender, EventArgs e)
@@ -30,7 +33,7 @@ namespace ControlApp.OnPremises.Forms.Report
         {
             try
             {
-                var IdReceipt = 6;
+                var IdReceipt = MystaticValues.rptSsrs;
                 string urlReportServer = "http://localhost:8282/ReportServer";
                 rptViewer.ProcessingMode = ProcessingMode.Remote; // ProcessingMode will be Either Remote or Local
                 rptViewer.ServerReport.ReportServerUrl = new Uri(urlReportServer); //Set the ReportServer Url

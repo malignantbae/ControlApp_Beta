@@ -28,18 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.rptViewer = new Microsoft.Reporting.WinForms.ReportViewer();
             this.txtidReceipt = new MetroFramework.Controls.MetroTextBox();
+            this.rptViewer = new Microsoft.Reporting.WinForms.ReportViewer();
             this.SuspendLayout();
-            // 
-            // rptViewer
-            // 
-            this.rptViewer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rptViewer.Location = new System.Drawing.Point(20, 60);
-            this.rptViewer.Name = "rptViewer";
-            this.rptViewer.ShowParameterPrompts = false;
-            this.rptViewer.Size = new System.Drawing.Size(293, 368);
-            this.rptViewer.TabIndex = 1;
             // 
             // txtidReceipt
             // 
@@ -72,13 +63,22 @@
             this.txtidReceipt.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtidReceipt.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
+            // rptViewer
+            // 
+            this.rptViewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rptViewer.Location = new System.Drawing.Point(20, 60);
+            this.rptViewer.Name = "rptViewer";
+            this.rptViewer.ShowParameterPrompts = false;
+            this.rptViewer.Size = new System.Drawing.Size(293, 368);
+            this.rptViewer.TabIndex = 3;
+            // 
             // frmReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(333, 448);
-            this.Controls.Add(this.txtidReceipt);
             this.Controls.Add(this.rptViewer);
+            this.Controls.Add(this.txtidReceipt);
             this.Name = "frmReport";
             this.Text = "Recibo ";
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -88,8 +88,7 @@
         }
 
         #endregion
-
-        private Microsoft.Reporting.WinForms.ReportViewer rptViewer;
         public MetroFramework.Controls.MetroTextBox txtidReceipt;
+        private Microsoft.Reporting.WinForms.ReportViewer rptViewer;
     }
 }

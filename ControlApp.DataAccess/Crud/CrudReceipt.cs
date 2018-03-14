@@ -155,6 +155,29 @@ namespace ControlApp.DataAccess.Crud
             }
             return lst;
         }
+        public override List<T> RetrieveByIdUser<T>(BaseEntity entity)
+        {
+            var ObjReceipt = (Receipt)entity;
+            var lst = new List<T>();
+            List<Receipt> MyList = new List<Receipt>();
+            var Query = Context.SP_CRUD_RECEIPT((int)CrudActionEnum.RetrieveByIdUser, ObjReceipt.ID_Receipt, ObjReceipt.IdSession,
+                ObjReceipt.Customer_name, ObjReceipt.Quantity, ObjReceipt.Total_Receipt, ObjReceipt.ID_Price_tag, ObjReceipt.Unit_Price).ToList();
+            foreach (SP_CRUD_RECEIPTResult Element in Query)
+            {
+                Receipt Obj = new Receipt(Element.ID_RECEIPT, Element.NAME_CUSTOMER, Element.DATE_RECEIPT,
+                    Element.QUANTITY, Element.TOTAL_RECEIPT, Element.ID_PRICE_TAG, Element.UNIT_PRICE);
+                MyList.Add(Obj);
+
+            }
+            if (MyList.Count > 0)
+            {
+                foreach (var obj in MyList)
+                {
+                    lst.Add((T)Convert.ChangeType(obj, typeof(T)));
+                }
+            }
+            return lst;
+        }
         public override List<T> RetrieveByName<T>(BaseEntity entity)
         {
             var ObjReceipt = (Receipt)entity;

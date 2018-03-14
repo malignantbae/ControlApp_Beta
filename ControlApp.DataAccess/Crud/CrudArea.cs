@@ -165,5 +165,10 @@ namespace ControlApp.DataAccess.Crud
             Context.SP_CRUD_AREA((int)CrudActionEnum.Activate, ObjArea.IdSession, ObjArea.ID_Area, ObjArea.Area_name);
             return true;
         }
+
+        public override List<T> RetrieveByIdUser<T>(BaseEntity entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

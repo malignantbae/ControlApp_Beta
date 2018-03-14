@@ -49,6 +49,8 @@
             this.txtRetrieveByName = new MetroFramework.Controls.MetroTextBox();
             this.lblRetrieve = new MetroFramework.Controls.MetroLabel();
             this.btnPrint = new MetroFramework.Controls.MetroTile();
+            this.btnDelete = new MetroFramework.Controls.MetroTile();
+            this.btnCleanFields = new MetroFramework.Controls.MetroTile();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceipt)).BeginInit();
             this.SuspendLayout();
             // 
@@ -340,10 +342,34 @@
             this.btnPrint.UseSelectable = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
+            // btnDelete
+            // 
+            this.btnDelete.ActiveControl = null;
+            this.btnDelete.Location = new System.Drawing.Point(274, 3);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(83, 60);
+            this.btnDelete.TabIndex = 54;
+            this.btnDelete.Text = "Anular";
+            this.btnDelete.UseSelectable = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnCleanFields
+            // 
+            this.btnCleanFields.ActiveControl = null;
+            this.btnCleanFields.Location = new System.Drawing.Point(363, 3);
+            this.btnCleanFields.Name = "btnCleanFields";
+            this.btnCleanFields.Size = new System.Drawing.Size(83, 60);
+            this.btnCleanFields.TabIndex = 55;
+            this.btnCleanFields.Text = "Refrescar";
+            this.btnCleanFields.UseSelectable = true;
+            this.btnCleanFields.Click += new System.EventHandler(this.btnCleanFields_Click);
+            // 
             // pnlReceipt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnCleanFields);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.txtRetrieveByName);
             this.Controls.Add(this.lblRetrieve);
@@ -384,5 +410,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_PRICE_TAG;
         private System.Windows.Forms.DataGridViewTextBoxColumn UNIT_PRICE;
         private System.Windows.Forms.DataGridViewTextBoxColumn DATE_RECEIPT;
+        private MetroFramework.Controls.MetroTile btnDelete;
+        private MetroFramework.Controls.MetroTile btnCleanFields;
     }
 }
