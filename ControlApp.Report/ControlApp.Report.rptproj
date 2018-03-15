@@ -52,6 +52,7 @@
     <DataSource Include="ControlAppDB.rds" />
   </ItemGroup>
   <ItemGroup>
+    <Report Include="DayReportByUser.rdl" />
     <Report Include="GeneralReceiptReport.rdl" />
     <Report Include="Receipt.rdl" />
   </ItemGroup>

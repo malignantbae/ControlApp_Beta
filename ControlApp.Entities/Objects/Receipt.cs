@@ -14,7 +14,7 @@ namespace ControlApp.Entities.Objects
         public int Quantity { get; set; }
         public decimal Total_Receipt { get; set; }
         public int ID_Price_tag { get; set; }
-        public decimal Unit_Price { get; set; } 
+        public decimal Unit_Price { get; set; }
         public Receipt()
         {
             ID_Receipt = 0;

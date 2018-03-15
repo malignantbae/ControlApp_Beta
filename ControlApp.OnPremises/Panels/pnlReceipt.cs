@@ -31,13 +31,15 @@ namespace ControlApp.OnPremises.Panels
         //Global Variables
         int gIdPrice_Tag = 0;
         decimal gUnit_Price = 0;
-        
-
         public pnlReceipt(Form owner) : base(owner)
         {
             InitializeComponent();
             this.StyleManager.Update();
             txtTotalReceipt.Enabled = false;
+            dtBegin.CustomFormat = "dd/MM/yyyy hh:mm:ss";
+            dtEnd.CustomFormat = "dd/MM/yyyy hh:mm:ss";
+
+
         }
         public void CleanFields()
         {
@@ -144,13 +146,13 @@ namespace ControlApp.OnPremises.Panels
             LoadDataGrid();
             LoadPriceTag();
             btnPrint.Enabled = false;
+            btnDelete.Enabled = false;
         }
         private void btnPrint_Click(object sender, EventArgs e)
         {
 
             PrintAF();
         }
-
         private void Print() // Principal Flow
         {
             GetIdSsrs();
@@ -196,17 +198,16 @@ namespace ControlApp.OnPremises.Panels
         private void dgvReceipt_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             btnPrint.Enabled = true;
+            btnDelete.Enabled = true;
             int Row = dgvReceipt.CurrentRow.Index;
             txtNameCustomer.Text = dgvReceipt[1, Row].Value.ToString();
             txtQuantity.Text = dgvReceipt[2, Row].Value.ToString();
         }
-
         private void btnCleanFields_Click(object sender, EventArgs e)
         {
             CleanFields();
             LoadDataGrid();
         }
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             int Row = dgvReceipt.CurrentRow.Index;
@@ -233,6 +234,35 @@ namespace ControlApp.OnPremises.Panels
                     }
                     CleanFields();
                     LoadDataGrid();
+                }
+            }
+        }
+        private void txtRetrieveByName_TextChanged(object sender, EventArgs e)
+        {
+            if (txtRetrieveByName.Text == "")
+            {
+                LoadDataGrid();
+                CleanFields();
+            }
+            else
+            {
+                try
+                {
+                    dgvReceipt.Rows.Clear();
+                    ObjReceipt.ID_Receipt = Convert.ToInt32(txtRetrieveByName.Text);
+                    var ListReceipt = ApiAccess.RetrieveAllByIdReceipt<Receipt>(ObjReceipt);
+                    foreach (Receipt element in ListReceipt)
+                    {
+                        string[] RowPrice;
+                        RowPrice = new string[] { element.ID_Receipt.ToString(), element.Customer_name,
+                         element.Quantity.ToString(), element.Total_Receipt.ToString(), element.ID_Price_tag.ToString(),
+                         element.Unit_Price.ToString(), element.Date_receipt.ToString() };
+                        dgvReceipt.Rows.Add(RowPrice);
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
                 }
             }
         }
