@@ -36,9 +36,9 @@ namespace ControlApp.OnPremises.Panels
             InitializeComponent();
             this.StyleManager.Update();
             txtTotalReceipt.Enabled = false;
-            dtBegin.CustomFormat = "dd/MM/yyyy hh:mm:ss";
-            dtEnd.CustomFormat = "dd/MM/yyyy hh:mm:ss";
-
+            dtBegin.CustomFormat = "yyyy/MM/dd HH:mm:ss";
+            dtEnd.CustomFormat = "yyyy/MM/dd HH:mm:ss";
+            
 
         }
         public void CleanFields()
@@ -153,6 +153,7 @@ namespace ControlApp.OnPremises.Panels
 
             PrintAF();
         }
+        //RPT BUSINESS
         private void Print() // Principal Flow
         {
             GetIdSsrs();
@@ -176,6 +177,15 @@ namespace ControlApp.OnPremises.Panels
             MystaticValues.rptSsrs = Convert.ToInt32(dgvReceipt[0, Row].Value);
 
         }
+        private void GetDatesReport()
+        {
+            MystaticValues.rptSsrsDateBegin = dtBegin.Text;
+            MystaticValues.rptSsrsDateEnd = dtEnd.Text;
+            frmReportDaily rpt = new frmReportDaily();
+            rpt.Show();
+
+        }
+
         private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -265,6 +275,16 @@ namespace ControlApp.OnPremises.Panels
                     throw;
                 }
             }
+        }
+        public void ShowReportByUser()
+        {
+            GetDatesReport();
+
+        }
+
+        private void btnLoadRpt_Click(object sender, EventArgs e)
+        {
+            ShowReportByUser();
         }
     }
 }

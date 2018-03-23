@@ -634,14 +634,17 @@ WHERE        R.RECEIPT_CREATEBY = @pID_BY AND (R.DATE_RECEIPT BETWEEN @pDATE_BEG
     <ReportParameter Name="pID_BY">
       <DataType>String</DataType>
       <Prompt>p ID BY</Prompt>
+      <Hidden>true</Hidden>
     </ReportParameter>
     <ReportParameter Name="pDATE_BEGIN">
       <DataType>String</DataType>
       <Prompt>p DATE BEGIN</Prompt>
+      <Hidden>true</Hidden>
     </ReportParameter>
     <ReportParameter Name="pDATE_END">
       <DataType>String</DataType>
       <Prompt>p DATE END</Prompt>
+      <Hidden>true</Hidden>
     </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>

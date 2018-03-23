@@ -56,17 +56,12 @@
             this.mtPrincipal = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
-            this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
-            this.lblTimeEnd = new MetroFramework.Controls.MetroLabel();
-            this.metroDateTime2 = new MetroFramework.Controls.MetroDateTime();
-            this.lblTimeBegin = new MetroFramework.Controls.MetroLabel();
+            this.dtEnd = new System.Windows.Forms.DateTimePicker();
+            this.dtBegin = new System.Windows.Forms.DateTimePicker();
             this.btnRefresh = new MetroFramework.Controls.MetroTile();
             this.btnLoadRpt = new MetroFramework.Controls.MetroTile();
-            this.dtEnd = new MetroFramework.Controls.MetroDateTime();
             this.lblEnd = new MetroFramework.Controls.MetroLabel();
-            this.dtBegin = new MetroFramework.Controls.MetroDateTime();
             this.lblBegin = new MetroFramework.Controls.MetroLabel();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceipt)).BeginInit();
             this.mtPrincipal.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
@@ -390,7 +385,7 @@
             this.mtPrincipal.Controls.Add(this.metroTabPage2);
             this.mtPrincipal.Location = new System.Drawing.Point(3, 3);
             this.mtPrincipal.Name = "mtPrincipal";
-            this.mtPrincipal.SelectedIndex = 0;
+            this.mtPrincipal.SelectedIndex = 1;
             this.mtPrincipal.Size = new System.Drawing.Size(674, 549);
             this.mtPrincipal.TabIndex = 56;
             this.mtPrincipal.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -426,17 +421,12 @@
             // 
             // metroTabPage2
             // 
-            this.metroTabPage2.Controls.Add(this.metroDateTime1);
-            this.metroTabPage2.Controls.Add(this.lblTimeEnd);
-            this.metroTabPage2.Controls.Add(this.metroDateTime2);
-            this.metroTabPage2.Controls.Add(this.lblTimeBegin);
+            this.metroTabPage2.Controls.Add(this.dtEnd);
+            this.metroTabPage2.Controls.Add(this.dtBegin);
             this.metroTabPage2.Controls.Add(this.btnRefresh);
             this.metroTabPage2.Controls.Add(this.btnLoadRpt);
-            this.metroTabPage2.Controls.Add(this.dtEnd);
             this.metroTabPage2.Controls.Add(this.lblEnd);
-            this.metroTabPage2.Controls.Add(this.dtBegin);
             this.metroTabPage2.Controls.Add(this.lblBegin);
-            this.metroTabPage2.Controls.Add(this.reportViewer1);
             this.metroTabPage2.HorizontalScrollbarBarColor = true;
             this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.HorizontalScrollbarSize = 10;
@@ -450,46 +440,21 @@
             this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.VerticalScrollbarSize = 10;
             // 
-            // metroDateTime1
+            // dtEnd
             // 
-            this.metroDateTime1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.metroDateTime1.Location = new System.Drawing.Point(284, 102);
-            this.metroDateTime1.MinimumSize = new System.Drawing.Size(4, 29);
-            this.metroDateTime1.Name = "metroDateTime1";
-            this.metroDateTime1.Size = new System.Drawing.Size(109, 29);
-            this.metroDateTime1.TabIndex = 19;
-            this.metroDateTime1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.dtEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtEnd.Location = new System.Drawing.Point(92, 102);
+            this.dtEnd.Name = "dtEnd";
+            this.dtEnd.Size = new System.Drawing.Size(168, 20);
+            this.dtEnd.TabIndex = 21;
             // 
-            // lblTimeEnd
+            // dtBegin
             // 
-            this.lblTimeEnd.AutoSize = true;
-            this.lblTimeEnd.Location = new System.Drawing.Point(201, 112);
-            this.lblTimeEnd.Name = "lblTimeEnd";
-            this.lblTimeEnd.Size = new System.Drawing.Size(59, 19);
-            this.lblTimeEnd.TabIndex = 18;
-            this.lblTimeEnd.Text = "Hora Fin";
-            this.lblTimeEnd.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // metroDateTime2
-            // 
-            this.metroDateTime2.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.metroDateTime2.Location = new System.Drawing.Point(284, 67);
-            this.metroDateTime2.MinimumSize = new System.Drawing.Size(4, 29);
-            this.metroDateTime2.Name = "metroDateTime2";
-            this.metroDateTime2.Size = new System.Drawing.Size(109, 29);
-            this.metroDateTime2.TabIndex = 17;
-            this.metroDateTime2.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroDateTime2.Value = new System.DateTime(2018, 3, 15, 15, 23, 5, 0);
-            // 
-            // lblTimeBegin
-            // 
-            this.lblTimeBegin.AutoSize = true;
-            this.lblTimeBegin.Location = new System.Drawing.Point(201, 77);
-            this.lblTimeBegin.Name = "lblTimeBegin";
-            this.lblTimeBegin.Size = new System.Drawing.Size(72, 19);
-            this.lblTimeBegin.TabIndex = 16;
-            this.lblTimeBegin.Text = "Hora Inicio";
-            this.lblTimeBegin.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.dtBegin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtBegin.Location = new System.Drawing.Point(92, 76);
+            this.dtBegin.Name = "dtBegin";
+            this.dtBegin.Size = new System.Drawing.Size(168, 20);
+            this.dtBegin.TabIndex = 20;
             // 
             // btnRefresh
             // 
@@ -510,37 +475,17 @@
             this.btnLoadRpt.TabIndex = 14;
             this.btnLoadRpt.Text = "Generar";
             this.btnLoadRpt.UseSelectable = true;
-            // 
-            // dtEnd
-            // 
-            this.dtEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtEnd.Location = new System.Drawing.Point(86, 102);
-            this.dtEnd.MinimumSize = new System.Drawing.Size(4, 29);
-            this.dtEnd.Name = "dtEnd";
-            this.dtEnd.Size = new System.Drawing.Size(109, 29);
-            this.dtEnd.TabIndex = 6;
-            this.dtEnd.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.btnLoadRpt.Click += new System.EventHandler(this.btnLoadRpt_Click);
             // 
             // lblEnd
             // 
             this.lblEnd.AutoSize = true;
-            this.lblEnd.Location = new System.Drawing.Point(3, 112);
+            this.lblEnd.Location = new System.Drawing.Point(3, 103);
             this.lblEnd.Name = "lblEnd";
             this.lblEnd.Size = new System.Drawing.Size(64, 19);
             this.lblEnd.TabIndex = 5;
             this.lblEnd.Text = "Fecha Fin";
             this.lblEnd.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // dtBegin
-            // 
-            this.dtBegin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtBegin.Location = new System.Drawing.Point(86, 67);
-            this.dtBegin.MinimumSize = new System.Drawing.Size(4, 29);
-            this.dtBegin.Name = "dtBegin";
-            this.dtBegin.Size = new System.Drawing.Size(109, 29);
-            this.dtBegin.TabIndex = 4;
-            this.dtBegin.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.dtBegin.Value = new System.DateTime(2018, 3, 15, 15, 23, 5, 0);
             // 
             // lblBegin
             // 
@@ -551,13 +496,6 @@
             this.lblBegin.TabIndex = 3;
             this.lblBegin.Text = "Fecha Inicio";
             this.lblBegin.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // reportViewer1
-            // 
-            this.reportViewer1.Location = new System.Drawing.Point(3, 137);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(660, 330);
-            this.reportViewer1.TabIndex = 2;
             // 
             // pnlReceipt
             // 
@@ -603,16 +541,11 @@
         private MetroFramework.Controls.MetroTabControl mtPrincipal;
         private MetroFramework.Controls.MetroTabPage metroTabPage1;
         private MetroFramework.Controls.MetroTabPage metroTabPage2;
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private MetroFramework.Controls.MetroDateTime dtEnd;
         private MetroFramework.Controls.MetroLabel lblEnd;
-        private MetroFramework.Controls.MetroDateTime dtBegin;
         private MetroFramework.Controls.MetroLabel lblBegin;
         private MetroFramework.Controls.MetroTile btnLoadRpt;
         private MetroFramework.Controls.MetroTile btnRefresh;
-        private MetroFramework.Controls.MetroDateTime metroDateTime1;
-        private MetroFramework.Controls.MetroLabel lblTimeEnd;
-        private MetroFramework.Controls.MetroDateTime metroDateTime2;
-        private MetroFramework.Controls.MetroLabel lblTimeBegin;
+        private System.Windows.Forms.DateTimePicker dtBegin;
+        private System.Windows.Forms.DateTimePicker dtEnd;
     }
 }

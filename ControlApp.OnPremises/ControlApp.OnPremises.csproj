@@ -81,6 +81,12 @@
     <Compile Include="Forms\Report\frmReport.Designer.cs">
       <DependentUpon>frmReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Report\frmReportDaily.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Report\frmReportDaily.Designer.cs">
+      <DependentUpon>frmReportDaily.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Security\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Report\frmReport.resx">
       <DependentUpon>frmReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Report\frmReportDaily.resx">
+      <DependentUpon>frmReportDaily.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Security\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>

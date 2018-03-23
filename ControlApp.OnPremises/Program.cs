@@ -16,7 +16,9 @@ namespace ControlApp.OnPremises
         {
            public static string IdSession = "186200492318";
            public static int rptSsrs = 0;
-           
+           public static string rptSsrsDateBegin = "N/A";
+           public static string rptSsrsDateEnd = "N/A";
+
         }
     /// <summary>
     /// The main entry point for the application.
