@@ -40,12 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Objects\Address.cs" />
     <Compile Include="Objects\Area.cs" />
-    <Compile Include="Objects\Authentication.cs" />
     <Compile Include="Objects\BaseEntity.cs" />
     <Compile Include="Objects\Customer.cs" />
     <Compile Include="Objects\Price_tag.cs" />
     <Compile Include="Objects\Receipt.cs" />
+    <Compile Include="Objects\Role.cs" />
     <Compile Include="Objects\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
