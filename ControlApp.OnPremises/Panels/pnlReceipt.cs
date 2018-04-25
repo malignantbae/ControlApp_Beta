@@ -72,8 +72,8 @@ namespace ControlApp.OnPremises.Panels
         {
             try
             {
-                dgvReceipt.Rows.Clear();
-                ObjReceipt.IdSession = pIdSession;
+               
+                
                 int pIdReceipt = 0;
                 var ListReceipt = ApiAccess.RetrieveAllByIdUser<Receipt>(ObjReceipt);
                 foreach (Receipt element in ListReceipt)

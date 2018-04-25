@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data.Linq; // Manipulacion de bases de datos SQL
 using System.Data.Linq.Mapping; // otra clase por importar para la Manipulacion
 using ControlApp.Entities.Objects;
-using ControlApp.DataAccess.Mapper;
+
 
 namespace ControlApp.DataAccess.Crud
 {
@@ -16,9 +16,9 @@ namespace ControlApp.DataAccess.Crud
         sqlConnectionDataContext Context = new sqlConnectionDataContext();
         public CrudArea()
         {
-            _mapper = new AreaMapper();
+            
         }
-        private readonly AreaMapper _mapper;
+
         public override bool Create(BaseEntity entity)
         {
             var ObjArea = (Area)entity;
