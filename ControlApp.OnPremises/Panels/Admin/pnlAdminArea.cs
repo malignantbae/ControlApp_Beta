@@ -34,6 +34,9 @@ namespace ControlApp.OnPremises.Panels.Admin
         public void CleanFields()
         {
             txtAreaname.Text = "";
+            btnUpdate.Enabled = false;
+            btnActivate.Enabled = false;
+            btnDelete.Enabled = false;
         }
         private void LoadDataGrid()
         {
@@ -222,6 +225,10 @@ namespace ControlApp.OnPremises.Panels.Admin
             {
                 throw;
             }
+        }
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            CleanFields();
         }
     }
 }

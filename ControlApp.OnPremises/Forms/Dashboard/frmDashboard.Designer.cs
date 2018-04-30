@@ -30,14 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
-            this.btnReceipt = new MetroFramework.Controls.MetroTile();
-            this.mtPriceTag = new MetroFramework.Controls.MetroTile();
-            this.mtAdPrecios = new MetroFramework.Controls.MetroTile();
+            this.btnUsers = new MetroFramework.Controls.MetroTile();
             this.mtArea = new MetroFramework.Controls.MetroTile();
+            this.mtPriceTag = new MetroFramework.Controls.MetroTile();
             this.mtAdmArea = new MetroFramework.Controls.MetroTile();
+            this.mtAdmReceipt = new MetroFramework.Controls.MetroTile();
+            this.btnReceipt = new MetroFramework.Controls.MetroTile();
+            this.mtAdPrecios = new MetroFramework.Controls.MetroTile();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
             this.metroStyleManager1 = new MetroFramework.Components.MetroStyleManager(this.components);
-            this.mtAdmReceipt = new MetroFramework.Controls.MetroTile();
             this.metroPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
             this.SuspendLayout();
@@ -45,12 +46,11 @@
             // metroPanel1
             // 
             this.metroPanel1.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.metroPanel1.Controls.Add(this.mtAdmReceipt);
-            this.metroPanel1.Controls.Add(this.btnReceipt);
             this.metroPanel1.Controls.Add(this.mtAdPrecios);
-            this.metroPanel1.Controls.Add(this.mtPriceTag);
+            this.metroPanel1.Controls.Add(this.btnReceipt);
+            this.metroPanel1.Controls.Add(this.btnUsers);
+            this.metroPanel1.Controls.Add(this.mtAdmReceipt);
             this.metroPanel1.Controls.Add(this.mtArea);
-            this.metroPanel1.Controls.Add(this.mtAdmArea);
             this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
@@ -64,60 +64,81 @@
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
             // 
-            // btnReceipt
+            // btnUsers
             // 
-            this.btnReceipt.ActiveControl = null;
-            this.btnReceipt.Location = new System.Drawing.Point(0, 468);
-            this.btnReceipt.Name = "btnReceipt";
-            this.btnReceipt.Size = new System.Drawing.Size(200, 89);
-            this.btnReceipt.TabIndex = 4;
-            this.btnReceipt.Text = "Recibos";
-            this.btnReceipt.UseSelectable = true;
-            this.btnReceipt.Click += new System.EventHandler(this.mtReceipt_Click);
-            // 
-            // mtPriceTag
-            // 
-            this.mtPriceTag.ActiveControl = null;
-            this.mtPriceTag.Location = new System.Drawing.Point(0, 278);
-            this.mtPriceTag.Name = "mtPriceTag";
-            this.mtPriceTag.Size = new System.Drawing.Size(200, 89);
-            this.mtPriceTag.TabIndex = 8;
-            this.mtPriceTag.Text = "Precios";
-            this.mtPriceTag.UseSelectable = true;
-            this.mtPriceTag.Click += new System.EventHandler(this.mtPriceTag_Click);
-            // 
-            // mtAdPrecios
-            // 
-            this.mtAdPrecios.ActiveControl = null;
-            this.mtAdPrecios.Location = new System.Drawing.Point(0, 183);
-            this.mtAdPrecios.Name = "mtAdPrecios";
-            this.mtAdPrecios.Size = new System.Drawing.Size(200, 89);
-            this.mtAdPrecios.TabIndex = 7;
-            this.mtAdPrecios.Text = "Ad Precios";
-            this.mtAdPrecios.UseSelectable = true;
-            this.mtAdPrecios.Click += new System.EventHandler(this.mtAdPrecios_Click);
+            this.btnUsers.ActiveControl = null;
+            this.btnUsers.Location = new System.Drawing.Point(0, 428);
+            this.btnUsers.Name = "btnUsers";
+            this.btnUsers.Size = new System.Drawing.Size(200, 64);
+            this.btnUsers.TabIndex = 9;
+            this.btnUsers.Text = "Usuarios";
+            this.btnUsers.UseSelectable = true;
             // 
             // mtArea
             // 
             this.mtArea.ActiveControl = null;
-            this.mtArea.Location = new System.Drawing.Point(0, 88);
+            this.mtArea.Location = new System.Drawing.Point(0, 160);
             this.mtArea.Name = "mtArea";
-            this.mtArea.Size = new System.Drawing.Size(200, 89);
+            this.mtArea.Size = new System.Drawing.Size(200, 70);
             this.mtArea.TabIndex = 5;
             this.mtArea.Text = "Areas";
             this.mtArea.UseSelectable = true;
             this.mtArea.Click += new System.EventHandler(this.mtArea_Click);
             // 
+            // mtPriceTag
+            // 
+            this.mtPriceTag.ActiveControl = null;
+            this.mtPriceTag.Location = new System.Drawing.Point(20, 421);
+            this.mtPriceTag.Name = "mtPriceTag";
+            this.mtPriceTag.Size = new System.Drawing.Size(200, 71);
+            this.mtPriceTag.TabIndex = 8;
+            this.mtPriceTag.Text = "Precios";
+            this.mtPriceTag.UseSelectable = true;
+            this.mtPriceTag.Click += new System.EventHandler(this.mtPriceTag_Click);
+            // 
             // mtAdmArea
             // 
             this.mtAdmArea.ActiveControl = null;
-            this.mtAdmArea.Location = new System.Drawing.Point(0, 3);
+            this.mtAdmArea.Location = new System.Drawing.Point(20, 287);
             this.mtAdmArea.Name = "mtAdmArea";
-            this.mtAdmArea.Size = new System.Drawing.Size(200, 79);
+            this.mtAdmArea.Size = new System.Drawing.Size(200, 70);
             this.mtAdmArea.TabIndex = 3;
             this.mtAdmArea.Text = "Ad Areas";
             this.mtAdmArea.UseSelectable = true;
             this.mtAdmArea.Click += new System.EventHandler(this.mtAdmArea_Click);
+            // 
+            // mtAdmReceipt
+            // 
+            this.mtAdmReceipt.ActiveControl = null;
+            this.mtAdmReceipt.Location = new System.Drawing.Point(0, 93);
+            this.mtAdmReceipt.Name = "mtAdmReceipt";
+            this.mtAdmReceipt.Size = new System.Drawing.Size(200, 69);
+            this.mtAdmReceipt.TabIndex = 9;
+            this.mtAdmReceipt.Text = "Ad Recibos";
+            this.mtAdmReceipt.UseSelectable = true;
+            this.mtAdmReceipt.Click += new System.EventHandler(this.mtAdmReceipt_Click);
+            // 
+            // btnReceipt
+            // 
+            this.btnReceipt.ActiveControl = null;
+            this.btnReceipt.Location = new System.Drawing.Point(0, 16);
+            this.btnReceipt.Name = "btnReceipt";
+            this.btnReceipt.Size = new System.Drawing.Size(200, 77);
+            this.btnReceipt.TabIndex = 4;
+            this.btnReceipt.Text = "Recibos";
+            this.btnReceipt.UseSelectable = true;
+            this.btnReceipt.Click += new System.EventHandler(this.mtReceipt_Click);
+            // 
+            // mtAdPrecios
+            // 
+            this.mtAdPrecios.ActiveControl = null;
+            this.mtAdPrecios.Location = new System.Drawing.Point(0, 294);
+            this.mtAdPrecios.Name = "mtAdPrecios";
+            this.mtAdPrecios.Size = new System.Drawing.Size(200, 68);
+            this.mtAdPrecios.TabIndex = 7;
+            this.mtAdPrecios.Text = "Ad Precios";
+            this.mtAdPrecios.UseSelectable = true;
+            this.mtAdPrecios.Click += new System.EventHandler(this.mtAdPrecios_Click);
             // 
             // metroPanel2
             // 
@@ -139,23 +160,14 @@
             this.metroStyleManager1.Owner = this;
             this.metroStyleManager1.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
-            // mtAdmReceipt
-            // 
-            this.mtAdmReceipt.ActiveControl = null;
-            this.mtAdmReceipt.Location = new System.Drawing.Point(0, 373);
-            this.mtAdmReceipt.Name = "mtAdmReceipt";
-            this.mtAdmReceipt.Size = new System.Drawing.Size(200, 89);
-            this.mtAdmReceipt.TabIndex = 9;
-            this.mtAdmReceipt.Text = "Ad Recibos";
-            this.mtAdmReceipt.UseSelectable = true;
-            this.mtAdmReceipt.Click += new System.EventHandler(this.mtAdmReceipt_Click);
-            // 
             // frmDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(937, 654);
             this.Controls.Add(this.metroPanel2);
+            this.Controls.Add(this.mtAdmArea);
+            this.Controls.Add(this.mtPriceTag);
             this.Controls.Add(this.metroPanel1);
             this.IsMdiContainer = true;
             this.Name = "frmDashboard";
@@ -180,5 +192,6 @@
         private MetroFramework.Components.MetroStyleManager metroStyleManager1;
         private MetroFramework.Controls.MetroTile mtPriceTag;
         private MetroFramework.Controls.MetroTile mtAdmReceipt;
+        private MetroFramework.Controls.MetroTile btnUsers;
     }
 }

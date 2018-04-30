@@ -271,5 +271,16 @@ namespace ControlApp.OnPremises.Panels.Admin
             txtNameCustomer.Text = dgvReceipt[1, Row].Value.ToString();
             txtQuantity.Text = dgvReceipt[2, Row].Value.ToString();
         }
+
+        private void btnLoadRpt_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCleanFields_Click(object sender, EventArgs e)
+        {
+            CleanFields();
+            LoadDataGrid();
+        }
     }
 }

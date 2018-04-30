@@ -27,6 +27,7 @@ namespace ControlApp.OnPremises.Panels
         public void CleanFields()
         {
             txtAreaname.Text = "";
+            txtRetrieveByName.Text  = "";
         }
         private void LoadDataGrid()
         {
@@ -171,6 +172,11 @@ namespace ControlApp.OnPremises.Panels
             {
                 throw;
             }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            CleanFields();
         }
     }
 }

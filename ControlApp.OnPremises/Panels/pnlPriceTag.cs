@@ -25,9 +25,11 @@ namespace ControlApp.OnPremises.Panels
         {
             InitializeComponent();
             this.StyleManager.Update();
+            btnUpdate.Enabled = false;
         }
         public void CleanFields()
         {
+            btnUpdate.Enabled = false;
             txtPriceTag.Text = "";
             txtDescripPrice.Text = "";
         }
@@ -160,6 +162,7 @@ namespace ControlApp.OnPremises.Panels
         }
         private void dgvPriceTag_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            btnUpdate.Enabled = true;
             try
             {
                 int Row = dgvPriceTag.CurrentRow.Index;
@@ -199,6 +202,10 @@ namespace ControlApp.OnPremises.Panels
                     throw;
                 }
             }
+        }
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            CleanFields();
         }
     }
 }

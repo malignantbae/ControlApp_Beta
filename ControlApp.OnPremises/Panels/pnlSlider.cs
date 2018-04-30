@@ -95,7 +95,7 @@ namespace ControlApp.OnPremises.Panels
         {
             this.Width = _owner.Width;
             this.Height = _owner.Height - 77;
-            this.Location = new Point(_loaded ? 0 : _owner.Width, 50);
+            this.Location = new Point(_loaded ? 0 : _owner.Width, 0);
         }
     }
 }       

@@ -268,5 +268,10 @@ namespace ControlApp.OnPremises.Panels.Admin
                 throw;
             }
         }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            CleanFields();
+        }
     }
 }

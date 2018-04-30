@@ -43,9 +43,12 @@ namespace ControlApp.OnPremises.Panels
         }
         public void CleanFields()
         {
+            btnPrint.Enabled = false;
+            btnDelete.Enabled = false;
             txtNameCustomer.Text = "";
             txtQuantity.Text = "";
             txtRetrieveByName.Text = "";
+
         }
         public void LoadDataGrid()
         {
