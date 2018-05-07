@@ -44,6 +44,7 @@
     <Compile Include="Crud\CrudActionEnum.cs" />
     <Compile Include="Crud\CrudArea.cs" />
     <Compile Include="Crud\CrudCustomer.cs" />
+    <Compile Include="Crud\CrudDepartament.cs" />
     <Compile Include="Crud\CrudFactory.cs" />
     <Compile Include="Crud\CrudPricetag.cs" />
     <Compile Include="Crud\CrudReceipt.cs" />

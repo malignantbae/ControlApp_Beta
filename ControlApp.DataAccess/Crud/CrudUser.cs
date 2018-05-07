@@ -21,7 +21,10 @@ namespace ControlApp.DataAccess.Crud
 
         public override bool Create(BaseEntity entity)
         {
-            throw new NotImplementedException();
+            var ObjUser = (User)entity;
+            Context.SP_CRUD_USER((int)CrudActionEnum.Create, ObjUser.IdSession, ObjUser.ID_User, ObjUser.User_name,ObjUser.User_email
+                ,ObjUser.ID_Dpt, ObjUser.ID_area,ObjUser.ID_position,ObjUser.ID_Role,ObjUser.User_nickname,ObjUser.User_pass);
+            return true;
         }
 
         public override bool Delete(BaseEntity entity)
