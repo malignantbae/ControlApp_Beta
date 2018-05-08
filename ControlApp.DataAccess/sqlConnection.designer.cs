@@ -186,13 +186,6 @@ namespace ControlApp.DataAccess
 			return ((ISingleResult<SP_CRUD_PRICE_TAGResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_POSITION")]
-		public ISingleResult<SP_CRUD_POSITIONResult> SP_CRUD_POSITION([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_PST, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_AREA, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(75)")] string pNAME_PST)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_PST, pID_AREA, pID_BY, pNAME_PST);
-			return ((ISingleResult<SP_CRUD_POSITIONResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_DPT")]
 		public ISingleResult<SP_CRUD_DPTResult> SP_CRUD_DPT([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_DPT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(75)")] string pNAME_DPT)
 		{
@@ -215,10 +208,24 @@ namespace ControlApp.DataAccess
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_USER")]
-		public ISingleResult<SP_CRUD_USERResult> SP_CRUD_USER([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_USER, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(150)")] string pUSER_NAME, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(150)")] string pUSER_EMAIL, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_DPT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_AREA, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_PST, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_ROLE, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string pUSER_NICKNAME, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string pUSER_PASSWORD)
+		public ISingleResult<SP_CRUD_USERResult> SP_CRUD_USER([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string pID_USER, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(150)")] string pUSER_NAME, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(150)")] string pUSER_EMAIL, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_DPT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_AREA, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_PST, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_ROLE, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string pUSER_NICKNAME, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string pUSER_PASSWORD)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_BY, pID_USER, pUSER_NAME, pUSER_EMAIL, pID_DPT, pID_AREA, pID_PST, pID_ROLE, pUSER_NICKNAME, pUSER_PASSWORD);
 			return ((ISingleResult<SP_CRUD_USERResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_POSITION")]
+		public ISingleResult<SP_CRUD_POSITIONResult> SP_CRUD_POSITION([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_PST, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_AREA, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(75)")] string pNAME_PST)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_PST, pID_AREA, pID_BY, pNAME_PST);
+			return ((ISingleResult<SP_CRUD_POSITIONResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_ROLE")]
+		public ISingleResult<SP_CRUD_ROLEResult> SP_CRUD_ROLE([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_ROLE, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(75)")] string pNAME_ROLE, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string pDESCRIP_ROLE)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_BY, pID_ROLE, pNAME_ROLE, pDESCRIP_ROLE);
+			return ((ISingleResult<SP_CRUD_ROLEResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -3411,158 +3418,6 @@ namespace ControlApp.DataAccess
 		}
 	}
 	
-	public partial class SP_CRUD_POSITIONResult
-	{
-		
-		private int _ID_POSITION;
-		
-		private string _AREA_NAME;
-		
-		private string _NAME_POSITION;
-		
-		private string _DESCRIP_POSITION;
-		
-		private bool _POSITION_STATE;
-		
-		private string _CREATEBY_DPT;
-		
-		private string _UPDATEBY_DPT;
-		
-		private System.DateTime _POSITION_CREATEDATE;
-		
-		public SP_CRUD_POSITIONResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_POSITION", DbType="Int NOT NULL")]
-		public int ID_POSITION
-		{
-			get
-			{
-				return this._ID_POSITION;
-			}
-			set
-			{
-				if ((this._ID_POSITION != value))
-				{
-					this._ID_POSITION = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AREA_NAME", DbType="VarChar(25) NOT NULL", CanBeNull=false)]
-		public string AREA_NAME
-		{
-			get
-			{
-				return this._AREA_NAME;
-			}
-			set
-			{
-				if ((this._AREA_NAME != value))
-				{
-					this._AREA_NAME = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_POSITION", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string NAME_POSITION
-		{
-			get
-			{
-				return this._NAME_POSITION;
-			}
-			set
-			{
-				if ((this._NAME_POSITION != value))
-				{
-					this._NAME_POSITION = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DESCRIP_POSITION", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
-		public string DESCRIP_POSITION
-		{
-			get
-			{
-				return this._DESCRIP_POSITION;
-			}
-			set
-			{
-				if ((this._DESCRIP_POSITION != value))
-				{
-					this._DESCRIP_POSITION = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POSITION_STATE", DbType="Bit NOT NULL")]
-		public bool POSITION_STATE
-		{
-			get
-			{
-				return this._POSITION_STATE;
-			}
-			set
-			{
-				if ((this._POSITION_STATE != value))
-				{
-					this._POSITION_STATE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATEBY_DPT", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string CREATEBY_DPT
-		{
-			get
-			{
-				return this._CREATEBY_DPT;
-			}
-			set
-			{
-				if ((this._CREATEBY_DPT != value))
-				{
-					this._CREATEBY_DPT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UPDATEBY_DPT", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string UPDATEBY_DPT
-		{
-			get
-			{
-				return this._UPDATEBY_DPT;
-			}
-			set
-			{
-				if ((this._UPDATEBY_DPT != value))
-				{
-					this._UPDATEBY_DPT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POSITION_CREATEDATE", DbType="Date NOT NULL")]
-		public System.DateTime POSITION_CREATEDATE
-		{
-			get
-			{
-				return this._POSITION_CREATEDATE;
-			}
-			set
-			{
-				if ((this._POSITION_CREATEDATE != value))
-				{
-					this._POSITION_CREATEDATE = value;
-				}
-			}
-		}
-	}
-	
 	public partial class SP_CRUD_DPTResult
 	{
 		
@@ -4032,6 +3887,8 @@ namespace ControlApp.DataAccess
 		
 		private string _AREA_NAME;
 		
+		private string _NAME_POSITION;
+		
 		private string _NAME_ROLE;
 		
 		private string _USER_PASSWORD;
@@ -4126,6 +3983,22 @@ namespace ControlApp.DataAccess
 				if ((this._AREA_NAME != value))
 				{
 					this._AREA_NAME = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_POSITION", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string NAME_POSITION
+		{
+			get
+			{
+				return this._NAME_POSITION;
+			}
+			set
+			{
+				if ((this._NAME_POSITION != value))
+				{
+					this._NAME_POSITION = value;
 				}
 			}
 		}
@@ -4238,6 +4111,292 @@ namespace ControlApp.DataAccess
 				if ((this._USER_CREATEDATE != value))
 				{
 					this._USER_CREATEDATE = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_CRUD_POSITIONResult
+	{
+		
+		private int _ID_POSITION;
+		
+		private string _AREA_NAME;
+		
+		private string _NAME_POSITION;
+		
+		private string _DESCRIP_POSITION;
+		
+		private bool _POSITION_STATE;
+		
+		private string _CREATEBY_PST;
+		
+		private string _UPDATEBY_PST;
+		
+		private System.DateTime _POSITION_CREATEDATE;
+		
+		public SP_CRUD_POSITIONResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_POSITION", DbType="Int NOT NULL")]
+		public int ID_POSITION
+		{
+			get
+			{
+				return this._ID_POSITION;
+			}
+			set
+			{
+				if ((this._ID_POSITION != value))
+				{
+					this._ID_POSITION = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AREA_NAME", DbType="VarChar(25) NOT NULL", CanBeNull=false)]
+		public string AREA_NAME
+		{
+			get
+			{
+				return this._AREA_NAME;
+			}
+			set
+			{
+				if ((this._AREA_NAME != value))
+				{
+					this._AREA_NAME = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_POSITION", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string NAME_POSITION
+		{
+			get
+			{
+				return this._NAME_POSITION;
+			}
+			set
+			{
+				if ((this._NAME_POSITION != value))
+				{
+					this._NAME_POSITION = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DESCRIP_POSITION", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
+		public string DESCRIP_POSITION
+		{
+			get
+			{
+				return this._DESCRIP_POSITION;
+			}
+			set
+			{
+				if ((this._DESCRIP_POSITION != value))
+				{
+					this._DESCRIP_POSITION = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POSITION_STATE", DbType="Bit NOT NULL")]
+		public bool POSITION_STATE
+		{
+			get
+			{
+				return this._POSITION_STATE;
+			}
+			set
+			{
+				if ((this._POSITION_STATE != value))
+				{
+					this._POSITION_STATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATEBY_PST", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string CREATEBY_PST
+		{
+			get
+			{
+				return this._CREATEBY_PST;
+			}
+			set
+			{
+				if ((this._CREATEBY_PST != value))
+				{
+					this._CREATEBY_PST = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UPDATEBY_PST", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string UPDATEBY_PST
+		{
+			get
+			{
+				return this._UPDATEBY_PST;
+			}
+			set
+			{
+				if ((this._UPDATEBY_PST != value))
+				{
+					this._UPDATEBY_PST = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POSITION_CREATEDATE", DbType="Date NOT NULL")]
+		public System.DateTime POSITION_CREATEDATE
+		{
+			get
+			{
+				return this._POSITION_CREATEDATE;
+			}
+			set
+			{
+				if ((this._POSITION_CREATEDATE != value))
+				{
+					this._POSITION_CREATEDATE = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_CRUD_ROLEResult
+	{
+		
+		private int _ID_ROLE;
+		
+		private string _NAME_ROLE;
+		
+		private string _DESCRIP_ROLE;
+		
+		private bool _ROLE_STATE;
+		
+		private string _ROLE_CREATEBY;
+		
+		private string _ROLE_UPDATEDBY;
+		
+		private System.DateTime _ROLE_CREATEDATE;
+		
+		public SP_CRUD_ROLEResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_ROLE", DbType="Int NOT NULL")]
+		public int ID_ROLE
+		{
+			get
+			{
+				return this._ID_ROLE;
+			}
+			set
+			{
+				if ((this._ID_ROLE != value))
+				{
+					this._ID_ROLE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_ROLE", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		public string NAME_ROLE
+		{
+			get
+			{
+				return this._NAME_ROLE;
+			}
+			set
+			{
+				if ((this._NAME_ROLE != value))
+				{
+					this._NAME_ROLE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DESCRIP_ROLE", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string DESCRIP_ROLE
+		{
+			get
+			{
+				return this._DESCRIP_ROLE;
+			}
+			set
+			{
+				if ((this._DESCRIP_ROLE != value))
+				{
+					this._DESCRIP_ROLE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_STATE", DbType="Bit NOT NULL")]
+		public bool ROLE_STATE
+		{
+			get
+			{
+				return this._ROLE_STATE;
+			}
+			set
+			{
+				if ((this._ROLE_STATE != value))
+				{
+					this._ROLE_STATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ROLE_CREATEBY
+		{
+			get
+			{
+				return this._ROLE_CREATEBY;
+			}
+			set
+			{
+				if ((this._ROLE_CREATEBY != value))
+				{
+					this._ROLE_CREATEBY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_UPDATEDBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ROLE_UPDATEDBY
+		{
+			get
+			{
+				return this._ROLE_UPDATEDBY;
+			}
+			set
+			{
+				if ((this._ROLE_UPDATEDBY != value))
+				{
+					this._ROLE_UPDATEDBY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_CREATEDATE", DbType="DateTime NOT NULL")]
+		public System.DateTime ROLE_CREATEDATE
+		{
+			get
+			{
+				return this._ROLE_CREATEDATE;
+			}
+			set
+			{
+				if ((this._ROLE_CREATEDATE != value))
+				{
+					this._ROLE_CREATEDATE = value;
 				}
 			}
 		}

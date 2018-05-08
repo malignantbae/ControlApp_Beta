@@ -8,7 +8,7 @@ namespace ControlApp.Entities.Objects
 {
     public class User : BaseEntity
     {
-        public int ID_User { get; set; }
+        public string ID_User { get; set; }
         public string User_name { get; set; }
         public string User_email { get; set; }
         public int ID_Dpt { get; set; }
@@ -23,7 +23,7 @@ namespace ControlApp.Entities.Objects
         public string User_pass { get; set; }
         public User()
         {
-            ID_User = 0;
+            ID_User = "N/A";
             User_name = "N/A";
             User_email = "N/A";
             ID_area = 0;
@@ -32,7 +32,7 @@ namespace ControlApp.Entities.Objects
             User_nickname = "N/A";
             User_pass = "N/A";
         }
-        public User(int pID_User, string pUser_name,  
+        public User(string pID_User, string pUser_name,  
             string pUser_email, int pID_Dpt, int pID_area, int pID_position, int pID_ROLE,
             string pUser_nickname, string pUser_pass)
         {
@@ -46,7 +46,7 @@ namespace ControlApp.Entities.Objects
             this.User_nickname = pUser_nickname;
             this.User_pass = pUser_pass;
         }
-        public User(int pID_User, string pUser_name, 
+        public User(string pID_User, string pUser_name, 
            string pUser_email, string pName_dpt, string pName_Area, string pName_Position, string pName_Role,
            string pUser_nickname, string pUser_pass)
         {
@@ -60,7 +60,7 @@ namespace ControlApp.Entities.Objects
             this.User_nickname = pUser_nickname;
             this.User_pass = pUser_pass;
         }
-        public User(int pID_User, string pUser_name,  
+        public User(string pID_User, string pUser_name,  
             string pUser_email, int pID_Dpt, int pID_area, int pID_position, int pID_ROLE, int pID_address,
             string pUser_nickname, string pUser_pass, bool pState, string pCreateBy, 
             string pUpdatedBy, DateTime pCreateDate)
@@ -78,7 +78,7 @@ namespace ControlApp.Entities.Objects
             this.UpdateBy = pUpdatedBy;
             this.CreateDate = pCreateDate;
         }
-        public User(int pID_User, string pUser_name, 
+        public User(string pID_User, string pUser_name, 
             string pUser_email, string pName_dpt, string pName_Area, string pName_Position, string pName_Role,
             string pUser_nickname, string pUser_pass, bool pState, string pCreateBy,
             string pUpdatedBy, DateTime pCreateDate)

@@ -169,23 +169,6 @@
       <Column Name="PRICE_TAG_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.SP_CRUD_POSITION" Method="SP_CRUD_POSITION">
-    <Parameter Name="p_ACTION" Type="System.Int32" DbType="Int" />
-    <Parameter Name="pID_PST" Type="System.Int32" DbType="Int" />
-    <Parameter Name="pID_AREA" Type="System.Int32" DbType="Int" />
-    <Parameter Name="pID_BY" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="pNAME_PST" Type="System.String" DbType="VarChar(75)" />
-    <ElementType Name="SP_CRUD_POSITIONResult">
-      <Column Name="ID_POSITION" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="AREA_NAME" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
-      <Column Name="NAME_POSITION" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="DESCRIP_POSITION" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
-      <Column Name="POSITION_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="CREATEBY_DPT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="UPDATEBY_DPT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="POSITION_CREATEDATE" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.SP_CRUD_DPT" Method="SP_CRUD_DPT">
     <Parameter Name="p_ACTION" Type="System.Int32" DbType="Int" />
     <Parameter Name="pID_DPT" Type="System.Int32" DbType="Int" />
@@ -242,7 +225,7 @@
   <Function Name="dbo.SP_CRUD_USER" Method="SP_CRUD_USER">
     <Parameter Name="p_ACTION" Type="System.Int32" DbType="Int" />
     <Parameter Name="pID_BY" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="pID_USER" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pID_USER" Type="System.String" DbType="VarChar(30)" />
     <Parameter Name="pUSER_NAME" Type="System.String" DbType="VarChar(150)" />
     <Parameter Name="pUSER_EMAIL" Type="System.String" DbType="VarChar(150)" />
     <Parameter Name="pID_DPT" Type="System.Int32" DbType="Int" />
@@ -257,6 +240,7 @@
       <Column Name="USER_EMAIL" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
       <Column Name="NAME_DPT" Type="System.String" DbType="VarChar(75) NOT NULL" CanBeNull="false" />
       <Column Name="AREA_NAME" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="NAME_POSITION" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="NAME_ROLE" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
       <Column Name="USER_PASSWORD" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
       <Column Name="USER_NICKNAME" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
@@ -264,6 +248,39 @@
       <Column Name="USER_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="USER_UPDATEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="USER_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_CRUD_POSITION" Method="SP_CRUD_POSITION">
+    <Parameter Name="p_ACTION" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pID_PST" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pID_AREA" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pID_BY" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="pNAME_PST" Type="System.String" DbType="VarChar(75)" />
+    <ElementType Name="SP_CRUD_POSITIONResult">
+      <Column Name="ID_POSITION" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AREA_NAME" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="NAME_POSITION" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRIP_POSITION" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="POSITION_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CREATEBY_PST" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UPDATEBY_PST" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="POSITION_CREATEDATE" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_CRUD_ROLE" Method="SP_CRUD_ROLE">
+    <Parameter Name="p_ACTION" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pID_BY" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="pID_ROLE" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pNAME_ROLE" Type="System.String" DbType="VarChar(75)" />
+    <Parameter Name="pDESCRIP_ROLE" Type="System.String" DbType="VarChar(100)" />
+    <ElementType Name="SP_CRUD_ROLEResult">
+      <Column Name="ID_ROLE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NAME_ROLE" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRIP_ROLE" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ROLE_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ROLE_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ROLE_UPDATEDBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ROLE_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
 </Database>

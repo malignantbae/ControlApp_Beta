@@ -91,7 +91,7 @@
         <elementListCompartment Id="db9660f1-9268-4d19-b079-bcdc6ad58cae" absoluteBounds="0.51500000000000012, 9.835, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.5 : 10.28125); (5.65625 : 10.28125); (5.65625 : 7.68430826822917)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.5 : 10.28125); (4.26041666666667 : 10.28125 : JumpStart); (4.42708333333333 : 10.28125 : JumpEnd); (5.65625 : 10.28125); (5.65625 : 7.68430826822917)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/sqlConnectionDataContext/TBL_POSITION/TBL_POSITION_TBL_USER" />
       <nodes>
         <classShapeMoniker Id="610a9e3f-8ee1-451b-964e-e05675f34c42" />
