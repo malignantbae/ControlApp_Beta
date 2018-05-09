@@ -12,7 +12,6 @@ namespace ControlApp.Entities.Objects
         public int ID_Area { get; set; }
         public string Name_Area { get; set; }
         public string Name_Position { get; set; }
-       
         public Position()
         {
             ID_Position = 0;

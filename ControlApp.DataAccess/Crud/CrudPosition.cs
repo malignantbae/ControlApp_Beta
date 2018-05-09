@@ -13,19 +13,19 @@ namespace ControlApp.DataAccess.Crud
         public override bool Activate(BaseEntity entity)
         {
             var ObjPst = (Position)entity;
-            Context.SP_CRUD_POSITION((int)CrudActionEnum.Activate, ObjPst.ID_Position, ObjPst.ID_Area, ObjPst.IdSession, ObjPst.Name_Position);
+            Context.SP_CRUD_POSITION((int)CrudActionEnum.Activate, ObjPst.ID_Position, ObjPst.ID_Area, ObjPst.UpdateBy, ObjPst.Name_Position);
             return true;
         }
         public override bool Create(BaseEntity entity)
         {
             var ObjPst = (Position)entity;
-            Context.SP_CRUD_POSITION((int)CrudActionEnum.Create, ObjPst.ID_Position, ObjPst.ID_Area ,ObjPst.IdSession, ObjPst.Name_Position);
+            Context.SP_CRUD_POSITION((int)CrudActionEnum.Create, ObjPst.ID_Position, ObjPst.ID_Area ,ObjPst.CreateBy, ObjPst.Name_Position);
             return true;
         }
         public override bool Delete(BaseEntity entity)
         {
             var ObjPst = (Position)entity;
-            Context.SP_CRUD_POSITION((int)CrudActionEnum.Delete, ObjPst.ID_Position, ObjPst.ID_Area, ObjPst.IdSession, ObjPst.Name_Position);
+            Context.SP_CRUD_POSITION((int)CrudActionEnum.Delete, ObjPst.ID_Position, ObjPst.ID_Area, ObjPst.UpdateBy, ObjPst.Name_Position);
             return true;
         }
         public override List<T> RetrieveAll<T>()
@@ -50,7 +50,7 @@ namespace ControlApp.DataAccess.Crud
         }
         public override List<T> RetrieveById<T>(BaseEntity entity)
         {
-            var ObjPst = new Position();
+            var ObjPst = (Position)entity;
             var lst = new List<T>();
             List<Position> MyList = new List<Position>();
             var Query = Context.SP_CRUD_POSITION((int)CrudActionEnum.RetrieveById, ObjPst.ID_Position, ObjPst.ID_Area, ObjPst.IdSession, ObjPst.Name_Position).ToList();
@@ -74,7 +74,7 @@ namespace ControlApp.DataAccess.Crud
         }
         public override List<T> RetrieveByName<T>(BaseEntity entity)
         {
-            var ObjPst = new Position();
+            var ObjPst = (Position)entity;
             var lst = new List<T>();
             List<Position> MyList = new List<Position>();
             var Query = Context.SP_CRUD_POSITION((int)CrudActionEnum.RetrieveByName, ObjPst.ID_Position, ObjPst.ID_Area, ObjPst.IdSession, ObjPst.Name_Position).ToList();
@@ -115,7 +115,7 @@ namespace ControlApp.DataAccess.Crud
         }
         public override List<T> SuperRetrieveById<T>(BaseEntity entity)
         {
-            var ObjPst = new Position();
+            var ObjPst = (Position)entity;
             var lst = new List<T>();
             List<Position> MyList = new List<Position>();
             var Query = Context.SP_CRUD_POSITION((int)CrudActionEnum.SuperRetrieveById, ObjPst.ID_Position, ObjPst.ID_Area, ObjPst.IdSession, ObjPst.Name_Position).ToList();
@@ -136,7 +136,7 @@ namespace ControlApp.DataAccess.Crud
         }
         public override List<T> SuperRetrieveByName<T>(BaseEntity entity)
         {
-            var ObjPst = new Position();
+            var ObjPst = (Position)entity;
             var lst = new List<T>();
             List<Position> MyList = new List<Position>();
             var Query = Context.SP_CRUD_POSITION((int)CrudActionEnum.SuperRetrieveByName, ObjPst.ID_Position, ObjPst.ID_Area, ObjPst.IdSession, ObjPst.Name_Position).ToList();
