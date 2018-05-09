@@ -158,6 +158,8 @@
             this.txtRetrieveByName.UseSelectable = true;
             this.txtRetrieveByName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtRetrieveByName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtRetrieveByName.TextChanged += new System.EventHandler(this.txtRetrieveByName_TextChanged);
+            this.txtRetrieveByName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRetrieveByName_KeyPress);
             // 
             // lblRetrieve
             // 
@@ -263,6 +265,7 @@
             this.txtName_Dpt.UseSelectable = true;
             this.txtName_Dpt.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtName_Dpt.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtName_Dpt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtName_Dpt_KeyPress);
             // 
             // lblName_Dpt
             // 

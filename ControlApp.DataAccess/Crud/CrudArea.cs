@@ -21,7 +21,7 @@ namespace ControlApp.DataAccess.Crud
         public override bool Create(BaseEntity entity)
         {
             var ObjArea = (Area)entity;
-            Context.SP_CRUD_AREA((int)CrudActionEnum.Create,ObjArea.IdSession,ObjArea.ID_Area,ObjArea.ID_Dpt,ObjArea.Area_name);
+            Context.SP_CRUD_AREA((int)CrudActionEnum.Create,ObjArea.CreateBy,ObjArea.ID_Area,ObjArea.ID_Dpt,ObjArea.Area_name);
             return true;
         }
         public override List<T> SuperRetrieve<T>()
@@ -85,7 +85,7 @@ namespace ControlApp.DataAccess.Crud
             return lst;
         }
         public override List<T> RetrieveAll<T>()
-        {
+       {
             var ObjArea = new Area();
             var lst = new List<T>();
             List<Area> MyList = new List<Area>();
@@ -148,19 +148,19 @@ namespace ControlApp.DataAccess.Crud
         public override bool Update(BaseEntity entity)
         {
             var ObjArea = (Area)entity;
-            Context.SP_CRUD_AREA((int)CrudActionEnum.Update, ObjArea.IdSession, ObjArea.ID_Area, ObjArea.ID_Dpt, ObjArea.Area_name);
+            Context.SP_CRUD_AREA((int)CrudActionEnum.Update, ObjArea.UpdateBy, ObjArea.ID_Area, ObjArea.ID_Dpt, ObjArea.Area_name);
             return true;
         }
         public override bool Delete(BaseEntity entity)
         {
             var ObjArea = (Area)entity;
-            Context.SP_CRUD_AREA((int)CrudActionEnum.Delete, ObjArea.IdSession, ObjArea.ID_Area, ObjArea.ID_Dpt, ObjArea.Area_name);
+            Context.SP_CRUD_AREA((int)CrudActionEnum.Delete, ObjArea.UpdateBy, ObjArea.ID_Area, ObjArea.ID_Dpt, ObjArea.Area_name);
             return true;
         }
         public override bool Activate(BaseEntity entity)
         {
             var ObjArea = (Area)entity;
-            Context.SP_CRUD_AREA((int)CrudActionEnum.Activate, ObjArea.IdSession, ObjArea.ID_Area, ObjArea.ID_Dpt, ObjArea.Area_name);
+            Context.SP_CRUD_AREA((int)CrudActionEnum.Activate, ObjArea.UpdateBy, ObjArea.ID_Area, ObjArea.ID_Dpt, ObjArea.Area_name);
             return true;
         }
         public override List<T> RetrieveByIdUser<T>(BaseEntity entity)

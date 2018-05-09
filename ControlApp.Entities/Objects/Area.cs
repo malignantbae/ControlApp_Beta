@@ -18,13 +18,13 @@ namespace ControlApp.Entities.Objects
             ID_Dpt = 0;
             Area_name = null;
         }
-        public Area(int pID_Area, string pArea_Name, int pID_Dpt)
+        public Area(int pID_Area, int pID_Dpt, string pArea_Name)
         {
             this.ID_Area = pID_Area;
             this.ID_Dpt = pID_Dpt;
             this.Area_name = pArea_Name;
         }
-        public Area(int pID_Area, string pArea_Name, string pName_Dpt)
+        public Area(int pID_Area,  string pName_Dpt ,string pArea_Name)
         {
             this.ID_Area = pID_Area;
             this.Name_Dpt = pName_Dpt;

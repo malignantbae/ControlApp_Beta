@@ -42,10 +42,11 @@ namespace ControlApp.OnPremises.Panels
                     dgvDpt.Rows.Add(RowDpt);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                MetroMessageBox.Show(this, "Ha ocurrido un error:" + ex + "Favor Comunicarse con el equipo de Sistemas",
+                      "Error en Acción", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -65,9 +66,10 @@ namespace ControlApp.OnPremises.Panels
                     ObjDpt.CreateBy = IdSession;
                     ApiAccess.CreateDepartament(ObjDpt);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    throw;
+                    MetroMessageBox.Show(this, "Ha ocurrido un error:" + ex + "Favor Comunicarse con el equipo de Sistemas",
+                      "Error en Acción", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 CleanFields();
                 LoadDataGrid();
@@ -75,11 +77,11 @@ namespace ControlApp.OnPremises.Panels
         }
         private bool Checkname(string pDptName)
         {
+            bool finded = false;
             try
-            {
-                bool finded = false;
+            {   
                 ObjDpt.Name_Dpt = pDptName;
-                var ListDpt = ApiAccess.SuperRetrieveAllByNameDepartament<Departament>(ObjDpt);
+                var ListDpt = ApiAccess.RetrieveAllByNameDepartament<Departament>(ObjDpt);
                 foreach (Departament element in ListDpt)
                 {
                     if (element.Name_Dpt == pDptName)
@@ -91,15 +93,19 @@ namespace ControlApp.OnPremises.Panels
                         }
                     }
                 }
-                return finded;
+                
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                MetroMessageBox.Show(this, "Ha ocurrido un error:" + ex + "Favor Comunicarse con el equipo de Sistemas",
+                      "Error en Acción", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            return finded;
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            int Row = dgvDpt.CurrentRow.Index;
+            int ID_Dpt = Convert.ToInt32(dgvDpt[0, Row].Value);
             string NameDpt = txtName_Dpt.Text;
             if (NameDpt.Trim() == string.Empty)
             {
@@ -110,13 +116,15 @@ namespace ControlApp.OnPremises.Panels
             {
                 try
                 {
+                    ObjDpt.ID_Dpt = ID_Dpt;
                     ObjDpt.Name_Dpt = NameDpt;
                     ObjDpt.UpdateBy = IdSession;
                     ApiAccess.UpdateDepartament(ObjDpt);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    throw;
+                    MetroMessageBox.Show(this, "Ha ocurrido un error:" + ex + "Favor Comunicarse con el equipo de Sistemas",
+                      "Error en Acción", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 CleanFields();
                 LoadDataGrid();
@@ -142,9 +150,10 @@ namespace ControlApp.OnPremises.Panels
                         ObjDpt.UpdateBy = IdSession;
                         ApiAccess.DeleteDepartament(ObjDpt);
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        throw;
+                        MetroMessageBox.Show(this, "Ha ocurrido un error:" + ex + "Favor Comunicarse con el equipo de Sistemas",
+                      "Error en Acción", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     CleanFields();
                     LoadDataGrid();
@@ -164,10 +173,49 @@ namespace ControlApp.OnPremises.Panels
                 txtName_Dpt.Text = dgvDpt[1, Row].Value.ToString();
                 btnUpdate.Enabled = true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                MetroMessageBox.Show(this, "Ha ocurrido un error:" + ex + "Favor Comunicarse con el equipo de Sistemas",
+                       "Error en Acción", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private void txtRetrieveByName_TextChanged(object sender, EventArgs e)
+        {
+
+            if (txtRetrieveByName.Text == "")
+            {
+                LoadDataGrid();
+                CleanFields();
+            }
+            else
+            {
+                try
+                {
+                    dgvDpt.Rows.Clear();
+                    ObjDpt.Name_Dpt = txtRetrieveByName.Text;
+                    var ListDpt = ApiAccess.RetrieveAllByNameDepartament<Departament>(ObjDpt);
+                    foreach (Departament element in ListDpt)
+                    {
+                        string[] RowDpt;
+                        RowDpt = new string[] { element.ID_Dpt.ToString(), element.Name_Dpt};
+                        dgvDpt.Rows.Add(RowDpt);
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    MetroMessageBox.Show(this, "Ha ocurrido un error:" + ex + "Favor Comunicarse con el equipo de Sistemas",
+                      "Error en Acción", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        private void txtRetrieveByName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+        private void txtName_Dpt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
         }
     }
 }

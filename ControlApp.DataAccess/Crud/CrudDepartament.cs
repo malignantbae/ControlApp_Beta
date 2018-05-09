@@ -44,7 +44,7 @@ namespace ControlApp.DataAccess.Crud
         }
         public override List<T> SuperRetrieveById<T>(BaseEntity entity)
         {
-            var ObjDpt = new Departament();
+            var ObjDpt = (Departament)entity;
             var lst = new List<T>();
             List<Departament> MyList = new List<Departament>();
             var Query = Context.SP_CRUD_DPT((int)CrudActionEnum.SuperRetrieveById, ObjDpt.ID_Dpt, ObjDpt.IdSession, ObjDpt.Name_Dpt).ToList();
@@ -64,7 +64,7 @@ namespace ControlApp.DataAccess.Crud
         }
         public override List<T> SuperRetrieveByName<T>(BaseEntity entity)
         {
-            var ObjDpt = new Departament();
+            var ObjDpt = (Departament)entity;
             var lst = new List<T>();
             List<Departament> MyList = new List<Departament>();
             var Query = Context.SP_CRUD_DPT((int)CrudActionEnum.SuperRetrieveByName, ObjDpt.ID_Dpt, ObjDpt.IdSession, ObjDpt.Name_Dpt).ToList();
@@ -104,7 +104,7 @@ namespace ControlApp.DataAccess.Crud
         }
         public override List<T> RetrieveById<T>(BaseEntity entity)
         {
-            var ObjDpt = new Departament();
+            var ObjDpt = (Departament)entity;
             var lst = new List<T>();
             List<Departament> MyList = new List<Departament>();
             var Query = Context.SP_CRUD_DPT((int)CrudActionEnum.RetrieveById, ObjDpt.ID_Dpt, ObjDpt.IdSession, ObjDpt.Name_Dpt).ToList();
@@ -124,7 +124,7 @@ namespace ControlApp.DataAccess.Crud
         }
         public override List<T> RetrieveByName<T>(BaseEntity entity)
         {
-            var ObjDpt = new Departament();
+            var ObjDpt = (Departament)entity;
             var lst = new List<T>();
             List<Departament> MyList = new List<Departament>();
             var Query = Context.SP_CRUD_DPT((int)CrudActionEnum.RetrieveByName, ObjDpt.ID_Dpt, ObjDpt.IdSession, ObjDpt.Name_Dpt).ToList();

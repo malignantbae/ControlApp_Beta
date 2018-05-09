@@ -35,7 +35,7 @@
             this.metroStyleManager1 = new MetroFramework.Components.MetroStyleManager(this.components);
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
-            this.cbArea_Id = new MetroFramework.Controls.MetroComboBox();
+            this.cbDpt_Id = new MetroFramework.Controls.MetroComboBox();
             this.lblDpt_Id = new MetroFramework.Controls.MetroLabel();
             this.btnDelete = new MetroFramework.Controls.MetroTile();
             this.btnRefresh = new MetroFramework.Controls.MetroTile();
@@ -72,7 +72,7 @@
             // 
             // metroTabPage1
             // 
-            this.metroTabPage1.Controls.Add(this.cbArea_Id);
+            this.metroTabPage1.Controls.Add(this.cbDpt_Id);
             this.metroTabPage1.Controls.Add(this.lblDpt_Id);
             this.metroTabPage1.Controls.Add(this.btnDelete);
             this.metroTabPage1.Controls.Add(this.btnRefresh);
@@ -96,16 +96,16 @@
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
             // 
-            // cbArea_Id
+            // cbDpt_Id
             // 
-            this.cbArea_Id.FormattingEnabled = true;
-            this.cbArea_Id.ItemHeight = 23;
-            this.cbArea_Id.Location = new System.Drawing.Point(107, 84);
-            this.cbArea_Id.Name = "cbArea_Id";
-            this.cbArea_Id.Size = new System.Drawing.Size(172, 29);
-            this.cbArea_Id.TabIndex = 41;
-            this.cbArea_Id.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.cbArea_Id.UseSelectable = true;
+            this.cbDpt_Id.FormattingEnabled = true;
+            this.cbDpt_Id.ItemHeight = 23;
+            this.cbDpt_Id.Location = new System.Drawing.Point(107, 84);
+            this.cbDpt_Id.Name = "cbDpt_Id";
+            this.cbDpt_Id.Size = new System.Drawing.Size(172, 29);
+            this.cbDpt_Id.TabIndex = 41;
+            this.cbDpt_Id.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.cbDpt_Id.UseSelectable = true;
             // 
             // lblDpt_Id
             // 
@@ -252,6 +252,7 @@
             this.AREA_NAME.HeaderText = "Nombre";
             this.AREA_NAME.Name = "AREA_NAME";
             this.AREA_NAME.ReadOnly = true;
+            this.AREA_NAME.Width = 150;
             // 
             // btnCreate
             // 
@@ -281,7 +282,7 @@
             // 
             // 
             this.txtAreaname.CustomButton.Image = null;
-            this.txtAreaname.CustomButton.Location = new System.Drawing.Point(113, 1);
+            this.txtAreaname.CustomButton.Location = new System.Drawing.Point(150, 1);
             this.txtAreaname.CustomButton.Name = "";
             this.txtAreaname.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.txtAreaname.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -299,7 +300,7 @@
             this.txtAreaname.SelectionLength = 0;
             this.txtAreaname.SelectionStart = 0;
             this.txtAreaname.ShortcutsEnabled = true;
-            this.txtAreaname.Size = new System.Drawing.Size(135, 23);
+            this.txtAreaname.Size = new System.Drawing.Size(172, 23);
             this.txtAreaname.TabIndex = 22;
             this.txtAreaname.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.txtAreaname.UseSelectable = true;
@@ -347,7 +348,7 @@
         private MetroFramework.Controls.MetroLabel mtlblArea;
         private MetroFramework.Controls.MetroTile btnRefresh;
         private MetroFramework.Controls.MetroTile btnDelete;
-        private MetroFramework.Controls.MetroComboBox cbArea_Id;
+        private MetroFramework.Controls.MetroComboBox cbDpt_Id;
         private MetroFramework.Controls.MetroLabel lblDpt_Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_AREA;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_DPT;
