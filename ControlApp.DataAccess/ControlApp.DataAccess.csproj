@@ -57,6 +57,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="sqlConnection.cs">
+      <DependentUpon>sqlConnection.dbml</DependentUpon>
+    </Compile>
     <Compile Include="sqlConnection.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

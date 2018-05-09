@@ -2922,9 +2922,9 @@ namespace ControlApp.DataAccess
 		
 		private string _NAME_DPT;
 		
-		private string _CREATEBY_DPT;
-		
 		private bool _STATE_DPT;
+		
+		private string _CREATEBY_DPT;
 		
 		private string _UPDATEBY_DPT;
 		
@@ -2942,10 +2942,10 @@ namespace ControlApp.DataAccess
     partial void OnID_DPTChanged();
     partial void OnNAME_DPTChanging(string value);
     partial void OnNAME_DPTChanged();
-    partial void OnCREATEBY_DPTChanging(string value);
-    partial void OnCREATEBY_DPTChanged();
     partial void OnSTATE_DPTChanging(bool value);
     partial void OnSTATE_DPTChanged();
+    partial void OnCREATEBY_DPTChanging(string value);
+    partial void OnCREATEBY_DPTChanged();
     partial void OnUPDATEBY_DPTChanging(string value);
     partial void OnUPDATEBY_DPTChanged();
     partial void OnCREATEDATE_DPTChanging(System.DateTime value);
@@ -2999,26 +2999,6 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATEBY_DPT", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string CREATEBY_DPT
-		{
-			get
-			{
-				return this._CREATEBY_DPT;
-			}
-			set
-			{
-				if ((this._CREATEBY_DPT != value))
-				{
-					this.OnCREATEBY_DPTChanging(value);
-					this.SendPropertyChanging();
-					this._CREATEBY_DPT = value;
-					this.SendPropertyChanged("CREATEBY_DPT");
-					this.OnCREATEBY_DPTChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_DPT", DbType="Bit NOT NULL")]
 		public bool STATE_DPT
 		{
@@ -3035,6 +3015,26 @@ namespace ControlApp.DataAccess
 					this._STATE_DPT = value;
 					this.SendPropertyChanged("STATE_DPT");
 					this.OnSTATE_DPTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATEBY_DPT", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string CREATEBY_DPT
+		{
+			get
+			{
+				return this._CREATEBY_DPT;
+			}
+			set
+			{
+				if ((this._CREATEBY_DPT != value))
+				{
+					this.OnCREATEBY_DPTChanging(value);
+					this.SendPropertyChanging();
+					this._CREATEBY_DPT = value;
+					this.SendPropertyChanged("CREATEBY_DPT");
+					this.OnCREATEBY_DPTChanged();
 				}
 			}
 		}

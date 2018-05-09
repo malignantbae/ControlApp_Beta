@@ -43,6 +43,7 @@
     <Compile Include="Management\AreaManagement.cs" />
     <Compile Include="Management\BaseManagement.cs" />
     <Compile Include="Management\CustomerManagement.cs" />
+    <Compile Include="Management\DepartamentManagement.cs" />
     <Compile Include="Management\PricetagManagement.cs" />
     <Compile Include="Management\ReceiptManagement.cs" />
     <Compile Include="Management\UserManagement.cs" />

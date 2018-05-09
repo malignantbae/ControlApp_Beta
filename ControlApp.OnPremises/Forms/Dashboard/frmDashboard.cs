@@ -81,5 +81,37 @@ namespace ControlApp.OnPremises.Forms.Dashboard
             this.metroPanel2.Controls.Add(_pnlAdminReceipt);
             _pnlAdminReceipt.swipe();
         }
+
+        private void btnUsers_Click(object sender, EventArgs e)
+        {
+            this.metroPanel2.Controls.Clear();
+            pnlUser _pnlUser = new pnlUser(this);
+            this.metroPanel2.Controls.Add(_pnlUser);
+            _pnlUser.swipe();
+        }
+
+        private void btnDpto_Click(object sender, EventArgs e)
+        {
+            this.metroPanel2.Controls.Clear();
+            pnlDepartament _pnlDepartament = new pnlDepartament(this);
+            this.metroPanel2.Controls.Add(_pnlDepartament);
+            _pnlDepartament.swipe();
+        }
+
+        private void btnPosition_Click(object sender, EventArgs e)
+        {
+            this.metroPanel2.Controls.Clear();
+            pnlPosition _pnlPosition = new pnlPosition(this);
+            this.metroPanel2.Controls.Add(_pnlPosition);
+            _pnlPosition.swipe();
+        }
+
+        private void btnRole_Click(object sender, EventArgs e)
+        {
+            this.metroPanel2.Controls.Clear();
+            pnlRole _pnlRole = new pnlRole(this);
+            this.metroPanel2.Controls.Add(_pnlRole);
+            _pnlRole.swipe();
+        }
     }
 }

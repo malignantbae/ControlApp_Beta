@@ -173,10 +173,38 @@ namespace ControlApp.OnPremises.Panels
                 throw;
             }
         }
-
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             CleanFields();
+        }
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            int Row = dgvArea.CurrentRow.Index;
+            string AreaName = dgvArea[1, Row].Value.ToString();
+            if (dgvArea[1, Row].Value == null)
+            {
+                MetroMessageBox.Show(this, "Debe Seleccionar Al menos Algún Valor para Inactivar. \n Favor Intentelo Nuevamente", "Error en Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dgvArea.Focus();
+                return;
+            }
+            else
+            {
+                if (MetroFramework.MetroMessageBox.Show(this, "¿Desea Eliminar el Area de: " + AreaName + "?", "Confirmación de Acción", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    try
+                    {
+                        ObjArea.ID_Area = Convert.ToInt32(dgvArea[0, Row].Value);
+                        ObjArea.IdSession = pIdSession;
+                        ApiAccess.DeleteArea(ObjArea);
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+                    CleanFields();
+                    LoadDataGrid();
+                }
+            }
         }
     }
 }

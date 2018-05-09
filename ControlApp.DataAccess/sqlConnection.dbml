@@ -130,8 +130,8 @@
     <Type Name="TBL_DPT">
       <Column Name="ID_DPT" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="NAME_DPT" Type="System.String" DbType="VarChar(75) NOT NULL" CanBeNull="false" />
-      <Column Name="CREATEBY_DPT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="STATE_DPT" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CREATEBY_DPT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="UPDATEBY_DPT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="CREATEDATE_DPT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Association Name="TBL_DPT_TBL_AREA" Member="TBL_AREAs" ThisKey="ID_DPT" OtherKey="ID_DPT" Type="TBL_AREA" />

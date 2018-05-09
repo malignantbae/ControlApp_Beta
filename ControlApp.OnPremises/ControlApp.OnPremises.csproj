@@ -111,6 +111,18 @@
     <Compile Include="Panels\Admin\pnlAdminReceipt.Designer.cs">
       <DependentUpon>pnlAdminReceipt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Panels\pnlDepartament.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\pnlDepartament.Designer.cs">
+      <DependentUpon>pnlDepartament.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\pnlPosition.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\pnlPosition.Designer.cs">
+      <DependentUpon>pnlPosition.cs</DependentUpon>
+    </Compile>
     <Compile Include="Panels\pnlArea.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -129,11 +141,23 @@
     <Compile Include="Panels\pnlReceipt.Designer.cs">
       <DependentUpon>pnlReceipt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Panels\pnlRole.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\pnlRole.Designer.cs">
+      <DependentUpon>pnlRole.cs</DependentUpon>
+    </Compile>
     <Compile Include="Panels\pnlSlider.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Panels\pnlSlider.Designer.cs">
       <DependentUpon>pnlSlider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\pnlUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\pnlUser.Designer.cs">
+      <DependentUpon>pnlUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -161,14 +185,26 @@
     <EmbeddedResource Include="Panels\pnlArea.resx">
       <DependentUpon>pnlArea.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Panels\pnlDepartament.resx">
+      <DependentUpon>pnlDepartament.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\pnlPosition.resx">
+      <DependentUpon>pnlPosition.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Panels\pnlPriceTag.resx">
       <DependentUpon>pnlPriceTag.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Panels\pnlReceipt.resx">
       <DependentUpon>pnlReceipt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Panels\pnlRole.resx">
+      <DependentUpon>pnlRole.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Panels\pnlSlider.resx">
       <DependentUpon>pnlSlider.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\pnlUser.resx">
+      <DependentUpon>pnlUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

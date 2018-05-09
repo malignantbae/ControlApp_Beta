@@ -13,13 +13,13 @@ namespace ControlApp.DataAccess.Crud
         public override bool Create(BaseEntity entity)
         {
             var ObjDpt = (Departament)entity;
-            Context.SP_CRUD_DPT((int)CrudActionEnum.Create, ObjDpt.ID_Dpt, ObjDpt.IdSession, ObjDpt.Name_Dpt);
+            Context.SP_CRUD_DPT((int)CrudActionEnum.Create, ObjDpt.ID_Dpt, ObjDpt.CreateBy, ObjDpt.Name_Dpt);
             return true;
         }
         public override bool Delete(BaseEntity entity)
         {
             var ObjDpt = (Departament)entity;
-            Context.SP_CRUD_DPT((int)CrudActionEnum.Delete, ObjDpt.ID_Dpt, ObjDpt.IdSession, ObjDpt.Name_Dpt);
+            Context.SP_CRUD_DPT((int)CrudActionEnum.Delete, ObjDpt.ID_Dpt, ObjDpt.UpdateBy, ObjDpt.Name_Dpt);
             return true;
         }
         public override List<T> SuperRetrieve<T>()
@@ -145,7 +145,7 @@ namespace ControlApp.DataAccess.Crud
         public override bool Update(BaseEntity entity)
         {
             var ObjDpt = (Departament)entity;
-            Context.SP_CRUD_DPT((int)CrudActionEnum.Update, ObjDpt.ID_Dpt, ObjDpt.IdSession, ObjDpt.Name_Dpt);
+            Context.SP_CRUD_DPT((int)CrudActionEnum.Update, ObjDpt.ID_Dpt, ObjDpt.UpdateBy, ObjDpt.Name_Dpt);
             return true;
         }
         public override bool Activate(BaseEntity entity)

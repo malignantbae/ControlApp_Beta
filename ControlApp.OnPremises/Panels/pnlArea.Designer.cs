@@ -35,16 +35,20 @@
             this.metroStyleManager1 = new MetroFramework.Components.MetroStyleManager(this.components);
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
+            this.cbArea_Id = new MetroFramework.Controls.MetroComboBox();
+            this.lblDpt_Id = new MetroFramework.Controls.MetroLabel();
+            this.btnDelete = new MetroFramework.Controls.MetroTile();
+            this.btnRefresh = new MetroFramework.Controls.MetroTile();
             this.txtRetrieveByName = new MetroFramework.Controls.MetroTextBox();
             this.lblRetrieve = new MetroFramework.Controls.MetroLabel();
             this.dgvArea = new MetroFramework.Controls.MetroGrid();
             this.ID_AREA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_DPT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AREA_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnCreate = new MetroFramework.Controls.MetroTile();
             this.btnUpdate = new MetroFramework.Controls.MetroTile();
             this.txtAreaname = new MetroFramework.Controls.MetroTextBox();
             this.mtlblArea = new MetroFramework.Controls.MetroLabel();
-            this.btnRefresh = new MetroFramework.Controls.MetroTile();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
@@ -58,7 +62,7 @@
             // metroTabControl1
             // 
             this.metroTabControl1.Controls.Add(this.metroTabPage1);
-            this.metroTabControl1.Location = new System.Drawing.Point(0, 3);
+            this.metroTabControl1.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl1.Name = "metroTabControl1";
             this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(697, 571);
@@ -68,6 +72,9 @@
             // 
             // metroTabPage1
             // 
+            this.metroTabPage1.Controls.Add(this.cbArea_Id);
+            this.metroTabPage1.Controls.Add(this.lblDpt_Id);
+            this.metroTabPage1.Controls.Add(this.btnDelete);
             this.metroTabPage1.Controls.Add(this.btnRefresh);
             this.metroTabPage1.Controls.Add(this.txtRetrieveByName);
             this.metroTabPage1.Controls.Add(this.lblRetrieve);
@@ -88,6 +95,49 @@
             this.metroTabPage1.VerticalScrollbarBarColor = true;
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
+            // 
+            // cbArea_Id
+            // 
+            this.cbArea_Id.FormattingEnabled = true;
+            this.cbArea_Id.ItemHeight = 23;
+            this.cbArea_Id.Location = new System.Drawing.Point(107, 84);
+            this.cbArea_Id.Name = "cbArea_Id";
+            this.cbArea_Id.Size = new System.Drawing.Size(172, 29);
+            this.cbArea_Id.TabIndex = 41;
+            this.cbArea_Id.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.cbArea_Id.UseSelectable = true;
+            // 
+            // lblDpt_Id
+            // 
+            this.lblDpt_Id.AutoSize = true;
+            this.lblDpt_Id.Location = new System.Drawing.Point(6, 94);
+            this.lblDpt_Id.Name = "lblDpt_Id";
+            this.lblDpt_Id.Size = new System.Drawing.Size(95, 19);
+            this.lblDpt_Id.TabIndex = 40;
+            this.lblDpt_Id.Text = "Departamento";
+            this.lblDpt_Id.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.ActiveControl = null;
+            this.btnDelete.Location = new System.Drawing.Point(178, 3);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(83, 60);
+            this.btnDelete.TabIndex = 35;
+            this.btnDelete.Text = "Eliminar";
+            this.btnDelete.UseSelectable = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.ActiveControl = null;
+            this.btnRefresh.Location = new System.Drawing.Point(267, 3);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(83, 60);
+            this.btnRefresh.TabIndex = 29;
+            this.btnRefresh.Text = "Refrescar";
+            this.btnRefresh.UseSelectable = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // txtRetrieveByName
             // 
@@ -151,6 +201,7 @@
             this.dgvArea.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArea.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID_AREA,
+            this.ID_DPT,
             this.AREA_NAME});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
@@ -163,7 +214,7 @@
             this.dgvArea.EnableHeadersVisualStyles = false;
             this.dgvArea.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgvArea.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.dgvArea.Location = new System.Drawing.Point(-4, 113);
+            this.dgvArea.Location = new System.Drawing.Point(-4, 158);
             this.dgvArea.Name = "dgvArea";
             this.dgvArea.ReadOnly = true;
             this.dgvArea.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -177,7 +228,7 @@
             this.dgvArea.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvArea.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvArea.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvArea.Size = new System.Drawing.Size(697, 417);
+            this.dgvArea.Size = new System.Drawing.Size(697, 372);
             this.dgvArea.TabIndex = 27;
             this.dgvArea.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.dgvArea.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArea_CellClick);
@@ -189,9 +240,16 @@
             this.ID_AREA.ReadOnly = true;
             this.ID_AREA.Visible = false;
             // 
+            // ID_DPT
+            // 
+            this.ID_DPT.HeaderText = "Departamento";
+            this.ID_DPT.Name = "ID_DPT";
+            this.ID_DPT.ReadOnly = true;
+            this.ID_DPT.Width = 115;
+            // 
             // AREA_NAME
             // 
-            this.AREA_NAME.HeaderText = "Area";
+            this.AREA_NAME.HeaderText = "Nombre";
             this.AREA_NAME.Name = "AREA_NAME";
             this.AREA_NAME.ReadOnly = true;
             // 
@@ -232,7 +290,7 @@
             this.txtAreaname.CustomButton.UseSelectable = true;
             this.txtAreaname.CustomButton.Visible = false;
             this.txtAreaname.Lines = new string[0];
-            this.txtAreaname.Location = new System.Drawing.Point(66, 84);
+            this.txtAreaname.Location = new System.Drawing.Point(107, 124);
             this.txtAreaname.MaxLength = 32767;
             this.txtAreaname.Name = "txtAreaname";
             this.txtAreaname.PasswordChar = '\0';
@@ -251,23 +309,12 @@
             // mtlblArea
             // 
             this.mtlblArea.AutoSize = true;
-            this.mtlblArea.Location = new System.Drawing.Point(1, 88);
+            this.mtlblArea.Location = new System.Drawing.Point(6, 128);
             this.mtlblArea.Name = "mtlblArea";
             this.mtlblArea.Size = new System.Drawing.Size(59, 19);
             this.mtlblArea.TabIndex = 26;
             this.mtlblArea.Text = "Nombre";
             this.mtlblArea.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.ActiveControl = null;
-            this.btnRefresh.Location = new System.Drawing.Point(178, 3);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(83, 60);
-            this.btnRefresh.TabIndex = 29;
-            this.btnRefresh.Text = "Refrescar";
-            this.btnRefresh.UseSelectable = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // pnlArea
             // 
@@ -294,12 +341,16 @@
         private MetroFramework.Controls.MetroTextBox txtRetrieveByName;
         private MetroFramework.Controls.MetroLabel lblRetrieve;
         private MetroFramework.Controls.MetroGrid dgvArea;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_AREA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AREA_NAME;
         private MetroFramework.Controls.MetroTile btnCreate;
         private MetroFramework.Controls.MetroTile btnUpdate;
         private MetroFramework.Controls.MetroTextBox txtAreaname;
         private MetroFramework.Controls.MetroLabel mtlblArea;
         private MetroFramework.Controls.MetroTile btnRefresh;
+        private MetroFramework.Controls.MetroTile btnDelete;
+        private MetroFramework.Controls.MetroComboBox cbArea_Id;
+        private MetroFramework.Controls.MetroLabel lblDpt_Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_AREA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_DPT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AREA_NAME;
     }
 }
