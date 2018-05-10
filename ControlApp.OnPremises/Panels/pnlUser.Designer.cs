@@ -153,7 +153,6 @@
             this.txtpass.UseSelectable = true;
             this.txtpass.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtpass.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.txtpass.Click += new System.EventHandler(this.metroTextBox2_Click);
             // 
             // lblUser_Pass
             // 
@@ -268,6 +267,7 @@
             this.cbId_Area.TabIndex = 7;
             this.cbId_Area.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.cbId_Area.UseSelectable = true;
+            this.cbId_Area.TextChanged += new System.EventHandler(this.cbId_Area_TextChanged);
             // 
             // lblId_Dpt
             // 
@@ -289,6 +289,7 @@
             this.cbId_Dpt.TabIndex = 6;
             this.cbId_Dpt.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.cbId_Dpt.UseSelectable = true;
+            this.cbId_Dpt.TextChanged += new System.EventHandler(this.cbId_Dpt_TextChanged);
             // 
             // txtEmail_User
             // 
@@ -562,6 +563,7 @@
             this.btnCreate.TabIndex = 24;
             this.btnCreate.Text = "Agregar";
             this.btnCreate.UseSelectable = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnUpdate
             // 

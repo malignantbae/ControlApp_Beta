@@ -56,6 +56,8 @@ namespace ControlApp.OnPremises.Panels
             if (Checkname(NameDpt) == true || NameDpt.Trim() == string.Empty)
             {
                 MetroMessageBox.Show(this, "El Nombre -" + NameDpt + "- no es Valido. \n Favor Digite un Nombre Valido", "Error en Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                lblName_Dpt.Style = MetroFramework.MetroColorStyle.Red;
+                lblName_Dpt.Refresh();
                 txtName_Dpt.Focus();
             }
             else

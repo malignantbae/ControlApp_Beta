@@ -47,6 +47,7 @@
     <Compile Include="Management\PositionManagement.cs" />
     <Compile Include="Management\PricetagManagement.cs" />
     <Compile Include="Management\ReceiptManagement.cs" />
+    <Compile Include="Management\RoleManagement.cs" />
     <Compile Include="Management\UserManagement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

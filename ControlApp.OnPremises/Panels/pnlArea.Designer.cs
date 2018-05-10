@@ -106,6 +106,7 @@
             this.cbDpt_Id.TabIndex = 41;
             this.cbDpt_Id.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.cbDpt_Id.UseSelectable = true;
+            this.cbDpt_Id.TextChanged += new System.EventHandler(this.cbDpt_Id_TextChanged);
             // 
             // lblDpt_Id
             // 

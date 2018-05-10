@@ -19,13 +19,14 @@ namespace ControlApp.OnPremises.Panels.Admin
         string pIdSession = MystaticValues.IdSession;
         PositionManagement ApiAccess = new PositionManagement();
         AreaManagement ApiAccessArea = new AreaManagement();
+        DepartamentManagement ApiAccessDpt = new DepartamentManagement();
         /// PositionManagement ApiAccessPst = new PositionManagement();
         Position ObjPst = new Position();
         public pnlPosition(Form owner) : base(owner)
         {
             InitializeComponent();
             LoadDataGrid();
-            LoadCbArea(cbArea_Id);
+            LoadCbDpt(cbId_Dpt);
         }
         private void LoadDataGrid()
         {
@@ -48,12 +49,34 @@ namespace ControlApp.OnPremises.Panels.Admin
         }
         private void LoadCbArea(ComboBox cb)
         {
+            cb.Items.Clear();
             try
             {
+                var NameDpt = cbId_Dpt.Text;
                 var ListArea = ApiAccessArea.RetrieveAllArea<Area>();
                 foreach (Area element in ListArea)
                 {
-                    cb.Items.Add(element.Area_name);
+                    if (element.Name_Dpt == NameDpt)
+                    {
+                        cb.Items.Add(element.Area_name);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MetroMessageBox.Show(this, "Ha ocurrido un error:" + ex + "Favor Comunicarse con el equipo de Sistemas",
+                    "Error en Acción", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void LoadCbDpt(ComboBox cb)
+        {
+            try
+            {
+                var ListDpt = ApiAccessDpt.RetrieveAllDepartament<Departament>();
+                var ListArea = ApiAccessArea.RetrieveAllArea<Area>();
+                foreach (Departament element in ListDpt)
+                {
+                    cb.Items.Add(element.Name_Dpt);
                 }
             }
             catch (Exception ex)
@@ -137,6 +160,7 @@ namespace ControlApp.OnPremises.Panels.Admin
         {
             txtNamePosition.Text = "";
             cbArea_Id.SelectedIndex = -1;
+            cbId_Dpt.SelectedIndex = -1;
         }
         private void btnCreate_Click(object sender, EventArgs e)
         {
@@ -235,6 +259,7 @@ namespace ControlApp.OnPremises.Panels.Admin
             try
             {
                 int Row = dgvPst.CurrentRow.Index;
+                
                 cbArea_Id.Text = dgvPst[1, Row].Value.ToString();
                 txtNamePosition.Text = dgvPst[2, Row].Value.ToString();
                 btnUpdate.Enabled = true;
@@ -243,6 +268,14 @@ namespace ControlApp.OnPremises.Panels.Admin
             {
                 throw;
             }
+        }
+        private void cbId_Dpt_TextChanged(object sender, EventArgs e)
+        {
+            LoadCbArea(cbArea_Id);
+        }
+        private void cbArea_Id_TextChanged(object sender, EventArgs e)
+        {
+            txtNamePosition.Text = "";
         }
     }
 }

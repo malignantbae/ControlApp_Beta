@@ -27,6 +27,64 @@ namespace ControlApp.ApiCore.Management
                 ExcepMessage = "Logic Error" + ex;
             }
         }
+        public List<T> SuperRetrieveUser<T>()
+        {
+            var lst = new List<T>();
+            try
+            {
+                var ret = _factory.SuperRetrieve<User>();
+                foreach (var obj in ret)
+                {
+                    lst.Add((T)Convert.ChangeType(obj, typeof(T)));
+                }
+            }
+            catch (Exception ex)
+            {
+
+                ExcepMessage = "Logic Error" + ex;
+            }
+            return lst;
+        }
+        public List<T> SuperRetrieveAllByIdUser<T>(User Obj)
+        {
+            var lst = new List<T>();
+            try
+            {
+                var list = _factory.SuperRetrieveById<Role>(Obj);
+                if (list.Count > 0)
+                {
+                    foreach (var obj in list)
+                    {
+                        lst.Add((T)Convert.ChangeType(obj, typeof(T)));
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                //_exMan.ManageException(ex);
+            }
+            return lst;
+        }
+        public List<T> SuperRetrieveAllByNameUser<T>(User Obj)
+        {
+            var lst = new List<T>();
+            try
+            {
+                var list = _factory.SuperRetrieveByName<User>(Obj);
+                if (list.Count > 0)
+                {
+                    foreach (var obj in list)
+                    {
+                        lst.Add((T)Convert.ChangeType(obj, typeof(T)));
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                //_exMan.ManageException(ex);
+            }
+            return lst;
+        }
         public List<T> RetrieveAllUser<T>()
         {
             var lst = new List<T>();
@@ -45,19 +103,45 @@ namespace ControlApp.ApiCore.Management
             }
             return lst;
         }
-        public User RetrieveUser(User Obj)
+        public List<T> RetrieveAllByNameUser<T>(User Obj)
         {
-            var ret = new User();
+            var lst = new List<T>();
             try
             {
-                //ret = _factory.Retrieve<User>(Obj);
+                var list = _factory.RetrieveByName<Role>(Obj);
+                if (list.Count > 0)
+                {
+                    foreach (var obj in list)
+                    {
+                        lst.Add((T)Convert.ChangeType(obj, typeof(T)));
+                    }
+                }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
-                ExcepMessage = "Logic Error" + ex;
+                //_exMan.ManageException(ex);
             }
-            return ret;
+            return lst;
+        }
+        public List<T> RetrieveAllByIdUser<T>(User Obj)
+        {
+            var lst = new List<T>();
+            try
+            {
+                var list = _factory.RetrieveById<User>(Obj);
+                if (list.Count > 0)
+                {
+                    foreach (var obj in list)
+                    {
+                        lst.Add((T)Convert.ChangeType(obj, typeof(T)));
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                //_exMan.ManageException(ex);
+            }
+            return lst;
         }
         public void UpdateUser(User Obj)
         {
@@ -75,6 +159,17 @@ namespace ControlApp.ApiCore.Management
             try
             {
                 _factory.Delete(Obj);
+            }
+            catch (Exception ex)
+            {
+                ExcepMessage = "Logic Error" + ex;
+            }
+        }
+        public void ActivateUser(User Obj)
+        {
+            try
+            {
+                _factory.Activate(Obj);
             }
             catch (Exception ex)
             {

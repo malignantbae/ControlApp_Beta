@@ -278,5 +278,10 @@ namespace ControlApp.OnPremises.Panels
             }
             return IdDpt;
         }
+
+        private void cbDpt_Id_TextChanged(object sender, EventArgs e)
+        {
+            txtAreaname.Text = "";
+        }
     }
 }

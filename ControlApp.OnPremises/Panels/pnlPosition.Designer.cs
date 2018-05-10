@@ -33,6 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.mtPosition = new MetroFramework.Controls.MetroTabControl();
             this.tabPosition = new MetroFramework.Controls.MetroTabPage();
+            this.lblId_Dpt = new MetroFramework.Controls.MetroLabel();
+            this.cbId_Dpt = new MetroFramework.Controls.MetroComboBox();
             this.cbArea_Id = new MetroFramework.Controls.MetroComboBox();
             this.txtNamePosition = new MetroFramework.Controls.MetroTextBox();
             this.lblName_Pst = new MetroFramework.Controls.MetroLabel();
@@ -65,6 +67,8 @@
             // 
             // tabPosition
             // 
+            this.tabPosition.Controls.Add(this.lblId_Dpt);
+            this.tabPosition.Controls.Add(this.cbId_Dpt);
             this.tabPosition.Controls.Add(this.cbArea_Id);
             this.tabPosition.Controls.Add(this.txtNamePosition);
             this.tabPosition.Controls.Add(this.lblName_Pst);
@@ -89,16 +93,39 @@
             this.tabPosition.VerticalScrollbarHighlightOnWheel = false;
             this.tabPosition.VerticalScrollbarSize = 10;
             // 
+            // lblId_Dpt
+            // 
+            this.lblId_Dpt.AutoSize = true;
+            this.lblId_Dpt.Location = new System.Drawing.Point(8, 96);
+            this.lblId_Dpt.Name = "lblId_Dpt";
+            this.lblId_Dpt.Size = new System.Drawing.Size(95, 19);
+            this.lblId_Dpt.TabIndex = 41;
+            this.lblId_Dpt.Text = "Departamento";
+            this.lblId_Dpt.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // cbId_Dpt
+            // 
+            this.cbId_Dpt.FormattingEnabled = true;
+            this.cbId_Dpt.ItemHeight = 23;
+            this.cbId_Dpt.Location = new System.Drawing.Point(109, 86);
+            this.cbId_Dpt.Name = "cbId_Dpt";
+            this.cbId_Dpt.Size = new System.Drawing.Size(200, 29);
+            this.cbId_Dpt.TabIndex = 40;
+            this.cbId_Dpt.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.cbId_Dpt.UseSelectable = true;
+            this.cbId_Dpt.TextChanged += new System.EventHandler(this.cbId_Dpt_TextChanged);
+            // 
             // cbArea_Id
             // 
             this.cbArea_Id.FormattingEnabled = true;
             this.cbArea_Id.ItemHeight = 23;
-            this.cbArea_Id.Location = new System.Drawing.Point(90, 84);
+            this.cbArea_Id.Location = new System.Drawing.Point(109, 121);
             this.cbArea_Id.Name = "cbArea_Id";
             this.cbArea_Id.Size = new System.Drawing.Size(200, 29);
             this.cbArea_Id.TabIndex = 39;
             this.cbArea_Id.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.cbArea_Id.UseSelectable = true;
+            this.cbArea_Id.TextChanged += new System.EventHandler(this.cbArea_Id_TextChanged);
             // 
             // txtNamePosition
             // 
@@ -115,7 +142,7 @@
             this.txtNamePosition.CustomButton.UseSelectable = true;
             this.txtNamePosition.CustomButton.Visible = false;
             this.txtNamePosition.Lines = new string[0];
-            this.txtNamePosition.Location = new System.Drawing.Point(90, 119);
+            this.txtNamePosition.Location = new System.Drawing.Point(109, 156);
             this.txtNamePosition.MaxLength = 32767;
             this.txtNamePosition.Name = "txtNamePosition";
             this.txtNamePosition.PasswordChar = '\0';
@@ -134,7 +161,7 @@
             // lblName_Pst
             // 
             this.lblName_Pst.AutoSize = true;
-            this.lblName_Pst.Location = new System.Drawing.Point(8, 123);
+            this.lblName_Pst.Location = new System.Drawing.Point(8, 160);
             this.lblName_Pst.Name = "lblName_Pst";
             this.lblName_Pst.Size = new System.Drawing.Size(59, 19);
             this.lblName_Pst.TabIndex = 38;
@@ -200,7 +227,7 @@
             this.txtRetrieveByName.CustomButton.UseSelectable = true;
             this.txtRetrieveByName.CustomButton.Visible = false;
             this.txtRetrieveByName.Lines = new string[0];
-            this.txtRetrieveByName.Location = new System.Drawing.Point(551, 84);
+            this.txtRetrieveByName.Location = new System.Drawing.Point(551, 86);
             this.txtRetrieveByName.MaxLength = 32767;
             this.txtRetrieveByName.Name = "txtRetrieveByName";
             this.txtRetrieveByName.PasswordChar = '\0';
@@ -219,7 +246,7 @@
             // lblRetrieve
             // 
             this.lblRetrieve.AutoSize = true;
-            this.lblRetrieve.Location = new System.Drawing.Point(498, 88);
+            this.lblRetrieve.Location = new System.Drawing.Point(498, 90);
             this.lblRetrieve.Name = "lblRetrieve";
             this.lblRetrieve.Size = new System.Drawing.Size(47, 19);
             this.lblRetrieve.TabIndex = 28;
@@ -259,7 +286,7 @@
             this.dgvPst.EnableHeadersVisualStyles = false;
             this.dgvPst.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgvPst.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.dgvPst.Location = new System.Drawing.Point(-4, 148);
+            this.dgvPst.Location = new System.Drawing.Point(-4, 185);
             this.dgvPst.Name = "dgvPst";
             this.dgvPst.ReadOnly = true;
             this.dgvPst.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -273,7 +300,7 @@
             this.dgvPst.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvPst.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvPst.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPst.Size = new System.Drawing.Size(697, 382);
+            this.dgvPst.Size = new System.Drawing.Size(697, 345);
             this.dgvPst.TabIndex = 27;
             this.dgvPst.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.dgvPst.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPst_CellClick);
@@ -301,7 +328,7 @@
             // lblArea_Id
             // 
             this.lblArea_Id.AutoSize = true;
-            this.lblArea_Id.Location = new System.Drawing.Point(8, 94);
+            this.lblArea_Id.Location = new System.Drawing.Point(8, 131);
             this.lblArea_Id.Name = "lblArea_Id";
             this.lblArea_Id.Size = new System.Drawing.Size(37, 19);
             this.lblArea_Id.TabIndex = 26;
@@ -342,5 +369,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_PST;
         private System.Windows.Forms.DataGridViewTextBoxColumn Area;
         private System.Windows.Forms.DataGridViewTextBoxColumn NAME_PST;
+        private MetroFramework.Controls.MetroLabel lblId_Dpt;
+        private MetroFramework.Controls.MetroComboBox cbId_Dpt;
     }
 }
