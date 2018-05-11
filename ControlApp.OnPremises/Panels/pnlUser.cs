@@ -19,6 +19,7 @@ namespace ControlApp.OnPremises.Panels
         DepartamentManagement ApiAccessDpt = new DepartamentManagement();
         AreaManagement ApiAccessArea = new AreaManagement();
         PositionManagement ApiAccessPst = new PositionManagement();
+        RoleManagement ApiAccessRole = new RoleManagement();
         UserManagement ApiAccess = new UserManagement();
         User ObjUser = new User();
         string pIdSession = MystaticValues.IdSession;
@@ -27,6 +28,7 @@ namespace ControlApp.OnPremises.Panels
             InitializeComponent();
             LoadDataGrid();
             LoadCbDpt(cbId_Dpt);
+            LoadCbRole(cbRole_Id);
         }
         private void LoadCbDpt(ComboBox cb)
         {
@@ -79,6 +81,23 @@ namespace ControlApp.OnPremises.Panels
                     {
                         cb.Items.Add(element.Name_Position);
                     }
+                }
+            }
+            catch (Exception ex)
+            {
+                MetroMessageBox.Show(this, "Ha ocurrido un error:" + ex + "Favor Comunicarse con el equipo de Sistemas",
+                    "Error en Acción", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void LoadCbRole(ComboBox cb)
+        {
+            cb.Items.Clear();
+            try
+            {
+                var ListRole = ApiAccessRole.RetrieveAllRole<Role>();
+                foreach (Role element in ListRole)
+                {
+                        cb.Items.Add(element.Name_role);
                 }
             }
             catch (Exception ex)
@@ -178,6 +197,29 @@ namespace ControlApp.OnPremises.Panels
             }
             return IDPst;
         }
+        private int GetIDRole()
+        {
+            int IDRole = 0;
+            try
+            {
+                var NameRole = cbRole_Id.Text;
+                var ListRole = ApiAccessRole.RetrieveAllRole<Role>();
+                foreach (Role element in ListRole)
+                {
+                    if (NameRole == element.Name_role)
+                    {
+                        IDRole = element.ID_role;
+                        break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MetroMessageBox.Show(this, "Ha ocurrido un error:" + ex + "Favor Comunicarse con el equipo de Sistemas",
+                    "Error en Acción", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return IDRole;
+        }
         private bool CheckFields()
         {
             bool finded = false;
@@ -186,7 +228,7 @@ namespace ControlApp.OnPremises.Panels
             string Email_User = txtEmail_User.Text;
             string Nickname = txtNickname.Text;
             string Pass_User = txtpass.Text;
-            if (CheckID(ID_User) == true || ID_User.Trim() == string.Empty)
+            if (ID_User.Trim() == string.Empty)
             {
                 finded = true;
                 //lblID_USER.Style = MetroFramework.MetroColorStyle.Red;
@@ -238,6 +280,7 @@ namespace ControlApp.OnPremises.Panels
             cbId_Dpt.SelectedIndex = -1;
             cbId_Area.SelectedIndex = -1;
             cbPst_id.SelectedIndex = -1;
+            cbRole_Id.SelectedIndex = -1;
         }
         private bool CheckID(string pID)
         {
@@ -270,11 +313,13 @@ namespace ControlApp.OnPremises.Panels
             string Email_User = txtEmail_User.Text;
             string Nickname = txtNickname.Text;
             string Pass_User = txtpass.Text;
-
+            if (CheckID(ID_User) == true)
+            {
+                MetroMessageBox.Show(this, "Cédula invalida", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             if (CheckFields() == true)
             {
                 MetroMessageBox.Show(this, "Favor Complete todos los Campos", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-               
             }
             else
             {
@@ -288,6 +333,7 @@ namespace ControlApp.OnPremises.Panels
                     ObjUser.ID_Dpt = GetIDDpt();
                     ObjUser.ID_area = GetIDArea();
                     ObjUser.ID_position = GetIDPosition();
+                    ObjUser.ID_Role = GetIDRole();
                     ObjUser.CreateBy = pIdSession;
                     ApiAccess.CreateUser(ObjUser);
                 }
@@ -309,6 +355,97 @@ namespace ControlApp.OnPremises.Panels
         private void cbId_Area_TextChanged(object sender, EventArgs e)
         {
             LoadCbPosition(cbPst_id);
+        }
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            CleanFields();
+            LoadDataGrid();
+        }
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            string Name_User = txtName_User.Text;
+            string Email_User = txtEmail_User.Text;
+            string Nickname = txtNickname.Text;
+            string Pass_User = txtpass.Text;
+
+            if (CheckFields() == true)
+            {
+                MetroMessageBox.Show(this, "Favor Complete todos los Campos", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                try
+                {
+                    int Row = dgvUser.CurrentRow.Index;
+                    ObjUser.ID_User = dgvUser[0, Row].Value.ToString();
+                    ObjUser.User_name = Name_User;
+                    ObjUser.User_email = Email_User;
+                    ObjUser.User_nickname = Nickname;
+                    ObjUser.User_pass = Pass_User;
+                    ObjUser.ID_Dpt = GetIDDpt();
+                    ObjUser.ID_area = GetIDArea();
+                    ObjUser.ID_position = GetIDPosition();
+                    ObjUser.ID_Role = GetIDRole();
+                    ObjUser.UpdateBy = pIdSession;
+                    ApiAccess.UpdateUser(ObjUser);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                CleanFields();
+                LoadDataGrid();
+            }
+        }
+        private void dgvUser_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                int Row = dgvUser.CurrentRow.Index;
+                txtID_User.Text = dgvUser[0, Row].Value.ToString();
+                txtName_User.Text = dgvUser[1, Row].Value.ToString();
+                txtEmail_User.Text = dgvUser[2, Row].Value.ToString();
+                cbId_Dpt.Text = dgvUser[3, Row].Value.ToString();
+                cbId_Area.Text = dgvUser[4, Row].Value.ToString();
+                cbPst_id.Text = dgvUser[5, Row].Value.ToString();
+                cbRole_Id.Text = dgvUser[6, Row].Value.ToString();
+                txtNickname.Text = dgvUser[7, Row].Value.ToString();
+                txtpass.Text = dgvUser[8, Row].Value.ToString();
+                btnUpdate.Enabled = true;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            int Row = dgvUser.CurrentRow.Index;
+            string UserName = dgvUser[1, Row].Value.ToString();
+            if (dgvUser[1, Row].Value == null)
+            {
+                MetroMessageBox.Show(this, "Debe Seleccionar Al menos Algún Valor para Eliminar. \n Favor Intentelo Nuevamente", "Error en Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dgvUser.Focus();
+                return;
+            }
+            else
+            {
+                if (MetroFramework.MetroMessageBox.Show(this, "¿Desea Eliminar el Usuario de: " + UserName + "?", "Confirmación de Acción", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    try
+                    {
+                        ObjUser.ID_User = dgvUser[0, Row].Value.ToString();
+                        ObjUser.UpdateBy = pIdSession;
+                        ApiAccess.DeleteUser(ObjUser);
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+                    CleanFields();
+                    LoadDataGrid();
+                }
+            }
         }
     }
 }

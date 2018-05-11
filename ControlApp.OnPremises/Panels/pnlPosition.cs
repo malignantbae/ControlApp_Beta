@@ -259,7 +259,6 @@ namespace ControlApp.OnPremises.Panels.Admin
             try
             {
                 int Row = dgvPst.CurrentRow.Index;
-                
                 cbArea_Id.Text = dgvPst[1, Row].Value.ToString();
                 txtNamePosition.Text = dgvPst[2, Row].Value.ToString();
                 btnUpdate.Enabled = true;

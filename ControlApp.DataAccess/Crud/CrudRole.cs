@@ -13,19 +13,19 @@ namespace ControlApp.DataAccess.Crud
         public override bool Activate(BaseEntity entity)
         {
             var ObjRole = (Role)entity;
-            Context.SP_CRUD_ROLE((int)CrudActionEnum.Activate, ObjRole.IdSession, ObjRole.ID_role, ObjRole.Name_role, ObjRole.Descrip_role);
+            Context.SP_CRUD_ROLE((int)CrudActionEnum.Activate, ObjRole.UpdateBy, ObjRole.ID_role, ObjRole.Name_role, ObjRole.Descrip_role);
             return true;
         }
         public override bool Create(BaseEntity entity)
         {
             var ObjRole = (Role)entity;
-            Context.SP_CRUD_ROLE((int)CrudActionEnum.Create, ObjRole.IdSession, ObjRole.ID_role, ObjRole.Name_role, ObjRole.Descrip_role);
+            Context.SP_CRUD_ROLE((int)CrudActionEnum.Create, ObjRole.CreateBy, ObjRole.ID_role, ObjRole.Name_role, ObjRole.Descrip_role);
             return true;
         }
         public override bool Delete(BaseEntity entity)
         {
             var ObjRole = (Role)entity;
-            Context.SP_CRUD_ROLE((int)CrudActionEnum.Delete, ObjRole.IdSession, ObjRole.ID_role, ObjRole.Name_role, ObjRole.Descrip_role);
+            Context.SP_CRUD_ROLE((int)CrudActionEnum.Delete, ObjRole.UpdateBy, ObjRole.ID_role, ObjRole.Name_role, ObjRole.Descrip_role);
             return true;
         }
         public override List<T> RetrieveAll<T>()
@@ -51,7 +51,7 @@ namespace ControlApp.DataAccess.Crud
         }
         public override List<T> RetrieveById<T>(BaseEntity entity)
         {
-            var ObjRole = new Role();
+            var ObjRole = (Role)entity;
             var lst = new List<T>();
             List<Role> MyList = new List<Role>();
             var Query = Context.SP_CRUD_ROLE((int)CrudActionEnum.RetrieveById, ObjRole.IdSession, ObjRole.ID_role,
@@ -76,7 +76,7 @@ namespace ControlApp.DataAccess.Crud
         }
         public override List<T> RetrieveByName<T>(BaseEntity entity)
         {
-            var ObjRole = new Role();
+            var ObjRole = (Role)entity;
             var lst = new List<T>();
             List<Role> MyList = new List<Role>();
             var Query = Context.SP_CRUD_ROLE((int)CrudActionEnum.RetrieveByName, ObjRole.IdSession, ObjRole.ID_role,
@@ -119,7 +119,7 @@ namespace ControlApp.DataAccess.Crud
         }
         public override List<T> SuperRetrieveById<T>(BaseEntity entity)
         {
-            var ObjRole = new Role();
+            var ObjRole = (Role)entity;
             var lst = new List<T>();
             List<Role> MyList = new List<Role>();
             var Query = Context.SP_CRUD_ROLE((int)CrudActionEnum.SuperRetrieveById, ObjRole.IdSession, ObjRole.ID_role,
@@ -141,7 +141,7 @@ namespace ControlApp.DataAccess.Crud
         }
         public override List<T> SuperRetrieveByName<T>(BaseEntity entity)
         {
-            var ObjRole = new Role();
+            var ObjRole = (Role)entity;
             var lst = new List<T>();
             List<Role> MyList = new List<Role>();
             var Query = Context.SP_CRUD_ROLE((int)CrudActionEnum.SuperRetrieveByName, ObjRole.IdSession, ObjRole.ID_role,
@@ -164,7 +164,7 @@ namespace ControlApp.DataAccess.Crud
         public override bool Update(BaseEntity entity)
         {
             var ObjRole = (Role)entity;
-            Context.SP_CRUD_ROLE((int)CrudActionEnum.Delete, ObjRole.IdSession, ObjRole.ID_role, ObjRole.Name_role, ObjRole.Descrip_role);
+            Context.SP_CRUD_ROLE((int)CrudActionEnum.Delete, ObjRole.UpdateBy, ObjRole.ID_role, ObjRole.Name_role, ObjRole.Descrip_role);
             return true;
         }
     }

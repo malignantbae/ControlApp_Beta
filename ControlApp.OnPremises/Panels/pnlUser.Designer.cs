@@ -54,6 +54,10 @@
             this.txtRetrieve = new MetroFramework.Controls.MetroTextBox();
             this.lblRetrieve = new MetroFramework.Controls.MetroLabel();
             this.dgvUser = new MetroFramework.Controls.MetroGrid();
+            this.btnCreate = new MetroFramework.Controls.MetroTile();
+            this.btnUpdate = new MetroFramework.Controls.MetroTile();
+            this.txtID_User = new MetroFramework.Controls.MetroTextBox();
+            this.lblID_USER = new MetroFramework.Controls.MetroLabel();
             this.ID_USER = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.USER_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.USER_MAIL = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,10 +67,6 @@
             this.ID_ROLE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.USER_NICKNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.USER_PASS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnCreate = new MetroFramework.Controls.MetroTile();
-            this.btnUpdate = new MetroFramework.Controls.MetroTile();
-            this.txtID_User = new MetroFramework.Controls.MetroTextBox();
-            this.lblID_USER = new MetroFramework.Controls.MetroLabel();
             this.mtUser.SuspendLayout();
             this.tabUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUser)).BeginInit();
@@ -382,6 +382,7 @@
             this.btnDelete.TabIndex = 30;
             this.btnDelete.Text = "Eliminar";
             this.btnDelete.UseSelectable = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnRefresh
             // 
@@ -392,6 +393,7 @@
             this.btnRefresh.TabIndex = 29;
             this.btnRefresh.Text = "Refrescar";
             this.btnRefresh.UseSelectable = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // txtRetrieve
             // 
@@ -490,6 +492,70 @@
             this.dgvUser.Size = new System.Drawing.Size(697, 297);
             this.dgvUser.TabIndex = 27;
             this.dgvUser.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.dgvUser.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUser_CellClick);
+            // 
+            // btnCreate
+            // 
+            this.btnCreate.ActiveControl = null;
+            this.btnCreate.Location = new System.Drawing.Point(0, 3);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(83, 60);
+            this.btnCreate.TabIndex = 24;
+            this.btnCreate.Text = "Agregar";
+            this.btnCreate.UseSelectable = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.ActiveControl = null;
+            this.btnUpdate.Location = new System.Drawing.Point(89, 3);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(83, 60);
+            this.btnUpdate.TabIndex = 25;
+            this.btnUpdate.Text = "Actualizar";
+            this.btnUpdate.UseSelectable = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // txtID_User
+            // 
+            // 
+            // 
+            // 
+            this.txtID_User.CustomButton.Image = null;
+            this.txtID_User.CustomButton.Location = new System.Drawing.Point(163, 1);
+            this.txtID_User.CustomButton.Name = "";
+            this.txtID_User.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtID_User.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtID_User.CustomButton.TabIndex = 1;
+            this.txtID_User.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtID_User.CustomButton.UseSelectable = true;
+            this.txtID_User.CustomButton.Visible = false;
+            this.txtID_User.Lines = new string[0];
+            this.txtID_User.Location = new System.Drawing.Point(84, 84);
+            this.txtID_User.MaxLength = 32767;
+            this.txtID_User.Name = "txtID_User";
+            this.txtID_User.PasswordChar = '\0';
+            this.txtID_User.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtID_User.SelectedText = "";
+            this.txtID_User.SelectionLength = 0;
+            this.txtID_User.SelectionStart = 0;
+            this.txtID_User.ShortcutsEnabled = true;
+            this.txtID_User.Size = new System.Drawing.Size(185, 23);
+            this.txtID_User.TabIndex = 1;
+            this.txtID_User.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.txtID_User.UseSelectable = true;
+            this.txtID_User.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtID_User.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // lblID_USER
+            // 
+            this.lblID_USER.AutoSize = true;
+            this.lblID_USER.Location = new System.Drawing.Point(1, 88);
+            this.lblID_USER.Name = "lblID_USER";
+            this.lblID_USER.Size = new System.Drawing.Size(50, 19);
+            this.lblID_USER.TabIndex = 26;
+            this.lblID_USER.Text = "Cédula";
+            this.lblID_USER.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // ID_USER
             // 
@@ -497,7 +563,7 @@
             this.ID_USER.HeaderText = "Cédula";
             this.ID_USER.Name = "ID_USER";
             this.ID_USER.ReadOnly = true;
-            this.ID_USER.Width = 75;
+            this.ID_USER.Width = 85;
             // 
             // USER_NAME
             // 
@@ -545,76 +611,14 @@
             this.USER_NICKNAME.HeaderText = "Nickname";
             this.USER_NICKNAME.Name = "USER_NICKNAME";
             this.USER_NICKNAME.ReadOnly = true;
-            this.USER_NICKNAME.Width = 60;
             // 
             // USER_PASS
             // 
             this.USER_PASS.HeaderText = "Contraseña";
             this.USER_PASS.Name = "USER_PASS";
             this.USER_PASS.ReadOnly = true;
+            this.USER_PASS.Visible = false;
             this.USER_PASS.Width = 70;
-            // 
-            // btnCreate
-            // 
-            this.btnCreate.ActiveControl = null;
-            this.btnCreate.Location = new System.Drawing.Point(0, 3);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(83, 60);
-            this.btnCreate.TabIndex = 24;
-            this.btnCreate.Text = "Agregar";
-            this.btnCreate.UseSelectable = true;
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.ActiveControl = null;
-            this.btnUpdate.Location = new System.Drawing.Point(89, 3);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(83, 60);
-            this.btnUpdate.TabIndex = 25;
-            this.btnUpdate.Text = "Actualizar";
-            this.btnUpdate.UseSelectable = true;
-            // 
-            // txtID_User
-            // 
-            // 
-            // 
-            // 
-            this.txtID_User.CustomButton.Image = null;
-            this.txtID_User.CustomButton.Location = new System.Drawing.Point(163, 1);
-            this.txtID_User.CustomButton.Name = "";
-            this.txtID_User.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.txtID_User.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtID_User.CustomButton.TabIndex = 1;
-            this.txtID_User.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtID_User.CustomButton.UseSelectable = true;
-            this.txtID_User.CustomButton.Visible = false;
-            this.txtID_User.Lines = new string[0];
-            this.txtID_User.Location = new System.Drawing.Point(84, 84);
-            this.txtID_User.MaxLength = 32767;
-            this.txtID_User.Name = "txtID_User";
-            this.txtID_User.PasswordChar = '\0';
-            this.txtID_User.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtID_User.SelectedText = "";
-            this.txtID_User.SelectionLength = 0;
-            this.txtID_User.SelectionStart = 0;
-            this.txtID_User.ShortcutsEnabled = true;
-            this.txtID_User.Size = new System.Drawing.Size(185, 23);
-            this.txtID_User.TabIndex = 1;
-            this.txtID_User.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.txtID_User.UseSelectable = true;
-            this.txtID_User.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtID_User.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // lblID_USER
-            // 
-            this.lblID_USER.AutoSize = true;
-            this.lblID_USER.Location = new System.Drawing.Point(1, 88);
-            this.lblID_USER.Name = "lblID_USER";
-            this.lblID_USER.Size = new System.Drawing.Size(50, 19);
-            this.lblID_USER.TabIndex = 26;
-            this.lblID_USER.Text = "Cédula";
-            this.lblID_USER.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // pnlUser
             // 

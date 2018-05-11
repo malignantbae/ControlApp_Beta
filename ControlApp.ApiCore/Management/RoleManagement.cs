@@ -89,7 +89,7 @@ namespace ControlApp.ApiCore.Management
             var lst = new List<T>();
             try
             {
-                var ret = _factory.RetrieveAll<Area>();
+                var ret = _factory.RetrieveAll<Role>();
                 foreach (var obj in ret)
                 {
                     lst.Add((T)Convert.ChangeType(obj, typeof(T)));

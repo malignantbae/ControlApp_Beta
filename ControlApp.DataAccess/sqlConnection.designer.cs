@@ -42,9 +42,6 @@ namespace ControlApp.DataAccess
     partial void InsertTBL_RECEIPT(TBL_RECEIPT instance);
     partial void UpdateTBL_RECEIPT(TBL_RECEIPT instance);
     partial void DeleteTBL_RECEIPT(TBL_RECEIPT instance);
-    partial void InsertTBL_ROLE(TBL_ROLE instance);
-    partial void UpdateTBL_ROLE(TBL_ROLE instance);
-    partial void DeleteTBL_ROLE(TBL_ROLE instance);
     partial void InsertTBL_SESSION(TBL_SESSION instance);
     partial void UpdateTBL_SESSION(TBL_SESSION instance);
     partial void DeleteTBL_SESSION(TBL_SESSION instance);
@@ -60,6 +57,9 @@ namespace ControlApp.DataAccess
     partial void InsertTBL_POSITION(TBL_POSITION instance);
     partial void UpdateTBL_POSITION(TBL_POSITION instance);
     partial void DeleteTBL_POSITION(TBL_POSITION instance);
+    partial void InsertTBL_ROLE(TBL_ROLE instance);
+    partial void UpdateTBL_ROLE(TBL_ROLE instance);
+    partial void DeleteTBL_ROLE(TBL_ROLE instance);
     #endregion
 		
 		public sqlConnectionDataContext() : 
@@ -124,14 +124,6 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
-		public System.Data.Linq.Table<TBL_ROLE> TBL_ROLEs
-		{
-			get
-			{
-				return this.GetTable<TBL_ROLE>();
-			}
-		}
-		
 		public System.Data.Linq.Table<TBL_SESSION> TBL_SESSIONs
 		{
 			get
@@ -169,6 +161,14 @@ namespace ControlApp.DataAccess
 			get
 			{
 				return this.GetTable<TBL_POSITION>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TBL_ROLE> TBL_ROLEs
+		{
+			get
+			{
+				return this.GetTable<TBL_ROLE>();
 			}
 		}
 		
@@ -214,18 +214,18 @@ namespace ControlApp.DataAccess
 			return ((ISingleResult<SP_CRUD_USERResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_ROLE")]
-		public ISingleResult<SP_CRUD_ROLEResult> SP_CRUD_ROLE([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_ROLE, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(75)")] string pNAME_ROLE, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string pDESCRIP_ROLE)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_BY, pID_ROLE, pNAME_ROLE, pDESCRIP_ROLE);
-			return ((ISingleResult<SP_CRUD_ROLEResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_POSITION")]
 		public ISingleResult<SP_CRUD_POSITIONResult> SP_CRUD_POSITION([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_PST, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_AREA, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(75)")] string pNAME_PST)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_PST, pID_AREA, pID_BY, pNAME_PST);
 			return ((ISingleResult<SP_CRUD_POSITIONResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_ROLE")]
+		public ISingleResult<SP_CRUD_ROLEResult> SP_CRUD_ROLE([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_ROLE, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(75)")] string pNAME_ROLE, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string pDESCRIP_ROLE)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_BY, pID_ROLE, pNAME_ROLE, pDESCRIP_ROLE);
+			return ((ISingleResult<SP_CRUD_ROLEResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -1235,240 +1235,6 @@ namespace ControlApp.DataAccess
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_ROLE")]
-	public partial class TBL_ROLE : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID_ROLE;
-		
-		private string _NAME_ROLE;
-		
-		private string _DESCRIP_ROLE;
-		
-		private bool _ROLE_STATE;
-		
-		private string _ROLE_CREATEBY;
-		
-		private string _ROLE_UPDATEDBY;
-		
-		private System.DateTime _ROLE_CREATEDATE;
-		
-		private EntitySet<TBL_USER> _TBL_USERs;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnID_ROLEChanging(int value);
-    partial void OnID_ROLEChanged();
-    partial void OnNAME_ROLEChanging(string value);
-    partial void OnNAME_ROLEChanged();
-    partial void OnDESCRIP_ROLEChanging(string value);
-    partial void OnDESCRIP_ROLEChanged();
-    partial void OnROLE_STATEChanging(bool value);
-    partial void OnROLE_STATEChanged();
-    partial void OnROLE_CREATEBYChanging(string value);
-    partial void OnROLE_CREATEBYChanged();
-    partial void OnROLE_UPDATEDBYChanging(string value);
-    partial void OnROLE_UPDATEDBYChanged();
-    partial void OnROLE_CREATEDATEChanging(System.DateTime value);
-    partial void OnROLE_CREATEDATEChanged();
-    #endregion
-		
-		public TBL_ROLE()
-		{
-			this._TBL_USERs = new EntitySet<TBL_USER>(new Action<TBL_USER>(this.attach_TBL_USERs), new Action<TBL_USER>(this.detach_TBL_USERs));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_ROLE", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID_ROLE
-		{
-			get
-			{
-				return this._ID_ROLE;
-			}
-			set
-			{
-				if ((this._ID_ROLE != value))
-				{
-					this.OnID_ROLEChanging(value);
-					this.SendPropertyChanging();
-					this._ID_ROLE = value;
-					this.SendPropertyChanged("ID_ROLE");
-					this.OnID_ROLEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_ROLE", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
-		public string NAME_ROLE
-		{
-			get
-			{
-				return this._NAME_ROLE;
-			}
-			set
-			{
-				if ((this._NAME_ROLE != value))
-				{
-					this.OnNAME_ROLEChanging(value);
-					this.SendPropertyChanging();
-					this._NAME_ROLE = value;
-					this.SendPropertyChanged("NAME_ROLE");
-					this.OnNAME_ROLEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DESCRIP_ROLE", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string DESCRIP_ROLE
-		{
-			get
-			{
-				return this._DESCRIP_ROLE;
-			}
-			set
-			{
-				if ((this._DESCRIP_ROLE != value))
-				{
-					this.OnDESCRIP_ROLEChanging(value);
-					this.SendPropertyChanging();
-					this._DESCRIP_ROLE = value;
-					this.SendPropertyChanged("DESCRIP_ROLE");
-					this.OnDESCRIP_ROLEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_STATE", DbType="Bit NOT NULL")]
-		public bool ROLE_STATE
-		{
-			get
-			{
-				return this._ROLE_STATE;
-			}
-			set
-			{
-				if ((this._ROLE_STATE != value))
-				{
-					this.OnROLE_STATEChanging(value);
-					this.SendPropertyChanging();
-					this._ROLE_STATE = value;
-					this.SendPropertyChanged("ROLE_STATE");
-					this.OnROLE_STATEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string ROLE_CREATEBY
-		{
-			get
-			{
-				return this._ROLE_CREATEBY;
-			}
-			set
-			{
-				if ((this._ROLE_CREATEBY != value))
-				{
-					this.OnROLE_CREATEBYChanging(value);
-					this.SendPropertyChanging();
-					this._ROLE_CREATEBY = value;
-					this.SendPropertyChanged("ROLE_CREATEBY");
-					this.OnROLE_CREATEBYChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_UPDATEDBY", DbType="VarChar(50)")]
-		public string ROLE_UPDATEDBY
-		{
-			get
-			{
-				return this._ROLE_UPDATEDBY;
-			}
-			set
-			{
-				if ((this._ROLE_UPDATEDBY != value))
-				{
-					this.OnROLE_UPDATEDBYChanging(value);
-					this.SendPropertyChanging();
-					this._ROLE_UPDATEDBY = value;
-					this.SendPropertyChanged("ROLE_UPDATEDBY");
-					this.OnROLE_UPDATEDBYChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_CREATEDATE", DbType="DateTime NOT NULL")]
-		public System.DateTime ROLE_CREATEDATE
-		{
-			get
-			{
-				return this._ROLE_CREATEDATE;
-			}
-			set
-			{
-				if ((this._ROLE_CREATEDATE != value))
-				{
-					this.OnROLE_CREATEDATEChanging(value);
-					this.SendPropertyChanging();
-					this._ROLE_CREATEDATE = value;
-					this.SendPropertyChanged("ROLE_CREATEDATE");
-					this.OnROLE_CREATEDATEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_ROLE_TBL_USER", Storage="_TBL_USERs", ThisKey="ID_ROLE", OtherKey="ID_ROLE")]
-		public EntitySet<TBL_USER> TBL_USERs
-		{
-			get
-			{
-				return this._TBL_USERs;
-			}
-			set
-			{
-				this._TBL_USERs.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_TBL_USERs(TBL_USER entity)
-		{
-			this.SendPropertyChanging();
-			entity.TBL_ROLE = this;
-		}
-		
-		private void detach_TBL_USERs(TBL_USER entity)
-		{
-			this.SendPropertyChanging();
-			entity.TBL_ROLE = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_SESSION")]
 	public partial class TBL_SESSION : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2081,11 +1847,11 @@ namespace ControlApp.DataAccess
 		
 		private EntityRef<TBL_AREA> _TBL_AREA;
 		
-		private EntityRef<TBL_ROLE> _TBL_ROLE;
-		
 		private EntityRef<TBL_DPT> _TBL_DPT;
 		
 		private EntityRef<TBL_POSITION> _TBL_POSITION;
+		
+		private EntityRef<TBL_ROLE> _TBL_ROLE;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2124,9 +1890,9 @@ namespace ControlApp.DataAccess
 			this._TBL_RECEIPTs = new EntitySet<TBL_RECEIPT>(new Action<TBL_RECEIPT>(this.attach_TBL_RECEIPTs), new Action<TBL_RECEIPT>(this.detach_TBL_RECEIPTs));
 			this._TBL_SESSIONs = new EntitySet<TBL_SESSION>(new Action<TBL_SESSION>(this.attach_TBL_SESSIONs), new Action<TBL_SESSION>(this.detach_TBL_SESSIONs));
 			this._TBL_AREA = default(EntityRef<TBL_AREA>);
-			this._TBL_ROLE = default(EntityRef<TBL_ROLE>);
 			this._TBL_DPT = default(EntityRef<TBL_DPT>);
 			this._TBL_POSITION = default(EntityRef<TBL_POSITION>);
+			this._TBL_ROLE = default(EntityRef<TBL_ROLE>);
 			OnCreated();
 		}
 		
@@ -2466,40 +2232,6 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_ROLE_TBL_USER", Storage="_TBL_ROLE", ThisKey="ID_ROLE", OtherKey="ID_ROLE", IsForeignKey=true)]
-		public TBL_ROLE TBL_ROLE
-		{
-			get
-			{
-				return this._TBL_ROLE.Entity;
-			}
-			set
-			{
-				TBL_ROLE previousValue = this._TBL_ROLE.Entity;
-				if (((previousValue != value) 
-							|| (this._TBL_ROLE.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TBL_ROLE.Entity = null;
-						previousValue.TBL_USERs.Remove(this);
-					}
-					this._TBL_ROLE.Entity = value;
-					if ((value != null))
-					{
-						value.TBL_USERs.Add(this);
-						this._ID_ROLE = value.ID_ROLE;
-					}
-					else
-					{
-						this._ID_ROLE = default(int);
-					}
-					this.SendPropertyChanged("TBL_ROLE");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_DPT_TBL_USER", Storage="_TBL_DPT", ThisKey="ID_DPT", OtherKey="ID_DPT", IsForeignKey=true)]
 		public TBL_DPT TBL_DPT
 		{
@@ -2564,6 +2296,40 @@ namespace ControlApp.DataAccess
 						this._ID_POSITION = default(int);
 					}
 					this.SendPropertyChanged("TBL_POSITION");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_ROLE_TBL_USER", Storage="_TBL_ROLE", ThisKey="ID_ROLE", OtherKey="ID_ROLE", IsForeignKey=true)]
+		public TBL_ROLE TBL_ROLE
+		{
+			get
+			{
+				return this._TBL_ROLE.Entity;
+			}
+			set
+			{
+				TBL_ROLE previousValue = this._TBL_ROLE.Entity;
+				if (((previousValue != value) 
+							|| (this._TBL_ROLE.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TBL_ROLE.Entity = null;
+						previousValue.TBL_USERs.Remove(this);
+					}
+					this._TBL_ROLE.Entity = value;
+					if ((value != null))
+					{
+						value.TBL_USERs.Add(this);
+						this._ID_ROLE = value.ID_ROLE;
+					}
+					else
+					{
+						this._ID_ROLE = default(int);
+					}
+					this.SendPropertyChanged("TBL_ROLE");
 				}
 			}
 		}
@@ -3123,6 +2889,240 @@ namespace ControlApp.DataAccess
 		{
 			this.SendPropertyChanging();
 			entity.TBL_POSITION = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_ROLE")]
+	public partial class TBL_ROLE : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID_ROLE;
+		
+		private string _NAME_ROLE;
+		
+		private string _DESCRIP_ROLE;
+		
+		private bool _ROLE_STATE;
+		
+		private string _ROLE_CREATEBY;
+		
+		private string _ROLE_UPDATEDBY;
+		
+		private System.DateTime _ROLE_CREATEDATE;
+		
+		private EntitySet<TBL_USER> _TBL_USERs;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_ROLEChanging(int value);
+    partial void OnID_ROLEChanged();
+    partial void OnNAME_ROLEChanging(string value);
+    partial void OnNAME_ROLEChanged();
+    partial void OnDESCRIP_ROLEChanging(string value);
+    partial void OnDESCRIP_ROLEChanged();
+    partial void OnROLE_STATEChanging(bool value);
+    partial void OnROLE_STATEChanged();
+    partial void OnROLE_CREATEBYChanging(string value);
+    partial void OnROLE_CREATEBYChanged();
+    partial void OnROLE_UPDATEDBYChanging(string value);
+    partial void OnROLE_UPDATEDBYChanged();
+    partial void OnROLE_CREATEDATEChanging(System.DateTime value);
+    partial void OnROLE_CREATEDATEChanged();
+    #endregion
+		
+		public TBL_ROLE()
+		{
+			this._TBL_USERs = new EntitySet<TBL_USER>(new Action<TBL_USER>(this.attach_TBL_USERs), new Action<TBL_USER>(this.detach_TBL_USERs));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_ROLE", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID_ROLE
+		{
+			get
+			{
+				return this._ID_ROLE;
+			}
+			set
+			{
+				if ((this._ID_ROLE != value))
+				{
+					this.OnID_ROLEChanging(value);
+					this.SendPropertyChanging();
+					this._ID_ROLE = value;
+					this.SendPropertyChanged("ID_ROLE");
+					this.OnID_ROLEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_ROLE", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		public string NAME_ROLE
+		{
+			get
+			{
+				return this._NAME_ROLE;
+			}
+			set
+			{
+				if ((this._NAME_ROLE != value))
+				{
+					this.OnNAME_ROLEChanging(value);
+					this.SendPropertyChanging();
+					this._NAME_ROLE = value;
+					this.SendPropertyChanged("NAME_ROLE");
+					this.OnNAME_ROLEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DESCRIP_ROLE", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string DESCRIP_ROLE
+		{
+			get
+			{
+				return this._DESCRIP_ROLE;
+			}
+			set
+			{
+				if ((this._DESCRIP_ROLE != value))
+				{
+					this.OnDESCRIP_ROLEChanging(value);
+					this.SendPropertyChanging();
+					this._DESCRIP_ROLE = value;
+					this.SendPropertyChanged("DESCRIP_ROLE");
+					this.OnDESCRIP_ROLEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_STATE", DbType="Bit NOT NULL")]
+		public bool ROLE_STATE
+		{
+			get
+			{
+				return this._ROLE_STATE;
+			}
+			set
+			{
+				if ((this._ROLE_STATE != value))
+				{
+					this.OnROLE_STATEChanging(value);
+					this.SendPropertyChanging();
+					this._ROLE_STATE = value;
+					this.SendPropertyChanged("ROLE_STATE");
+					this.OnROLE_STATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ROLE_CREATEBY
+		{
+			get
+			{
+				return this._ROLE_CREATEBY;
+			}
+			set
+			{
+				if ((this._ROLE_CREATEBY != value))
+				{
+					this.OnROLE_CREATEBYChanging(value);
+					this.SendPropertyChanging();
+					this._ROLE_CREATEBY = value;
+					this.SendPropertyChanged("ROLE_CREATEBY");
+					this.OnROLE_CREATEBYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_UPDATEDBY", DbType="VarChar(50)")]
+		public string ROLE_UPDATEDBY
+		{
+			get
+			{
+				return this._ROLE_UPDATEDBY;
+			}
+			set
+			{
+				if ((this._ROLE_UPDATEDBY != value))
+				{
+					this.OnROLE_UPDATEDBYChanging(value);
+					this.SendPropertyChanging();
+					this._ROLE_UPDATEDBY = value;
+					this.SendPropertyChanged("ROLE_UPDATEDBY");
+					this.OnROLE_UPDATEDBYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_CREATEDATE", DbType="DateTime NOT NULL")]
+		public System.DateTime ROLE_CREATEDATE
+		{
+			get
+			{
+				return this._ROLE_CREATEDATE;
+			}
+			set
+			{
+				if ((this._ROLE_CREATEDATE != value))
+				{
+					this.OnROLE_CREATEDATEChanging(value);
+					this.SendPropertyChanging();
+					this._ROLE_CREATEDATE = value;
+					this.SendPropertyChanged("ROLE_CREATEDATE");
+					this.OnROLE_CREATEDATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_ROLE_TBL_USER", Storage="_TBL_USERs", ThisKey="ID_ROLE", OtherKey="ID_ROLE")]
+		public EntitySet<TBL_USER> TBL_USERs
+		{
+			get
+			{
+				return this._TBL_USERs;
+			}
+			set
+			{
+				this._TBL_USERs.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_TBL_USERs(TBL_USER entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_ROLE = this;
+		}
+		
+		private void detach_TBL_USERs(TBL_USER entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_ROLE = null;
 		}
 	}
 	
@@ -4092,140 +4092,6 @@ namespace ControlApp.DataAccess
 		}
 	}
 	
-	public partial class SP_CRUD_ROLEResult
-	{
-		
-		private int _ID_ROLE;
-		
-		private string _NAME_ROLE;
-		
-		private string _DESCRIP_ROLE;
-		
-		private bool _ROLE_STATE;
-		
-		private string _ROLE_CREATEBY;
-		
-		private string _ROLE_UPDATEDBY;
-		
-		private System.DateTime _ROLE_CREATEDATE;
-		
-		public SP_CRUD_ROLEResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_ROLE", DbType="Int NOT NULL")]
-		public int ID_ROLE
-		{
-			get
-			{
-				return this._ID_ROLE;
-			}
-			set
-			{
-				if ((this._ID_ROLE != value))
-				{
-					this._ID_ROLE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_ROLE", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
-		public string NAME_ROLE
-		{
-			get
-			{
-				return this._NAME_ROLE;
-			}
-			set
-			{
-				if ((this._NAME_ROLE != value))
-				{
-					this._NAME_ROLE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DESCRIP_ROLE", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string DESCRIP_ROLE
-		{
-			get
-			{
-				return this._DESCRIP_ROLE;
-			}
-			set
-			{
-				if ((this._DESCRIP_ROLE != value))
-				{
-					this._DESCRIP_ROLE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_STATE", DbType="Bit NOT NULL")]
-		public bool ROLE_STATE
-		{
-			get
-			{
-				return this._ROLE_STATE;
-			}
-			set
-			{
-				if ((this._ROLE_STATE != value))
-				{
-					this._ROLE_STATE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string ROLE_CREATEBY
-		{
-			get
-			{
-				return this._ROLE_CREATEBY;
-			}
-			set
-			{
-				if ((this._ROLE_CREATEBY != value))
-				{
-					this._ROLE_CREATEBY = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_UPDATEDBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string ROLE_UPDATEDBY
-		{
-			get
-			{
-				return this._ROLE_UPDATEDBY;
-			}
-			set
-			{
-				if ((this._ROLE_UPDATEDBY != value))
-				{
-					this._ROLE_UPDATEDBY = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_CREATEDATE", DbType="DateTime NOT NULL")]
-		public System.DateTime ROLE_CREATEDATE
-		{
-			get
-			{
-				return this._ROLE_CREATEDATE;
-			}
-			set
-			{
-				if ((this._ROLE_CREATEDATE != value))
-				{
-					this._ROLE_CREATEDATE = value;
-				}
-			}
-		}
-	}
-	
 	public partial class SP_CRUD_POSITIONResult
 	{
 		
@@ -4355,6 +4221,140 @@ namespace ControlApp.DataAccess
 				if ((this._POSITION_CREATEDATE != value))
 				{
 					this._POSITION_CREATEDATE = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_CRUD_ROLEResult
+	{
+		
+		private int _ID_ROLE;
+		
+		private string _NAME_ROLE;
+		
+		private string _DESCRIP_ROLE;
+		
+		private bool _ROLE_STATE;
+		
+		private string _ROLE_CREATEBY;
+		
+		private string _ROLE_UPDATEDBY;
+		
+		private System.DateTime _ROLE_CREATEDATE;
+		
+		public SP_CRUD_ROLEResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_ROLE", DbType="Int NOT NULL")]
+		public int ID_ROLE
+		{
+			get
+			{
+				return this._ID_ROLE;
+			}
+			set
+			{
+				if ((this._ID_ROLE != value))
+				{
+					this._ID_ROLE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_ROLE", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		public string NAME_ROLE
+		{
+			get
+			{
+				return this._NAME_ROLE;
+			}
+			set
+			{
+				if ((this._NAME_ROLE != value))
+				{
+					this._NAME_ROLE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DESCRIP_ROLE", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string DESCRIP_ROLE
+		{
+			get
+			{
+				return this._DESCRIP_ROLE;
+			}
+			set
+			{
+				if ((this._DESCRIP_ROLE != value))
+				{
+					this._DESCRIP_ROLE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_STATE", DbType="Bit NOT NULL")]
+		public bool ROLE_STATE
+		{
+			get
+			{
+				return this._ROLE_STATE;
+			}
+			set
+			{
+				if ((this._ROLE_STATE != value))
+				{
+					this._ROLE_STATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ROLE_CREATEBY
+		{
+			get
+			{
+				return this._ROLE_CREATEBY;
+			}
+			set
+			{
+				if ((this._ROLE_CREATEBY != value))
+				{
+					this._ROLE_CREATEBY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_UPDATEDBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ROLE_UPDATEDBY
+		{
+			get
+			{
+				return this._ROLE_UPDATEDBY;
+			}
+			set
+			{
+				if ((this._ROLE_UPDATEDBY != value))
+				{
+					this._ROLE_UPDATEDBY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_CREATEDATE", DbType="DateTime NOT NULL")]
+		public System.DateTime ROLE_CREATEDATE
+		{
+			get
+			{
+				return this._ROLE_CREATEDATE;
+			}
+			set
+			{
+				if ((this._ROLE_CREATEDATE != value))
+				{
+					this._ROLE_CREATEDATE = value;
 				}
 			}
 		}

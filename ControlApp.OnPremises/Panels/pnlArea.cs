@@ -156,7 +156,6 @@ namespace ControlApp.OnPremises.Panels
                     throw;
                 }
             }
-            
         }
         private bool Checkname(string pAreaName, string pNameDpt)
         {
@@ -278,7 +277,6 @@ namespace ControlApp.OnPremises.Panels
             }
             return IdDpt;
         }
-
         private void cbDpt_Id_TextChanged(object sender, EventArgs e)
         {
             txtAreaname.Text = "";
