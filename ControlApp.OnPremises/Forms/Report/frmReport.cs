@@ -34,7 +34,7 @@ namespace ControlApp.OnPremises.Forms.Report
             try
             {
                 var IdReceipt = MystaticValues.rptSsrs;
-                string urlReportServer = "http://localhost:8282/ReportServer";
+                string urlReportServer = "http://tronserver:8282/ReportServer";
                 rptViewer.ProcessingMode = ProcessingMode.Remote; // ProcessingMode will be Either Remote or Local
                 rptViewer.ServerReport.ReportServerUrl = new Uri(urlReportServer); //Set the ReportServer Url
                 rptViewer.ServerReport.ReportPath = "/ControlApp.Report/Receipt"; //Passing the Report Path                

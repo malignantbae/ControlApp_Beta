@@ -30,40 +30,40 @@ namespace ControlApp.DataAccess
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
+    partial void InsertTBL_AREA(TBL_AREA instance);
+    partial void UpdateTBL_AREA(TBL_AREA instance);
+    partial void DeleteTBL_AREA(TBL_AREA instance);
     partial void InsertTBL_CUSTOMER(TBL_CUSTOMER instance);
     partial void UpdateTBL_CUSTOMER(TBL_CUSTOMER instance);
     partial void DeleteTBL_CUSTOMER(TBL_CUSTOMER instance);
+    partial void InsertTBL_DPT(TBL_DPT instance);
+    partial void UpdateTBL_DPT(TBL_DPT instance);
+    partial void DeleteTBL_DPT(TBL_DPT instance);
     partial void InsertTBL_PERMISSION(TBL_PERMISSION instance);
     partial void UpdateTBL_PERMISSION(TBL_PERMISSION instance);
     partial void DeleteTBL_PERMISSION(TBL_PERMISSION instance);
+    partial void InsertTBL_POSITION(TBL_POSITION instance);
+    partial void UpdateTBL_POSITION(TBL_POSITION instance);
+    partial void DeleteTBL_POSITION(TBL_POSITION instance);
     partial void InsertTBL_PRICE_TAG(TBL_PRICE_TAG instance);
     partial void UpdateTBL_PRICE_TAG(TBL_PRICE_TAG instance);
     partial void DeleteTBL_PRICE_TAG(TBL_PRICE_TAG instance);
     partial void InsertTBL_RECEIPT(TBL_RECEIPT instance);
     partial void UpdateTBL_RECEIPT(TBL_RECEIPT instance);
     partial void DeleteTBL_RECEIPT(TBL_RECEIPT instance);
-    partial void InsertTBL_SESSION(TBL_SESSION instance);
-    partial void UpdateTBL_SESSION(TBL_SESSION instance);
-    partial void DeleteTBL_SESSION(TBL_SESSION instance);
-    partial void InsertTBL_AREA(TBL_AREA instance);
-    partial void UpdateTBL_AREA(TBL_AREA instance);
-    partial void DeleteTBL_AREA(TBL_AREA instance);
-    partial void InsertTBL_USER(TBL_USER instance);
-    partial void UpdateTBL_USER(TBL_USER instance);
-    partial void DeleteTBL_USER(TBL_USER instance);
-    partial void InsertTBL_DPT(TBL_DPT instance);
-    partial void UpdateTBL_DPT(TBL_DPT instance);
-    partial void DeleteTBL_DPT(TBL_DPT instance);
-    partial void InsertTBL_POSITION(TBL_POSITION instance);
-    partial void UpdateTBL_POSITION(TBL_POSITION instance);
-    partial void DeleteTBL_POSITION(TBL_POSITION instance);
     partial void InsertTBL_ROLE(TBL_ROLE instance);
     partial void UpdateTBL_ROLE(TBL_ROLE instance);
     partial void DeleteTBL_ROLE(TBL_ROLE instance);
+    partial void InsertTBL_SESSION(TBL_SESSION instance);
+    partial void UpdateTBL_SESSION(TBL_SESSION instance);
+    partial void DeleteTBL_SESSION(TBL_SESSION instance);
+    partial void InsertTBL_USER(TBL_USER instance);
+    partial void UpdateTBL_USER(TBL_USER instance);
+    partial void DeleteTBL_USER(TBL_USER instance);
     #endregion
 		
 		public sqlConnectionDataContext() : 
-				base(global::ControlApp.DataAccess.Properties.Settings.Default.ControlAppConnectionString2, mappingSource)
+				base(global::ControlApp.DataAccess.Properties.Settings.Default.ControlAppConnectionString3, mappingSource)
 		{
 			OnCreated();
 		}
@@ -92,6 +92,14 @@ namespace ControlApp.DataAccess
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<TBL_AREA> TBL_AREAs
+		{
+			get
+			{
+				return this.GetTable<TBL_AREA>();
+			}
+		}
+		
 		public System.Data.Linq.Table<TBL_CUSTOMER> TBL_CUSTOMERs
 		{
 			get
@@ -100,11 +108,27 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
+		public System.Data.Linq.Table<TBL_DPT> TBL_DPTs
+		{
+			get
+			{
+				return this.GetTable<TBL_DPT>();
+			}
+		}
+		
 		public System.Data.Linq.Table<TBL_PERMISSION> TBL_PERMISSIONs
 		{
 			get
 			{
 				return this.GetTable<TBL_PERMISSION>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TBL_POSITION> TBL_POSITIONs
+		{
+			get
+			{
+				return this.GetTable<TBL_POSITION>();
 			}
 		}
 		
@@ -124,19 +148,19 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
+		public System.Data.Linq.Table<TBL_ROLE> TBL_ROLEs
+		{
+			get
+			{
+				return this.GetTable<TBL_ROLE>();
+			}
+		}
+		
 		public System.Data.Linq.Table<TBL_SESSION> TBL_SESSIONs
 		{
 			get
 			{
 				return this.GetTable<TBL_SESSION>();
-			}
-		}
-		
-		public System.Data.Linq.Table<TBL_AREA> TBL_AREAs
-		{
-			get
-			{
-				return this.GetTable<TBL_AREA>();
 			}
 		}
 		
@@ -148,28 +172,11 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
-		public System.Data.Linq.Table<TBL_DPT> TBL_DPTs
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_AREA")]
+		public ISingleResult<SP_CRUD_AREAResult> SP_CRUD_AREA([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_AREA, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_DPT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(25)")] string pAREA_NAME)
 		{
-			get
-			{
-				return this.GetTable<TBL_DPT>();
-			}
-		}
-		
-		public System.Data.Linq.Table<TBL_POSITION> TBL_POSITIONs
-		{
-			get
-			{
-				return this.GetTable<TBL_POSITION>();
-			}
-		}
-		
-		public System.Data.Linq.Table<TBL_ROLE> TBL_ROLEs
-		{
-			get
-			{
-				return this.GetTable<TBL_ROLE>();
-			}
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_BY, pID_AREA, pID_DPT, pAREA_NAME);
+			return ((ISingleResult<SP_CRUD_AREAResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_CUSTOMER")]
@@ -179,39 +186,11 @@ namespace ControlApp.DataAccess
 			return ((ISingleResult<SP_CRUD_CUSTOMERResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_PRICE_TAG")]
-		public ISingleResult<SP_CRUD_PRICE_TAGResult> SP_CRUD_PRICE_TAG([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_PRICE_TAG, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> pTOTAL_PRICE, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string pDESCRIP_PRICE)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_BY, pID_PRICE_TAG, pTOTAL_PRICE, pDESCRIP_PRICE);
-			return ((ISingleResult<SP_CRUD_PRICE_TAGResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_DPT")]
 		public ISingleResult<SP_CRUD_DPTResult> SP_CRUD_DPT([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_DPT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(75)")] string pNAME_DPT)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_DPT, pID_BY, pNAME_DPT);
 			return ((ISingleResult<SP_CRUD_DPTResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_AREA")]
-		public ISingleResult<SP_CRUD_AREAResult> SP_CRUD_AREA([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_AREA, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_DPT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(25)")] string pAREA_NAME)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_BY, pID_AREA, pID_DPT, pAREA_NAME);
-			return ((ISingleResult<SP_CRUD_AREAResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_RECEIPT")]
-		public ISingleResult<SP_CRUD_RECEIPTResult> SP_CRUD_RECEIPT([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_RECEIPT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(25)")] string pCUSTOMER_NAME, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pQUANTITY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> pTOTAL_RECEIPT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_PRICE_TAG, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> pUNIT_PRICE)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_RECEIPT, pID_BY, pCUSTOMER_NAME, pQUANTITY, pTOTAL_RECEIPT, pID_PRICE_TAG, pUNIT_PRICE);
-			return ((ISingleResult<SP_CRUD_RECEIPTResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_USER")]
-		public ISingleResult<SP_CRUD_USERResult> SP_CRUD_USER([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string pID_USER, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(150)")] string pUSER_NAME, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(150)")] string pUSER_EMAIL, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_DPT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_AREA, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_PST, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_ROLE, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string pUSER_NICKNAME, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string pUSER_PASSWORD)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_BY, pID_USER, pUSER_NAME, pUSER_EMAIL, pID_DPT, pID_AREA, pID_PST, pID_ROLE, pUSER_NICKNAME, pUSER_PASSWORD);
-			return ((ISingleResult<SP_CRUD_USERResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_POSITION")]
@@ -221,11 +200,335 @@ namespace ControlApp.DataAccess
 			return ((ISingleResult<SP_CRUD_POSITIONResult>)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_PRICE_TAG")]
+		public ISingleResult<SP_CRUD_PRICE_TAGResult> SP_CRUD_PRICE_TAG([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_PRICE_TAG, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> pTOTAL_PRICE, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string pDESCRIP_PRICE)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_BY, pID_PRICE_TAG, pTOTAL_PRICE, pDESCRIP_PRICE);
+			return ((ISingleResult<SP_CRUD_PRICE_TAGResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_RECEIPT")]
+		public ISingleResult<SP_CRUD_RECEIPTResult> SP_CRUD_RECEIPT([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_RECEIPT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(25)")] string pCUSTOMER_NAME, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pQUANTITY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> pTOTAL_RECEIPT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_PRICE_TAG, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> pUNIT_PRICE)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_RECEIPT, pID_BY, pCUSTOMER_NAME, pQUANTITY, pTOTAL_RECEIPT, pID_PRICE_TAG, pUNIT_PRICE);
+			return ((ISingleResult<SP_CRUD_RECEIPTResult>)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_ROLE")]
 		public ISingleResult<SP_CRUD_ROLEResult> SP_CRUD_ROLE([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_ROLE, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(75)")] string pNAME_ROLE, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string pDESCRIP_ROLE)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_BY, pID_ROLE, pNAME_ROLE, pDESCRIP_ROLE);
 			return ((ISingleResult<SP_CRUD_ROLEResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_USER")]
+		public ISingleResult<SP_CRUD_USERResult> SP_CRUD_USER([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string pID_USER, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(150)")] string pUSER_NAME, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(150)")] string pUSER_EMAIL, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_DPT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_AREA, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_PST, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_ROLE, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string pUSER_NICKNAME, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string pUSER_PASSWORD)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_BY, pID_USER, pUSER_NAME, pUSER_EMAIL, pID_DPT, pID_AREA, pID_PST, pID_ROLE, pUSER_NICKNAME, pUSER_PASSWORD);
+			return ((ISingleResult<SP_CRUD_USERResult>)(result.ReturnValue));
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_AREA")]
+	public partial class TBL_AREA : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID_AREA;
+		
+		private System.Nullable<int> _ID_DPT;
+		
+		private string _AREA_NAME;
+		
+		private bool _AREA_STATE;
+		
+		private string _AREA_CREATEBY;
+		
+		private string _AREA_UPDATEDBY;
+		
+		private System.DateTime _AREA_CREATEDATE;
+		
+		private EntitySet<TBL_POSITION> _TBL_POSITIONs;
+		
+		private EntitySet<TBL_USER> _TBL_USERs;
+		
+		private EntityRef<TBL_DPT> _TBL_DPT;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_AREAChanging(int value);
+    partial void OnID_AREAChanged();
+    partial void OnID_DPTChanging(System.Nullable<int> value);
+    partial void OnID_DPTChanged();
+    partial void OnAREA_NAMEChanging(string value);
+    partial void OnAREA_NAMEChanged();
+    partial void OnAREA_STATEChanging(bool value);
+    partial void OnAREA_STATEChanged();
+    partial void OnAREA_CREATEBYChanging(string value);
+    partial void OnAREA_CREATEBYChanged();
+    partial void OnAREA_UPDATEDBYChanging(string value);
+    partial void OnAREA_UPDATEDBYChanged();
+    partial void OnAREA_CREATEDATEChanging(System.DateTime value);
+    partial void OnAREA_CREATEDATEChanged();
+    #endregion
+		
+		public TBL_AREA()
+		{
+			this._TBL_POSITIONs = new EntitySet<TBL_POSITION>(new Action<TBL_POSITION>(this.attach_TBL_POSITIONs), new Action<TBL_POSITION>(this.detach_TBL_POSITIONs));
+			this._TBL_USERs = new EntitySet<TBL_USER>(new Action<TBL_USER>(this.attach_TBL_USERs), new Action<TBL_USER>(this.detach_TBL_USERs));
+			this._TBL_DPT = default(EntityRef<TBL_DPT>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_AREA", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID_AREA
+		{
+			get
+			{
+				return this._ID_AREA;
+			}
+			set
+			{
+				if ((this._ID_AREA != value))
+				{
+					this.OnID_AREAChanging(value);
+					this.SendPropertyChanging();
+					this._ID_AREA = value;
+					this.SendPropertyChanged("ID_AREA");
+					this.OnID_AREAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_DPT", DbType="Int")]
+		public System.Nullable<int> ID_DPT
+		{
+			get
+			{
+				return this._ID_DPT;
+			}
+			set
+			{
+				if ((this._ID_DPT != value))
+				{
+					if (this._TBL_DPT.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_DPTChanging(value);
+					this.SendPropertyChanging();
+					this._ID_DPT = value;
+					this.SendPropertyChanged("ID_DPT");
+					this.OnID_DPTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AREA_NAME", DbType="VarChar(25) NOT NULL", CanBeNull=false)]
+		public string AREA_NAME
+		{
+			get
+			{
+				return this._AREA_NAME;
+			}
+			set
+			{
+				if ((this._AREA_NAME != value))
+				{
+					this.OnAREA_NAMEChanging(value);
+					this.SendPropertyChanging();
+					this._AREA_NAME = value;
+					this.SendPropertyChanged("AREA_NAME");
+					this.OnAREA_NAMEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AREA_STATE", DbType="Bit NOT NULL")]
+		public bool AREA_STATE
+		{
+			get
+			{
+				return this._AREA_STATE;
+			}
+			set
+			{
+				if ((this._AREA_STATE != value))
+				{
+					this.OnAREA_STATEChanging(value);
+					this.SendPropertyChanging();
+					this._AREA_STATE = value;
+					this.SendPropertyChanged("AREA_STATE");
+					this.OnAREA_STATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AREA_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string AREA_CREATEBY
+		{
+			get
+			{
+				return this._AREA_CREATEBY;
+			}
+			set
+			{
+				if ((this._AREA_CREATEBY != value))
+				{
+					this.OnAREA_CREATEBYChanging(value);
+					this.SendPropertyChanging();
+					this._AREA_CREATEBY = value;
+					this.SendPropertyChanged("AREA_CREATEBY");
+					this.OnAREA_CREATEBYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AREA_UPDATEDBY", DbType="VarChar(50)")]
+		public string AREA_UPDATEDBY
+		{
+			get
+			{
+				return this._AREA_UPDATEDBY;
+			}
+			set
+			{
+				if ((this._AREA_UPDATEDBY != value))
+				{
+					this.OnAREA_UPDATEDBYChanging(value);
+					this.SendPropertyChanging();
+					this._AREA_UPDATEDBY = value;
+					this.SendPropertyChanged("AREA_UPDATEDBY");
+					this.OnAREA_UPDATEDBYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AREA_CREATEDATE", DbType="DateTime NOT NULL")]
+		public System.DateTime AREA_CREATEDATE
+		{
+			get
+			{
+				return this._AREA_CREATEDATE;
+			}
+			set
+			{
+				if ((this._AREA_CREATEDATE != value))
+				{
+					this.OnAREA_CREATEDATEChanging(value);
+					this.SendPropertyChanging();
+					this._AREA_CREATEDATE = value;
+					this.SendPropertyChanged("AREA_CREATEDATE");
+					this.OnAREA_CREATEDATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_AREA_TBL_POSITION", Storage="_TBL_POSITIONs", ThisKey="ID_AREA", OtherKey="ID_AREA")]
+		public EntitySet<TBL_POSITION> TBL_POSITIONs
+		{
+			get
+			{
+				return this._TBL_POSITIONs;
+			}
+			set
+			{
+				this._TBL_POSITIONs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_AREA_TBL_USER", Storage="_TBL_USERs", ThisKey="ID_AREA", OtherKey="ID_AREA")]
+		public EntitySet<TBL_USER> TBL_USERs
+		{
+			get
+			{
+				return this._TBL_USERs;
+			}
+			set
+			{
+				this._TBL_USERs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_DPT_TBL_AREA", Storage="_TBL_DPT", ThisKey="ID_DPT", OtherKey="ID_DPT", IsForeignKey=true)]
+		public TBL_DPT TBL_DPT
+		{
+			get
+			{
+				return this._TBL_DPT.Entity;
+			}
+			set
+			{
+				TBL_DPT previousValue = this._TBL_DPT.Entity;
+				if (((previousValue != value) 
+							|| (this._TBL_DPT.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TBL_DPT.Entity = null;
+						previousValue.TBL_AREAs.Remove(this);
+					}
+					this._TBL_DPT.Entity = value;
+					if ((value != null))
+					{
+						value.TBL_AREAs.Add(this);
+						this._ID_DPT = value.ID_DPT;
+					}
+					else
+					{
+						this._ID_DPT = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("TBL_DPT");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_TBL_POSITIONs(TBL_POSITION entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_AREA = this;
+		}
+		
+		private void detach_TBL_POSITIONs(TBL_POSITION entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_AREA = null;
+		}
+		
+		private void attach_TBL_USERs(TBL_USER entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_AREA = this;
+		}
+		
+		private void detach_TBL_USERs(TBL_USER entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_AREA = null;
 		}
 	}
 	
@@ -408,6 +711,244 @@ namespace ControlApp.DataAccess
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_DPT")]
+	public partial class TBL_DPT : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID_DPT;
+		
+		private string _NAME_DPT;
+		
+		private bool _STATE_DPT;
+		
+		private string _CREATEBY_DPT;
+		
+		private string _UPDATEBY_DPT;
+		
+		private System.DateTime _CREATEDATE_DPT;
+		
+		private EntitySet<TBL_AREA> _TBL_AREAs;
+		
+		private EntitySet<TBL_USER> _TBL_USERs;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_DPTChanging(int value);
+    partial void OnID_DPTChanged();
+    partial void OnNAME_DPTChanging(string value);
+    partial void OnNAME_DPTChanged();
+    partial void OnSTATE_DPTChanging(bool value);
+    partial void OnSTATE_DPTChanged();
+    partial void OnCREATEBY_DPTChanging(string value);
+    partial void OnCREATEBY_DPTChanged();
+    partial void OnUPDATEBY_DPTChanging(string value);
+    partial void OnUPDATEBY_DPTChanged();
+    partial void OnCREATEDATE_DPTChanging(System.DateTime value);
+    partial void OnCREATEDATE_DPTChanged();
+    #endregion
+		
+		public TBL_DPT()
+		{
+			this._TBL_AREAs = new EntitySet<TBL_AREA>(new Action<TBL_AREA>(this.attach_TBL_AREAs), new Action<TBL_AREA>(this.detach_TBL_AREAs));
+			this._TBL_USERs = new EntitySet<TBL_USER>(new Action<TBL_USER>(this.attach_TBL_USERs), new Action<TBL_USER>(this.detach_TBL_USERs));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_DPT", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID_DPT
+		{
+			get
+			{
+				return this._ID_DPT;
+			}
+			set
+			{
+				if ((this._ID_DPT != value))
+				{
+					this.OnID_DPTChanging(value);
+					this.SendPropertyChanging();
+					this._ID_DPT = value;
+					this.SendPropertyChanged("ID_DPT");
+					this.OnID_DPTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_DPT", DbType="VarChar(75) NOT NULL", CanBeNull=false)]
+		public string NAME_DPT
+		{
+			get
+			{
+				return this._NAME_DPT;
+			}
+			set
+			{
+				if ((this._NAME_DPT != value))
+				{
+					this.OnNAME_DPTChanging(value);
+					this.SendPropertyChanging();
+					this._NAME_DPT = value;
+					this.SendPropertyChanged("NAME_DPT");
+					this.OnNAME_DPTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_DPT", DbType="Bit NOT NULL")]
+		public bool STATE_DPT
+		{
+			get
+			{
+				return this._STATE_DPT;
+			}
+			set
+			{
+				if ((this._STATE_DPT != value))
+				{
+					this.OnSTATE_DPTChanging(value);
+					this.SendPropertyChanging();
+					this._STATE_DPT = value;
+					this.SendPropertyChanged("STATE_DPT");
+					this.OnSTATE_DPTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATEBY_DPT", DbType="VarChar(50)")]
+		public string CREATEBY_DPT
+		{
+			get
+			{
+				return this._CREATEBY_DPT;
+			}
+			set
+			{
+				if ((this._CREATEBY_DPT != value))
+				{
+					this.OnCREATEBY_DPTChanging(value);
+					this.SendPropertyChanging();
+					this._CREATEBY_DPT = value;
+					this.SendPropertyChanged("CREATEBY_DPT");
+					this.OnCREATEBY_DPTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UPDATEBY_DPT", DbType="VarChar(50)")]
+		public string UPDATEBY_DPT
+		{
+			get
+			{
+				return this._UPDATEBY_DPT;
+			}
+			set
+			{
+				if ((this._UPDATEBY_DPT != value))
+				{
+					this.OnUPDATEBY_DPTChanging(value);
+					this.SendPropertyChanging();
+					this._UPDATEBY_DPT = value;
+					this.SendPropertyChanged("UPDATEBY_DPT");
+					this.OnUPDATEBY_DPTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATEDATE_DPT", DbType="DateTime NOT NULL")]
+		public System.DateTime CREATEDATE_DPT
+		{
+			get
+			{
+				return this._CREATEDATE_DPT;
+			}
+			set
+			{
+				if ((this._CREATEDATE_DPT != value))
+				{
+					this.OnCREATEDATE_DPTChanging(value);
+					this.SendPropertyChanging();
+					this._CREATEDATE_DPT = value;
+					this.SendPropertyChanged("CREATEDATE_DPT");
+					this.OnCREATEDATE_DPTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_DPT_TBL_AREA", Storage="_TBL_AREAs", ThisKey="ID_DPT", OtherKey="ID_DPT")]
+		public EntitySet<TBL_AREA> TBL_AREAs
+		{
+			get
+			{
+				return this._TBL_AREAs;
+			}
+			set
+			{
+				this._TBL_AREAs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_DPT_TBL_USER", Storage="_TBL_USERs", ThisKey="ID_DPT", OtherKey="ID_DPT")]
+		public EntitySet<TBL_USER> TBL_USERs
+		{
+			get
+			{
+				return this._TBL_USERs;
+			}
+			set
+			{
+				this._TBL_USERs.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_TBL_AREAs(TBL_AREA entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_DPT = this;
+		}
+		
+		private void detach_TBL_AREAs(TBL_AREA entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_DPT = null;
+		}
+		
+		private void attach_TBL_USERs(TBL_USER entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_DPT = this;
+		}
+		
+		private void detach_TBL_USERs(TBL_USER entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_DPT = null;
 		}
 	}
 	
@@ -614,6 +1155,281 @@ namespace ControlApp.DataAccess
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_POSITION")]
+	public partial class TBL_POSITION : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID_POSITION;
+		
+		private int _ID_AREA;
+		
+		private string _NAME_POSITION;
+		
+		private bool _POSITION_STATE;
+		
+		private string _POSITION_CREATEBY;
+		
+		private string _POSITION_UPDATEDBY;
+		
+		private System.DateTime _POSITION_CREATEDATE;
+		
+		private EntitySet<TBL_USER> _TBL_USERs;
+		
+		private EntityRef<TBL_AREA> _TBL_AREA;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_POSITIONChanging(int value);
+    partial void OnID_POSITIONChanged();
+    partial void OnID_AREAChanging(int value);
+    partial void OnID_AREAChanged();
+    partial void OnNAME_POSITIONChanging(string value);
+    partial void OnNAME_POSITIONChanged();
+    partial void OnPOSITION_STATEChanging(bool value);
+    partial void OnPOSITION_STATEChanged();
+    partial void OnPOSITION_CREATEBYChanging(string value);
+    partial void OnPOSITION_CREATEBYChanged();
+    partial void OnPOSITION_UPDATEDBYChanging(string value);
+    partial void OnPOSITION_UPDATEDBYChanged();
+    partial void OnPOSITION_CREATEDATEChanging(System.DateTime value);
+    partial void OnPOSITION_CREATEDATEChanged();
+    #endregion
+		
+		public TBL_POSITION()
+		{
+			this._TBL_USERs = new EntitySet<TBL_USER>(new Action<TBL_USER>(this.attach_TBL_USERs), new Action<TBL_USER>(this.detach_TBL_USERs));
+			this._TBL_AREA = default(EntityRef<TBL_AREA>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_POSITION", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID_POSITION
+		{
+			get
+			{
+				return this._ID_POSITION;
+			}
+			set
+			{
+				if ((this._ID_POSITION != value))
+				{
+					this.OnID_POSITIONChanging(value);
+					this.SendPropertyChanging();
+					this._ID_POSITION = value;
+					this.SendPropertyChanged("ID_POSITION");
+					this.OnID_POSITIONChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_AREA", DbType="Int NOT NULL")]
+		public int ID_AREA
+		{
+			get
+			{
+				return this._ID_AREA;
+			}
+			set
+			{
+				if ((this._ID_AREA != value))
+				{
+					if (this._TBL_AREA.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_AREAChanging(value);
+					this.SendPropertyChanging();
+					this._ID_AREA = value;
+					this.SendPropertyChanged("ID_AREA");
+					this.OnID_AREAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_POSITION", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string NAME_POSITION
+		{
+			get
+			{
+				return this._NAME_POSITION;
+			}
+			set
+			{
+				if ((this._NAME_POSITION != value))
+				{
+					this.OnNAME_POSITIONChanging(value);
+					this.SendPropertyChanging();
+					this._NAME_POSITION = value;
+					this.SendPropertyChanged("NAME_POSITION");
+					this.OnNAME_POSITIONChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POSITION_STATE", DbType="Bit NOT NULL")]
+		public bool POSITION_STATE
+		{
+			get
+			{
+				return this._POSITION_STATE;
+			}
+			set
+			{
+				if ((this._POSITION_STATE != value))
+				{
+					this.OnPOSITION_STATEChanging(value);
+					this.SendPropertyChanging();
+					this._POSITION_STATE = value;
+					this.SendPropertyChanged("POSITION_STATE");
+					this.OnPOSITION_STATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POSITION_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string POSITION_CREATEBY
+		{
+			get
+			{
+				return this._POSITION_CREATEBY;
+			}
+			set
+			{
+				if ((this._POSITION_CREATEBY != value))
+				{
+					this.OnPOSITION_CREATEBYChanging(value);
+					this.SendPropertyChanging();
+					this._POSITION_CREATEBY = value;
+					this.SendPropertyChanged("POSITION_CREATEBY");
+					this.OnPOSITION_CREATEBYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POSITION_UPDATEDBY", DbType="VarChar(50)")]
+		public string POSITION_UPDATEDBY
+		{
+			get
+			{
+				return this._POSITION_UPDATEDBY;
+			}
+			set
+			{
+				if ((this._POSITION_UPDATEDBY != value))
+				{
+					this.OnPOSITION_UPDATEDBYChanging(value);
+					this.SendPropertyChanging();
+					this._POSITION_UPDATEDBY = value;
+					this.SendPropertyChanged("POSITION_UPDATEDBY");
+					this.OnPOSITION_UPDATEDBYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POSITION_CREATEDATE", DbType="Date NOT NULL")]
+		public System.DateTime POSITION_CREATEDATE
+		{
+			get
+			{
+				return this._POSITION_CREATEDATE;
+			}
+			set
+			{
+				if ((this._POSITION_CREATEDATE != value))
+				{
+					this.OnPOSITION_CREATEDATEChanging(value);
+					this.SendPropertyChanging();
+					this._POSITION_CREATEDATE = value;
+					this.SendPropertyChanged("POSITION_CREATEDATE");
+					this.OnPOSITION_CREATEDATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_POSITION_TBL_USER", Storage="_TBL_USERs", ThisKey="ID_POSITION", OtherKey="ID_POSITION")]
+		public EntitySet<TBL_USER> TBL_USERs
+		{
+			get
+			{
+				return this._TBL_USERs;
+			}
+			set
+			{
+				this._TBL_USERs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_AREA_TBL_POSITION", Storage="_TBL_AREA", ThisKey="ID_AREA", OtherKey="ID_AREA", IsForeignKey=true)]
+		public TBL_AREA TBL_AREA
+		{
+			get
+			{
+				return this._TBL_AREA.Entity;
+			}
+			set
+			{
+				TBL_AREA previousValue = this._TBL_AREA.Entity;
+				if (((previousValue != value) 
+							|| (this._TBL_AREA.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TBL_AREA.Entity = null;
+						previousValue.TBL_POSITIONs.Remove(this);
+					}
+					this._TBL_AREA.Entity = value;
+					if ((value != null))
+					{
+						value.TBL_POSITIONs.Add(this);
+						this._ID_AREA = value.ID_AREA;
+					}
+					else
+					{
+						this._ID_AREA = default(int);
+					}
+					this.SendPropertyChanged("TBL_AREA");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_TBL_USERs(TBL_USER entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_POSITION = this;
+		}
+		
+		private void detach_TBL_USERs(TBL_USER entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_POSITION = null;
 		}
 	}
 	
@@ -1235,6 +2051,240 @@ namespace ControlApp.DataAccess
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_ROLE")]
+	public partial class TBL_ROLE : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID_ROLE;
+		
+		private string _NAME_ROLE;
+		
+		private string _DESCRIP_ROLE;
+		
+		private bool _ROLE_STATE;
+		
+		private string _ROLE_CREATEBY;
+		
+		private string _ROLE_UPDATEDBY;
+		
+		private System.DateTime _ROLE_CREATEDATE;
+		
+		private EntitySet<TBL_USER> _TBL_USERs;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_ROLEChanging(int value);
+    partial void OnID_ROLEChanged();
+    partial void OnNAME_ROLEChanging(string value);
+    partial void OnNAME_ROLEChanged();
+    partial void OnDESCRIP_ROLEChanging(string value);
+    partial void OnDESCRIP_ROLEChanged();
+    partial void OnROLE_STATEChanging(bool value);
+    partial void OnROLE_STATEChanged();
+    partial void OnROLE_CREATEBYChanging(string value);
+    partial void OnROLE_CREATEBYChanged();
+    partial void OnROLE_UPDATEDBYChanging(string value);
+    partial void OnROLE_UPDATEDBYChanged();
+    partial void OnROLE_CREATEDATEChanging(System.DateTime value);
+    partial void OnROLE_CREATEDATEChanged();
+    #endregion
+		
+		public TBL_ROLE()
+		{
+			this._TBL_USERs = new EntitySet<TBL_USER>(new Action<TBL_USER>(this.attach_TBL_USERs), new Action<TBL_USER>(this.detach_TBL_USERs));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_ROLE", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID_ROLE
+		{
+			get
+			{
+				return this._ID_ROLE;
+			}
+			set
+			{
+				if ((this._ID_ROLE != value))
+				{
+					this.OnID_ROLEChanging(value);
+					this.SendPropertyChanging();
+					this._ID_ROLE = value;
+					this.SendPropertyChanged("ID_ROLE");
+					this.OnID_ROLEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_ROLE", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		public string NAME_ROLE
+		{
+			get
+			{
+				return this._NAME_ROLE;
+			}
+			set
+			{
+				if ((this._NAME_ROLE != value))
+				{
+					this.OnNAME_ROLEChanging(value);
+					this.SendPropertyChanging();
+					this._NAME_ROLE = value;
+					this.SendPropertyChanged("NAME_ROLE");
+					this.OnNAME_ROLEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DESCRIP_ROLE", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string DESCRIP_ROLE
+		{
+			get
+			{
+				return this._DESCRIP_ROLE;
+			}
+			set
+			{
+				if ((this._DESCRIP_ROLE != value))
+				{
+					this.OnDESCRIP_ROLEChanging(value);
+					this.SendPropertyChanging();
+					this._DESCRIP_ROLE = value;
+					this.SendPropertyChanged("DESCRIP_ROLE");
+					this.OnDESCRIP_ROLEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_STATE", DbType="Bit NOT NULL")]
+		public bool ROLE_STATE
+		{
+			get
+			{
+				return this._ROLE_STATE;
+			}
+			set
+			{
+				if ((this._ROLE_STATE != value))
+				{
+					this.OnROLE_STATEChanging(value);
+					this.SendPropertyChanging();
+					this._ROLE_STATE = value;
+					this.SendPropertyChanged("ROLE_STATE");
+					this.OnROLE_STATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ROLE_CREATEBY
+		{
+			get
+			{
+				return this._ROLE_CREATEBY;
+			}
+			set
+			{
+				if ((this._ROLE_CREATEBY != value))
+				{
+					this.OnROLE_CREATEBYChanging(value);
+					this.SendPropertyChanging();
+					this._ROLE_CREATEBY = value;
+					this.SendPropertyChanged("ROLE_CREATEBY");
+					this.OnROLE_CREATEBYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_UPDATEDBY", DbType="VarChar(50)")]
+		public string ROLE_UPDATEDBY
+		{
+			get
+			{
+				return this._ROLE_UPDATEDBY;
+			}
+			set
+			{
+				if ((this._ROLE_UPDATEDBY != value))
+				{
+					this.OnROLE_UPDATEDBYChanging(value);
+					this.SendPropertyChanging();
+					this._ROLE_UPDATEDBY = value;
+					this.SendPropertyChanged("ROLE_UPDATEDBY");
+					this.OnROLE_UPDATEDBYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_CREATEDATE", DbType="DateTime NOT NULL")]
+		public System.DateTime ROLE_CREATEDATE
+		{
+			get
+			{
+				return this._ROLE_CREATEDATE;
+			}
+			set
+			{
+				if ((this._ROLE_CREATEDATE != value))
+				{
+					this.OnROLE_CREATEDATEChanging(value);
+					this.SendPropertyChanging();
+					this._ROLE_CREATEDATE = value;
+					this.SendPropertyChanged("ROLE_CREATEDATE");
+					this.OnROLE_CREATEDATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_ROLE_TBL_USER", Storage="_TBL_USERs", ThisKey="ID_ROLE", OtherKey="ID_ROLE")]
+		public EntitySet<TBL_USER> TBL_USERs
+		{
+			get
+			{
+				return this._TBL_USERs;
+			}
+			set
+			{
+				this._TBL_USERs.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_TBL_USERs(TBL_USER entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_ROLE = this;
+		}
+		
+		private void detach_TBL_USERs(TBL_USER entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_ROLE = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_SESSION")]
 	public partial class TBL_SESSION : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1503,309 +2553,6 @@ namespace ControlApp.DataAccess
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_AREA")]
-	public partial class TBL_AREA : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID_AREA;
-		
-		private System.Nullable<int> _ID_DPT;
-		
-		private string _AREA_NAME;
-		
-		private bool _AREA_STATE;
-		
-		private string _AREA_CREATEBY;
-		
-		private string _AREA_UPDATEDBY;
-		
-		private System.DateTime _AREA_CREATEDATE;
-		
-		private EntitySet<TBL_USER> _TBL_USERs;
-		
-		private EntitySet<TBL_POSITION> _TBL_POSITIONs;
-		
-		private EntityRef<TBL_DPT> _TBL_DPT;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnID_AREAChanging(int value);
-    partial void OnID_AREAChanged();
-    partial void OnID_DPTChanging(System.Nullable<int> value);
-    partial void OnID_DPTChanged();
-    partial void OnAREA_NAMEChanging(string value);
-    partial void OnAREA_NAMEChanged();
-    partial void OnAREA_STATEChanging(bool value);
-    partial void OnAREA_STATEChanged();
-    partial void OnAREA_CREATEBYChanging(string value);
-    partial void OnAREA_CREATEBYChanged();
-    partial void OnAREA_UPDATEDBYChanging(string value);
-    partial void OnAREA_UPDATEDBYChanged();
-    partial void OnAREA_CREATEDATEChanging(System.DateTime value);
-    partial void OnAREA_CREATEDATEChanged();
-    #endregion
-		
-		public TBL_AREA()
-		{
-			this._TBL_USERs = new EntitySet<TBL_USER>(new Action<TBL_USER>(this.attach_TBL_USERs), new Action<TBL_USER>(this.detach_TBL_USERs));
-			this._TBL_POSITIONs = new EntitySet<TBL_POSITION>(new Action<TBL_POSITION>(this.attach_TBL_POSITIONs), new Action<TBL_POSITION>(this.detach_TBL_POSITIONs));
-			this._TBL_DPT = default(EntityRef<TBL_DPT>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_AREA", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID_AREA
-		{
-			get
-			{
-				return this._ID_AREA;
-			}
-			set
-			{
-				if ((this._ID_AREA != value))
-				{
-					this.OnID_AREAChanging(value);
-					this.SendPropertyChanging();
-					this._ID_AREA = value;
-					this.SendPropertyChanged("ID_AREA");
-					this.OnID_AREAChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_DPT", DbType="Int")]
-		public System.Nullable<int> ID_DPT
-		{
-			get
-			{
-				return this._ID_DPT;
-			}
-			set
-			{
-				if ((this._ID_DPT != value))
-				{
-					if (this._TBL_DPT.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnID_DPTChanging(value);
-					this.SendPropertyChanging();
-					this._ID_DPT = value;
-					this.SendPropertyChanged("ID_DPT");
-					this.OnID_DPTChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AREA_NAME", DbType="VarChar(25) NOT NULL", CanBeNull=false)]
-		public string AREA_NAME
-		{
-			get
-			{
-				return this._AREA_NAME;
-			}
-			set
-			{
-				if ((this._AREA_NAME != value))
-				{
-					this.OnAREA_NAMEChanging(value);
-					this.SendPropertyChanging();
-					this._AREA_NAME = value;
-					this.SendPropertyChanged("AREA_NAME");
-					this.OnAREA_NAMEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AREA_STATE", DbType="Bit NOT NULL")]
-		public bool AREA_STATE
-		{
-			get
-			{
-				return this._AREA_STATE;
-			}
-			set
-			{
-				if ((this._AREA_STATE != value))
-				{
-					this.OnAREA_STATEChanging(value);
-					this.SendPropertyChanging();
-					this._AREA_STATE = value;
-					this.SendPropertyChanged("AREA_STATE");
-					this.OnAREA_STATEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AREA_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string AREA_CREATEBY
-		{
-			get
-			{
-				return this._AREA_CREATEBY;
-			}
-			set
-			{
-				if ((this._AREA_CREATEBY != value))
-				{
-					this.OnAREA_CREATEBYChanging(value);
-					this.SendPropertyChanging();
-					this._AREA_CREATEBY = value;
-					this.SendPropertyChanged("AREA_CREATEBY");
-					this.OnAREA_CREATEBYChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AREA_UPDATEDBY", DbType="VarChar(50)")]
-		public string AREA_UPDATEDBY
-		{
-			get
-			{
-				return this._AREA_UPDATEDBY;
-			}
-			set
-			{
-				if ((this._AREA_UPDATEDBY != value))
-				{
-					this.OnAREA_UPDATEDBYChanging(value);
-					this.SendPropertyChanging();
-					this._AREA_UPDATEDBY = value;
-					this.SendPropertyChanged("AREA_UPDATEDBY");
-					this.OnAREA_UPDATEDBYChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AREA_CREATEDATE", DbType="DateTime NOT NULL")]
-		public System.DateTime AREA_CREATEDATE
-		{
-			get
-			{
-				return this._AREA_CREATEDATE;
-			}
-			set
-			{
-				if ((this._AREA_CREATEDATE != value))
-				{
-					this.OnAREA_CREATEDATEChanging(value);
-					this.SendPropertyChanging();
-					this._AREA_CREATEDATE = value;
-					this.SendPropertyChanged("AREA_CREATEDATE");
-					this.OnAREA_CREATEDATEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_AREA_TBL_USER", Storage="_TBL_USERs", ThisKey="ID_AREA", OtherKey="ID_AREA")]
-		public EntitySet<TBL_USER> TBL_USERs
-		{
-			get
-			{
-				return this._TBL_USERs;
-			}
-			set
-			{
-				this._TBL_USERs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_AREA_TBL_POSITION", Storage="_TBL_POSITIONs", ThisKey="ID_AREA", OtherKey="ID_AREA")]
-		public EntitySet<TBL_POSITION> TBL_POSITIONs
-		{
-			get
-			{
-				return this._TBL_POSITIONs;
-			}
-			set
-			{
-				this._TBL_POSITIONs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_DPT_TBL_AREA", Storage="_TBL_DPT", ThisKey="ID_DPT", OtherKey="ID_DPT", IsForeignKey=true)]
-		public TBL_DPT TBL_DPT
-		{
-			get
-			{
-				return this._TBL_DPT.Entity;
-			}
-			set
-			{
-				TBL_DPT previousValue = this._TBL_DPT.Entity;
-				if (((previousValue != value) 
-							|| (this._TBL_DPT.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TBL_DPT.Entity = null;
-						previousValue.TBL_AREAs.Remove(this);
-					}
-					this._TBL_DPT.Entity = value;
-					if ((value != null))
-					{
-						value.TBL_AREAs.Add(this);
-						this._ID_DPT = value.ID_DPT;
-					}
-					else
-					{
-						this._ID_DPT = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TBL_DPT");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_TBL_USERs(TBL_USER entity)
-		{
-			this.SendPropertyChanging();
-			entity.TBL_AREA = this;
-		}
-		
-		private void detach_TBL_USERs(TBL_USER entity)
-		{
-			this.SendPropertyChanging();
-			entity.TBL_AREA = null;
-		}
-		
-		private void attach_TBL_POSITIONs(TBL_POSITION entity)
-		{
-			this.SendPropertyChanging();
-			entity.TBL_AREA = this;
-		}
-		
-		private void detach_TBL_POSITIONs(TBL_POSITION entity)
-		{
-			this.SendPropertyChanging();
-			entity.TBL_AREA = null;
 		}
 	}
 	
@@ -2379,69 +3126,39 @@ namespace ControlApp.DataAccess
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_DPT")]
-	public partial class TBL_DPT : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class SP_CRUD_AREAResult
 	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID_DPT;
+		private int _ID_AREA;
 		
 		private string _NAME_DPT;
 		
-		private bool _STATE_DPT;
+		private string _AREA_NAME;
 		
-		private string _CREATEBY_DPT;
+		private bool _AREA_STATE;
 		
-		private string _UPDATEBY_DPT;
+		private string _AREA_CREATEBY;
 		
-		private System.DateTime _CREATEDATE_DPT;
+		private string _AREA_UPDATEDBY;
 		
-		private EntitySet<TBL_AREA> _TBL_AREAs;
+		private System.DateTime _AREA_CREATEDATE;
 		
-		private EntitySet<TBL_USER> _TBL_USERs;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnID_DPTChanging(int value);
-    partial void OnID_DPTChanged();
-    partial void OnNAME_DPTChanging(string value);
-    partial void OnNAME_DPTChanged();
-    partial void OnSTATE_DPTChanging(bool value);
-    partial void OnSTATE_DPTChanged();
-    partial void OnCREATEBY_DPTChanging(string value);
-    partial void OnCREATEBY_DPTChanged();
-    partial void OnUPDATEBY_DPTChanging(string value);
-    partial void OnUPDATEBY_DPTChanged();
-    partial void OnCREATEDATE_DPTChanging(System.DateTime value);
-    partial void OnCREATEDATE_DPTChanged();
-    #endregion
-		
-		public TBL_DPT()
+		public SP_CRUD_AREAResult()
 		{
-			this._TBL_AREAs = new EntitySet<TBL_AREA>(new Action<TBL_AREA>(this.attach_TBL_AREAs), new Action<TBL_AREA>(this.detach_TBL_AREAs));
-			this._TBL_USERs = new EntitySet<TBL_USER>(new Action<TBL_USER>(this.attach_TBL_USERs), new Action<TBL_USER>(this.detach_TBL_USERs));
-			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_DPT", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID_DPT
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_AREA", DbType="Int NOT NULL")]
+		public int ID_AREA
 		{
 			get
 			{
-				return this._ID_DPT;
+				return this._ID_AREA;
 			}
 			set
 			{
-				if ((this._ID_DPT != value))
+				if ((this._ID_AREA != value))
 				{
-					this.OnID_DPTChanging(value);
-					this.SendPropertyChanging();
-					this._ID_DPT = value;
-					this.SendPropertyChanged("ID_DPT");
-					this.OnID_DPTChanged();
+					this._ID_AREA = value;
 				}
 			}
 		}
@@ -2457,672 +3174,89 @@ namespace ControlApp.DataAccess
 			{
 				if ((this._NAME_DPT != value))
 				{
-					this.OnNAME_DPTChanging(value);
-					this.SendPropertyChanging();
 					this._NAME_DPT = value;
-					this.SendPropertyChanged("NAME_DPT");
-					this.OnNAME_DPTChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_DPT", DbType="Bit NOT NULL")]
-		public bool STATE_DPT
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AREA_NAME", DbType="VarChar(25) NOT NULL", CanBeNull=false)]
+		public string AREA_NAME
 		{
 			get
 			{
-				return this._STATE_DPT;
+				return this._AREA_NAME;
 			}
 			set
 			{
-				if ((this._STATE_DPT != value))
+				if ((this._AREA_NAME != value))
 				{
-					this.OnSTATE_DPTChanging(value);
-					this.SendPropertyChanging();
-					this._STATE_DPT = value;
-					this.SendPropertyChanged("STATE_DPT");
-					this.OnSTATE_DPTChanged();
+					this._AREA_NAME = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATEBY_DPT", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string CREATEBY_DPT
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AREA_STATE", DbType="Bit NOT NULL")]
+		public bool AREA_STATE
 		{
 			get
 			{
-				return this._CREATEBY_DPT;
+				return this._AREA_STATE;
 			}
 			set
 			{
-				if ((this._CREATEBY_DPT != value))
+				if ((this._AREA_STATE != value))
 				{
-					this.OnCREATEBY_DPTChanging(value);
-					this.SendPropertyChanging();
-					this._CREATEBY_DPT = value;
-					this.SendPropertyChanged("CREATEBY_DPT");
-					this.OnCREATEBY_DPTChanged();
+					this._AREA_STATE = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UPDATEBY_DPT", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string UPDATEBY_DPT
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AREA_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string AREA_CREATEBY
 		{
 			get
 			{
-				return this._UPDATEBY_DPT;
+				return this._AREA_CREATEBY;
 			}
 			set
 			{
-				if ((this._UPDATEBY_DPT != value))
+				if ((this._AREA_CREATEBY != value))
 				{
-					this.OnUPDATEBY_DPTChanging(value);
-					this.SendPropertyChanging();
-					this._UPDATEBY_DPT = value;
-					this.SendPropertyChanged("UPDATEBY_DPT");
-					this.OnUPDATEBY_DPTChanged();
+					this._AREA_CREATEBY = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATEDATE_DPT", DbType="DateTime NOT NULL")]
-		public System.DateTime CREATEDATE_DPT
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AREA_UPDATEDBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string AREA_UPDATEDBY
 		{
 			get
 			{
-				return this._CREATEDATE_DPT;
+				return this._AREA_UPDATEDBY;
 			}
 			set
 			{
-				if ((this._CREATEDATE_DPT != value))
+				if ((this._AREA_UPDATEDBY != value))
 				{
-					this.OnCREATEDATE_DPTChanging(value);
-					this.SendPropertyChanging();
-					this._CREATEDATE_DPT = value;
-					this.SendPropertyChanged("CREATEDATE_DPT");
-					this.OnCREATEDATE_DPTChanged();
+					this._AREA_UPDATEDBY = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_DPT_TBL_AREA", Storage="_TBL_AREAs", ThisKey="ID_DPT", OtherKey="ID_DPT")]
-		public EntitySet<TBL_AREA> TBL_AREAs
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AREA_CREATEDATE", DbType="DateTime NOT NULL")]
+		public System.DateTime AREA_CREATEDATE
 		{
 			get
 			{
-				return this._TBL_AREAs;
+				return this._AREA_CREATEDATE;
 			}
 			set
 			{
-				this._TBL_AREAs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_DPT_TBL_USER", Storage="_TBL_USERs", ThisKey="ID_DPT", OtherKey="ID_DPT")]
-		public EntitySet<TBL_USER> TBL_USERs
-		{
-			get
-			{
-				return this._TBL_USERs;
-			}
-			set
-			{
-				this._TBL_USERs.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_TBL_AREAs(TBL_AREA entity)
-		{
-			this.SendPropertyChanging();
-			entity.TBL_DPT = this;
-		}
-		
-		private void detach_TBL_AREAs(TBL_AREA entity)
-		{
-			this.SendPropertyChanging();
-			entity.TBL_DPT = null;
-		}
-		
-		private void attach_TBL_USERs(TBL_USER entity)
-		{
-			this.SendPropertyChanging();
-			entity.TBL_DPT = this;
-		}
-		
-		private void detach_TBL_USERs(TBL_USER entity)
-		{
-			this.SendPropertyChanging();
-			entity.TBL_DPT = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_POSITION")]
-	public partial class TBL_POSITION : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID_POSITION;
-		
-		private int _ID_AREA;
-		
-		private string _NAME_POSITION;
-		
-		private bool _POSITION_STATE;
-		
-		private string _POSITION_CREATEBY;
-		
-		private string _POSITION_UPDATEDBY;
-		
-		private System.DateTime _POSITION_CREATEDATE;
-		
-		private EntitySet<TBL_USER> _TBL_USERs;
-		
-		private EntityRef<TBL_AREA> _TBL_AREA;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnID_POSITIONChanging(int value);
-    partial void OnID_POSITIONChanged();
-    partial void OnID_AREAChanging(int value);
-    partial void OnID_AREAChanged();
-    partial void OnNAME_POSITIONChanging(string value);
-    partial void OnNAME_POSITIONChanged();
-    partial void OnPOSITION_STATEChanging(bool value);
-    partial void OnPOSITION_STATEChanged();
-    partial void OnPOSITION_CREATEBYChanging(string value);
-    partial void OnPOSITION_CREATEBYChanged();
-    partial void OnPOSITION_UPDATEDBYChanging(string value);
-    partial void OnPOSITION_UPDATEDBYChanged();
-    partial void OnPOSITION_CREATEDATEChanging(System.DateTime value);
-    partial void OnPOSITION_CREATEDATEChanged();
-    #endregion
-		
-		public TBL_POSITION()
-		{
-			this._TBL_USERs = new EntitySet<TBL_USER>(new Action<TBL_USER>(this.attach_TBL_USERs), new Action<TBL_USER>(this.detach_TBL_USERs));
-			this._TBL_AREA = default(EntityRef<TBL_AREA>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_POSITION", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID_POSITION
-		{
-			get
-			{
-				return this._ID_POSITION;
-			}
-			set
-			{
-				if ((this._ID_POSITION != value))
+				if ((this._AREA_CREATEDATE != value))
 				{
-					this.OnID_POSITIONChanging(value);
-					this.SendPropertyChanging();
-					this._ID_POSITION = value;
-					this.SendPropertyChanged("ID_POSITION");
-					this.OnID_POSITIONChanged();
+					this._AREA_CREATEDATE = value;
 				}
 			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_AREA", DbType="Int NOT NULL")]
-		public int ID_AREA
-		{
-			get
-			{
-				return this._ID_AREA;
-			}
-			set
-			{
-				if ((this._ID_AREA != value))
-				{
-					if (this._TBL_AREA.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnID_AREAChanging(value);
-					this.SendPropertyChanging();
-					this._ID_AREA = value;
-					this.SendPropertyChanged("ID_AREA");
-					this.OnID_AREAChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_POSITION", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string NAME_POSITION
-		{
-			get
-			{
-				return this._NAME_POSITION;
-			}
-			set
-			{
-				if ((this._NAME_POSITION != value))
-				{
-					this.OnNAME_POSITIONChanging(value);
-					this.SendPropertyChanging();
-					this._NAME_POSITION = value;
-					this.SendPropertyChanged("NAME_POSITION");
-					this.OnNAME_POSITIONChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POSITION_STATE", DbType="Bit NOT NULL")]
-		public bool POSITION_STATE
-		{
-			get
-			{
-				return this._POSITION_STATE;
-			}
-			set
-			{
-				if ((this._POSITION_STATE != value))
-				{
-					this.OnPOSITION_STATEChanging(value);
-					this.SendPropertyChanging();
-					this._POSITION_STATE = value;
-					this.SendPropertyChanged("POSITION_STATE");
-					this.OnPOSITION_STATEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POSITION_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string POSITION_CREATEBY
-		{
-			get
-			{
-				return this._POSITION_CREATEBY;
-			}
-			set
-			{
-				if ((this._POSITION_CREATEBY != value))
-				{
-					this.OnPOSITION_CREATEBYChanging(value);
-					this.SendPropertyChanging();
-					this._POSITION_CREATEBY = value;
-					this.SendPropertyChanged("POSITION_CREATEBY");
-					this.OnPOSITION_CREATEBYChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POSITION_UPDATEDBY", DbType="VarChar(50)")]
-		public string POSITION_UPDATEDBY
-		{
-			get
-			{
-				return this._POSITION_UPDATEDBY;
-			}
-			set
-			{
-				if ((this._POSITION_UPDATEDBY != value))
-				{
-					this.OnPOSITION_UPDATEDBYChanging(value);
-					this.SendPropertyChanging();
-					this._POSITION_UPDATEDBY = value;
-					this.SendPropertyChanged("POSITION_UPDATEDBY");
-					this.OnPOSITION_UPDATEDBYChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POSITION_CREATEDATE", DbType="Date NOT NULL")]
-		public System.DateTime POSITION_CREATEDATE
-		{
-			get
-			{
-				return this._POSITION_CREATEDATE;
-			}
-			set
-			{
-				if ((this._POSITION_CREATEDATE != value))
-				{
-					this.OnPOSITION_CREATEDATEChanging(value);
-					this.SendPropertyChanging();
-					this._POSITION_CREATEDATE = value;
-					this.SendPropertyChanged("POSITION_CREATEDATE");
-					this.OnPOSITION_CREATEDATEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_POSITION_TBL_USER", Storage="_TBL_USERs", ThisKey="ID_POSITION", OtherKey="ID_POSITION")]
-		public EntitySet<TBL_USER> TBL_USERs
-		{
-			get
-			{
-				return this._TBL_USERs;
-			}
-			set
-			{
-				this._TBL_USERs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_AREA_TBL_POSITION", Storage="_TBL_AREA", ThisKey="ID_AREA", OtherKey="ID_AREA", IsForeignKey=true)]
-		public TBL_AREA TBL_AREA
-		{
-			get
-			{
-				return this._TBL_AREA.Entity;
-			}
-			set
-			{
-				TBL_AREA previousValue = this._TBL_AREA.Entity;
-				if (((previousValue != value) 
-							|| (this._TBL_AREA.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TBL_AREA.Entity = null;
-						previousValue.TBL_POSITIONs.Remove(this);
-					}
-					this._TBL_AREA.Entity = value;
-					if ((value != null))
-					{
-						value.TBL_POSITIONs.Add(this);
-						this._ID_AREA = value.ID_AREA;
-					}
-					else
-					{
-						this._ID_AREA = default(int);
-					}
-					this.SendPropertyChanged("TBL_AREA");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_TBL_USERs(TBL_USER entity)
-		{
-			this.SendPropertyChanging();
-			entity.TBL_POSITION = this;
-		}
-		
-		private void detach_TBL_USERs(TBL_USER entity)
-		{
-			this.SendPropertyChanging();
-			entity.TBL_POSITION = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_ROLE")]
-	public partial class TBL_ROLE : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID_ROLE;
-		
-		private string _NAME_ROLE;
-		
-		private string _DESCRIP_ROLE;
-		
-		private bool _ROLE_STATE;
-		
-		private string _ROLE_CREATEBY;
-		
-		private string _ROLE_UPDATEDBY;
-		
-		private System.DateTime _ROLE_CREATEDATE;
-		
-		private EntitySet<TBL_USER> _TBL_USERs;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnID_ROLEChanging(int value);
-    partial void OnID_ROLEChanged();
-    partial void OnNAME_ROLEChanging(string value);
-    partial void OnNAME_ROLEChanged();
-    partial void OnDESCRIP_ROLEChanging(string value);
-    partial void OnDESCRIP_ROLEChanged();
-    partial void OnROLE_STATEChanging(bool value);
-    partial void OnROLE_STATEChanged();
-    partial void OnROLE_CREATEBYChanging(string value);
-    partial void OnROLE_CREATEBYChanged();
-    partial void OnROLE_UPDATEDBYChanging(string value);
-    partial void OnROLE_UPDATEDBYChanged();
-    partial void OnROLE_CREATEDATEChanging(System.DateTime value);
-    partial void OnROLE_CREATEDATEChanged();
-    #endregion
-		
-		public TBL_ROLE()
-		{
-			this._TBL_USERs = new EntitySet<TBL_USER>(new Action<TBL_USER>(this.attach_TBL_USERs), new Action<TBL_USER>(this.detach_TBL_USERs));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_ROLE", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID_ROLE
-		{
-			get
-			{
-				return this._ID_ROLE;
-			}
-			set
-			{
-				if ((this._ID_ROLE != value))
-				{
-					this.OnID_ROLEChanging(value);
-					this.SendPropertyChanging();
-					this._ID_ROLE = value;
-					this.SendPropertyChanged("ID_ROLE");
-					this.OnID_ROLEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_ROLE", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
-		public string NAME_ROLE
-		{
-			get
-			{
-				return this._NAME_ROLE;
-			}
-			set
-			{
-				if ((this._NAME_ROLE != value))
-				{
-					this.OnNAME_ROLEChanging(value);
-					this.SendPropertyChanging();
-					this._NAME_ROLE = value;
-					this.SendPropertyChanged("NAME_ROLE");
-					this.OnNAME_ROLEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DESCRIP_ROLE", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string DESCRIP_ROLE
-		{
-			get
-			{
-				return this._DESCRIP_ROLE;
-			}
-			set
-			{
-				if ((this._DESCRIP_ROLE != value))
-				{
-					this.OnDESCRIP_ROLEChanging(value);
-					this.SendPropertyChanging();
-					this._DESCRIP_ROLE = value;
-					this.SendPropertyChanged("DESCRIP_ROLE");
-					this.OnDESCRIP_ROLEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_STATE", DbType="Bit NOT NULL")]
-		public bool ROLE_STATE
-		{
-			get
-			{
-				return this._ROLE_STATE;
-			}
-			set
-			{
-				if ((this._ROLE_STATE != value))
-				{
-					this.OnROLE_STATEChanging(value);
-					this.SendPropertyChanging();
-					this._ROLE_STATE = value;
-					this.SendPropertyChanged("ROLE_STATE");
-					this.OnROLE_STATEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string ROLE_CREATEBY
-		{
-			get
-			{
-				return this._ROLE_CREATEBY;
-			}
-			set
-			{
-				if ((this._ROLE_CREATEBY != value))
-				{
-					this.OnROLE_CREATEBYChanging(value);
-					this.SendPropertyChanging();
-					this._ROLE_CREATEBY = value;
-					this.SendPropertyChanged("ROLE_CREATEBY");
-					this.OnROLE_CREATEBYChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_UPDATEDBY", DbType="VarChar(50)")]
-		public string ROLE_UPDATEDBY
-		{
-			get
-			{
-				return this._ROLE_UPDATEDBY;
-			}
-			set
-			{
-				if ((this._ROLE_UPDATEDBY != value))
-				{
-					this.OnROLE_UPDATEDBYChanging(value);
-					this.SendPropertyChanging();
-					this._ROLE_UPDATEDBY = value;
-					this.SendPropertyChanged("ROLE_UPDATEDBY");
-					this.OnROLE_UPDATEDBYChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_CREATEDATE", DbType="DateTime NOT NULL")]
-		public System.DateTime ROLE_CREATEDATE
-		{
-			get
-			{
-				return this._ROLE_CREATEDATE;
-			}
-			set
-			{
-				if ((this._ROLE_CREATEDATE != value))
-				{
-					this.OnROLE_CREATEDATEChanging(value);
-					this.SendPropertyChanging();
-					this._ROLE_CREATEDATE = value;
-					this.SendPropertyChanged("ROLE_CREATEDATE");
-					this.OnROLE_CREATEDATEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_ROLE_TBL_USER", Storage="_TBL_USERs", ThisKey="ID_ROLE", OtherKey="ID_ROLE")]
-		public EntitySet<TBL_USER> TBL_USERs
-		{
-			get
-			{
-				return this._TBL_USERs;
-			}
-			set
-			{
-				this._TBL_USERs.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_TBL_USERs(TBL_USER entity)
-		{
-			this.SendPropertyChanging();
-			entity.TBL_ROLE = this;
-		}
-		
-		private void detach_TBL_USERs(TBL_USER entity)
-		{
-			this.SendPropertyChanging();
-			entity.TBL_ROLE = null;
 		}
 	}
 	
@@ -3260,6 +3394,256 @@ namespace ControlApp.DataAccess
 		}
 	}
 	
+	public partial class SP_CRUD_DPTResult
+	{
+		
+		private int _ID_DPT;
+		
+		private string _NAME_DPT;
+		
+		private bool _STATE_DPT;
+		
+		private string _CREATEBY_DPT;
+		
+		private string _UPDATEBY_DPT;
+		
+		private System.DateTime _CREATEDATE_DPT;
+		
+		public SP_CRUD_DPTResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_DPT", DbType="Int NOT NULL")]
+		public int ID_DPT
+		{
+			get
+			{
+				return this._ID_DPT;
+			}
+			set
+			{
+				if ((this._ID_DPT != value))
+				{
+					this._ID_DPT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_DPT", DbType="VarChar(75) NOT NULL", CanBeNull=false)]
+		public string NAME_DPT
+		{
+			get
+			{
+				return this._NAME_DPT;
+			}
+			set
+			{
+				if ((this._NAME_DPT != value))
+				{
+					this._NAME_DPT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_DPT", DbType="Bit NOT NULL")]
+		public bool STATE_DPT
+		{
+			get
+			{
+				return this._STATE_DPT;
+			}
+			set
+			{
+				if ((this._STATE_DPT != value))
+				{
+					this._STATE_DPT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATEBY_DPT", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string CREATEBY_DPT
+		{
+			get
+			{
+				return this._CREATEBY_DPT;
+			}
+			set
+			{
+				if ((this._CREATEBY_DPT != value))
+				{
+					this._CREATEBY_DPT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UPDATEBY_DPT", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string UPDATEBY_DPT
+		{
+			get
+			{
+				return this._UPDATEBY_DPT;
+			}
+			set
+			{
+				if ((this._UPDATEBY_DPT != value))
+				{
+					this._UPDATEBY_DPT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATEDATE_DPT", DbType="DateTime NOT NULL")]
+		public System.DateTime CREATEDATE_DPT
+		{
+			get
+			{
+				return this._CREATEDATE_DPT;
+			}
+			set
+			{
+				if ((this._CREATEDATE_DPT != value))
+				{
+					this._CREATEDATE_DPT = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_CRUD_POSITIONResult
+	{
+		
+		private int _ID_POSITION;
+		
+		private string _AREA_NAME;
+		
+		private string _NAME_POSITION;
+		
+		private bool _POSITION_STATE;
+		
+		private string _CREATEBY_PST;
+		
+		private string _UPDATEBY_PST;
+		
+		private System.DateTime _POSITION_CREATEDATE;
+		
+		public SP_CRUD_POSITIONResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_POSITION", DbType="Int NOT NULL")]
+		public int ID_POSITION
+		{
+			get
+			{
+				return this._ID_POSITION;
+			}
+			set
+			{
+				if ((this._ID_POSITION != value))
+				{
+					this._ID_POSITION = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AREA_NAME", DbType="VarChar(25) NOT NULL", CanBeNull=false)]
+		public string AREA_NAME
+		{
+			get
+			{
+				return this._AREA_NAME;
+			}
+			set
+			{
+				if ((this._AREA_NAME != value))
+				{
+					this._AREA_NAME = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_POSITION", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string NAME_POSITION
+		{
+			get
+			{
+				return this._NAME_POSITION;
+			}
+			set
+			{
+				if ((this._NAME_POSITION != value))
+				{
+					this._NAME_POSITION = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POSITION_STATE", DbType="Bit NOT NULL")]
+		public bool POSITION_STATE
+		{
+			get
+			{
+				return this._POSITION_STATE;
+			}
+			set
+			{
+				if ((this._POSITION_STATE != value))
+				{
+					this._POSITION_STATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATEBY_PST", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string CREATEBY_PST
+		{
+			get
+			{
+				return this._CREATEBY_PST;
+			}
+			set
+			{
+				if ((this._CREATEBY_PST != value))
+				{
+					this._CREATEBY_PST = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UPDATEBY_PST", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string UPDATEBY_PST
+		{
+			get
+			{
+				return this._UPDATEBY_PST;
+			}
+			set
+			{
+				if ((this._UPDATEBY_PST != value))
+				{
+					this._UPDATEBY_PST = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POSITION_CREATEDATE", DbType="Date NOT NULL")]
+		public System.DateTime POSITION_CREATEDATE
+		{
+			get
+			{
+				return this._POSITION_CREATEDATE;
+			}
+			set
+			{
+				if ((this._POSITION_CREATEDATE != value))
+				{
+					this._POSITION_CREATEDATE = value;
+				}
+			}
+		}
+	}
+	
 	public partial class SP_CRUD_PRICE_TAGResult
 	{
 		
@@ -3389,256 +3773,6 @@ namespace ControlApp.DataAccess
 				if ((this._PRICE_TAG_CREATEDATE != value))
 				{
 					this._PRICE_TAG_CREATEDATE = value;
-				}
-			}
-		}
-	}
-	
-	public partial class SP_CRUD_DPTResult
-	{
-		
-		private int _ID_DPT;
-		
-		private string _NAME_DPT;
-		
-		private bool _STATE_DPT;
-		
-		private string _CREATEBY_DPT;
-		
-		private string _UPDATEBY_DPT;
-		
-		private System.DateTime _CREATEDATE_DPT;
-		
-		public SP_CRUD_DPTResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_DPT", DbType="Int NOT NULL")]
-		public int ID_DPT
-		{
-			get
-			{
-				return this._ID_DPT;
-			}
-			set
-			{
-				if ((this._ID_DPT != value))
-				{
-					this._ID_DPT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_DPT", DbType="VarChar(75) NOT NULL", CanBeNull=false)]
-		public string NAME_DPT
-		{
-			get
-			{
-				return this._NAME_DPT;
-			}
-			set
-			{
-				if ((this._NAME_DPT != value))
-				{
-					this._NAME_DPT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_DPT", DbType="Bit NOT NULL")]
-		public bool STATE_DPT
-		{
-			get
-			{
-				return this._STATE_DPT;
-			}
-			set
-			{
-				if ((this._STATE_DPT != value))
-				{
-					this._STATE_DPT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATEBY_DPT", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string CREATEBY_DPT
-		{
-			get
-			{
-				return this._CREATEBY_DPT;
-			}
-			set
-			{
-				if ((this._CREATEBY_DPT != value))
-				{
-					this._CREATEBY_DPT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UPDATEBY_DPT", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string UPDATEBY_DPT
-		{
-			get
-			{
-				return this._UPDATEBY_DPT;
-			}
-			set
-			{
-				if ((this._UPDATEBY_DPT != value))
-				{
-					this._UPDATEBY_DPT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATEDATE_DPT", DbType="DateTime NOT NULL")]
-		public System.DateTime CREATEDATE_DPT
-		{
-			get
-			{
-				return this._CREATEDATE_DPT;
-			}
-			set
-			{
-				if ((this._CREATEDATE_DPT != value))
-				{
-					this._CREATEDATE_DPT = value;
-				}
-			}
-		}
-	}
-	
-	public partial class SP_CRUD_AREAResult
-	{
-		
-		private int _ID_AREA;
-		
-		private string _NAME_DPT;
-		
-		private string _AREA_NAME;
-		
-		private bool _AREA_STATE;
-		
-		private string _AREA_CREATEBY;
-		
-		private string _AREA_UPDATEDBY;
-		
-		private System.DateTime _AREA_CREATEDATE;
-		
-		public SP_CRUD_AREAResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_AREA", DbType="Int NOT NULL")]
-		public int ID_AREA
-		{
-			get
-			{
-				return this._ID_AREA;
-			}
-			set
-			{
-				if ((this._ID_AREA != value))
-				{
-					this._ID_AREA = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_DPT", DbType="VarChar(75) NOT NULL", CanBeNull=false)]
-		public string NAME_DPT
-		{
-			get
-			{
-				return this._NAME_DPT;
-			}
-			set
-			{
-				if ((this._NAME_DPT != value))
-				{
-					this._NAME_DPT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AREA_NAME", DbType="VarChar(25) NOT NULL", CanBeNull=false)]
-		public string AREA_NAME
-		{
-			get
-			{
-				return this._AREA_NAME;
-			}
-			set
-			{
-				if ((this._AREA_NAME != value))
-				{
-					this._AREA_NAME = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AREA_STATE", DbType="Bit NOT NULL")]
-		public bool AREA_STATE
-		{
-			get
-			{
-				return this._AREA_STATE;
-			}
-			set
-			{
-				if ((this._AREA_STATE != value))
-				{
-					this._AREA_STATE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AREA_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string AREA_CREATEBY
-		{
-			get
-			{
-				return this._AREA_CREATEBY;
-			}
-			set
-			{
-				if ((this._AREA_CREATEBY != value))
-				{
-					this._AREA_CREATEBY = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AREA_UPDATEDBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string AREA_UPDATEDBY
-		{
-			get
-			{
-				return this._AREA_UPDATEDBY;
-			}
-			set
-			{
-				if ((this._AREA_UPDATEDBY != value))
-				{
-					this._AREA_UPDATEDBY = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AREA_CREATEDATE", DbType="DateTime NOT NULL")]
-		public System.DateTime AREA_CREATEDATE
-		{
-			get
-			{
-				return this._AREA_CREATEDATE;
-			}
-			set
-			{
-				if ((this._AREA_CREATEDATE != value))
-				{
-					this._AREA_CREATEDATE = value;
 				}
 			}
 		}
@@ -3845,6 +3979,140 @@ namespace ControlApp.DataAccess
 				if ((this._RECEIPT_CREATEDATE != value))
 				{
 					this._RECEIPT_CREATEDATE = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_CRUD_ROLEResult
+	{
+		
+		private int _ID_ROLE;
+		
+		private string _NAME_ROLE;
+		
+		private string _DESCRIP_ROLE;
+		
+		private bool _ROLE_STATE;
+		
+		private string _ROLE_CREATEBY;
+		
+		private string _ROLE_UPDATEDBY;
+		
+		private System.DateTime _ROLE_CREATEDATE;
+		
+		public SP_CRUD_ROLEResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_ROLE", DbType="Int NOT NULL")]
+		public int ID_ROLE
+		{
+			get
+			{
+				return this._ID_ROLE;
+			}
+			set
+			{
+				if ((this._ID_ROLE != value))
+				{
+					this._ID_ROLE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_ROLE", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		public string NAME_ROLE
+		{
+			get
+			{
+				return this._NAME_ROLE;
+			}
+			set
+			{
+				if ((this._NAME_ROLE != value))
+				{
+					this._NAME_ROLE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DESCRIP_ROLE", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string DESCRIP_ROLE
+		{
+			get
+			{
+				return this._DESCRIP_ROLE;
+			}
+			set
+			{
+				if ((this._DESCRIP_ROLE != value))
+				{
+					this._DESCRIP_ROLE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_STATE", DbType="Bit NOT NULL")]
+		public bool ROLE_STATE
+		{
+			get
+			{
+				return this._ROLE_STATE;
+			}
+			set
+			{
+				if ((this._ROLE_STATE != value))
+				{
+					this._ROLE_STATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ROLE_CREATEBY
+		{
+			get
+			{
+				return this._ROLE_CREATEBY;
+			}
+			set
+			{
+				if ((this._ROLE_CREATEBY != value))
+				{
+					this._ROLE_CREATEBY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_UPDATEDBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ROLE_UPDATEDBY
+		{
+			get
+			{
+				return this._ROLE_UPDATEDBY;
+			}
+			set
+			{
+				if ((this._ROLE_UPDATEDBY != value))
+				{
+					this._ROLE_UPDATEDBY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_CREATEDATE", DbType="DateTime NOT NULL")]
+		public System.DateTime ROLE_CREATEDATE
+		{
+			get
+			{
+				return this._ROLE_CREATEDATE;
+			}
+			set
+			{
+				if ((this._ROLE_CREATEDATE != value))
+				{
+					this._ROLE_CREATEDATE = value;
 				}
 			}
 		}
@@ -4087,274 +4355,6 @@ namespace ControlApp.DataAccess
 				if ((this._USER_CREATEDATE != value))
 				{
 					this._USER_CREATEDATE = value;
-				}
-			}
-		}
-	}
-	
-	public partial class SP_CRUD_POSITIONResult
-	{
-		
-		private int _ID_POSITION;
-		
-		private string _AREA_NAME;
-		
-		private string _NAME_POSITION;
-		
-		private bool _POSITION_STATE;
-		
-		private string _CREATEBY_PST;
-		
-		private string _UPDATEBY_PST;
-		
-		private System.DateTime _POSITION_CREATEDATE;
-		
-		public SP_CRUD_POSITIONResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_POSITION", DbType="Int NOT NULL")]
-		public int ID_POSITION
-		{
-			get
-			{
-				return this._ID_POSITION;
-			}
-			set
-			{
-				if ((this._ID_POSITION != value))
-				{
-					this._ID_POSITION = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AREA_NAME", DbType="VarChar(25) NOT NULL", CanBeNull=false)]
-		public string AREA_NAME
-		{
-			get
-			{
-				return this._AREA_NAME;
-			}
-			set
-			{
-				if ((this._AREA_NAME != value))
-				{
-					this._AREA_NAME = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_POSITION", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string NAME_POSITION
-		{
-			get
-			{
-				return this._NAME_POSITION;
-			}
-			set
-			{
-				if ((this._NAME_POSITION != value))
-				{
-					this._NAME_POSITION = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POSITION_STATE", DbType="Bit NOT NULL")]
-		public bool POSITION_STATE
-		{
-			get
-			{
-				return this._POSITION_STATE;
-			}
-			set
-			{
-				if ((this._POSITION_STATE != value))
-				{
-					this._POSITION_STATE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATEBY_PST", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string CREATEBY_PST
-		{
-			get
-			{
-				return this._CREATEBY_PST;
-			}
-			set
-			{
-				if ((this._CREATEBY_PST != value))
-				{
-					this._CREATEBY_PST = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UPDATEBY_PST", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string UPDATEBY_PST
-		{
-			get
-			{
-				return this._UPDATEBY_PST;
-			}
-			set
-			{
-				if ((this._UPDATEBY_PST != value))
-				{
-					this._UPDATEBY_PST = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POSITION_CREATEDATE", DbType="Date NOT NULL")]
-		public System.DateTime POSITION_CREATEDATE
-		{
-			get
-			{
-				return this._POSITION_CREATEDATE;
-			}
-			set
-			{
-				if ((this._POSITION_CREATEDATE != value))
-				{
-					this._POSITION_CREATEDATE = value;
-				}
-			}
-		}
-	}
-	
-	public partial class SP_CRUD_ROLEResult
-	{
-		
-		private int _ID_ROLE;
-		
-		private string _NAME_ROLE;
-		
-		private string _DESCRIP_ROLE;
-		
-		private bool _ROLE_STATE;
-		
-		private string _ROLE_CREATEBY;
-		
-		private string _ROLE_UPDATEDBY;
-		
-		private System.DateTime _ROLE_CREATEDATE;
-		
-		public SP_CRUD_ROLEResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_ROLE", DbType="Int NOT NULL")]
-		public int ID_ROLE
-		{
-			get
-			{
-				return this._ID_ROLE;
-			}
-			set
-			{
-				if ((this._ID_ROLE != value))
-				{
-					this._ID_ROLE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_ROLE", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
-		public string NAME_ROLE
-		{
-			get
-			{
-				return this._NAME_ROLE;
-			}
-			set
-			{
-				if ((this._NAME_ROLE != value))
-				{
-					this._NAME_ROLE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DESCRIP_ROLE", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string DESCRIP_ROLE
-		{
-			get
-			{
-				return this._DESCRIP_ROLE;
-			}
-			set
-			{
-				if ((this._DESCRIP_ROLE != value))
-				{
-					this._DESCRIP_ROLE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_STATE", DbType="Bit NOT NULL")]
-		public bool ROLE_STATE
-		{
-			get
-			{
-				return this._ROLE_STATE;
-			}
-			set
-			{
-				if ((this._ROLE_STATE != value))
-				{
-					this._ROLE_STATE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string ROLE_CREATEBY
-		{
-			get
-			{
-				return this._ROLE_CREATEBY;
-			}
-			set
-			{
-				if ((this._ROLE_CREATEBY != value))
-				{
-					this._ROLE_CREATEBY = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_UPDATEDBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string ROLE_UPDATEDBY
-		{
-			get
-			{
-				return this._ROLE_UPDATEDBY;
-			}
-			set
-			{
-				if ((this._ROLE_UPDATEDBY != value))
-				{
-					this._ROLE_UPDATEDBY = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_CREATEDATE", DbType="DateTime NOT NULL")]
-		public System.DateTime ROLE_CREATEDATE
-		{
-			get
-			{
-				return this._ROLE_CREATEDATE;
-			}
-			set
-			{
-				if ((this._ROLE_CREATEDATE != value))
-				{
-					this._ROLE_CREATEDATE = value;
 				}
 			}
 		}

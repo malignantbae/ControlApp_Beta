@@ -64,5 +64,16 @@ namespace ControlApp.DataAccess.Properties {
                 return ((string)(this["ControlAppConnectionString2"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.30.206;Initial Catalog=ControlApp;Persist Security Info=True;" +
+            "User ID=sa;Password=GEServerD3")]
+        public string ControlAppConnectionString3 {
+            get {
+                return ((string)(this["ControlAppConnectionString3"]));
+            }
+        }
     }
 }

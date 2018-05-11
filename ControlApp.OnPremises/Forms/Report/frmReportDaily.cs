@@ -33,7 +33,7 @@ namespace ControlApp.OnPremises.Forms.Report
                 var IdUser = MystaticValues.IdSession;
                 var IdDateBegin = MystaticValues.rptSsrsDateBegin;
                 var IdDateEnd = MystaticValues.rptSsrsDateEnd;
-                string urlReportServer = "http://localhost:8282/ReportServer";
+                string urlReportServer = "http://tronserver:8282/ReportServer";
                 rptviewer.ProcessingMode = ProcessingMode.Remote; // ProcessingMode will be Either Remote or Local
                 rptviewer.ServerReport.ReportServerUrl = new Uri(urlReportServer); //Set the ReportServer Url
                 rptviewer.ServerReport.ReportPath = "/ControlApp.Report/DayReportByUser"; //Passing the Report Path                
