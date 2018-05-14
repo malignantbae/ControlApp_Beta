@@ -35,7 +35,8 @@ namespace ControlApp.Entities.Objects
             this.ID_Price_tag = pID_Price_Tag;
             this.Unit_Price = Math.Round(pUnit_Price, 2);
         }
-        public Receipt(int pID_Receipt, string pCustomer_name, DateTime pDate_receipt, int pQuantity, decimal pTotal_Receipt, int pID_Price_Tag, decimal pUnit_Price,bool pState, string pCreateBy, string pUpdatedBy, DateTime pCreateDate)
+        public Receipt(int pID_Receipt, string pCustomer_name, DateTime pDate_receipt, int pQuantity, decimal pTotal_Receipt, int pID_Price_Tag, decimal pUnit_Price,
+            bool pState, string pCreateBy, string pUpdatedBy, DateTime pCreateDate, DateTime pUpdateDate)
         {
             this.ID_Receipt = pID_Receipt;
             this.Customer_name = pCustomer_name;
@@ -48,6 +49,7 @@ namespace ControlApp.Entities.Objects
             this.CreateBy = pCreateBy;
             this.UpdateBy = pUpdatedBy;
             this.CreateDate = pCreateDate;
+            this.UpdateDate = pUpdateDate;
         }
     }
 }

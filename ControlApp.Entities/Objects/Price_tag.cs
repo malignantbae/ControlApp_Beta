@@ -34,7 +34,8 @@ namespace ControlApp.Entities.Objects
             this.UpdateBy = pUpdatedBy;
             this.CreateDate = pCreateDate;
         }
-        public Price_tag(int pID_Price_Tag,string pIdSession, decimal pTotal_Price, string pDescrip_Price, bool pState, string pCreateBy, string pUpdatedBy, DateTime pCreateDate)
+        public Price_tag(int pID_Price_Tag,string pIdSession, decimal pTotal_Price, string pDescrip_Price, bool pState, string pCreateBy, string pUpdatedBy, 
+            DateTime pCreateDate, DateTime pUpdateDate)
         {
             this.ID_Price_Tag = pID_Price_Tag;
             this.IdSession = pIdSession;
@@ -44,6 +45,7 @@ namespace ControlApp.Entities.Objects
             this.CreateBy = pCreateBy;
             this.UpdateBy = pUpdatedBy;
             this.CreateDate = pCreateDate;
+            this.UpdateDate = pUpdateDate;
         }
     }
 
