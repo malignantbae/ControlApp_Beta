@@ -15,6 +15,8 @@ Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "ControlApp.Report", "Contro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlApp.Util", "ControlApp.Util\ControlApp.Util.csproj", "{517C402B-F51A-4BBE-AE02-D0356E37E6DF}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ControlApp.Installer", "ControlApp.Installer\ControlApp.Installer.vdproj", "{120EA1D9-0E74-462C-92D0-155581F20922}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,9 @@ Global
 		{517C402B-F51A-4BBE-AE02-D0356E37E6DF}.DebugLocal|Any CPU.Build.0 = Debug|Any CPU
 		{517C402B-F51A-4BBE-AE02-D0356E37E6DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{517C402B-F51A-4BBE-AE02-D0356E37E6DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{120EA1D9-0E74-462C-92D0-155581F20922}.Debug|Any CPU.ActiveCfg = Debug
+		{120EA1D9-0E74-462C-92D0-155581F20922}.DebugLocal|Any CPU.ActiveCfg = Debug
+		{120EA1D9-0E74-462C-92D0-155581F20922}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

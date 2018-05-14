@@ -164,7 +164,7 @@ namespace ControlApp.DataAccess.Crud
         public override bool Update(BaseEntity entity)
         {
             var ObjRole = (Role)entity;
-            Context.SP_CRUD_ROLE((int)CrudActionEnum.Delete, ObjRole.UpdateBy, ObjRole.ID_role, ObjRole.Name_role, ObjRole.Descrip_role);
+            Context.SP_CRUD_ROLE((int)CrudActionEnum.Update, ObjRole.UpdateBy, ObjRole.ID_role, ObjRole.Name_role, ObjRole.Descrip_role);
             return true;
         }
     }
