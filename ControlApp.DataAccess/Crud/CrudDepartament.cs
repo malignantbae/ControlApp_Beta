@@ -30,7 +30,8 @@ namespace ControlApp.DataAccess.Crud
             var Query = Context.SP_CRUD_DPT((int)CrudActionEnum.SuperRetrieve, ObjDpt.ID_Dpt, ObjDpt.IdSession, ObjDpt.Name_Dpt).ToList();
             foreach (SP_CRUD_DPTResult Element in Query)
             {
-                Departament Obj = new Departament(Element.ID_DPT, Element.NAME_DPT, Element.STATE_DPT, Element.CREATEBY_DPT, Element.UPDATEBY_DPT, Element.CREATEDATE_DPT);
+                Departament Obj = new Departament(Element.ID_DPT, Element.NAME_DPT, Element.STATE_DPT, Element.CREATEBY_DPT, Element.UPDATEBY_DPT,
+                    Element.CREATEDATE_DPT, Element.UPDATEDATE_DPT);
                 MyList.Add(Obj);
             }
             if (MyList.Count > 0)
@@ -50,7 +51,8 @@ namespace ControlApp.DataAccess.Crud
             var Query = Context.SP_CRUD_DPT((int)CrudActionEnum.SuperRetrieveById, ObjDpt.ID_Dpt, ObjDpt.IdSession, ObjDpt.Name_Dpt).ToList();
             foreach (SP_CRUD_DPTResult Element in Query)
             {
-                Departament Obj = new Departament(Element.ID_DPT, Element.NAME_DPT, Element.STATE_DPT, Element.CREATEBY_DPT, Element.UPDATEBY_DPT, Element.CREATEDATE_DPT);
+                Departament Obj = new Departament(Element.ID_DPT, Element.NAME_DPT, Element.STATE_DPT, Element.CREATEBY_DPT, Element.UPDATEBY_DPT,
+                    Element.CREATEDATE_DPT, Element.UPDATEDATE_DPT);
                 MyList.Add(Obj);
             }
             if (MyList.Count > 0)
@@ -70,7 +72,8 @@ namespace ControlApp.DataAccess.Crud
             var Query = Context.SP_CRUD_DPT((int)CrudActionEnum.SuperRetrieveByName, ObjDpt.ID_Dpt, ObjDpt.IdSession, ObjDpt.Name_Dpt).ToList();
             foreach (SP_CRUD_DPTResult Element in Query)
             {
-                Departament Obj = new Departament(Element.ID_DPT, Element.NAME_DPT, Element.STATE_DPT, Element.CREATEBY_DPT, Element.UPDATEBY_DPT, Element.CREATEDATE_DPT);
+                Departament Obj = new Departament(Element.ID_DPT, Element.NAME_DPT, Element.STATE_DPT, Element.CREATEBY_DPT, Element.UPDATEBY_DPT, 
+                    Element.CREATEDATE_DPT,Element.UPDATEDATE_DPT);
                 MyList.Add(Obj);
             }
             if (MyList.Count > 0)

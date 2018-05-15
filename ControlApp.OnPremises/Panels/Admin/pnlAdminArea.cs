@@ -17,6 +17,7 @@ namespace ControlApp.OnPremises.Panels.Admin
     public partial class pnlAdminArea : pnlSlider
     {
         AreaManagement ApiAccess = new AreaManagement();
+        DepartamentManagement ApiAccessDpt = new DepartamentManagement();
         Area ObjArea = new Area();
         string pIdSession = MystaticValues.IdSession;
         public pnlAdminArea(Form owner) : base(owner)
@@ -27,6 +28,7 @@ namespace ControlApp.OnPremises.Panels.Admin
         private void pnlAdminArea_Load(object sender, EventArgs e)
         {
             LoadDataGrid();
+            LoadCbDpt(cbDpt_Id);
             btnUpdate.Enabled = false;
             btnActivate.Enabled = false;
             btnDelete.Enabled = false;
@@ -37,6 +39,7 @@ namespace ControlApp.OnPremises.Panels.Admin
             btnUpdate.Enabled = false;
             btnActivate.Enabled = false;
             btnDelete.Enabled = false;
+            cbDpt_Id.SelectedIndex = -1;
         }
         private void LoadDataGrid()
         {
@@ -47,8 +50,8 @@ namespace ControlApp.OnPremises.Panels.Admin
                 foreach (Area element in ListArea)
                 {
                     string[] RowArea;
-                    RowArea = new string[] { element.ID_Area.ToString(), element.Area_name, element.State.ToString(),
-                    element.CreateBy.ToString(), element.UpdateBy.ToString(), element.CreateDate.ToString()};
+                    RowArea = new string[] { element.ID_Area.ToString(),element.Name_Dpt, element.Area_name, element.State.ToString(),
+                    element.CreateBy.ToString(), element.UpdateBy.ToString(), element.CreateDate.ToString(),element.UpdateDate.ToString()};
                     dgvArea.Rows.Add(RowArea);
                 }
             }
@@ -99,7 +102,7 @@ namespace ControlApp.OnPremises.Panels.Admin
                         try
                         {
                             ObjArea.ID_Area = Convert.ToInt32(dgvArea[0, Row].Value);
-                            ObjArea.IdSession = pIdSession;
+                            ObjArea.UpdateBy = pIdSession;
                             ApiAccess.DeleteArea(ObjArea);
                         }
                         catch (Exception)
@@ -126,11 +129,13 @@ namespace ControlApp.OnPremises.Panels.Admin
                 {
                     try
                     {
-                        int Row = dgvArea.CurrentRow.Index;
-                        ObjArea.ID_Area = Convert.ToInt32(dgvArea[0, Row].Value);
-                        ObjArea.Area_name = txtAreaname.Text;
-                        ApiAccess.UpdateArea(ObjArea);
-                    }
+                    int Row = dgvArea.CurrentRow.Index;
+                    ObjArea.ID_Area = Convert.ToInt32(dgvArea[0, Row].Value);
+                    ObjArea.ID_Dpt = GetIDDpt();
+                    ObjArea.UpdateBy = pIdSession;
+                    ObjArea.Area_name = txtAreaname.Text;
+                    ApiAccess.UpdateArea(ObjArea);
+                }
                     catch (Exception)
                     {
                         throw;
@@ -172,7 +177,7 @@ namespace ControlApp.OnPremises.Panels.Admin
                 try
                 {
                     ObjArea.Area_name = AreaName;
-                    ObjArea.IdSession = pIdSession;
+                    ObjArea.CreateBy = pIdSession;
                     ApiAccess.CreateArea(ObjArea);
                 }
                 catch (Exception)
@@ -200,8 +205,8 @@ namespace ControlApp.OnPremises.Panels.Admin
                     foreach (Area element in ListArea)
                     {
                         string[] RowArea;
-                        RowArea = new string[] { element.ID_Area.ToString(), element.Area_name, element.State.ToString(),
-                        element.CreateBy.ToString(), element.UpdateBy.ToString(), element.CreateDate.ToString()};
+                        RowArea = new string[] { element.ID_Area.ToString(),element.Name_Dpt, element.Area_name, element.State.ToString(),
+                    element.CreateBy.ToString(), element.UpdateBy.ToString(), element.CreateDate.ToString(),element.UpdateDate.ToString()};
                         dgvArea.Rows.Add(RowArea);
                     }
                 }
@@ -216,7 +221,8 @@ namespace ControlApp.OnPremises.Panels.Admin
             try
             {
                 int Row = dgvArea.CurrentRow.Index;
-                txtAreaname.Text = dgvArea[1, Row].Value.ToString();
+                cbDpt_Id.Text = dgvArea[1, Row].Value.ToString();
+                txtAreaname.Text = dgvArea[2, Row].Value.ToString();
                 btnUpdate.Enabled = true;
                 btnActivate.Enabled = true;
                 btnDelete.Enabled = true;
@@ -229,6 +235,46 @@ namespace ControlApp.OnPremises.Panels.Admin
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             CleanFields();
+        }
+        private int GetIDDpt()
+        {
+            int IdDpt = 0;
+            try
+            {
+                var NameDpt = cbDpt_Id.Text;
+                var ListDpt = ApiAccessDpt.RetrieveAllDepartament<Departament>();
+                foreach (Departament element in ListDpt)
+                {
+                    if (NameDpt == element.Name_Dpt)
+                    {
+                        IdDpt = element.ID_Dpt;
+                        break;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MetroMessageBox.Show(this, "Ha ocurrido un error:" + ex + "Favor Comunicarse con el equipo de Sistemas",
+                    "Error en Acción", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return IdDpt;
+        }
+        private void LoadCbDpt(ComboBox cb)
+        {
+            try
+            {
+                var ListDpt = ApiAccessDpt.RetrieveAllDepartament<Departament>();
+                foreach (Departament element in ListDpt)
+                {
+                    cb.Items.Add(element.Name_Dpt);
+                }
+            }
+            catch (Exception ex)
+            {
+                MetroMessageBox.Show(this, "Ha ocurrido un error:" + ex + "Favor Comunicarse con el equipo de Sistemas",
+                    "Error en Acción", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

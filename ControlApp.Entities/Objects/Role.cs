@@ -24,7 +24,7 @@ namespace ControlApp.Entities.Objects
             this.Descrip_role = pDescrip_role;
         }
         public Role(int pID_role, string pName_role, string pDescrip_role, bool pState, string pCreateBy,
-            string pUpdatedBy, DateTime pCreateDate, DateTime pUpdateDate)
+            string pUpdatedBy, DateTime pCreateDate, DateTime? pUpdateDate)
         {
             this.ID_role = pID_role;
             this.Name_role = pName_role;

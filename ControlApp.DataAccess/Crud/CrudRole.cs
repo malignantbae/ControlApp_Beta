@@ -104,8 +104,8 @@ namespace ControlApp.DataAccess.Crud
                 ObjRole.Name_role, ObjRole.Descrip_role).ToList();
             foreach (SP_CRUD_ROLEResult Element in Query)
             {
-                Role Obj = new Role(Element.ID_ROLE, Element.NAME_ROLE, Element.DESCRIP_ROLE, Element.ROLE_STATE, Element.ROLE_CREATEBY, 
-                    Element.ROLE_UPDATEDBY, Element.ROLE_CREATEDATE);
+                Role Obj = new Role(Element.ID_ROLE, Element.NAME_ROLE, Element.DESCRIP_ROLE, Element.ROLE_STATE, Element.ROLE_CREATEBY,
+                    Element.ROLE_UPDATEDBY, Element.ROLE_CREATEDATE, Element.ROLE_UPDATEDATE);
                 MyList.Add(Obj);
             }
             if (MyList.Count > 0)
@@ -127,7 +127,7 @@ namespace ControlApp.DataAccess.Crud
             foreach (SP_CRUD_ROLEResult Element in Query)
             {
                 Role Obj = new Role(Element.ID_ROLE, Element.NAME_ROLE, Element.DESCRIP_ROLE, Element.ROLE_STATE, Element.ROLE_CREATEBY,
-                    Element.ROLE_UPDATEDBY, Element.ROLE_CREATEDATE);
+                    Element.ROLE_UPDATEDBY, Element.ROLE_CREATEDATE, Element.ROLE_UPDATEDATE);
                 MyList.Add(Obj);
             }
             if (MyList.Count > 0)
@@ -149,7 +149,7 @@ namespace ControlApp.DataAccess.Crud
             foreach (SP_CRUD_ROLEResult Element in Query)
             {
                 Role Obj = new Role(Element.ID_ROLE, Element.NAME_ROLE, Element.DESCRIP_ROLE, Element.ROLE_STATE, Element.ROLE_CREATEBY,
-                    Element.ROLE_UPDATEDBY, Element.ROLE_CREATEDATE);
+                    Element.ROLE_UPDATEDBY, Element.ROLE_CREATEDATE,Element.ROLE_UPDATEDATE);
                 MyList.Add(Obj);
             }
             if (MyList.Count > 0)

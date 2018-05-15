@@ -48,7 +48,7 @@ namespace ControlApp.DataAccess.Crud
             {
                 User Obj = new User(Element.ID_USER, Element.USER_NAME, Element.USER_EMAIL, Element.NAME_DPT,Element.AREA_NAME,Element.NAME_POSITION,
                     Element.NAME_ROLE,Element.USER_NICKNAME,Element.USER_PASSWORD, Element.USER_STATE, Element.USER_CREATEBY, Element.USER_UPDATEDBY, 
-                    Element.USER_CREATEDATE);
+                    Element.USER_CREATEDATE,Element.USER_UPDATEDATE);
                 MyList.Add(Obj);
             }
             if (MyList.Count > 0)
@@ -71,7 +71,7 @@ namespace ControlApp.DataAccess.Crud
             {
                 User Obj = new User(Element.ID_USER, Element.USER_NAME, Element.USER_EMAIL, Element.NAME_DPT, Element.AREA_NAME, Element.NAME_POSITION,
                     Element.NAME_ROLE, Element.USER_NICKNAME, Element.USER_PASSWORD, Element.USER_STATE, Element.USER_CREATEBY, Element.USER_UPDATEDBY,
-                    Element.USER_CREATEDATE);
+                    Element.USER_CREATEDATE, Element.USER_UPDATEDATE);
                 MyList.Add(Obj);
             }
             if (MyList.Count > 0)
@@ -94,7 +94,7 @@ namespace ControlApp.DataAccess.Crud
             {
                 User Obj = new User(Element.ID_USER, Element.USER_NAME, Element.USER_EMAIL, Element.NAME_DPT, Element.AREA_NAME, Element.NAME_POSITION,
                     Element.NAME_ROLE, Element.USER_NICKNAME, Element.USER_PASSWORD, Element.USER_STATE, Element.USER_CREATEBY, Element.USER_UPDATEDBY,
-                    Element.USER_CREATEDATE);
+                    Element.USER_CREATEDATE, Element.USER_UPDATEDATE);
                 MyList.Add(Obj);
             }
             if (MyList.Count > 0)

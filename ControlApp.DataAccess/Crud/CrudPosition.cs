@@ -101,7 +101,7 @@ namespace ControlApp.DataAccess.Crud
             foreach (SP_CRUD_POSITIONResult Element in Query)
             {
                 Position Obj = new Position(Element.ID_POSITION, Element.AREA_NAME,Element.NAME_POSITION, Element.POSITION_STATE, Element.CREATEBY_PST, Element.UPDATEBY_PST, 
-                    Element.POSITION_CREATEDATE);
+                    Element.POSITION_CREATEDATE, Element.POSITION_UPDATEDATE);
                 MyList.Add(Obj);
             }
             if (MyList.Count > 0)
@@ -122,7 +122,7 @@ namespace ControlApp.DataAccess.Crud
             foreach (SP_CRUD_POSITIONResult Element in Query)
             {
                 Position Obj = new Position(Element.ID_POSITION, Element.AREA_NAME, Element.NAME_POSITION, Element.POSITION_STATE, Element.CREATEBY_PST, Element.UPDATEBY_PST,
-                    Element.POSITION_CREATEDATE);
+                    Element.POSITION_CREATEDATE, Element.POSITION_UPDATEDATE);
                 MyList.Add(Obj);
             }
             if (MyList.Count > 0)
@@ -143,7 +143,7 @@ namespace ControlApp.DataAccess.Crud
             foreach (SP_CRUD_POSITIONResult Element in Query)
             {
                 Position Obj = new Position(Element.ID_POSITION, Element.AREA_NAME, Element.NAME_POSITION, Element.POSITION_STATE, Element.CREATEBY_PST, Element.UPDATEBY_PST,
-                    Element.POSITION_CREATEDATE);
+                    Element.POSITION_CREATEDATE, Element.POSITION_UPDATEDATE);
                 MyList.Add(Obj);
             }
             if (MyList.Count > 0)

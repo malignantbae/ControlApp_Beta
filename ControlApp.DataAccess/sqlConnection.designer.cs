@@ -3143,6 +3143,8 @@ namespace ControlApp.DataAccess
 		
 		private System.DateTime _AREA_CREATEDATE;
 		
+		private System.Nullable<System.DateTime> _AREA_UPDATEDATE;
+		
 		public SP_CRUD_AREAResult()
 		{
 		}
@@ -3255,6 +3257,22 @@ namespace ControlApp.DataAccess
 				if ((this._AREA_CREATEDATE != value))
 				{
 					this._AREA_CREATEDATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AREA_UPDATEDATE", DbType="DateTime")]
+		public System.Nullable<System.DateTime> AREA_UPDATEDATE
+		{
+			get
+			{
+				return this._AREA_UPDATEDATE;
+			}
+			set
+			{
+				if ((this._AREA_UPDATEDATE != value))
+				{
+					this._AREA_UPDATEDATE = value;
 				}
 			}
 		}
@@ -3409,6 +3427,8 @@ namespace ControlApp.DataAccess
 		
 		private System.DateTime _CREATEDATE_DPT;
 		
+		private System.Nullable<System.DateTime> _UPDATEDATE_DPT;
+		
 		public SP_CRUD_DPTResult()
 		{
 		}
@@ -3508,6 +3528,22 @@ namespace ControlApp.DataAccess
 				}
 			}
 		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UPDATEDATE_DPT", DbType="DateTime")]
+		public System.Nullable<System.DateTime> UPDATEDATE_DPT
+		{
+			get
+			{
+				return this._UPDATEDATE_DPT;
+			}
+			set
+			{
+				if ((this._UPDATEDATE_DPT != value))
+				{
+					this._UPDATEDATE_DPT = value;
+				}
+			}
+		}
 	}
 	
 	public partial class SP_CRUD_POSITIONResult
@@ -3526,6 +3562,8 @@ namespace ControlApp.DataAccess
 		private string _UPDATEBY_PST;
 		
 		private System.DateTime _POSITION_CREATEDATE;
+		
+		private System.Nullable<System.DateTime> _POSITION_UPDATEDATE;
 		
 		public SP_CRUD_POSITIONResult()
 		{
@@ -3627,7 +3665,7 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POSITION_CREATEDATE", DbType="Date NOT NULL")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POSITION_CREATEDATE", DbType="DateTime NOT NULL")]
 		public System.DateTime POSITION_CREATEDATE
 		{
 			get
@@ -3639,6 +3677,22 @@ namespace ControlApp.DataAccess
 				if ((this._POSITION_CREATEDATE != value))
 				{
 					this._POSITION_CREATEDATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POSITION_UPDATEDATE", DbType="DateTime")]
+		public System.Nullable<System.DateTime> POSITION_UPDATEDATE
+		{
+			get
+			{
+				return this._POSITION_UPDATEDATE;
+			}
+			set
+			{
+				if ((this._POSITION_UPDATEDATE != value))
+				{
+					this._POSITION_UPDATEDATE = value;
 				}
 			}
 		}
@@ -3660,6 +3714,8 @@ namespace ControlApp.DataAccess
 		private string _PRICE_TAG_UPDATEDBY;
 		
 		private System.DateTime _PRICE_TAG_CREATEDATE;
+		
+		private System.Nullable<System.DateTime> _PRICE_TAG_UPDATEDATE;
 		
 		public SP_CRUD_PRICE_TAGResult()
 		{
@@ -3776,6 +3832,22 @@ namespace ControlApp.DataAccess
 				}
 			}
 		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRICE_TAG_UPDATEDATE", DbType="DateTime")]
+		public System.Nullable<System.DateTime> PRICE_TAG_UPDATEDATE
+		{
+			get
+			{
+				return this._PRICE_TAG_UPDATEDATE;
+			}
+			set
+			{
+				if ((this._PRICE_TAG_UPDATEDATE != value))
+				{
+					this._PRICE_TAG_UPDATEDATE = value;
+				}
+			}
+		}
 	}
 	
 	public partial class SP_CRUD_RECEIPTResult
@@ -3802,6 +3874,8 @@ namespace ControlApp.DataAccess
 		private string _RECEIPT_UPDATEDBY;
 		
 		private System.DateTime _RECEIPT_CREATEDATE;
+		
+		private System.Nullable<System.DateTime> _RECEIPT_UPDATEDATE;
 		
 		public SP_CRUD_RECEIPTResult()
 		{
@@ -3982,6 +4056,22 @@ namespace ControlApp.DataAccess
 				}
 			}
 		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RECEIPT_UPDATEDATE", DbType="DateTime")]
+		public System.Nullable<System.DateTime> RECEIPT_UPDATEDATE
+		{
+			get
+			{
+				return this._RECEIPT_UPDATEDATE;
+			}
+			set
+			{
+				if ((this._RECEIPT_UPDATEDATE != value))
+				{
+					this._RECEIPT_UPDATEDATE = value;
+				}
+			}
+		}
 	}
 	
 	public partial class SP_CRUD_ROLEResult
@@ -4000,6 +4090,8 @@ namespace ControlApp.DataAccess
 		private string _ROLE_UPDATEDBY;
 		
 		private System.DateTime _ROLE_CREATEDATE;
+		
+		private System.Nullable<System.DateTime> _ROLE_UPDATEDATE;
 		
 		public SP_CRUD_ROLEResult()
 		{
@@ -4116,6 +4208,22 @@ namespace ControlApp.DataAccess
 				}
 			}
 		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_UPDATEDATE", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ROLE_UPDATEDATE
+		{
+			get
+			{
+				return this._ROLE_UPDATEDATE;
+			}
+			set
+			{
+				if ((this._ROLE_UPDATEDATE != value))
+				{
+					this._ROLE_UPDATEDATE = value;
+				}
+			}
+		}
 	}
 	
 	public partial class SP_CRUD_USERResult
@@ -4146,6 +4254,8 @@ namespace ControlApp.DataAccess
 		private string _USER_UPDATEDBY;
 		
 		private System.DateTime _USER_CREATEDATE;
+		
+		private System.Nullable<System.DateTime> _USER_UPDATEDATE;
 		
 		public SP_CRUD_USERResult()
 		{
@@ -4355,6 +4465,22 @@ namespace ControlApp.DataAccess
 				if ((this._USER_CREATEDATE != value))
 				{
 					this._USER_CREATEDATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USER_UPDATEDATE", DbType="DateTime")]
+		public System.Nullable<System.DateTime> USER_UPDATEDATE
+		{
+			get
+			{
+				return this._USER_UPDATEDATE;
+			}
+			set
+			{
+				if ((this._USER_UPDATEDATE != value))
+				{
+					this._USER_UPDATEDATE = value;
 				}
 			}
 		}

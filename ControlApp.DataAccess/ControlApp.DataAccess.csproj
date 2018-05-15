@@ -74,8 +74,8 @@
     </None>
     <None Include="sqlConnection.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>sqlConnection.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>sqlConnection2.designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

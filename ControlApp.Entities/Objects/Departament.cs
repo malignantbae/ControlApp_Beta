@@ -21,7 +21,7 @@ namespace ControlApp.Entities.Objects
             this.Name_Dpt = pName_Dpt;
         }
         public Departament(int pID_Dpt, string pName_Dpt, bool pState, string pCreateBy,
-            string pUpdatedBy, DateTime pCreateDate,DateTime pUpdateDate)
+            string pUpdatedBy, DateTime pCreateDate,DateTime? pUpdateDate)
         {
             this.ID_Dpt = pID_Dpt;
             this.Name_Dpt = pName_Dpt;

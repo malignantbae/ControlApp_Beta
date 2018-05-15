@@ -36,7 +36,7 @@ namespace ControlApp.Entities.Objects
             this.Unit_Price = Math.Round(pUnit_Price, 2);
         }
         public Receipt(int pID_Receipt, string pCustomer_name, DateTime pDate_receipt, int pQuantity, decimal pTotal_Receipt, int pID_Price_Tag, decimal pUnit_Price,
-            bool pState, string pCreateBy, string pUpdatedBy, DateTime pCreateDate, DateTime pUpdateDate)
+            bool pState, string pCreateBy, string pUpdatedBy, DateTime pCreateDate, DateTime? pUpdateDate)
         {
             this.ID_Receipt = pID_Receipt;
             this.Customer_name = pCustomer_name;

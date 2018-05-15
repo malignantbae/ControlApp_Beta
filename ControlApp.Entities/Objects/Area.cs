@@ -40,7 +40,7 @@ namespace ControlApp.Entities.Objects
             this.UpdateBy = pUpdateBy;
             this.CreateDate = pCreateDate;
         }
-        public Area(int pID_Area, string pName_Dpt, string pArea_Name, bool? pState, string pCreateBy, string pUpdateBy, DateTime pCreateDate, DateTime pUpdateDate)
+        public Area(int pID_Area, string pName_Dpt, string pArea_Name, bool? pState, string pCreateBy, string pUpdateBy, DateTime pCreateDate, DateTime? pUpdateDate)
         {
             this.ID_Area = pID_Area;
             this.Name_Dpt = pName_Dpt;

@@ -45,7 +45,7 @@ namespace ControlApp.Entities.Objects
             this.CreateDate = pCreateDate;
         }
         public Position(int pID_Position, string pName_Area, string pName_Position, bool pState, string pCreateBy,
-        string pUpdatedBy, DateTime pCreateDate, DateTime pUpdateDate)
+        string pUpdatedBy, DateTime pCreateDate, DateTime? pUpdateDate)
         {
             this.ID_Position = pID_Position;
             this.Name_Area = pName_Area;

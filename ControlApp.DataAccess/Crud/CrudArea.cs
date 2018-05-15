@@ -12,7 +12,6 @@ namespace ControlApp.DataAccess.Crud
 {
     public class CrudArea : CrudFactory 
     {
-
         sqlConnectionDataContext Context = new sqlConnectionDataContext();
         public CrudArea()
         {
@@ -29,10 +28,12 @@ namespace ControlApp.DataAccess.Crud
             var ObjArea = new Area();
             var lst = new List<T>();
             List<Area> MyList = new List<Area>();
-            var Query = Context.SP_CRUD_AREA((int)CrudActionEnum.SuperRetrieve, ObjArea.IdSession, ObjArea.ID_Area, ObjArea.ID_Dpt, ObjArea.Area_name).ToList();
+            var Query = Context.SP_CRUD_AREA((int)CrudActionEnum.SuperRetrieve, ObjArea.IdSession, ObjArea.ID_Area, ObjArea.ID_Dpt, 
+                ObjArea.Area_name).ToList();
             foreach (SP_CRUD_AREAResult Element in Query)
             {
-                Area Obj = new Area(Element.ID_AREA,Element.NAME_DPT,Element.AREA_NAME,Element.AREA_STATE,Element.AREA_CREATEBY,Element.AREA_UPDATEDBY,Element.AREA_CREATEDATE);
+                Area Obj = new Area(Element.ID_AREA,Element.NAME_DPT,Element.AREA_NAME,Element.AREA_STATE,Element.AREA_CREATEBY,
+                    Element.AREA_UPDATEDBY,Element.AREA_CREATEDATE,Element.AREA_UPDATEDATE);
                 MyList.Add(Obj);
             }
             if (MyList.Count > 0)
@@ -52,7 +53,8 @@ namespace ControlApp.DataAccess.Crud
             var Query = Context.SP_CRUD_AREA((int)CrudActionEnum.SuperRetrieveById, ObjArea.IdSession, ObjArea.ID_Area, ObjArea.ID_Dpt, ObjArea.Area_name).ToList();
             foreach (SP_CRUD_AREAResult Element in Query)
             {
-                Area Obj = new Area(Element.ID_AREA, Element.NAME_DPT, Element.AREA_NAME, Element.AREA_STATE, Element.AREA_CREATEBY, Element.AREA_UPDATEDBY, Element.AREA_CREATEDATE);
+                Area Obj = new Area(Element.ID_AREA, Element.NAME_DPT, Element.AREA_NAME, Element.AREA_STATE, Element.AREA_CREATEBY,
+                    Element.AREA_UPDATEDBY, Element.AREA_CREATEDATE, Element.AREA_UPDATEDATE);
                 MyList.Add(Obj);
             }
             if (MyList.Count > 0)
@@ -72,7 +74,8 @@ namespace ControlApp.DataAccess.Crud
             var Query = Context.SP_CRUD_AREA((int)CrudActionEnum.SuperRetrieveByName, ObjArea.IdSession, ObjArea.ID_Area, ObjArea.ID_Dpt, ObjArea.Area_name).ToList();
             foreach (SP_CRUD_AREAResult Element in Query)
             {
-                Area Obj = new Area(Element.ID_AREA, Element.NAME_DPT, Element.AREA_NAME, Element.AREA_STATE, Element.AREA_CREATEBY, Element.AREA_UPDATEDBY, Element.AREA_CREATEDATE);
+                Area Obj = new Area(Element.ID_AREA, Element.NAME_DPT, Element.AREA_NAME, Element.AREA_STATE, Element.AREA_CREATEBY,
+                    Element.AREA_UPDATEDBY, Element.AREA_CREATEDATE, Element.AREA_UPDATEDATE);
                 MyList.Add(Obj);
             }
             if (MyList.Count > 0)

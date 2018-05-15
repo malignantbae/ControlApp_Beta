@@ -81,7 +81,7 @@ namespace ControlApp.Entities.Objects
         public User(string pID_User, string pUser_name, 
             string pUser_email, string pName_dpt, string pName_Area, string pName_Position, string pName_Role,
             string pUser_nickname, string pUser_pass, bool pState, string pCreateBy,
-            string pUpdatedBy, DateTime pCreateDate, DateTime pUpdateDate)
+            string pUpdatedBy, DateTime pCreateDate, DateTime? pUpdateDate)
         {
             this.ID_User = pID_User;
             this.User_name = pUser_name;

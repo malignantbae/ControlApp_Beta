@@ -9,6 +9,7 @@
       <Column Name="AREA_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="AREA_UPDATEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="AREA_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="AREA_UPDATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="TBL_AREA_TBL_POSITION" Member="TBL_POSITIONs" ThisKey="ID_AREA" OtherKey="ID_AREA" Type="TBL_POSITION" />
       <Association Name="TBL_AREA_TBL_USER" Member="TBL_USERs" ThisKey="ID_AREA" OtherKey="ID_AREA" Type="TBL_USER" />
       <Association Name="TBL_DPT_TBL_AREA" Member="TBL_DPT" ThisKey="ID_DPT" OtherKey="ID_DPT" Type="TBL_DPT" IsForeignKey="true" />
@@ -32,6 +33,7 @@
       <Column Name="CREATEBY_DPT" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="UPDATEBY_DPT" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="CREATEDATE_DPT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UPDATEDATE_DPT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="TBL_DPT_TBL_AREA" Member="TBL_AREAs" ThisKey="ID_DPT" OtherKey="ID_DPT" Type="TBL_AREA" />
       <Association Name="TBL_DPT_TBL_USER" Member="TBL_USERs" ThisKey="ID_DPT" OtherKey="ID_DPT" Type="TBL_USER" />
     </Type>
@@ -55,7 +57,8 @@
       <Column Name="POSITION_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="POSITION_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="POSITION_UPDATEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="POSITION_CREATEDATE" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="POSITION_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="POSITION_UPDATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="TBL_POSITION_TBL_USER" Member="TBL_USERs" ThisKey="ID_POSITION" OtherKey="ID_POSITION" Type="TBL_USER" />
       <Association Name="TBL_AREA_TBL_POSITION" Member="TBL_AREA" ThisKey="ID_AREA" OtherKey="ID_AREA" Type="TBL_AREA" IsForeignKey="true" />
     </Type>
@@ -69,6 +72,7 @@
       <Column Name="PRICE_TAG_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="PRICE_TAG_UPDATEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="PRICE_TAG_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PRICE_TAG_UPDATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="TBL_PRICE_TAG_TBL_RECEIPT" Member="TBL_RECEIPTs" ThisKey="ID_PRICE_TAG" OtherKey="ID_PRICE_TAG" Type="TBL_RECEIPT" />
     </Type>
   </Table>
@@ -85,6 +89,7 @@
       <Column Name="RECEIPT_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="RECEIPT_UPDATEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="RECEIPT_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RECEIPT_UPDATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="TBL_PRICE_TAG_TBL_RECEIPT" Member="TBL_PRICE_TAG" ThisKey="ID_PRICE_TAG" OtherKey="ID_PRICE_TAG" Type="TBL_PRICE_TAG" IsForeignKey="true" />
       <Association Name="TBL_USER_TBL_RECEIPT" Member="TBL_USER" ThisKey="RECEIPT_CREATEBY" OtherKey="ID_USER" Type="TBL_USER" IsForeignKey="true" />
     </Type>
@@ -98,6 +103,7 @@
       <Column Name="ROLE_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="ROLE_UPDATEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="ROLE_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ROLE_UPDATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="TBL_ROLE_TBL_USER" Member="TBL_USERs" ThisKey="ID_ROLE" OtherKey="ID_ROLE" Type="TBL_USER" />
     </Type>
   </Table>
@@ -129,6 +135,7 @@
       <Column Name="USER_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="USER_UPDATEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="USER_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="USER_UPDATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="TBL_USER_TBL_RECEIPT" Member="TBL_RECEIPTs" ThisKey="ID_USER" OtherKey="RECEIPT_CREATEBY" Type="TBL_RECEIPT" />
       <Association Name="TBL_USER_TBL_SESSION" Member="TBL_SESSIONs" ThisKey="ID_USER" OtherKey="ID_USER" Type="TBL_SESSION" />
       <Association Name="TBL_AREA_TBL_USER" Member="TBL_AREA" ThisKey="ID_AREA" OtherKey="ID_AREA" Type="TBL_AREA" IsForeignKey="true" />
@@ -151,6 +158,7 @@
       <Column Name="AREA_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="AREA_UPDATEDBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="AREA_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="AREA_UPDATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.SP_CRUD_CUSTOMER" Method="SP_CRUD_CUSTOMER">
@@ -180,6 +188,7 @@
       <Column Name="CREATEBY_DPT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="UPDATEBY_DPT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="CREATEDATE_DPT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UPDATEDATE_DPT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.SP_CRUD_POSITION" Method="SP_CRUD_POSITION">
@@ -195,7 +204,8 @@
       <Column Name="POSITION_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CREATEBY_PST" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="UPDATEBY_PST" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="POSITION_CREATEDATE" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="POSITION_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="POSITION_UPDATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.SP_CRUD_PRICE_TAG" Method="SP_CRUD_PRICE_TAG">
@@ -212,6 +222,7 @@
       <Column Name="PRICE_TAG_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="PRICE_TAG_UPDATEDBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="PRICE_TAG_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PRICE_TAG_UPDATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.SP_CRUD_RECEIPT" Method="SP_CRUD_RECEIPT">
@@ -235,6 +246,7 @@
       <Column Name="RECEIPT_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="RECEIPT_UPDATEDBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="RECEIPT_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RECEIPT_UPDATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.SP_CRUD_ROLE" Method="SP_CRUD_ROLE">
@@ -251,6 +263,7 @@
       <Column Name="ROLE_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="ROLE_UPDATEDBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="ROLE_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ROLE_UPDATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.SP_CRUD_USER" Method="SP_CRUD_USER">
@@ -279,6 +292,7 @@
       <Column Name="USER_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="USER_UPDATEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="USER_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="USER_UPDATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>
