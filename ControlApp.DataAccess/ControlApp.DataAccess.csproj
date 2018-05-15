@@ -60,7 +60,7 @@
     <Compile Include="sqlConnection.cs">
       <DependentUpon>sqlConnection.dbml</DependentUpon>
     </Compile>
-    <Compile Include="sqlConnection.designer.cs">
+    <Compile Include="sqlConnection2.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>sqlConnection.dbml</DependentUpon>

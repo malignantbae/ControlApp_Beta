@@ -20,6 +20,7 @@ using System.IO;
 using ControlApp.OnPremises.Panels.Admin;
 
 using ControlApp.OnPremises.Forms.Dashboard;
+using ControlApp.OnPremises.Forms.Report;
 
 namespace ControlApp.OnPremises.Panels.Admin
 {
@@ -39,6 +40,8 @@ namespace ControlApp.OnPremises.Panels.Admin
             InitializeComponent();
             this.StyleManager.Update();
             txtTotalReceipt.Enabled = false;
+            dtBegin.CustomFormat = "yyyy/MM/dd HH:mm:ss";
+            dtEnd.CustomFormat = "yyyy/MM/dd HH:mm:ss";
         }
         public void CleanFields()
         {
@@ -61,7 +64,8 @@ namespace ControlApp.OnPremises.Panels.Admin
                     string[] RowPrice;
                     RowPrice = new string[] { element.ID_Receipt.ToString(), element.Customer_name,
                          element.Quantity.ToString(), element.Total_Receipt.ToString(), element.ID_Price_tag.ToString(),
-                         element.Unit_Price.ToString(), element.Date_receipt.ToString(),element.State.ToString(), element.CreateBy, element.UpdateBy, element.CreateDate.ToString()};
+                         element.Unit_Price.ToString(), element.Date_receipt.ToString(),element.State.ToString(), element.CreateBy,
+                        element.UpdateBy, element.CreateDate.ToString(),element.UpdateDate.ToString()};
                     dgvReceipt.Rows.Add(RowPrice);
                 }
             }
@@ -105,6 +109,7 @@ namespace ControlApp.OnPremises.Panels.Admin
             }
             try
             {
+
                 ObjReceipt.Customer_name = NameCustomer;
                 ObjReceipt.Quantity = Convert.ToInt32(Quantity);
                 ObjReceipt.Unit_Price = gUnit_Price;
@@ -114,8 +119,10 @@ namespace ControlApp.OnPremises.Panels.Admin
             }
             catch (Exception)
             {
+
                 throw;
             }
+            Print();
             LoadDataGrid();
             CleanFields();
         }
@@ -156,22 +163,61 @@ namespace ControlApp.OnPremises.Panels.Admin
         }
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            frmDashboard _frmDashBoard = new frmDashboard();
-            _frmDashBoard.metroPanel2.Controls.Clear();
+            /// THIS FUNTION PRINT ALTERNATIVE FLOW OF THE RECEIPT ////
+            PrintAF();
+        }
+        private void Print() // Principal Flow
+        {
+            /// THIS FUNTION PRINT PRINCIPAL FLOW OF THE RECEIPT ////
+            GetIdSsrs();
+            frmReport rpt = new frmReport();
+            rpt.Show();
+        }
+        private void GetIdSsrs() // Principal Flow
+        {
+            int Row = dgvReceipt.CurrentRow.Index;
+            MystaticValues.rptSsrs = GetlastIdReceipt();
+        }
+        private void PrintAF() // Alternate Flow
+        {
+            GetIdSsrsAF();
+            frmReport rpt = new frmReport();
+            rpt.Show();
+        }
+        private void GetIdSsrsAF() // Alternate Flow
+        {
+            int Row = dgvReceipt.CurrentRow.Index;
+            MystaticValues.rptSsrs = Convert.ToInt32(dgvReceipt[0, Row].Value);
 
-            
-            ////pnlPrintReport _pnlPrintReport = new pnlPrintReport(_frmDashBoard);
-            //_frmDashBoard.metroPanel2.Controls.Add(_pnlPrintReport);
-            //_pnlPrintReport.swipe();
+        }
+        private void GetDatesReport()
+        {
+            MystaticValues.rptSsrsDateBegin = dtBegin.Text;
+            MystaticValues.rptSsrsDateEnd = dtEnd.Text;
+            frmReportDaily rpt = new frmReportDaily();
+            rpt.Show();
 
-            //_pnlPrintReport.Show();
+        }
+        public int GetlastIdReceipt()
+        {
+            try
+            {
 
 
-            //this.metroPanel2.Controls.Clear();
-            //pnlArea _pnlArea = new pnlArea(this);
-            //this.metroPanel2.Controls.Add(_pnlArea);
-            //_pnlArea.swipe();
+                int pIdReceipt = 0;
+                var ListReceipt = ApiAccess.RetrieveAllByIdUser<Receipt>(ObjReceipt);
+                foreach (Receipt element in ListReceipt)
+                {
 
+                    pIdReceipt = element.ID_Receipt;
+                    break;
+                }
+                return pIdReceipt;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -271,12 +317,55 @@ namespace ControlApp.OnPremises.Panels.Admin
         }
         private void btnLoadRpt_Click(object sender, EventArgs e)
         {
+            ShowReportByUser();
+        }
+        public void ShowReportByUser()
+        {
+            GetDatesReport();
 
         }
         private void btnCleanFields_Click(object sender, EventArgs e)
         {
             CleanFields();
             LoadDataGrid();
+        }
+        private void txtRetrieveByName_TextChanged(object sender, EventArgs e)
+        {
+            if (txtRetrieveByName.Text == "")
+            {
+                LoadDataGrid();
+                CleanFields();
+            }
+            else
+            {
+                try
+                {
+                    dgvReceipt.Rows.Clear();
+                    ObjReceipt.ID_Receipt = Convert.ToInt32(txtRetrieveByName.Text);
+                    var ListReceipt = ApiAccess.SuperRetrieveByIdReceipt<Receipt>(ObjReceipt);
+                    foreach (Receipt element in ListReceipt)
+                    {
+                        string[] RowPrice;
+                        RowPrice = new string[] { element.ID_Receipt.ToString(), element.Customer_name,
+                         element.Quantity.ToString(), element.Total_Receipt.ToString(), element.ID_Price_tag.ToString(),
+                         element.Unit_Price.ToString(), element.Date_receipt.ToString(),element.State.ToString(), element.CreateBy,
+                        element.UpdateBy, element.CreateDate.ToString(),element.UpdateDate.ToString()};
+                        dgvReceipt.Rows.Add(RowPrice);
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+        }
+
+        private void txtRetrieveByName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

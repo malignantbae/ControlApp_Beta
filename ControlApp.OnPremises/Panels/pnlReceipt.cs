@@ -38,8 +38,6 @@ namespace ControlApp.OnPremises.Panels
             txtTotalReceipt.Enabled = false;
             dtBegin.CustomFormat = "yyyy/MM/dd HH:mm:ss";
             dtEnd.CustomFormat = "yyyy/MM/dd HH:mm:ss";
-            
-
         }
         public void CleanFields()
         {
@@ -48,7 +46,6 @@ namespace ControlApp.OnPremises.Panels
             txtNameCustomer.Text = "";
             txtQuantity.Text = "";
             txtRetrieveByName.Text = "";
-
         }
         public void LoadDataGrid()
         {
@@ -61,7 +58,7 @@ namespace ControlApp.OnPremises.Panels
                 {
                     string[] RowPrice;
                     RowPrice = new string[] { element.ID_Receipt.ToString(), element.Customer_name,
-                         element.Quantity.ToString(), element.Total_Receipt.ToString(), element.ID_Price_tag.ToString(),
+                         element.Quantity.ToString(), element.Total_Receipt.ToString(), element.Descrip_Price,
                          element.Unit_Price.ToString(), element.Date_receipt.ToString() };
                     dgvReceipt.Rows.Add(RowPrice);
                 }
@@ -188,7 +185,6 @@ namespace ControlApp.OnPremises.Panels
             rpt.Show();
 
         }
-
         private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -268,7 +264,7 @@ namespace ControlApp.OnPremises.Panels
                     {
                         string[] RowPrice;
                         RowPrice = new string[] { element.ID_Receipt.ToString(), element.Customer_name,
-                         element.Quantity.ToString(), element.Total_Receipt.ToString(), element.ID_Price_tag.ToString(),
+                         element.Quantity.ToString(), element.Total_Receipt.ToString(), element.Descrip_Price,
                          element.Unit_Price.ToString(), element.Date_receipt.ToString() };
                         dgvReceipt.Rows.Add(RowPrice);
                     }
@@ -284,7 +280,6 @@ namespace ControlApp.OnPremises.Panels
             GetDatesReport();
 
         }
-
         private void btnLoadRpt_Click(object sender, EventArgs e)
         {
             ShowReportByUser();

@@ -32,7 +32,7 @@ namespace ControlApp.DataAccess.Crud
             foreach (SP_CRUD_RECEIPTResult Element in Query)
             {
                 Receipt Obj = new Receipt(Element.ID_RECEIPT, Element.NAME_CUSTOMER, Element.DATE_RECEIPT, 
-                    Element.QUANTITY, Element.TOTAL_RECEIPT, Element.ID_PRICE_TAG,Element.UNIT_PRICE);
+                    Element.QUANTITY, Element.TOTAL_RECEIPT, Element.DESCRIP_PRICE,Element.UNIT_PRICE);
                 MyList.Add(Obj);
                 
             }
@@ -70,7 +70,7 @@ namespace ControlApp.DataAccess.Crud
             foreach (SP_CRUD_RECEIPTResult Element in Query)
             {
                 Receipt Obj = new Receipt(Element.ID_RECEIPT, Element.NAME_CUSTOMER, Element.DATE_RECEIPT,
-                    Element.QUANTITY, Element.TOTAL_RECEIPT, Element.ID_PRICE_TAG,
+                    Element.QUANTITY, Element.TOTAL_RECEIPT, Element.DESCRIP_PRICE,
                     Element.UNIT_PRICE, Element.RECEIPT_STATE, Element.RECEIPT_CREATEBY, Element.RECEIPT_UPDATEDBY, Element.RECEIPT_CREATEDATE, Element.RECEIPT_UPDATEDATE);
                 MyList.Add(Obj);
 
@@ -94,7 +94,7 @@ namespace ControlApp.DataAccess.Crud
             foreach (SP_CRUD_RECEIPTResult Element in Query)
             {
                 Receipt Obj = new Receipt(Element.ID_RECEIPT, Element.NAME_CUSTOMER, Element.DATE_RECEIPT,
-                    Element.QUANTITY, Element.TOTAL_RECEIPT, Element.ID_PRICE_TAG,
+                    Element.QUANTITY, Element.TOTAL_RECEIPT, Element.DESCRIP_PRICE,
                     Element.UNIT_PRICE, Element.RECEIPT_STATE, Element.RECEIPT_CREATEBY, Element.RECEIPT_UPDATEDBY, Element.RECEIPT_CREATEDATE,Element.RECEIPT_UPDATEDATE);
                 MyList.Add(Obj);
 
@@ -118,7 +118,7 @@ namespace ControlApp.DataAccess.Crud
             foreach (SP_CRUD_RECEIPTResult Element in Query)
             {
                 Receipt Obj = new Receipt(Element.ID_RECEIPT, Element.NAME_CUSTOMER, Element.DATE_RECEIPT,
-                    Element.QUANTITY, Element.TOTAL_RECEIPT, Element.ID_PRICE_TAG,
+                    Element.QUANTITY, Element.TOTAL_RECEIPT, Element.DESCRIP_PRICE,
                     Element.UNIT_PRICE, Element.RECEIPT_STATE, Element.RECEIPT_CREATEBY, Element.RECEIPT_UPDATEDBY, Element.RECEIPT_CREATEDATE, Element.RECEIPT_UPDATEDATE);
                 MyList.Add(Obj);
 
@@ -142,7 +142,7 @@ namespace ControlApp.DataAccess.Crud
             foreach (SP_CRUD_RECEIPTResult Element in Query)
             {
                 Receipt Obj = new Receipt(Element.ID_RECEIPT, Element.NAME_CUSTOMER, Element.DATE_RECEIPT,
-                    Element.QUANTITY, Element.TOTAL_RECEIPT, Element.ID_PRICE_TAG, Element.UNIT_PRICE);
+                    Element.QUANTITY, Element.TOTAL_RECEIPT, Element.DESCRIP_PRICE, Element.UNIT_PRICE);
                 MyList.Add(Obj);
 
             }
@@ -165,7 +165,7 @@ namespace ControlApp.DataAccess.Crud
             foreach (SP_CRUD_RECEIPTResult Element in Query)
             {
                 Receipt Obj = new Receipt(Element.ID_RECEIPT, Element.NAME_CUSTOMER, Element.DATE_RECEIPT,
-                    Element.QUANTITY, Element.TOTAL_RECEIPT, Element.ID_PRICE_TAG, Element.UNIT_PRICE);
+                    Element.QUANTITY, Element.TOTAL_RECEIPT, Element.DESCRIP_PRICE, Element.UNIT_PRICE);
                 MyList.Add(Obj);
 
             }
@@ -188,7 +188,7 @@ namespace ControlApp.DataAccess.Crud
             foreach (SP_CRUD_RECEIPTResult Element in Query)
             {
                 Receipt Obj = new Receipt(Element.ID_RECEIPT, Element.NAME_CUSTOMER, Element.DATE_RECEIPT,
-                    Element.QUANTITY, Element.TOTAL_RECEIPT, Element.ID_PRICE_TAG, Element.UNIT_PRICE);
+                    Element.QUANTITY, Element.TOTAL_RECEIPT, Element.DESCRIP_PRICE, Element.UNIT_PRICE);
                 MyList.Add(Obj);
 
             }
