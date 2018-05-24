@@ -17,12 +17,14 @@ namespace ControlApp.OnPremises.Panels
     public partial class pnlRole : pnlSlider
     {
         RoleManagement ApiAccess = new RoleManagement();
+        DepartamentManagement ApiAccessDpt = new DepartamentManagement();
         Role ObjRole = new Role();
         string pIdSession = MystaticValues.IdSession;
         public pnlRole(Form owner) : base(owner)
         {
             InitializeComponent();
             LoadDataGrid();
+            LoadCbDpt(cbDpt_Id);
         }
         private void LoadDataGrid()
         {
@@ -223,6 +225,27 @@ namespace ControlApp.OnPremises.Panels
                     throw;
                 }
             }
+        }
+        private void LoadCbDpt(ComboBox cb)
+        {
+            try
+            {
+                var ListDpt = ApiAccessDpt.RetrieveAllDepartament<Departament>();
+                foreach (Departament element in ListDpt)
+                {
+                    cb.Items.Add(element.Name_Dpt);
+                }
+            }
+            catch (Exception ex)
+            {
+                MetroMessageBox.Show(this, "Ha ocurrido un error:" + ex + "Favor Comunicarse con el equipo de Sistemas",
+                    "Error en Acción", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCreatePer_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

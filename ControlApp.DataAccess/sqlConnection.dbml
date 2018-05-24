@@ -35,18 +35,22 @@
       <Column Name="CREATEDATE_DPT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="UPDATEDATE_DPT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="TBL_DPT_TBL_AREA" Member="TBL_AREAs" ThisKey="ID_DPT" OtherKey="ID_DPT" Type="TBL_AREA" />
+      <Association Name="TBL_DPT_TBL_PERMISSION" Member="TBL_PERMISSIONs" ThisKey="ID_DPT" OtherKey="ID_DPT" Type="TBL_PERMISSION" />
       <Association Name="TBL_DPT_TBL_USER" Member="TBL_USERs" ThisKey="ID_DPT" OtherKey="ID_DPT" Type="TBL_USER" />
     </Type>
   </Table>
   <Table Name="dbo.TBL_PERMISSION" Member="TBL_PERMISSIONs">
     <Type Name="TBL_PERMISSION">
-      <Column Name="ID_PERMISSION" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_PER" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_DPT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NAME_PERMISSION" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
       <Column Name="DESCRIP_PERMISSION" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
       <Column Name="ROLE_STATE" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="ROLE_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="ROLE_UPDATEDBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="ROLE_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="TBL_PERMISSION_TBL_ROLE_PERMISSION" Member="TBL_ROLE_PERMISSIONs" ThisKey="ID_PER" OtherKey="ID_PER" Type="TBL_ROLE_PERMISSION" />
+      <Association Name="TBL_DPT_TBL_PERMISSION" Member="TBL_DPT" ThisKey="ID_DPT" OtherKey="ID_DPT" Type="TBL_DPT" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.TBL_POSITION" Member="TBL_POSITIONs">
@@ -104,7 +108,16 @@
       <Column Name="ROLE_UPDATEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="ROLE_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="ROLE_UPDATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="TBL_ROLE_TBL_ROLE_PERMISSION" Member="TBL_ROLE_PERMISSIONs" ThisKey="ID_ROLE" OtherKey="ID_ROLE" Type="TBL_ROLE_PERMISSION" />
       <Association Name="TBL_ROLE_TBL_USER" Member="TBL_USERs" ThisKey="ID_ROLE" OtherKey="ID_ROLE" Type="TBL_USER" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TBL_ROLE_PERMISSION" Member="TBL_ROLE_PERMISSIONs">
+    <Type Name="TBL_ROLE_PERMISSION">
+      <Column Name="ID_ROLE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_PER" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="TBL_PERMISSION_TBL_ROLE_PERMISSION" Member="TBL_PERMISSION" ThisKey="ID_PER" OtherKey="ID_PER" Type="TBL_PERMISSION" IsForeignKey="true" />
+      <Association Name="TBL_ROLE_TBL_ROLE_PERMISSION" Member="TBL_ROLE" ThisKey="ID_ROLE" OtherKey="ID_ROLE" Type="TBL_ROLE" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.TBL_SESSION" Member="TBL_SESSIONs">

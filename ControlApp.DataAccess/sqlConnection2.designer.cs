@@ -156,6 +156,14 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
+		public System.Data.Linq.Table<TBL_ROLE_PERMISSION> TBL_ROLE_PERMISSIONs
+		{
+			get
+			{
+				return this.GetTable<TBL_ROLE_PERMISSION>();
+			}
+		}
+		
 		public System.Data.Linq.Table<TBL_SESSION> TBL_SESSIONs
 		{
 			get
@@ -760,6 +768,8 @@ namespace ControlApp.DataAccess
 		
 		private EntitySet<TBL_AREA> _TBL_AREAs;
 		
+		private EntitySet<TBL_PERMISSION> _TBL_PERMISSIONs;
+		
 		private EntitySet<TBL_USER> _TBL_USERs;
 		
     #region Extensibility Method Definitions
@@ -785,6 +795,7 @@ namespace ControlApp.DataAccess
 		public TBL_DPT()
 		{
 			this._TBL_AREAs = new EntitySet<TBL_AREA>(new Action<TBL_AREA>(this.attach_TBL_AREAs), new Action<TBL_AREA>(this.detach_TBL_AREAs));
+			this._TBL_PERMISSIONs = new EntitySet<TBL_PERMISSION>(new Action<TBL_PERMISSION>(this.attach_TBL_PERMISSIONs), new Action<TBL_PERMISSION>(this.detach_TBL_PERMISSIONs));
 			this._TBL_USERs = new EntitySet<TBL_USER>(new Action<TBL_USER>(this.attach_TBL_USERs), new Action<TBL_USER>(this.detach_TBL_USERs));
 			OnCreated();
 		}
@@ -942,6 +953,19 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_DPT_TBL_PERMISSION", Storage="_TBL_PERMISSIONs", ThisKey="ID_DPT", OtherKey="ID_DPT")]
+		public EntitySet<TBL_PERMISSION> TBL_PERMISSIONs
+		{
+			get
+			{
+				return this._TBL_PERMISSIONs;
+			}
+			set
+			{
+				this._TBL_PERMISSIONs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_DPT_TBL_USER", Storage="_TBL_USERs", ThisKey="ID_DPT", OtherKey="ID_DPT")]
 		public EntitySet<TBL_USER> TBL_USERs
 		{
@@ -987,6 +1011,18 @@ namespace ControlApp.DataAccess
 			entity.TBL_DPT = null;
 		}
 		
+		private void attach_TBL_PERMISSIONs(TBL_PERMISSION entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_DPT = this;
+		}
+		
+		private void detach_TBL_PERMISSIONs(TBL_PERMISSION entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_DPT = null;
+		}
+		
 		private void attach_TBL_USERs(TBL_USER entity)
 		{
 			this.SendPropertyChanging();
@@ -1006,7 +1042,9 @@ namespace ControlApp.DataAccess
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _ID_PERMISSION;
+		private int _ID_PER;
+		
+		private System.Nullable<int> _ID_DPT;
 		
 		private string _NAME_PERMISSION;
 		
@@ -1020,12 +1058,16 @@ namespace ControlApp.DataAccess
 		
 		private System.DateTime _ROLE_CREATEDATE;
 		
+		private EntityRef<TBL_DPT> _TBL_DPT;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnID_PERMISSIONChanging(int value);
-    partial void OnID_PERMISSIONChanged();
+    partial void OnID_PERChanging(int value);
+    partial void OnID_PERChanged();
+    partial void OnID_DPTChanging(System.Nullable<int> value);
+    partial void OnID_DPTChanged();
     partial void OnNAME_PERMISSIONChanging(string value);
     partial void OnNAME_PERMISSIONChanged();
     partial void OnDESCRIP_PERMISSIONChanging(string value);
@@ -1042,25 +1084,50 @@ namespace ControlApp.DataAccess
 		
 		public TBL_PERMISSION()
 		{
+			this._TBL_DPT = default(EntityRef<TBL_DPT>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PERMISSION", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID_PERMISSION
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PER", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID_PER
 		{
 			get
 			{
-				return this._ID_PERMISSION;
+				return this._ID_PER;
 			}
 			set
 			{
-				if ((this._ID_PERMISSION != value))
+				if ((this._ID_PER != value))
 				{
-					this.OnID_PERMISSIONChanging(value);
+					this.OnID_PERChanging(value);
 					this.SendPropertyChanging();
-					this._ID_PERMISSION = value;
-					this.SendPropertyChanged("ID_PERMISSION");
-					this.OnID_PERMISSIONChanged();
+					this._ID_PER = value;
+					this.SendPropertyChanged("ID_PER");
+					this.OnID_PERChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_DPT", DbType="Int")]
+		public System.Nullable<int> ID_DPT
+		{
+			get
+			{
+				return this._ID_DPT;
+			}
+			set
+			{
+				if ((this._ID_DPT != value))
+				{
+					if (this._TBL_DPT.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_DPTChanging(value);
+					this.SendPropertyChanging();
+					this._ID_DPT = value;
+					this.SendPropertyChanged("ID_DPT");
+					this.OnID_DPTChanged();
 				}
 			}
 		}
@@ -1181,6 +1248,40 @@ namespace ControlApp.DataAccess
 					this._ROLE_CREATEDATE = value;
 					this.SendPropertyChanged("ROLE_CREATEDATE");
 					this.OnROLE_CREATEDATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_DPT_TBL_PERMISSION", Storage="_TBL_DPT", ThisKey="ID_DPT", OtherKey="ID_DPT", IsForeignKey=true)]
+		public TBL_DPT TBL_DPT
+		{
+			get
+			{
+				return this._TBL_DPT.Entity;
+			}
+			set
+			{
+				TBL_DPT previousValue = this._TBL_DPT.Entity;
+				if (((previousValue != value) 
+							|| (this._TBL_DPT.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TBL_DPT.Entity = null;
+						previousValue.TBL_PERMISSIONs.Remove(this);
+					}
+					this._TBL_DPT.Entity = value;
+					if ((value != null))
+					{
+						value.TBL_PERMISSIONs.Add(this);
+						this._ID_DPT = value.ID_DPT;
+					}
+					else
+					{
+						this._ID_DPT = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("TBL_DPT");
 				}
 			}
 		}
@@ -2426,6 +2527,51 @@ namespace ControlApp.DataAccess
 		{
 			this.SendPropertyChanging();
 			entity.TBL_ROLE = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_ROLE_PERMISSION")]
+	public partial class TBL_ROLE_PERMISSION
+	{
+		
+		private int _ID_ROLE;
+		
+		private int _ID_PER;
+		
+		public TBL_ROLE_PERMISSION()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_ROLE", DbType="Int NOT NULL")]
+		public int ID_ROLE
+		{
+			get
+			{
+				return this._ID_ROLE;
+			}
+			set
+			{
+				if ((this._ID_ROLE != value))
+				{
+					this._ID_ROLE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PER", DbType="Int NOT NULL")]
+		public int ID_PER
+		{
+			get
+			{
+				return this._ID_PER;
+			}
+			set
+			{
+				if ((this._ID_PER != value))
+				{
+					this._ID_PER = value;
+				}
+			}
 		}
 	}
 	
