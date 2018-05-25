@@ -47,7 +47,7 @@ namespace ControlApp.Entities.Objects
             this.CreateDate = pCreateDate;
             this.UpdateDate = pUpdateDate;
         }
-        public Permission(int pID_Per, string pName_Dpt, string pName_Per, string pDescrip_Per, bool pState, string pCreateBy,
+        public Permission(int pID_Per, string pName_Dpt, string pName_Per, string pDescrip_Per, bool? pState, string pCreateBy,
             string pUpdatedBy, DateTime pCreateDate, DateTime? pUpdateDate)
         {
             this.ID_Per = pID_Per;
