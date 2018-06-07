@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
+            this.btnRefresh = new MetroFramework.Controls.MetroTile();
             this.btnActivate = new MetroFramework.Controls.MetroTile();
             this.btnDelete = new MetroFramework.Controls.MetroTile();
             this.mtlblDescrip = new MetroFramework.Controls.MetroLabel();
@@ -41,6 +42,9 @@
             this.txtRetrieveByName = new MetroFramework.Controls.MetroTextBox();
             this.lblRetrieve = new MetroFramework.Controls.MetroLabel();
             this.dgvPriceTag = new MetroFramework.Controls.MetroGrid();
+            this.btnUpdate = new MetroFramework.Controls.MetroTile();
+            this.txtPriceTag = new MetroFramework.Controls.MetroTextBox();
+            this.mtlblPriceTag = new MetroFramework.Controls.MetroLabel();
             this.ID_PRICE_TAG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DESCRIP_PRICE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TOTAL_PRICE = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,10 +52,7 @@
             this.PRICE_TAG_CREATEBY = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PRICE_TAG_UPDATEBY = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PRICE_TAG_CREATEDATE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnUpdate = new MetroFramework.Controls.MetroTile();
-            this.txtPriceTag = new MetroFramework.Controls.MetroTextBox();
-            this.mtlblPriceTag = new MetroFramework.Controls.MetroLabel();
-            this.btnRefresh = new MetroFramework.Controls.MetroTile();
+            this.UPDATEDATE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPriceTag)).BeginInit();
@@ -94,6 +95,17 @@
             this.metroTabPage1.VerticalScrollbarBarColor = true;
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.ActiveControl = null;
+            this.btnRefresh.Location = new System.Drawing.Point(356, 3);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(83, 60);
+            this.btnRefresh.TabIndex = 65;
+            this.btnRefresh.Text = "Refrescar";
+            this.btnRefresh.UseSelectable = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnActivate
             // 
@@ -236,7 +248,8 @@
             this.PRICE_TAG_STATE,
             this.PRICE_TAG_CREATEBY,
             this.PRICE_TAG_UPDATEBY,
-            this.PRICE_TAG_CREATEDATE});
+            this.PRICE_TAG_CREATEDATE,
+            this.UPDATEDATE});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -266,52 +279,6 @@
             this.dgvPriceTag.TabIndex = 58;
             this.dgvPriceTag.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.dgvPriceTag.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPriceTag_CellClick);
-            // 
-            // ID_PRICE_TAG
-            // 
-            this.ID_PRICE_TAG.FillWeight = 40F;
-            this.ID_PRICE_TAG.HeaderText = "ID";
-            this.ID_PRICE_TAG.Name = "ID_PRICE_TAG";
-            this.ID_PRICE_TAG.ReadOnly = true;
-            this.ID_PRICE_TAG.Width = 40;
-            // 
-            // DESCRIP_PRICE
-            // 
-            this.DESCRIP_PRICE.HeaderText = "Descripción";
-            this.DESCRIP_PRICE.Name = "DESCRIP_PRICE";
-            this.DESCRIP_PRICE.ReadOnly = true;
-            // 
-            // TOTAL_PRICE
-            // 
-            this.TOTAL_PRICE.HeaderText = "Precio";
-            this.TOTAL_PRICE.Name = "TOTAL_PRICE";
-            this.TOTAL_PRICE.ReadOnly = true;
-            // 
-            // PRICE_TAG_STATE
-            // 
-            this.PRICE_TAG_STATE.FillWeight = 50F;
-            this.PRICE_TAG_STATE.HeaderText = "Estado";
-            this.PRICE_TAG_STATE.Name = "PRICE_TAG_STATE";
-            this.PRICE_TAG_STATE.ReadOnly = true;
-            this.PRICE_TAG_STATE.Width = 50;
-            // 
-            // PRICE_TAG_CREATEBY
-            // 
-            this.PRICE_TAG_CREATEBY.HeaderText = "Creado por";
-            this.PRICE_TAG_CREATEBY.Name = "PRICE_TAG_CREATEBY";
-            this.PRICE_TAG_CREATEBY.ReadOnly = true;
-            // 
-            // PRICE_TAG_UPDATEBY
-            // 
-            this.PRICE_TAG_UPDATEBY.HeaderText = "Modificado por";
-            this.PRICE_TAG_UPDATEBY.Name = "PRICE_TAG_UPDATEBY";
-            this.PRICE_TAG_UPDATEBY.ReadOnly = true;
-            // 
-            // PRICE_TAG_CREATEDATE
-            // 
-            this.PRICE_TAG_CREATEDATE.HeaderText = "Creado El";
-            this.PRICE_TAG_CREATEDATE.Name = "PRICE_TAG_CREATEDATE";
-            this.PRICE_TAG_CREATEDATE.ReadOnly = true;
             // 
             // btnUpdate
             // 
@@ -366,16 +333,57 @@
             this.mtlblPriceTag.Text = "Precio";
             this.mtlblPriceTag.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
-            // btnRefresh
+            // ID_PRICE_TAG
             // 
-            this.btnRefresh.ActiveControl = null;
-            this.btnRefresh.Location = new System.Drawing.Point(356, 3);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(83, 60);
-            this.btnRefresh.TabIndex = 65;
-            this.btnRefresh.Text = "Refrescar";
-            this.btnRefresh.UseSelectable = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            this.ID_PRICE_TAG.FillWeight = 40F;
+            this.ID_PRICE_TAG.HeaderText = "ID";
+            this.ID_PRICE_TAG.Name = "ID_PRICE_TAG";
+            this.ID_PRICE_TAG.ReadOnly = true;
+            this.ID_PRICE_TAG.Width = 40;
+            // 
+            // DESCRIP_PRICE
+            // 
+            this.DESCRIP_PRICE.HeaderText = "Descripción";
+            this.DESCRIP_PRICE.Name = "DESCRIP_PRICE";
+            this.DESCRIP_PRICE.ReadOnly = true;
+            // 
+            // TOTAL_PRICE
+            // 
+            this.TOTAL_PRICE.HeaderText = "Precio";
+            this.TOTAL_PRICE.Name = "TOTAL_PRICE";
+            this.TOTAL_PRICE.ReadOnly = true;
+            // 
+            // PRICE_TAG_STATE
+            // 
+            this.PRICE_TAG_STATE.FillWeight = 50F;
+            this.PRICE_TAG_STATE.HeaderText = "Estado";
+            this.PRICE_TAG_STATE.Name = "PRICE_TAG_STATE";
+            this.PRICE_TAG_STATE.ReadOnly = true;
+            this.PRICE_TAG_STATE.Width = 50;
+            // 
+            // PRICE_TAG_CREATEBY
+            // 
+            this.PRICE_TAG_CREATEBY.HeaderText = "Creado por";
+            this.PRICE_TAG_CREATEBY.Name = "PRICE_TAG_CREATEBY";
+            this.PRICE_TAG_CREATEBY.ReadOnly = true;
+            // 
+            // PRICE_TAG_UPDATEBY
+            // 
+            this.PRICE_TAG_UPDATEBY.HeaderText = "Modificado por";
+            this.PRICE_TAG_UPDATEBY.Name = "PRICE_TAG_UPDATEBY";
+            this.PRICE_TAG_UPDATEBY.ReadOnly = true;
+            // 
+            // PRICE_TAG_CREATEDATE
+            // 
+            this.PRICE_TAG_CREATEDATE.HeaderText = "Creado El";
+            this.PRICE_TAG_CREATEDATE.Name = "PRICE_TAG_CREATEDATE";
+            this.PRICE_TAG_CREATEDATE.ReadOnly = true;
+            // 
+            // UPDATEDATE
+            // 
+            this.UPDATEDATE.HeaderText = "Modificado El";
+            this.UPDATEDATE.Name = "UPDATEDATE";
+            this.UPDATEDATE.ReadOnly = true;
             // 
             // pnlAdminPriceTag
             // 
@@ -406,6 +414,10 @@
         private MetroFramework.Controls.MetroTextBox txtRetrieveByName;
         private MetroFramework.Controls.MetroLabel lblRetrieve;
         private MetroFramework.Controls.MetroGrid dgvPriceTag;
+        private MetroFramework.Controls.MetroTile btnUpdate;
+        private MetroFramework.Controls.MetroTextBox txtPriceTag;
+        private MetroFramework.Controls.MetroLabel mtlblPriceTag;
+        private MetroFramework.Controls.MetroTile btnRefresh;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_PRICE_TAG;
         private System.Windows.Forms.DataGridViewTextBoxColumn DESCRIP_PRICE;
         private System.Windows.Forms.DataGridViewTextBoxColumn TOTAL_PRICE;
@@ -413,9 +425,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PRICE_TAG_CREATEBY;
         private System.Windows.Forms.DataGridViewTextBoxColumn PRICE_TAG_UPDATEBY;
         private System.Windows.Forms.DataGridViewTextBoxColumn PRICE_TAG_CREATEDATE;
-        private MetroFramework.Controls.MetroTile btnUpdate;
-        private MetroFramework.Controls.MetroTextBox txtPriceTag;
-        private MetroFramework.Controls.MetroLabel mtlblPriceTag;
-        private MetroFramework.Controls.MetroTile btnRefresh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UPDATEDATE;
     }
 }

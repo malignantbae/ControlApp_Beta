@@ -216,7 +216,8 @@ namespace ControlApp.OnPremises.Panels.Admin
                 {
                     string[] RowPrice;
                     RowPrice = new string[] { element.ID_Price_Tag.ToString(), element.Descrip_Price ,element.Total_Price.ToString(),
-                        element.State.ToString(), element.CreateBy.ToString(), element.UpdateBy.ToString(), element.CreateDate.ToString()};
+                        element.State.ToString(), element.CreateBy.ToString(), element.UpdateBy.ToString(), element.CreateDate.ToString(),
+                        element.UpdateDate.ToString() };
                     dgvPriceTag.Rows.Add(RowPrice);
                 }
             }

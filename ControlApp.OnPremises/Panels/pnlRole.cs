@@ -18,6 +18,7 @@ namespace ControlApp.OnPremises.Panels
     {
         RoleManagement ApiAccess = new RoleManagement();
         DepartamentManagement ApiAccessDpt = new DepartamentManagement();
+        PermissionManagament ApiAccessPer = new PermissionManagament();
         Role ObjRole = new Role();
         string pIdSession = MystaticValues.IdSession;
         public pnlRole(Form owner) : base(owner)
@@ -38,6 +39,44 @@ namespace ControlApp.OnPremises.Panels
                     RowRole = new string[] { element.ID_role.ToString(),element.Name_role
                         , element.Descrip_role};
                     dgvRole.Rows.Add(RowRole);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        private void LoadDataGridPer()
+        {
+            try
+            {
+                dgvPer.Rows.Clear();
+                var ListPer = ApiAccessPer.RetrieveAllPermission<Permission>();
+                foreach (Permission element in ListPer)
+                {
+                    string[] RowPer;
+                    RowPer = new string[] { element.ID_Per.ToString(),element.Name_Dpt, element.Name_Per,
+                        element.Descrip_Per};
+                    dgvPer.Rows.Add(RowPer);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        private void LoadDataGridPer2()
+        {
+            try
+            {
+                dgvPer.Rows.Clear();
+                var ListPer = ApiAccessPer.RetrieveAllPermission<Permission>();
+                foreach (Permission element in ListPer)
+                {
+                    string[] RowPer;
+                    RowPer = new string[] { element.ID_Per.ToString(),element.Name_Dpt, element.Name_Per,
+                        element.Descrip_Per};
+                    dgvPer2.Rows.Add(RowPer);
                 }
             }
             catch (Exception)
@@ -242,7 +281,6 @@ namespace ControlApp.OnPremises.Panels
                     "Error en Acción", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btnCreatePer_Click(object sender, EventArgs e)
         {
 

@@ -148,14 +148,6 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
-		public System.Data.Linq.Table<TBL_ROLE_PERMISSION> TBL_ROLE_PERMISSIONs
-		{
-			get
-			{
-				return this.GetTable<TBL_ROLE_PERMISSION>();
-			}
-		}
-		
 		public System.Data.Linq.Table<TBL_SESSION> TBL_SESSIONs
 		{
 			get
@@ -177,6 +169,14 @@ namespace ControlApp.DataAccess
 			get
 			{
 				return this.GetTable<TBL_PERMISSION>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TBL_ROLE_PERMISSION> TBL_ROLE_PERMISSIONs
+		{
+			get
+			{
+				return this.GetTable<TBL_ROLE_PERMISSION>();
 			}
 		}
 		
@@ -2266,51 +2266,6 @@ namespace ControlApp.DataAccess
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_ROLE_PERMISSION")]
-	public partial class TBL_ROLE_PERMISSION
-	{
-		
-		private int _ID_ROLE;
-		
-		private int _ID_PER;
-		
-		public TBL_ROLE_PERMISSION()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_ROLE", DbType="Int NOT NULL")]
-		public int ID_ROLE
-		{
-			get
-			{
-				return this._ID_ROLE;
-			}
-			set
-			{
-				if ((this._ID_ROLE != value))
-				{
-					this._ID_ROLE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PER", DbType="Int NOT NULL")]
-		public int ID_PER
-		{
-			get
-			{
-				return this._ID_PER;
-			}
-			set
-			{
-				if ((this._ID_PER != value))
-				{
-					this._ID_PER = value;
-				}
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_SESSION")]
 	public partial class TBL_SESSION : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -3467,6 +3422,141 @@ namespace ControlApp.DataAccess
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_ROLE_PERMISSION")]
+	public partial class TBL_ROLE_PERMISSION
+	{
+		
+		private int _ID_ROLE;
+		
+		private int _ID_PER;
+		
+		private bool _ROLE_PER_STATE;
+		
+		private string _ROLE_PER_CREATEBY;
+		
+		private string _ROLE_PER_UPDATEBY;
+		
+		private System.DateTime _ROLE_PER_CREATEDATE;
+		
+		private System.DateTime _ROLE_PER_UPDATEDATE;
+		
+		public TBL_ROLE_PERMISSION()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_ROLE", DbType="Int NOT NULL")]
+		public int ID_ROLE
+		{
+			get
+			{
+				return this._ID_ROLE;
+			}
+			set
+			{
+				if ((this._ID_ROLE != value))
+				{
+					this._ID_ROLE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PER", DbType="Int NOT NULL")]
+		public int ID_PER
+		{
+			get
+			{
+				return this._ID_PER;
+			}
+			set
+			{
+				if ((this._ID_PER != value))
+				{
+					this._ID_PER = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_PER_STATE", DbType="Bit NOT NULL")]
+		public bool ROLE_PER_STATE
+		{
+			get
+			{
+				return this._ROLE_PER_STATE;
+			}
+			set
+			{
+				if ((this._ROLE_PER_STATE != value))
+				{
+					this._ROLE_PER_STATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_PER_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ROLE_PER_CREATEBY
+		{
+			get
+			{
+				return this._ROLE_PER_CREATEBY;
+			}
+			set
+			{
+				if ((this._ROLE_PER_CREATEBY != value))
+				{
+					this._ROLE_PER_CREATEBY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_PER_UPDATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ROLE_PER_UPDATEBY
+		{
+			get
+			{
+				return this._ROLE_PER_UPDATEBY;
+			}
+			set
+			{
+				if ((this._ROLE_PER_UPDATEBY != value))
+				{
+					this._ROLE_PER_UPDATEBY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_PER_CREATEDATE", DbType="DateTime NOT NULL")]
+		public System.DateTime ROLE_PER_CREATEDATE
+		{
+			get
+			{
+				return this._ROLE_PER_CREATEDATE;
+			}
+			set
+			{
+				if ((this._ROLE_PER_CREATEDATE != value))
+				{
+					this._ROLE_PER_CREATEDATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE_PER_UPDATEDATE", DbType="DateTime NOT NULL")]
+		public System.DateTime ROLE_PER_UPDATEDATE
+		{
+			get
+			{
+				return this._ROLE_PER_UPDATEDATE;
+			}
+			set
+			{
+				if ((this._ROLE_PER_UPDATEDATE != value))
+				{
+					this._ROLE_PER_UPDATEDATE = value;
+				}
 			}
 		}
 	}

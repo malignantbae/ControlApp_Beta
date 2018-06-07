@@ -11,6 +11,7 @@ using ControlApp.Entities.Objects;
 using ControlApp.ApiCore.Management;
 using MetroFramework;
 using static ControlApp.OnPremises.Program;
+using System.Text.RegularExpressions;
 
 namespace ControlApp.OnPremises.Panels
 {
@@ -240,7 +241,7 @@ namespace ControlApp.OnPremises.Panels
                 //lblID_USER.Style = MetroFramework.MetroColorStyle.Red;
                 //lblID_USER.Refresh();
             }
-            if (Email_User.Trim() == string.Empty)
+            if (Email_User.Trim() == string.Empty || CheckFormatEmail(Email_User) == false)
             {
                 finded = true;
             }
@@ -269,6 +270,26 @@ namespace ControlApp.OnPremises.Panels
                 finded = true;
             }
             return finded;
+        }
+        public bool CheckFormatEmail(string pEmail)
+        {
+            String sFormato;
+            sFormato = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+            if (Regex.IsMatch(pEmail, sFormato))
+            {
+                if (Regex.Replace(pEmail, sFormato, String.Empty).Length == 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
         }
         private void CleanFields()
         {

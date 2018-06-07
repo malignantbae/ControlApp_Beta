@@ -59,7 +59,8 @@ namespace ControlApp.DataAccess.Crud
                 ObjPrice_Tag.ID_Price_Tag, ObjPrice_Tag.Total_Price, ObjPrice_Tag.Descrip_Price).ToList();
             foreach (SP_CRUD_PRICE_TAGResult Element in Query)
             {
-                Price_tag Obj = new Price_tag(Element.ID_PRICE_TAG, Element.TOTAL_PRICE, Element.DESCRIP_PRICE, Element.PRICE_TAG_STATE,Element.PRICE_TAG_CREATEBY,Element.PRICE_TAG_UPDATEDBY,Element.PRICE_TAG_CREATEDATE);
+                Price_tag Obj = new Price_tag(Element.ID_PRICE_TAG, Element.TOTAL_PRICE, Element.DESCRIP_PRICE, Element.PRICE_TAG_STATE,
+                    Element.PRICE_TAG_CREATEBY,Element.PRICE_TAG_UPDATEDBY,Element.PRICE_TAG_CREATEDATE,Element.PRICE_TAG_UPDATEDATE);
                 MyList.Add(Obj);
             }
             if (MyList.Count > 0)
@@ -80,7 +81,8 @@ namespace ControlApp.DataAccess.Crud
                ObjPrice_Tag.ID_Price_Tag, ObjPrice_Tag.Total_Price, ObjPrice_Tag.Descrip_Price).ToList();
             foreach (SP_CRUD_PRICE_TAGResult Element in Query)
             {
-                Price_tag Obj = new Price_tag(Element.ID_PRICE_TAG, Element.TOTAL_PRICE, Element.DESCRIP_PRICE, Element.PRICE_TAG_STATE, Element.PRICE_TAG_CREATEBY, Element.PRICE_TAG_UPDATEDBY, Element.PRICE_TAG_CREATEDATE);
+                Price_tag Obj = new Price_tag(Element.ID_PRICE_TAG, Element.TOTAL_PRICE, Element.DESCRIP_PRICE, Element.PRICE_TAG_STATE,
+                    Element.PRICE_TAG_CREATEBY, Element.PRICE_TAG_UPDATEDBY, Element.PRICE_TAG_CREATEDATE, Element.PRICE_TAG_UPDATEDATE);
                 MyList.Add(Obj);
             }
             if (MyList.Count > 0)
@@ -101,7 +103,8 @@ namespace ControlApp.DataAccess.Crud
                ObjPrice_Tag.ID_Price_Tag, ObjPrice_Tag.Total_Price, ObjPrice_Tag.Descrip_Price).ToList();
             foreach (SP_CRUD_PRICE_TAGResult Element in Query)
             {
-                Price_tag Obj = new Price_tag(Element.ID_PRICE_TAG, Element.TOTAL_PRICE, Element.DESCRIP_PRICE, Element.PRICE_TAG_STATE, Element.PRICE_TAG_CREATEBY, Element.PRICE_TAG_UPDATEDBY, Element.PRICE_TAG_CREATEDATE);
+                Price_tag Obj = new Price_tag(Element.ID_PRICE_TAG, Element.TOTAL_PRICE, Element.DESCRIP_PRICE, Element.PRICE_TAG_STATE, 
+                    Element.PRICE_TAG_CREATEBY, Element.PRICE_TAG_UPDATEDBY, Element.PRICE_TAG_CREATEDATE, Element.PRICE_TAG_UPDATEDATE);
                 MyList.Add(Obj);
             }
             if (MyList.Count > 0)
@@ -122,7 +125,7 @@ namespace ControlApp.DataAccess.Crud
                ObjPrice_Tag.ID_Price_Tag, ObjPrice_Tag.Total_Price, ObjPrice_Tag.Descrip_Price).ToList();
             foreach (SP_CRUD_PRICE_TAGResult Element in Query)
             {
-                Price_tag Obj = new Price_tag(Element.ID_PRICE_TAG, Element.TOTAL_PRICE, Element.DESCRIP_PRICE, Element.PRICE_TAG_STATE, Element.PRICE_TAG_CREATEBY, Element.PRICE_TAG_UPDATEDBY, Element.PRICE_TAG_CREATEDATE);
+                Price_tag Obj = new Price_tag(Element.ID_PRICE_TAG, Element.TOTAL_PRICE, Element.DESCRIP_PRICE);
                 MyList.Add(Obj);
             }
             if (MyList.Count > 0)
@@ -143,7 +146,7 @@ namespace ControlApp.DataAccess.Crud
                ObjPrice_Tag.ID_Price_Tag, ObjPrice_Tag.Total_Price, ObjPrice_Tag.Descrip_Price).ToList();
             foreach (SP_CRUD_PRICE_TAGResult Element in Query)
             {
-                Price_tag Obj = new Price_tag(Element.ID_PRICE_TAG, Element.TOTAL_PRICE, Element.DESCRIP_PRICE, Element.PRICE_TAG_STATE, Element.PRICE_TAG_CREATEBY, Element.PRICE_TAG_UPDATEDBY, Element.PRICE_TAG_CREATEDATE);
+                Price_tag Obj = new Price_tag(Element.ID_PRICE_TAG, Element.TOTAL_PRICE, Element.DESCRIP_PRICE);
                 MyList.Add(Obj);
             }
             if (MyList.Count > 0)
