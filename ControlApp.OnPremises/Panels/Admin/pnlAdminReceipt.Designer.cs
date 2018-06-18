@@ -494,7 +494,7 @@
             this.ID_RECEIPT.HeaderText = "Número ";
             this.ID_RECEIPT.Name = "ID_RECEIPT";
             this.ID_RECEIPT.ReadOnly = true;
-            this.ID_RECEIPT.Width = 60;
+            this.ID_RECEIPT.Width = 55;
             // 
             // NAME_CUSTOMER
             // 
@@ -502,7 +502,7 @@
             this.NAME_CUSTOMER.HeaderText = "Cliente";
             this.NAME_CUSTOMER.Name = "NAME_CUSTOMER";
             this.NAME_CUSTOMER.ReadOnly = true;
-            this.NAME_CUSTOMER.Width = 65;
+            this.NAME_CUSTOMER.Width = 70;
             // 
             // QUANTITY
             // 
@@ -510,13 +510,14 @@
             this.QUANTITY.HeaderText = "Cantidad";
             this.QUANTITY.Name = "QUANTITY";
             this.QUANTITY.ReadOnly = true;
-            this.QUANTITY.Width = 60;
+            this.QUANTITY.Width = 65;
             // 
             // TOTAL_RECEIPT
             // 
             this.TOTAL_RECEIPT.HeaderText = "Total";
             this.TOTAL_RECEIPT.Name = "TOTAL_RECEIPT";
             this.TOTAL_RECEIPT.ReadOnly = true;
+            this.TOTAL_RECEIPT.Width = 75;
             // 
             // ID_PRICE_TAG
             // 
@@ -541,7 +542,7 @@
             this.DATE_RECEIPT.HeaderText = "Fecha";
             this.DATE_RECEIPT.Name = "DATE_RECEIPT";
             this.DATE_RECEIPT.ReadOnly = true;
-            this.DATE_RECEIPT.Width = 75;
+            this.DATE_RECEIPT.Width = 130;
             // 
             // RECEIPT_STATE
             // 
@@ -549,7 +550,7 @@
             this.RECEIPT_STATE.HeaderText = "Estado";
             this.RECEIPT_STATE.Name = "RECEIPT_STATE";
             this.RECEIPT_STATE.ReadOnly = true;
-            this.RECEIPT_STATE.Width = 45;
+            this.RECEIPT_STATE.Width = 43;
             // 
             // RECEIPT_CREATEBY
             // 
@@ -569,13 +570,14 @@
             this.RECEIPT_CREATEDATE.HeaderText = "Creado el";
             this.RECEIPT_CREATEDATE.Name = "RECEIPT_CREATEDATE";
             this.RECEIPT_CREATEDATE.ReadOnly = true;
-            this.RECEIPT_CREATEDATE.Width = 75;
+            this.RECEIPT_CREATEDATE.Width = 130;
             // 
             // RECEIPT_UPDATEDATE
             // 
             this.RECEIPT_UPDATEDATE.HeaderText = "Modificado El ";
             this.RECEIPT_UPDATEDATE.Name = "RECEIPT_UPDATEDATE";
             this.RECEIPT_UPDATEDATE.ReadOnly = true;
+            this.RECEIPT_UPDATEDATE.Width = 130;
             // 
             // pnlAdminReceipt
             // 

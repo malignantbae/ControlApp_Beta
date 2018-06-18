@@ -40,13 +40,6 @@
             this.txtNameCustomer = new MetroFramework.Controls.MetroTextBox();
             this.lblNameCustomer = new MetroFramework.Controls.MetroLabel();
             this.dgvReceipt = new MetroFramework.Controls.MetroGrid();
-            this.ID_RECEIPT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NAME_CUSTOMER = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QUANTITY = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TOTAL_RECEIPT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID_PRICE_TAG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UNIT_PRICE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DATE_RECEIPT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtRetrieveByName = new MetroFramework.Controls.MetroTextBox();
             this.lblRetrieve = new MetroFramework.Controls.MetroLabel();
             this.btnPrint = new MetroFramework.Controls.MetroTile();
@@ -55,13 +48,20 @@
             this.metroStyleExtender1 = new MetroFramework.Components.MetroStyleExtender(this.components);
             this.mtPrincipal = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
-            this.lblBegin = new MetroFramework.Controls.MetroLabel();
-            this.lblEnd = new MetroFramework.Controls.MetroLabel();
-            this.btnLoadRpt = new MetroFramework.Controls.MetroTile();
-            this.btnRefresh = new MetroFramework.Controls.MetroTile();
-            this.dtBegin = new System.Windows.Forms.DateTimePicker();
-            this.dtEnd = new System.Windows.Forms.DateTimePicker();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
+            this.dtEnd = new System.Windows.Forms.DateTimePicker();
+            this.dtBegin = new System.Windows.Forms.DateTimePicker();
+            this.btnRefresh = new MetroFramework.Controls.MetroTile();
+            this.btnLoadRpt = new MetroFramework.Controls.MetroTile();
+            this.lblEnd = new MetroFramework.Controls.MetroLabel();
+            this.lblBegin = new MetroFramework.Controls.MetroLabel();
+            this.ID_RECEIPT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NAME_CUSTOMER = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QUANTITY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TOTAL_RECEIPT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_PRICE_TAG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UNIT_PRICE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DATE_RECEIPT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceipt)).BeginInit();
             this.mtPrincipal.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
@@ -260,50 +260,6 @@
             this.dgvReceipt.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.dgvReceipt.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReceipt_CellClick);
             // 
-            // ID_RECEIPT
-            // 
-            this.ID_RECEIPT.HeaderText = "Número ";
-            this.ID_RECEIPT.Name = "ID_RECEIPT";
-            this.ID_RECEIPT.ReadOnly = true;
-            // 
-            // NAME_CUSTOMER
-            // 
-            this.NAME_CUSTOMER.HeaderText = "Cliente";
-            this.NAME_CUSTOMER.Name = "NAME_CUSTOMER";
-            this.NAME_CUSTOMER.ReadOnly = true;
-            // 
-            // QUANTITY
-            // 
-            this.QUANTITY.HeaderText = "Cantidad";
-            this.QUANTITY.Name = "QUANTITY";
-            this.QUANTITY.ReadOnly = true;
-            // 
-            // TOTAL_RECEIPT
-            // 
-            this.TOTAL_RECEIPT.HeaderText = "Total";
-            this.TOTAL_RECEIPT.Name = "TOTAL_RECEIPT";
-            this.TOTAL_RECEIPT.ReadOnly = true;
-            // 
-            // ID_PRICE_TAG
-            // 
-            this.ID_PRICE_TAG.HeaderText = "ID_PRICE_TAG";
-            this.ID_PRICE_TAG.Name = "ID_PRICE_TAG";
-            this.ID_PRICE_TAG.ReadOnly = true;
-            this.ID_PRICE_TAG.Visible = false;
-            // 
-            // UNIT_PRICE
-            // 
-            this.UNIT_PRICE.HeaderText = "UNIT_PRICE";
-            this.UNIT_PRICE.Name = "UNIT_PRICE";
-            this.UNIT_PRICE.ReadOnly = true;
-            this.UNIT_PRICE.Visible = false;
-            // 
-            // DATE_RECEIPT
-            // 
-            this.DATE_RECEIPT.HeaderText = "Fecha";
-            this.DATE_RECEIPT.Name = "DATE_RECEIPT";
-            this.DATE_RECEIPT.ReadOnly = true;
-            // 
             // txtRetrieveByName
             // 
             // 
@@ -419,63 +375,6 @@
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
             // 
-            // lblBegin
-            // 
-            this.lblBegin.AutoSize = true;
-            this.lblBegin.Location = new System.Drawing.Point(3, 77);
-            this.lblBegin.Name = "lblBegin";
-            this.lblBegin.Size = new System.Drawing.Size(77, 19);
-            this.lblBegin.TabIndex = 3;
-            this.lblBegin.Text = "Fecha Inicio";
-            this.lblBegin.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // lblEnd
-            // 
-            this.lblEnd.AutoSize = true;
-            this.lblEnd.Location = new System.Drawing.Point(3, 103);
-            this.lblEnd.Name = "lblEnd";
-            this.lblEnd.Size = new System.Drawing.Size(64, 19);
-            this.lblEnd.TabIndex = 5;
-            this.lblEnd.Text = "Fecha Fin";
-            this.lblEnd.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // btnLoadRpt
-            // 
-            this.btnLoadRpt.ActiveControl = null;
-            this.btnLoadRpt.Location = new System.Drawing.Point(3, 3);
-            this.btnLoadRpt.Name = "btnLoadRpt";
-            this.btnLoadRpt.Size = new System.Drawing.Size(83, 60);
-            this.btnLoadRpt.TabIndex = 14;
-            this.btnLoadRpt.Text = "Generar";
-            this.btnLoadRpt.UseSelectable = true;
-            this.btnLoadRpt.Click += new System.EventHandler(this.btnLoadRpt_Click);
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.ActiveControl = null;
-            this.btnRefresh.Location = new System.Drawing.Point(92, 3);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(83, 60);
-            this.btnRefresh.TabIndex = 15;
-            this.btnRefresh.Text = "Refrescar";
-            this.btnRefresh.UseSelectable = true;
-            // 
-            // dtBegin
-            // 
-            this.dtBegin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtBegin.Location = new System.Drawing.Point(92, 76);
-            this.dtBegin.Name = "dtBegin";
-            this.dtBegin.Size = new System.Drawing.Size(168, 20);
-            this.dtBegin.TabIndex = 20;
-            // 
-            // dtEnd
-            // 
-            this.dtEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtEnd.Location = new System.Drawing.Point(92, 102);
-            this.dtEnd.Name = "dtEnd";
-            this.dtEnd.Size = new System.Drawing.Size(168, 20);
-            this.dtEnd.TabIndex = 21;
-            // 
             // metroTabPage2
             // 
             this.metroTabPage2.Controls.Add(this.dtEnd);
@@ -496,6 +395,112 @@
             this.metroTabPage2.VerticalScrollbarBarColor = true;
             this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.VerticalScrollbarSize = 10;
+            // 
+            // dtEnd
+            // 
+            this.dtEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtEnd.Location = new System.Drawing.Point(92, 102);
+            this.dtEnd.Name = "dtEnd";
+            this.dtEnd.Size = new System.Drawing.Size(168, 20);
+            this.dtEnd.TabIndex = 21;
+            // 
+            // dtBegin
+            // 
+            this.dtBegin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtBegin.Location = new System.Drawing.Point(92, 76);
+            this.dtBegin.Name = "dtBegin";
+            this.dtBegin.Size = new System.Drawing.Size(168, 20);
+            this.dtBegin.TabIndex = 20;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.ActiveControl = null;
+            this.btnRefresh.Location = new System.Drawing.Point(92, 3);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(83, 60);
+            this.btnRefresh.TabIndex = 15;
+            this.btnRefresh.Text = "Refrescar";
+            this.btnRefresh.UseSelectable = true;
+            // 
+            // btnLoadRpt
+            // 
+            this.btnLoadRpt.ActiveControl = null;
+            this.btnLoadRpt.Location = new System.Drawing.Point(3, 3);
+            this.btnLoadRpt.Name = "btnLoadRpt";
+            this.btnLoadRpt.Size = new System.Drawing.Size(83, 60);
+            this.btnLoadRpt.TabIndex = 14;
+            this.btnLoadRpt.Text = "Generar";
+            this.btnLoadRpt.UseSelectable = true;
+            this.btnLoadRpt.Click += new System.EventHandler(this.btnLoadRpt_Click);
+            // 
+            // lblEnd
+            // 
+            this.lblEnd.AutoSize = true;
+            this.lblEnd.Location = new System.Drawing.Point(3, 103);
+            this.lblEnd.Name = "lblEnd";
+            this.lblEnd.Size = new System.Drawing.Size(64, 19);
+            this.lblEnd.TabIndex = 5;
+            this.lblEnd.Text = "Fecha Fin";
+            this.lblEnd.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // lblBegin
+            // 
+            this.lblBegin.AutoSize = true;
+            this.lblBegin.Location = new System.Drawing.Point(3, 77);
+            this.lblBegin.Name = "lblBegin";
+            this.lblBegin.Size = new System.Drawing.Size(77, 19);
+            this.lblBegin.TabIndex = 3;
+            this.lblBegin.Text = "Fecha Inicio";
+            this.lblBegin.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // ID_RECEIPT
+            // 
+            this.ID_RECEIPT.HeaderText = "Número ";
+            this.ID_RECEIPT.Name = "ID_RECEIPT";
+            this.ID_RECEIPT.ReadOnly = true;
+            this.ID_RECEIPT.Width = 55;
+            // 
+            // NAME_CUSTOMER
+            // 
+            this.NAME_CUSTOMER.HeaderText = "Cliente";
+            this.NAME_CUSTOMER.Name = "NAME_CUSTOMER";
+            this.NAME_CUSTOMER.ReadOnly = true;
+            this.NAME_CUSTOMER.Width = 70;
+            // 
+            // QUANTITY
+            // 
+            this.QUANTITY.HeaderText = "Cantidad";
+            this.QUANTITY.Name = "QUANTITY";
+            this.QUANTITY.ReadOnly = true;
+            this.QUANTITY.Width = 65;
+            // 
+            // TOTAL_RECEIPT
+            // 
+            this.TOTAL_RECEIPT.HeaderText = "Total";
+            this.TOTAL_RECEIPT.Name = "TOTAL_RECEIPT";
+            this.TOTAL_RECEIPT.ReadOnly = true;
+            this.TOTAL_RECEIPT.Width = 75;
+            // 
+            // ID_PRICE_TAG
+            // 
+            this.ID_PRICE_TAG.HeaderText = "ID_PRICE_TAG";
+            this.ID_PRICE_TAG.Name = "ID_PRICE_TAG";
+            this.ID_PRICE_TAG.ReadOnly = true;
+            this.ID_PRICE_TAG.Visible = false;
+            // 
+            // UNIT_PRICE
+            // 
+            this.UNIT_PRICE.HeaderText = "UNIT_PRICE";
+            this.UNIT_PRICE.Name = "UNIT_PRICE";
+            this.UNIT_PRICE.ReadOnly = true;
+            this.UNIT_PRICE.Visible = false;
+            // 
+            // DATE_RECEIPT
+            // 
+            this.DATE_RECEIPT.HeaderText = "Fecha";
+            this.DATE_RECEIPT.Name = "DATE_RECEIPT";
+            this.DATE_RECEIPT.ReadOnly = true;
+            this.DATE_RECEIPT.Width = 130;
             // 
             // pnlReceipt
             // 
@@ -528,13 +533,6 @@
         private MetroFramework.Controls.MetroTextBox txtRetrieveByName;
         private MetroFramework.Controls.MetroLabel lblRetrieve;
         private MetroFramework.Controls.MetroTile btnPrint;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_RECEIPT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NAME_CUSTOMER;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QUANTITY;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TOTAL_RECEIPT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_PRICE_TAG;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UNIT_PRICE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DATE_RECEIPT;
         private MetroFramework.Controls.MetroTile btnDelete;
         private MetroFramework.Controls.MetroTile btnCleanFields;
         private MetroFramework.Components.MetroStyleExtender metroStyleExtender1;
@@ -547,5 +545,12 @@
         private MetroFramework.Controls.MetroTile btnLoadRpt;
         private MetroFramework.Controls.MetroLabel lblEnd;
         private MetroFramework.Controls.MetroLabel lblBegin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_RECEIPT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NAME_CUSTOMER;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QUANTITY;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TOTAL_RECEIPT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_PRICE_TAG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UNIT_PRICE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DATE_RECEIPT;
     }
 }

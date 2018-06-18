@@ -20,12 +20,16 @@ namespace ControlApp.OnPremises.Panels
         DepartamentManagement ApiAccessDpt = new DepartamentManagement();
         PermissionManagament ApiAccessPer = new PermissionManagament();
         Role ObjRole = new Role();
+        Permission ObjPer = new Permission();
         string pIdSession = MystaticValues.IdSession;
         public pnlRole(Form owner) : base(owner)
         {
             InitializeComponent();
             LoadDataGrid();
             LoadCbDpt(cbDpt_Id);
+            LoadDataGridPer();
+            LoadDataGridAsgRole();
+            LoadDataGridPerAsg();
         }
         private void LoadDataGrid()
         {
@@ -39,6 +43,25 @@ namespace ControlApp.OnPremises.Panels
                     RowRole = new string[] { element.ID_role.ToString(),element.Name_role
                         , element.Descrip_role};
                     dgvRole.Rows.Add(RowRole);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        private void LoadDataGridAsgRole()
+        {
+            try
+            {
+                dgvRoleAsg.Rows.Clear();
+                var ListRole = ApiAccess.RetrieveAllRole<Role>();
+                foreach (Role element in ListRole)
+                {
+                    string[] RowRole;
+                    RowRole = new string[] { element.ID_role.ToString(),element.Name_role
+                        , element.Descrip_role};
+                    dgvRoleAsg.Rows.Add(RowRole);
                 }
             }
             catch (Exception)
@@ -65,18 +88,18 @@ namespace ControlApp.OnPremises.Panels
                 throw;
             }
         }
-        private void LoadDataGridPer2()
+        private void LoadDataGridPerAsg()
         {
             try
             {
-                dgvPer.Rows.Clear();
+                dgvPerAsg.Rows.Clear();
                 var ListPer = ApiAccessPer.RetrieveAllPermission<Permission>();
                 foreach (Permission element in ListPer)
                 {
                     string[] RowPer;
                     RowPer = new string[] { element.ID_Per.ToString(),element.Name_Dpt, element.Name_Per,
                         element.Descrip_Per};
-                    dgvPer2.Rows.Add(RowPer);
+                    dgvPerAsg.Rows.Add(RowPer);
                 }
             }
             catch (Exception)
@@ -89,6 +112,10 @@ namespace ControlApp.OnPremises.Panels
             txtRolename.Text = "";
             txtRetrieveByName.Text = "";
             txtDescripRole.Text = "";
+            cbDpt_Id.SelectedIndex = -1;
+            txtName_Per.Text = "";
+            txtDescrip_Dpt.Text ="";
+            txtRetrievePer.Text = "";
         }
         private bool CheckFields()
         {
@@ -106,6 +133,21 @@ namespace ControlApp.OnPremises.Panels
             }
             return finded;
         }
+        private bool CheckFieldsPer()
+        {
+            bool finded = false;
+            string PerName = txtName_Per.Text;
+            string DescripPer = txtDescrip_Dpt.Text;
+            if (ChecknamePer(PerName) == true || DescripPer.Trim() == string.Empty)
+            {
+                finded = true;
+            }
+            if (cbDpt_Id.SelectedIndex == -1)
+            {
+                finded = true;
+            }
+            return finded;
+        }
         private bool Checkname(string pRoleName)
         {
             try
@@ -117,6 +159,31 @@ namespace ControlApp.OnPremises.Panels
                 foreach (Role element in ListRole)
                 {
                     if (element.Name_role == pRoleName)
+                    {
+                        finded = true;
+                        if (finded == true)
+                        {
+                            break;
+                        }
+                    }
+                }
+                return finded;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        private bool ChecknamePer(string pPerName)
+        {
+            try
+            {
+                bool finded = false;
+                ObjPer.Name_Per = pPerName;
+                var ListPer = ApiAccessPer.RetrieveAllByNamePermission<Permission>(ObjPer);
+                foreach (Permission element in ListPer)
+                {
+                    if (element.Name_Per == pPerName && element.Name_Dpt == cbDpt_Id.Text)
                     {
                         finded = true;
                         if (finded == true)
@@ -157,6 +224,7 @@ namespace ControlApp.OnPremises.Panels
                 }
                 CleanFields();
                 LoadDataGrid();
+                LoadDataGridAsgRole();
             }
         }
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -186,6 +254,7 @@ namespace ControlApp.OnPremises.Panels
                 }
                 CleanFields();
                 LoadDataGrid();
+                LoadDataGridAsgRole();
             }
         }
         private void btnDelete_Click(object sender, EventArgs e)
@@ -214,6 +283,7 @@ namespace ControlApp.OnPremises.Panels
                     }
                     CleanFields();
                     LoadDataGrid();
+                    LoadDataGridAsgRole();
                 }
             }
         }
@@ -221,6 +291,7 @@ namespace ControlApp.OnPremises.Panels
         {
             CleanFields();
             LoadDataGrid();
+            LoadDataGridAsgRole();
         }
         private void dgvRole_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -283,7 +354,68 @@ namespace ControlApp.OnPremises.Panels
         }
         private void btnCreatePer_Click(object sender, EventArgs e)
         {
+            string PerName = txtName_Per.Text;
+            string DescripPer = txtDescrip_Dpt.Text;
 
+            if (CheckFieldsPer() == true)
+            {
+                MetroMessageBox.Show(this, "Debe completar todos los campos", "Error en Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            else
+            {
+                try
+                {
+                    ObjPer.ID_Dpt = GetIDDpt();
+                    ObjPer.Name_Per = PerName;
+                    ObjPer.Descrip_Per = DescripPer;
+                    ObjPer.CreateBy = pIdSession;
+                    ApiAccessPer.CreatedPermission(ObjPer);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                CleanFields();
+                LoadDataGridPer();
+                LoadDataGridPerAsg();
+            }
+        }
+        private int GetIDDpt()
+        {
+            int IdDpt = 0;
+            try
+            {
+                var NameDpt = cbDpt_Id.Text;
+                var ListDpt = ApiAccessDpt.RetrieveAllDepartament<Departament>();
+                foreach (Departament element in ListDpt)
+                {
+                    if (NameDpt == element.Name_Dpt)
+                    {
+                        IdDpt = element.ID_Dpt;
+                        break;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MetroMessageBox.Show(this, "Ha ocurrido un error:" + ex + "Favor Comunicarse con el equipo de Sistemas",
+                    "Error en Acción", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return IdDpt;
+        }
+
+        private void btnRefreshPer_Click(object sender, EventArgs e)
+        {
+            LoadDataGridPer();
+            LoadDataGridPerAsg();
+        }
+
+        private void metroTile2_Click(object sender, EventArgs e)
+        {
+            LoadDataGridAsgRole();
+            LoadDataGridPerAsg();
         }
     }
 }
