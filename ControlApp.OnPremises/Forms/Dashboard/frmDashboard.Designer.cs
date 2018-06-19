@@ -30,18 +30,19 @@
         {
             this.components = new System.ComponentModel.Container();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.btnRole = new MetroFramework.Controls.MetroTile();
+            this.btnPosition = new MetroFramework.Controls.MetroTile();
+            this.btnDpto = new MetroFramework.Controls.MetroTile();
+            this.mtPriceTag = new MetroFramework.Controls.MetroTile();
             this.mtAdPrecios = new MetroFramework.Controls.MetroTile();
             this.btnReceipt = new MetroFramework.Controls.MetroTile();
             this.btnUsers = new MetroFramework.Controls.MetroTile();
             this.mtAdmReceipt = new MetroFramework.Controls.MetroTile();
             this.mtArea = new MetroFramework.Controls.MetroTile();
-            this.mtPriceTag = new MetroFramework.Controls.MetroTile();
             this.mtAdmArea = new MetroFramework.Controls.MetroTile();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
             this.metroStyleManager1 = new MetroFramework.Components.MetroStyleManager(this.components);
-            this.btnDpto = new MetroFramework.Controls.MetroTile();
-            this.btnPosition = new MetroFramework.Controls.MetroTile();
-            this.btnRole = new MetroFramework.Controls.MetroTile();
+            this.btnLogout = new MetroFramework.Controls.MetroTile();
             this.metroPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
             this.SuspendLayout();
@@ -70,6 +71,50 @@
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
+            // 
+            // btnRole
+            // 
+            this.btnRole.ActiveControl = null;
+            this.btnRole.Location = new System.Drawing.Point(0, 502);
+            this.btnRole.Name = "btnRole";
+            this.btnRole.Size = new System.Drawing.Size(200, 48);
+            this.btnRole.TabIndex = 12;
+            this.btnRole.Text = "Roles";
+            this.btnRole.UseSelectable = true;
+            this.btnRole.Click += new System.EventHandler(this.btnRole_Click);
+            // 
+            // btnPosition
+            // 
+            this.btnPosition.ActiveControl = null;
+            this.btnPosition.Location = new System.Drawing.Point(0, 448);
+            this.btnPosition.Name = "btnPosition";
+            this.btnPosition.Size = new System.Drawing.Size(200, 48);
+            this.btnPosition.TabIndex = 11;
+            this.btnPosition.Text = "Cargos";
+            this.btnPosition.UseSelectable = true;
+            this.btnPosition.Click += new System.EventHandler(this.btnPosition_Click);
+            // 
+            // btnDpto
+            // 
+            this.btnDpto.ActiveControl = null;
+            this.btnDpto.Location = new System.Drawing.Point(0, 394);
+            this.btnDpto.Name = "btnDpto";
+            this.btnDpto.Size = new System.Drawing.Size(200, 48);
+            this.btnDpto.TabIndex = 10;
+            this.btnDpto.Text = "Departamentos";
+            this.btnDpto.UseSelectable = true;
+            this.btnDpto.Click += new System.EventHandler(this.btnDpto_Click);
+            // 
+            // mtPriceTag
+            // 
+            this.mtPriceTag.ActiveControl = null;
+            this.mtPriceTag.Location = new System.Drawing.Point(0, 286);
+            this.mtPriceTag.Name = "mtPriceTag";
+            this.mtPriceTag.Size = new System.Drawing.Size(200, 48);
+            this.mtPriceTag.TabIndex = 8;
+            this.mtPriceTag.Text = "Precios";
+            this.mtPriceTag.UseSelectable = true;
+            this.mtPriceTag.Click += new System.EventHandler(this.mtPriceTag_Click);
             // 
             // mtAdPrecios
             // 
@@ -126,17 +171,6 @@
             this.mtArea.UseSelectable = true;
             this.mtArea.Click += new System.EventHandler(this.mtArea_Click);
             // 
-            // mtPriceTag
-            // 
-            this.mtPriceTag.ActiveControl = null;
-            this.mtPriceTag.Location = new System.Drawing.Point(0, 286);
-            this.mtPriceTag.Name = "mtPriceTag";
-            this.mtPriceTag.Size = new System.Drawing.Size(200, 48);
-            this.mtPriceTag.TabIndex = 8;
-            this.mtPriceTag.Text = "Precios";
-            this.mtPriceTag.UseSelectable = true;
-            this.mtPriceTag.Click += new System.EventHandler(this.mtPriceTag_Click);
-            // 
             // mtAdmArea
             // 
             this.mtAdmArea.ActiveControl = null;
@@ -168,44 +202,23 @@
             this.metroStyleManager1.Owner = this;
             this.metroStyleManager1.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
-            // btnDpto
+            // btnLogout
             // 
-            this.btnDpto.ActiveControl = null;
-            this.btnDpto.Location = new System.Drawing.Point(0, 394);
-            this.btnDpto.Name = "btnDpto";
-            this.btnDpto.Size = new System.Drawing.Size(200, 48);
-            this.btnDpto.TabIndex = 10;
-            this.btnDpto.Text = "Departamentos";
-            this.btnDpto.UseSelectable = true;
-            this.btnDpto.Click += new System.EventHandler(this.btnDpto_Click);
-            // 
-            // btnPosition
-            // 
-            this.btnPosition.ActiveControl = null;
-            this.btnPosition.Location = new System.Drawing.Point(0, 448);
-            this.btnPosition.Name = "btnPosition";
-            this.btnPosition.Size = new System.Drawing.Size(200, 48);
-            this.btnPosition.TabIndex = 11;
-            this.btnPosition.Text = "Cargos";
-            this.btnPosition.UseSelectable = true;
-            this.btnPosition.Click += new System.EventHandler(this.btnPosition_Click);
-            // 
-            // btnRole
-            // 
-            this.btnRole.ActiveControl = null;
-            this.btnRole.Location = new System.Drawing.Point(0, 502);
-            this.btnRole.Name = "btnRole";
-            this.btnRole.Size = new System.Drawing.Size(200, 48);
-            this.btnRole.TabIndex = 12;
-            this.btnRole.Text = "Roles";
-            this.btnRole.UseSelectable = true;
-            this.btnRole.Click += new System.EventHandler(this.btnRole_Click);
+            this.btnLogout.ActiveControl = null;
+            this.btnLogout.Location = new System.Drawing.Point(753, 26);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(184, 37);
+            this.btnLogout.TabIndex = 5;
+            this.btnLogout.Text = "Cerrar Sesión";
+            this.btnLogout.UseSelectable = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // frmDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(937, 654);
+            this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.metroPanel2);
             this.Controls.Add(this.mtAdmArea);
             this.Controls.Add(this.metroPanel1);
@@ -236,5 +249,6 @@
         private MetroFramework.Controls.MetroTile btnRole;
         private MetroFramework.Controls.MetroTile btnPosition;
         private MetroFramework.Controls.MetroTile btnDpto;
+        private MetroFramework.Controls.MetroTile btnLogout;
     }
 }

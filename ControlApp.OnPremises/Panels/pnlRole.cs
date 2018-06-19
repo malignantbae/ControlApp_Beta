@@ -114,7 +114,7 @@ namespace ControlApp.OnPremises.Panels
             txtDescripRole.Text = "";
             cbDpt_Id.SelectedIndex = -1;
             txtName_Per.Text = "";
-            txtDescrip_Dpt.Text ="";
+            txtDescrip_Dpt.Text = "";
             txtRetrievePer.Text = "";
         }
         private bool CheckFields()
@@ -405,17 +405,92 @@ namespace ControlApp.OnPremises.Panels
             }
             return IdDpt;
         }
-
         private void btnRefreshPer_Click(object sender, EventArgs e)
         {
             LoadDataGridPer();
             LoadDataGridPerAsg();
+            CleanFields();
         }
-
         private void metroTile2_Click(object sender, EventArgs e)
         {
             LoadDataGridAsgRole();
             LoadDataGridPerAsg();
+        }
+        private void btnUpdatePer_Click(object sender, EventArgs e)
+        {
+            string PerName = txtName_Per.Text;
+            string DescripPer = txtDescrip_Dpt.Text;
+
+            if (CheckFieldsPer() == true)
+            {
+                MetroMessageBox.Show(this, "Debe completar todos los campos", "Error en Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            else
+            {
+                try
+                {
+                    int Row = dgvRole.CurrentRow.Index;
+                    ObjPer.ID_Per = Convert.ToInt32(dgvPer[0, Row].Value);
+                    ObjPer.ID_Dpt = GetIDDpt();
+                    ObjPer.Name_Per = PerName;
+                    ObjPer.Descrip_Per = DescripPer;
+                    ObjPer.UpdateBy = pIdSession;
+                    ApiAccessPer.UpdatePermission(ObjPer);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                CleanFields();
+                LoadDataGridPer();
+                LoadDataGridPerAsg();
+            }
+        }
+        private void btnDeletePer_Click(object sender, EventArgs e)
+        {
+            int Row = dgvPer.CurrentRow.Index;
+            string PerName = dgvPer[1, Row].Value.ToString();
+            if (dgvRole[1, Row].Value == null)
+            {
+                MetroMessageBox.Show(this, "Debe Seleccionar Al menos Algún Valor para Eliminar. \n Favor Intentelo Nuevamente", "Error en Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dgvPer.Focus();
+                return;
+            }
+            else
+            {
+                if (MetroFramework.MetroMessageBox.Show(this, "¿Desea Eliminar el Permiso de: " + PerName + "?", "Confirmación de Acción", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    try
+                    {
+                        ObjPer.ID_Per = Convert.ToInt32(dgvPer[0, Row].Value);
+                        ObjRole.UpdateBy = pIdSession;
+                        ApiAccessPer.DeletePermission(ObjPer);
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+                    CleanFields();
+                    LoadDataGrid();
+                    LoadDataGridAsgRole();
+                }
+            }
+        }
+        private void dgvPer_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                int Row = dgvPer.CurrentRow.Index;
+                cbDpt_Id.Text = dgvPer[1, Row].Value.ToString();
+                txtName_Per.Text = dgvPer[2, Row].Value.ToString();
+                txtDescrip_Dpt.Text = dgvPer[3, Row].Value.ToString();
+                btnUpdate.Enabled = true;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }
