@@ -117,19 +117,44 @@ namespace ControlApp.OnPremises.Forms.Dashboard
         }
         private void LoadPermissions()
         {
-            if (GetNameRole() == "REGULAR")
+            switch (GetNameRole())
             {
-                btnDpto.Visible = false;
-                btnPosition.Visible = false;
-                btnRole.Visible = false;
-                btnUsers.Visible = false;
-                mtAdmReceipt.Visible = false;
-                mtAdmArea.Visible = false;
-                mtAdPrecios.Visible = false;
-                mtPriceTag.Visible = false;
-                btnReceipt.Visible = true;
-                mtArea.Visible = false;
+                case "ADMIN":
+                    break;
+                case "DEVELOPER":
+                    break;
+                case "CONTABILIDAD":
+                    btnReceipt.Visible = true;
+                    mtAdmReceipt.Visible = true;
+                    mtPriceTag.Visible = true;
+                    btnDpto.Visible = false;
+                    btnPosition.Visible = false;
+                    btnRole.Visible = false;
+                    btnUsers.Visible = false;
+                    mtAdmArea.Visible = false;
+                    mtAdPrecios.Visible = false;
+                    mtArea.Visible = false;
+
+                    break;
+                case "DESPACHO":
+                    btnReceipt.Visible = true;
+                    btnDpto.Visible = false;
+                    btnPosition.Visible = false;
+                    btnRole.Visible = false;
+                    btnUsers.Visible = false;
+                    mtAdmReceipt.Visible = false;
+                    mtAdmArea.Visible = false;
+                    mtAdPrecios.Visible = false;
+                    mtPriceTag.Visible = false;
+                    mtArea.Visible = false;
+                    break;
+                default:
+                    Console.WriteLine("Default case");
+                    break;
             }
+
+
+
         }
 
         private string GetNameRole()
