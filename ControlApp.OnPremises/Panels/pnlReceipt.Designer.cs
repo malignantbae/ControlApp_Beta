@@ -40,6 +40,13 @@
             this.txtNameCustomer = new MetroFramework.Controls.MetroTextBox();
             this.lblNameCustomer = new MetroFramework.Controls.MetroLabel();
             this.dgvReceipt = new MetroFramework.Controls.MetroGrid();
+            this.ID_RECEIPT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NAME_CUSTOMER = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QUANTITY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TOTAL_RECEIPT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_PRICE_TAG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UNIT_PRICE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DATE_RECEIPT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtRetrieveByName = new MetroFramework.Controls.MetroTextBox();
             this.lblRetrieve = new MetroFramework.Controls.MetroLabel();
             this.btnPrint = new MetroFramework.Controls.MetroTile();
@@ -48,6 +55,10 @@
             this.metroStyleExtender1 = new MetroFramework.Components.MetroStyleExtender(this.components);
             this.mtPrincipal = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
+            this.txtCambio = new MetroFramework.Controls.MetroTextBox();
+            this.lblCambio = new MetroFramework.Controls.MetroLabel();
+            this.txtCash = new MetroFramework.Controls.MetroTextBox();
+            this.lblCash = new MetroFramework.Controls.MetroLabel();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.dtEnd = new System.Windows.Forms.DateTimePicker();
             this.dtBegin = new System.Windows.Forms.DateTimePicker();
@@ -55,13 +66,6 @@
             this.btnLoadRpt = new MetroFramework.Controls.MetroTile();
             this.lblEnd = new MetroFramework.Controls.MetroLabel();
             this.lblBegin = new MetroFramework.Controls.MetroLabel();
-            this.ID_RECEIPT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NAME_CUSTOMER = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QUANTITY = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TOTAL_RECEIPT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID_PRICE_TAG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UNIT_PRICE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DATE_RECEIPT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceipt)).BeginInit();
             this.mtPrincipal.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
@@ -74,7 +78,7 @@
             this.btnCreate.Location = new System.Drawing.Point(3, 6);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(83, 60);
-            this.btnCreate.TabIndex = 13;
+            this.btnCreate.TabIndex = 4;
             this.btnCreate.Text = "Agregar";
             this.btnCreate.UseSelectable = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
@@ -82,7 +86,7 @@
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(41, 134);
+            this.lblTotal.Location = new System.Drawing.Point(46, 138);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(36, 19);
             this.lblTotal.TabIndex = 21;
@@ -104,7 +108,7 @@
             this.txtTotalReceipt.CustomButton.UseSelectable = true;
             this.txtTotalReceipt.CustomButton.Visible = false;
             this.txtTotalReceipt.Lines = new string[0];
-            this.txtTotalReceipt.Location = new System.Drawing.Point(92, 130);
+            this.txtTotalReceipt.Location = new System.Drawing.Point(92, 134);
             this.txtTotalReceipt.MaxLength = 32767;
             this.txtTotalReceipt.Name = "txtTotalReceipt";
             this.txtTotalReceipt.PasswordChar = '\0';
@@ -135,7 +139,7 @@
             this.txtQuantity.CustomButton.UseSelectable = true;
             this.txtQuantity.CustomButton.Visible = false;
             this.txtQuantity.Lines = new string[0];
-            this.txtQuantity.Location = new System.Drawing.Point(92, 101);
+            this.txtQuantity.Location = new System.Drawing.Point(92, 105);
             this.txtQuantity.MaxLength = 32767;
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.PasswordChar = '\0';
@@ -145,7 +149,7 @@
             this.txtQuantity.SelectionStart = 0;
             this.txtQuantity.ShortcutsEnabled = true;
             this.txtQuantity.Size = new System.Drawing.Size(139, 23);
-            this.txtQuantity.TabIndex = 19;
+            this.txtQuantity.TabIndex = 2;
             this.txtQuantity.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.txtQuantity.UseSelectable = true;
             this.txtQuantity.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -156,7 +160,7 @@
             // lblCantidad
             // 
             this.lblCantidad.AutoSize = true;
-            this.lblCantidad.Location = new System.Drawing.Point(15, 105);
+            this.lblCantidad.Location = new System.Drawing.Point(20, 109);
             this.lblCantidad.Name = "lblCantidad";
             this.lblCantidad.Size = new System.Drawing.Size(62, 19);
             this.lblCantidad.TabIndex = 18;
@@ -178,7 +182,7 @@
             this.txtNameCustomer.CustomButton.UseSelectable = true;
             this.txtNameCustomer.CustomButton.Visible = false;
             this.txtNameCustomer.Lines = new string[0];
-            this.txtNameCustomer.Location = new System.Drawing.Point(92, 72);
+            this.txtNameCustomer.Location = new System.Drawing.Point(92, 76);
             this.txtNameCustomer.MaxLength = 32767;
             this.txtNameCustomer.Name = "txtNameCustomer";
             this.txtNameCustomer.PasswordChar = '\0';
@@ -188,7 +192,7 @@
             this.txtNameCustomer.SelectionStart = 0;
             this.txtNameCustomer.ShortcutsEnabled = true;
             this.txtNameCustomer.Size = new System.Drawing.Size(139, 23);
-            this.txtNameCustomer.TabIndex = 17;
+            this.txtNameCustomer.TabIndex = 1;
             this.txtNameCustomer.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.txtNameCustomer.UseSelectable = true;
             this.txtNameCustomer.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -197,7 +201,7 @@
             // lblNameCustomer
             // 
             this.lblNameCustomer.AutoSize = true;
-            this.lblNameCustomer.Location = new System.Drawing.Point(28, 76);
+            this.lblNameCustomer.Location = new System.Drawing.Point(28, 80);
             this.lblNameCustomer.Name = "lblNameCustomer";
             this.lblNameCustomer.Size = new System.Drawing.Size(49, 19);
             this.lblNameCustomer.TabIndex = 16;
@@ -241,7 +245,7 @@
             this.dgvReceipt.EnableHeadersVisualStyles = false;
             this.dgvReceipt.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgvReceipt.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.dgvReceipt.Location = new System.Drawing.Point(3, 159);
+            this.dgvReceipt.Location = new System.Drawing.Point(3, 192);
             this.dgvReceipt.Name = "dgvReceipt";
             this.dgvReceipt.ReadOnly = true;
             this.dgvReceipt.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -255,10 +259,59 @@
             this.dgvReceipt.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvReceipt.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvReceipt.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvReceipt.Size = new System.Drawing.Size(631, 303);
+            this.dgvReceipt.Size = new System.Drawing.Size(631, 270);
             this.dgvReceipt.TabIndex = 15;
             this.dgvReceipt.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.dgvReceipt.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReceipt_CellClick);
+            // 
+            // ID_RECEIPT
+            // 
+            this.ID_RECEIPT.HeaderText = "Número ";
+            this.ID_RECEIPT.Name = "ID_RECEIPT";
+            this.ID_RECEIPT.ReadOnly = true;
+            this.ID_RECEIPT.Width = 55;
+            // 
+            // NAME_CUSTOMER
+            // 
+            this.NAME_CUSTOMER.HeaderText = "Cliente";
+            this.NAME_CUSTOMER.Name = "NAME_CUSTOMER";
+            this.NAME_CUSTOMER.ReadOnly = true;
+            this.NAME_CUSTOMER.Width = 70;
+            // 
+            // QUANTITY
+            // 
+            this.QUANTITY.HeaderText = "Cantidad";
+            this.QUANTITY.Name = "QUANTITY";
+            this.QUANTITY.ReadOnly = true;
+            this.QUANTITY.Width = 65;
+            // 
+            // TOTAL_RECEIPT
+            // 
+            this.TOTAL_RECEIPT.HeaderText = "Total";
+            this.TOTAL_RECEIPT.Name = "TOTAL_RECEIPT";
+            this.TOTAL_RECEIPT.ReadOnly = true;
+            this.TOTAL_RECEIPT.Width = 75;
+            // 
+            // ID_PRICE_TAG
+            // 
+            this.ID_PRICE_TAG.HeaderText = "ID_PRICE_TAG";
+            this.ID_PRICE_TAG.Name = "ID_PRICE_TAG";
+            this.ID_PRICE_TAG.ReadOnly = true;
+            this.ID_PRICE_TAG.Visible = false;
+            // 
+            // UNIT_PRICE
+            // 
+            this.UNIT_PRICE.HeaderText = "UNIT_PRICE";
+            this.UNIT_PRICE.Name = "UNIT_PRICE";
+            this.UNIT_PRICE.ReadOnly = true;
+            this.UNIT_PRICE.Visible = false;
+            // 
+            // DATE_RECEIPT
+            // 
+            this.DATE_RECEIPT.HeaderText = "Fecha";
+            this.DATE_RECEIPT.Name = "DATE_RECEIPT";
+            this.DATE_RECEIPT.ReadOnly = true;
+            this.DATE_RECEIPT.Width = 130;
             // 
             // txtRetrieveByName
             // 
@@ -285,7 +338,7 @@
             this.txtRetrieveByName.SelectionStart = 0;
             this.txtRetrieveByName.ShortcutsEnabled = true;
             this.txtRetrieveByName.Size = new System.Drawing.Size(135, 23);
-            this.txtRetrieveByName.TabIndex = 4;
+            this.txtRetrieveByName.TabIndex = 5;
             this.txtRetrieveByName.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.txtRetrieveByName.UseSelectable = true;
             this.txtRetrieveByName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -349,6 +402,10 @@
             // 
             // metroTabPage1
             // 
+            this.metroTabPage1.Controls.Add(this.txtCambio);
+            this.metroTabPage1.Controls.Add(this.lblCambio);
+            this.metroTabPage1.Controls.Add(this.txtCash);
+            this.metroTabPage1.Controls.Add(this.lblCash);
             this.metroTabPage1.Controls.Add(this.dgvReceipt);
             this.metroTabPage1.Controls.Add(this.txtRetrieveByName);
             this.metroTabPage1.Controls.Add(this.lblRetrieve);
@@ -374,6 +431,91 @@
             this.metroTabPage1.VerticalScrollbarBarColor = true;
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
+            // 
+            // txtCambio
+            // 
+            // 
+            // 
+            // 
+            this.txtCambio.CustomButton.Image = null;
+            this.txtCambio.CustomButton.Location = new System.Drawing.Point(117, 1);
+            this.txtCambio.CustomButton.Name = "";
+            this.txtCambio.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtCambio.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtCambio.CustomButton.TabIndex = 1;
+            this.txtCambio.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtCambio.CustomButton.UseSelectable = true;
+            this.txtCambio.CustomButton.Visible = false;
+            this.txtCambio.Enabled = false;
+            this.txtCambio.Lines = new string[0];
+            this.txtCambio.Location = new System.Drawing.Point(299, 159);
+            this.txtCambio.MaxLength = 32767;
+            this.txtCambio.Name = "txtCambio";
+            this.txtCambio.PasswordChar = '\0';
+            this.txtCambio.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtCambio.SelectedText = "";
+            this.txtCambio.SelectionLength = 0;
+            this.txtCambio.SelectionStart = 0;
+            this.txtCambio.ShortcutsEnabled = true;
+            this.txtCambio.Size = new System.Drawing.Size(139, 23);
+            this.txtCambio.TabIndex = 59;
+            this.txtCambio.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.txtCambio.UseSelectable = true;
+            this.txtCambio.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtCambio.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // lblCambio
+            // 
+            this.lblCambio.AutoSize = true;
+            this.lblCambio.Location = new System.Drawing.Point(237, 163);
+            this.lblCambio.Name = "lblCambio";
+            this.lblCambio.Size = new System.Drawing.Size(56, 19);
+            this.lblCambio.TabIndex = 58;
+            this.lblCambio.Text = "Cambio";
+            this.lblCambio.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // txtCash
+            // 
+            // 
+            // 
+            // 
+            this.txtCash.CustomButton.Image = null;
+            this.txtCash.CustomButton.Location = new System.Drawing.Point(117, 1);
+            this.txtCash.CustomButton.Name = "";
+            this.txtCash.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtCash.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtCash.CustomButton.TabIndex = 1;
+            this.txtCash.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtCash.CustomButton.UseSelectable = true;
+            this.txtCash.CustomButton.Visible = false;
+            this.txtCash.Lines = new string[0];
+            this.txtCash.Location = new System.Drawing.Point(92, 163);
+            this.txtCash.MaxLength = 32767;
+            this.txtCash.Name = "txtCash";
+            this.txtCash.PasswordChar = '\0';
+            this.txtCash.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtCash.SelectedText = "";
+            this.txtCash.SelectionLength = 0;
+            this.txtCash.SelectionStart = 0;
+            this.txtCash.ShortcutsEnabled = true;
+            this.txtCash.Size = new System.Drawing.Size(139, 23);
+            this.txtCash.TabIndex = 3;
+            this.txtCash.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.txtCash.UseSelectable = true;
+            this.txtCash.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtCash.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtCash.TextChanged += new System.EventHandler(this.txtCash_TextChanged);
+            this.txtCash.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCash_KeyPress);
+            // 
+            // lblCash
+            // 
+            this.lblCash.AutoSize = true;
+            this.lblCash.Location = new System.Drawing.Point(28, 167);
+            this.lblCash.Name = "lblCash";
+            this.lblCash.Size = new System.Drawing.Size(54, 19);
+            this.lblCash.TabIndex = 56;
+            this.lblCash.Text = "Efectivo";
+            this.lblCash.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // metroTabPage2
             // 
@@ -453,55 +595,6 @@
             this.lblBegin.Text = "Fecha Inicio";
             this.lblBegin.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
-            // ID_RECEIPT
-            // 
-            this.ID_RECEIPT.HeaderText = "Número ";
-            this.ID_RECEIPT.Name = "ID_RECEIPT";
-            this.ID_RECEIPT.ReadOnly = true;
-            this.ID_RECEIPT.Width = 55;
-            // 
-            // NAME_CUSTOMER
-            // 
-            this.NAME_CUSTOMER.HeaderText = "Cliente";
-            this.NAME_CUSTOMER.Name = "NAME_CUSTOMER";
-            this.NAME_CUSTOMER.ReadOnly = true;
-            this.NAME_CUSTOMER.Width = 70;
-            // 
-            // QUANTITY
-            // 
-            this.QUANTITY.HeaderText = "Cantidad";
-            this.QUANTITY.Name = "QUANTITY";
-            this.QUANTITY.ReadOnly = true;
-            this.QUANTITY.Width = 65;
-            // 
-            // TOTAL_RECEIPT
-            // 
-            this.TOTAL_RECEIPT.HeaderText = "Total";
-            this.TOTAL_RECEIPT.Name = "TOTAL_RECEIPT";
-            this.TOTAL_RECEIPT.ReadOnly = true;
-            this.TOTAL_RECEIPT.Width = 75;
-            // 
-            // ID_PRICE_TAG
-            // 
-            this.ID_PRICE_TAG.HeaderText = "ID_PRICE_TAG";
-            this.ID_PRICE_TAG.Name = "ID_PRICE_TAG";
-            this.ID_PRICE_TAG.ReadOnly = true;
-            this.ID_PRICE_TAG.Visible = false;
-            // 
-            // UNIT_PRICE
-            // 
-            this.UNIT_PRICE.HeaderText = "UNIT_PRICE";
-            this.UNIT_PRICE.Name = "UNIT_PRICE";
-            this.UNIT_PRICE.ReadOnly = true;
-            this.UNIT_PRICE.Visible = false;
-            // 
-            // DATE_RECEIPT
-            // 
-            this.DATE_RECEIPT.HeaderText = "Fecha";
-            this.DATE_RECEIPT.Name = "DATE_RECEIPT";
-            this.DATE_RECEIPT.ReadOnly = true;
-            this.DATE_RECEIPT.Width = 130;
-            // 
             // pnlReceipt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -552,5 +645,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_PRICE_TAG;
         private System.Windows.Forms.DataGridViewTextBoxColumn UNIT_PRICE;
         private System.Windows.Forms.DataGridViewTextBoxColumn DATE_RECEIPT;
+        private MetroFramework.Controls.MetroTextBox txtCambio;
+        private MetroFramework.Controls.MetroLabel lblCambio;
+        private MetroFramework.Controls.MetroTextBox txtCash;
+        private MetroFramework.Controls.MetroLabel lblCash;
     }
 }

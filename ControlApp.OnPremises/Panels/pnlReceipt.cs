@@ -31,6 +31,8 @@ namespace ControlApp.OnPremises.Panels
         //Global Variables
         int gIdPrice_Tag = 0;
         decimal gUnit_Price = 0;
+       
+       
         public pnlReceipt(Form owner) : base(owner)
         {
             InitializeComponent();
@@ -283,6 +285,37 @@ namespace ControlApp.OnPremises.Panels
         private void btnLoadRpt_Click(object sender, EventArgs e)
         {
             ShowReportByUser();
+        }
+
+        private void txtCash_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtCash_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtCash.Text == "")
+                {
+                    txtCash.Text = "";
+                    txtCambio.Text = "";
+                }
+                else
+                {
+                    decimal TotalReceipt = Convert.ToDecimal(txtTotalReceipt.Text);
+                    decimal Cash = Convert.ToDecimal(txtCash.Text);
+                    txtCambio.Text = (Cash - TotalReceipt).ToString();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }
