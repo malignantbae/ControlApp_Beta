@@ -123,6 +123,7 @@
             this.txtTotalReceipt.UseSelectable = true;
             this.txtTotalReceipt.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtTotalReceipt.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtTotalReceipt.TextChanged += new System.EventHandler(this.txtTotalReceipt_TextChanged);
             // 
             // txtQuantity
             // 
@@ -488,6 +489,7 @@
             this.txtCash.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtCash.CustomButton.UseSelectable = true;
             this.txtCash.CustomButton.Visible = false;
+            this.txtCash.Enabled = false;
             this.txtCash.Lines = new string[0];
             this.txtCash.Location = new System.Drawing.Point(92, 163);
             this.txtCash.MaxLength = 32767;

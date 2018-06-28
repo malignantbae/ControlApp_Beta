@@ -31,8 +31,6 @@ namespace ControlApp.OnPremises.Panels
         //Global Variables
         int gIdPrice_Tag = 0;
         decimal gUnit_Price = 0;
-       
-       
         public pnlReceipt(Form owner) : base(owner)
         {
             InitializeComponent();
@@ -48,6 +46,9 @@ namespace ControlApp.OnPremises.Panels
             txtNameCustomer.Text = "";
             txtQuantity.Text = "";
             txtRetrieveByName.Text = "";
+            txtCambio.Text = "";
+            txtCash.Text = "";
+            txtCash.Enabled = false;
         }
         public void LoadDataGrid()
         {
@@ -139,9 +140,9 @@ namespace ControlApp.OnPremises.Panels
 
                 throw;
             }
-            Print();
             LoadDataGrid();
             CleanFields();
+            Print();
         }
         private void pnlReceipt_Load(object sender, EventArgs e)
         {
@@ -199,6 +200,7 @@ namespace ControlApp.OnPremises.Panels
             if(txtQuantity.Text == "")
             {
                 txtTotalReceipt.Text = "";
+                txtCash.Text = "";
             }
             else
             {
@@ -286,15 +288,13 @@ namespace ControlApp.OnPremises.Panels
         {
             ShowReportByUser();
         }
-
         private void txtCash_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
         }
-
         private void txtCash_TextChanged(object sender, EventArgs e)
         {
             try
@@ -315,6 +315,13 @@ namespace ControlApp.OnPremises.Panels
             {
 
                 throw;
+            }
+        }
+        private void txtTotalReceipt_TextChanged(object sender, EventArgs e)
+        {
+            if(txtTotalReceipt.Text != string.Empty)
+            {
+                txtCash.Enabled = true;
             }
         }
     }
