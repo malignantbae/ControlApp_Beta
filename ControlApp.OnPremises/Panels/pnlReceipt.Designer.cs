@@ -260,7 +260,7 @@
             this.dgvReceipt.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvReceipt.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvReceipt.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvReceipt.Size = new System.Drawing.Size(631, 270);
+            this.dgvReceipt.Size = new System.Drawing.Size(444, 270);
             this.dgvReceipt.TabIndex = 15;
             this.dgvReceipt.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.dgvReceipt.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReceipt_CellClick);
