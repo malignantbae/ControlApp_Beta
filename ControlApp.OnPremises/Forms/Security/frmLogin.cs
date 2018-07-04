@@ -52,11 +52,19 @@ namespace ControlApp.OnPremises.Forms.Security
                 var ListUser = ApiAccess.RetrieveAllUser<User>();
                 foreach (User element in ListUser)
                 {
-                    if (ID == element.ID_User && Pass == element.User_pass)
+                    if (element.State == false)
                     {
-                        finded = true;
-                        break;
+                        finded = false;
                     }
+                    else
+                    {
+                        if (ID == element.ID_User && Pass == element.User_pass)
+                        {
+                            finded = true;
+                            break;
+                        }
+                    }
+                    
                 }
 
             }
