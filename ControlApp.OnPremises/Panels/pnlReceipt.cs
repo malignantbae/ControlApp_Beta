@@ -62,7 +62,8 @@ namespace ControlApp.OnPremises.Panels
                     string[] RowPrice;
                     RowPrice = new string[] { element.ID_Receipt.ToString(), element.Customer_name,
                          element.Quantity.ToString(), element.Total_Receipt.ToString(), element.Descrip_Price,
-                         element.Unit_Price.ToString(), element.Date_receipt.ToString() };
+                         element.Unit_Price.ToString(), element.Cash.ToString(), element.Change.ToString(),
+                        element.Date_receipt.ToString() };
                     dgvReceipt.Rows.Add(RowPrice);
                 }
             }
@@ -75,13 +76,10 @@ namespace ControlApp.OnPremises.Panels
         {
             try
             {
-               
-                
                 int pIdReceipt = 0;
                 var ListReceipt = ApiAccess.RetrieveAllByIdUser<Receipt>(ObjReceipt);
                 foreach (Receipt element in ListReceipt)
                 {
-                   
                     pIdReceipt = element.ID_Receipt;
                     break;
                 }
@@ -113,6 +111,8 @@ namespace ControlApp.OnPremises.Panels
         {
             string NameCustomer = txtNameCustomer.Text;
             string Quantity = txtQuantity.Text;
+            string Cash = txtCash.Text;
+            string Change = txtCambio.Text;
             if (string.IsNullOrEmpty(NameCustomer.Trim()))
             {
                 MetroMessageBox.Show(this, "El Cliente -" + NameCustomer + "- no es Valido. \n Favor Digite un Nombre Valido", "Error en Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -125,14 +125,21 @@ namespace ControlApp.OnPremises.Panels
                 txtQuantity.Focus();
                 return;
             }
+            if (string.IsNullOrEmpty(Cash.Trim()) || Convert.ToInt32(Cash) == 0)
+            {
+                MetroMessageBox.Show(this, "Debe de Ingresar el monto de Efectivo a Recibir. \n Favor Digite un valor Valido", "Error en Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtQuantity.Focus();
+                return;
+            }
             try
             {
-                
                 ObjReceipt.Customer_name = NameCustomer;
                 ObjReceipt.Quantity = Convert.ToInt32(Quantity);
                 ObjReceipt.Unit_Price = gUnit_Price;
+                ObjReceipt.Cash = Convert.ToDecimal(Cash);
+                ObjReceipt.Change = Convert.ToDecimal(Change);
                 ObjReceipt.ID_Price_tag = gIdPrice_Tag;
-                ObjReceipt.IdSession = pIdSession;
+                ObjReceipt.CreateBy = pIdSession;
                 ApiAccess.CreateReceipt(ObjReceipt);
             }
             catch (Exception)

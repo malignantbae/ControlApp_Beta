@@ -151,7 +151,7 @@ namespace ControlApp.OnPremises.Panels.Admin
                 ObjReceipt.Quantity = Convert.ToInt32(Quantity);
                 ObjReceipt.Unit_Price = gUnit_Price;
                 ObjReceipt.ID_Price_tag = gIdPrice_Tag;
-                ObjReceipt.IdSession = pIdSession;
+                ObjReceipt.UpdateBy = pIdSession;
                 ApiAccess.UpdateReceipt(ObjReceipt);
             }
             catch (Exception)

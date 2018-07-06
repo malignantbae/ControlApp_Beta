@@ -158,9 +158,9 @@ namespace ControlApp.ApiCore.Management
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //_exMan.ManageException(ex);
+                ExcepMessage = "Logic Error" + ex;
             }
             return lst;
         }
