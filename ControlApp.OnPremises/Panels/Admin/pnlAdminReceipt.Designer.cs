@@ -59,7 +59,9 @@
             this.NAME_CUSTOMER = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QUANTITY = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TOTAL_RECEIPT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID_PRICE_TAG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CASH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CHANGE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_PRODUCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UNIT_PRICE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DATE_RECEIPT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RECEIPT_STATE = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -350,7 +352,9 @@
             this.NAME_CUSTOMER,
             this.QUANTITY,
             this.TOTAL_RECEIPT,
-            this.ID_PRICE_TAG,
+            this.CASH,
+            this.CHANGE,
+            this.ID_PRODUCT,
             this.UNIT_PRICE,
             this.DATE_RECEIPT,
             this.RECEIPT_STATE,
@@ -519,13 +523,25 @@
             this.TOTAL_RECEIPT.ReadOnly = true;
             this.TOTAL_RECEIPT.Width = 75;
             // 
-            // ID_PRICE_TAG
+            // CASH
             // 
-            this.ID_PRICE_TAG.FillWeight = 45F;
-            this.ID_PRICE_TAG.HeaderText = "ID_PRICE_TAG";
-            this.ID_PRICE_TAG.Name = "ID_PRICE_TAG";
-            this.ID_PRICE_TAG.ReadOnly = true;
-            this.ID_PRICE_TAG.Width = 45;
+            this.CASH.HeaderText = "Efectivo";
+            this.CASH.Name = "CASH";
+            this.CASH.ReadOnly = true;
+            // 
+            // CHANGE
+            // 
+            this.CHANGE.HeaderText = "Cambio";
+            this.CHANGE.Name = "CHANGE";
+            this.CHANGE.ReadOnly = true;
+            // 
+            // ID_PRODUCT
+            // 
+            this.ID_PRODUCT.FillWeight = 45F;
+            this.ID_PRODUCT.HeaderText = "Producto";
+            this.ID_PRODUCT.Name = "ID_PRODUCT";
+            this.ID_PRODUCT.ReadOnly = true;
+            this.ID_PRODUCT.Width = 45;
             // 
             // UNIT_PRICE
             // 
@@ -628,7 +644,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NAME_CUSTOMER;
         private System.Windows.Forms.DataGridViewTextBoxColumn QUANTITY;
         private System.Windows.Forms.DataGridViewTextBoxColumn TOTAL_RECEIPT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_PRICE_TAG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CASH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CHANGE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_PRODUCT;
         private System.Windows.Forms.DataGridViewTextBoxColumn UNIT_PRICE;
         private System.Windows.Forms.DataGridViewTextBoxColumn DATE_RECEIPT;
         private System.Windows.Forms.DataGridViewTextBoxColumn RECEIPT_STATE;

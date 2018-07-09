@@ -17,8 +17,8 @@ namespace ControlApp.OnPremises.Panels.Admin
 {
     public partial class pnlAdminPriceTag : pnlSlider
     {
-        PricetagManagement ApiAccess = new PricetagManagement();
-        Price_tag ObjPrice = new Price_tag();
+        ProductManagement ApiAccess = new ProductManagement();
+        Product ObjPrice = new Product();
         string pIdSession = MystaticValues.IdSession;
         public pnlAdminPriceTag(Form owner) : base(owner)
         {
@@ -57,9 +57,9 @@ namespace ControlApp.OnPremises.Panels.Admin
                 try
                 {
                     ObjPrice.Descrip_Price = DescripPrice;
-                    ObjPrice.Total_Price = Convert.ToDecimal(PriceTag);
+                    ObjPrice.Total_Product = Convert.ToDecimal(PriceTag);
                     ObjPrice.IdSession = pIdSession;
-                    ApiAccess.CreatePriceTag(ObjPrice);
+                    ApiAccess.CreateProduct(ObjPrice);
                 }
                 catch (Exception)
                 {
@@ -89,11 +89,11 @@ namespace ControlApp.OnPremises.Panels.Admin
             try
             {
                 int Row = dgvPriceTag.CurrentRow.Index;
-                ObjPrice.ID_Price_Tag = Convert.ToInt32(dgvPriceTag[0, Row].Value);
+                ObjPrice.ID_Product = Convert.ToInt32(dgvPriceTag[0, Row].Value);
                 ObjPrice.Descrip_Price = DescripPrice;
                 ObjPrice.IdSession = pIdSession;
-                ObjPrice.Total_Price = Convert.ToDecimal(txtPriceTag.Text);
-                ApiAccess.UpdatePriceTag(ObjPrice);
+                ObjPrice.Total_Product = Convert.ToDecimal(txtPriceTag.Text);
+                ApiAccess.UpdateProduct(ObjPrice);
             }
             catch (Exception)
             {
@@ -120,9 +120,9 @@ namespace ControlApp.OnPremises.Panels.Admin
                     {
                         try
                         {
-                            ObjPrice.ID_Price_Tag = IdPriceTag;
+                            ObjPrice.ID_Product = IdPriceTag;
                             ObjPrice.IdSession = pIdSession;
-                            ApiAccess.DeletePriceTag(ObjPrice);
+                            ApiAccess.DeleteProduct(ObjPrice);
                         }
                         catch (Exception)
                         {
@@ -150,9 +150,9 @@ namespace ControlApp.OnPremises.Panels.Admin
                     {
                         try
                         {
-                            ObjPrice.ID_Price_Tag = IdPriceTag;
+                            ObjPrice.ID_Product = IdPriceTag;
                             ObjPrice.IdSession = pIdSession;
-                            ApiAccess.ActivatePriceTag(ObjPrice);
+                            ApiAccess.ActivateProduct(ObjPrice);
                         }
                         catch (Exception)
                         {
@@ -183,11 +183,11 @@ namespace ControlApp.OnPremises.Panels.Admin
                 {
                     dgvPriceTag.Rows.Clear();
                     ObjPrice.Descrip_Price = txtRetrieveByName.Text;
-                    var ListPrice = ApiAccess.SuperRetrieveAllByNameDescrip<Price_tag>(ObjPrice);
-                    foreach (Price_tag element in ListPrice)
+                    var ListPrice = ApiAccess.SuperRetrieveAllByNameDescrip<Product>(ObjPrice);
+                    foreach (Product element in ListPrice)
                     {
                         string[] RowPrice;
-                        RowPrice = new string[] { element.ID_Price_Tag.ToString(), element.Descrip_Price ,element.Total_Price.ToString(),
+                        RowPrice = new string[] { element.ID_Product.ToString(), element.Descrip_Price ,element.Total_Product.ToString(),
                         element.State.ToString(), element.CreateBy.ToString(), element.UpdateBy.ToString(), element.CreateDate.ToString()};
                         dgvPriceTag.Rows.Add(RowPrice);
                     }
@@ -211,11 +211,11 @@ namespace ControlApp.OnPremises.Panels.Admin
             try
             {
                 dgvPriceTag.Rows.Clear();
-                var ListPricetag = ApiAccess.SuperRetrievePriceTag<Price_tag>();
-                foreach (Price_tag element in ListPricetag)
+                var ListPricetag = ApiAccess.SuperRetrieveProduct<Product>();
+                foreach (Product element in ListPricetag)
                 {
                     string[] RowPrice;
-                    RowPrice = new string[] { element.ID_Price_Tag.ToString(), element.Descrip_Price ,element.Total_Price.ToString(),
+                    RowPrice = new string[] { element.ID_Product.ToString(), element.Descrip_Price ,element.Total_Product.ToString(),
                         element.State.ToString(), element.CreateBy.ToString(), element.UpdateBy.ToString(), element.CreateDate.ToString(),
                         element.UpdateDate.ToString() };
                     dgvPriceTag.Rows.Add(RowPrice);
@@ -250,8 +250,8 @@ namespace ControlApp.OnPremises.Panels.Admin
             {
                 bool finded = false;
                 ObjPrice.Descrip_Price = pPrice;
-                var ListPrice = ApiAccess.RetrieveAllByNameDescrip<Price_tag>(ObjPrice);
-                foreach (Price_tag element in ListPrice)
+                var ListPrice = ApiAccess.RetrieveAllByNameDescrip<Product>(ObjPrice);
+                foreach (Product element in ListPrice)
                 {
                     if (element.Descrip_Price == pPrice)
                     {
@@ -269,7 +269,6 @@ namespace ControlApp.OnPremises.Panels.Admin
                 throw;
             }
         }
-
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             CleanFields();

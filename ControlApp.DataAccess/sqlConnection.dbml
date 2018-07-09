@@ -68,17 +68,37 @@
       <Association Name="TBL_AREA_TBL_POSITION" Member="TBL_AREA" ThisKey="ID_AREA" OtherKey="ID_AREA" Type="TBL_AREA" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.TBL_PRICE_TAG" Member="TBL_PRICE_TAGs">
-    <Type Name="TBL_PRICE_TAG">
-      <Column Name="ID_PRICE_TAG" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="TOTAL_PRICE" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+  <Table Name="dbo.TBL_PRODUCT" Member="TBL_PRODUCTs">
+    <Type Name="TBL_PRODUCT">
+      <Column Name="ID_PRODUCT" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TOTAL_PRODUCT" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
       <Column Name="DESCRIP_PRICE" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="PRICE_TAG_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="PRICE_TAG_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="PRICE_TAG_UPDATEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="PRICE_TAG_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="PRICE_TAG_UPDATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="TBL_PRICE_TAG_TBL_RECEIPT" Member="TBL_RECEIPTs" ThisKey="ID_PRICE_TAG" OtherKey="ID_PRICE_TAG" Type="TBL_RECEIPT" />
+      <Column Name="PRODUCT_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PRODUCT_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PRODUCT_UPDATEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PRODUCT_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PRODUCT_UPDATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="TBL_PRODUCT_TBL_RECEIPT" Member="TBL_RECEIPTs" ThisKey="ID_PRODUCT" OtherKey="ID_PRODUCT" Type="TBL_RECEIPT" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TBL_RECEIPT" Member="TBL_RECEIPTs">
+    <Type Name="TBL_RECEIPT">
+      <Column Name="ID_RECEIPT" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NAME_CUSTOMER" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DATE_RECEIPT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="QUANTITY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TOTAL_RECEIPT" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="ID_PRODUCT" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UNIT_PRICE" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="CASH" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="CHANGE" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="RECEIPT_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="RECEIPT_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RECEIPT_UPDATEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RECEIPT_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RECEIPT_UPDATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="TBL_PRODUCT_TBL_RECEIPT" Member="TBL_PRODUCT" ThisKey="ID_PRODUCT" OtherKey="ID_PRODUCT" Type="TBL_PRODUCT" IsForeignKey="true" />
+      <Association Name="TBL_USER_TBL_RECEIPT" Member="TBL_USER" ThisKey="RECEIPT_CREATEBY" OtherKey="ID_USER" Type="TBL_USER" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.TBL_ROLE" Member="TBL_ROLEs">
@@ -137,32 +157,12 @@
       <Column Name="USER_UPDATEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="USER_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="USER_UPDATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="TBL_USER_TBL_SESSION" Member="TBL_SESSIONs" ThisKey="ID_USER" OtherKey="ID_USER" Type="TBL_SESSION" />
       <Association Name="TBL_USER_TBL_RECEIPT" Member="TBL_RECEIPTs" ThisKey="ID_USER" OtherKey="RECEIPT_CREATEBY" Type="TBL_RECEIPT" />
+      <Association Name="TBL_USER_TBL_SESSION" Member="TBL_SESSIONs" ThisKey="ID_USER" OtherKey="ID_USER" Type="TBL_SESSION" />
       <Association Name="TBL_AREA_TBL_USER" Member="TBL_AREA" ThisKey="ID_AREA" OtherKey="ID_AREA" Type="TBL_AREA" IsForeignKey="true" />
       <Association Name="TBL_DPT_TBL_USER" Member="TBL_DPT" ThisKey="ID_DPT" OtherKey="ID_DPT" Type="TBL_DPT" IsForeignKey="true" />
       <Association Name="TBL_POSITION_TBL_USER" Member="TBL_POSITION" ThisKey="ID_POSITION" OtherKey="ID_POSITION" Type="TBL_POSITION" IsForeignKey="true" />
       <Association Name="TBL_ROLE_TBL_USER" Member="TBL_ROLE" ThisKey="ID_ROLE" OtherKey="ID_ROLE" Type="TBL_ROLE" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.TBL_RECEIPT" Member="TBL_RECEIPTs">
-    <Type Name="TBL_RECEIPT">
-      <Column Name="ID_RECEIPT" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="NAME_CUSTOMER" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="DATE_RECEIPT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="QUANTITY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="TOTAL_RECEIPT" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-      <Column Name="ID_PRICE_TAG" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="UNIT_PRICE" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-      <Column Name="CASH" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-      <Column Name="CHANGE" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-      <Column Name="RECEIPT_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="RECEIPT_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="RECEIPT_UPDATEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="RECEIPT_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="RECEIPT_UPDATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="TBL_PRICE_TAG_TBL_RECEIPT" Member="TBL_PRICE_TAG" ThisKey="ID_PRICE_TAG" OtherKey="ID_PRICE_TAG" Type="TBL_PRICE_TAG" IsForeignKey="true" />
-      <Association Name="TBL_USER_TBL_RECEIPT" Member="TBL_USER" ThisKey="RECEIPT_CREATEBY" OtherKey="ID_USER" Type="TBL_USER" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.SP_CRUD_AREA" Method="SP_CRUD_AREA">
@@ -248,49 +248,21 @@
       <Column Name="POSITION_UPDATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.SP_CRUD_PRICE_TAG" Method="SP_CRUD_PRICE_TAG">
+  <Function Name="dbo.SP_CRUD_PRODUCT" Method="SP_CRUD_PRODUCT">
     <Parameter Name="p_ACTION" Type="System.Int32" DbType="Int" />
     <Parameter Name="pID_BY" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="pID_PRICE_TAG" Type="System.Int32" DbType="Int" />
-    <Parameter Name="pTOTAL_PRICE" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="pID_PRODUCT" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pTOTAL_PRODUCT" Type="System.Decimal" DbType="Money" />
     <Parameter Name="pDESCRIP_PRICE" Type="System.String" DbType="VarChar(30)" />
-    <ElementType Name="SP_CRUD_PRICE_TAGResult">
-      <Column Name="ID_PRICE_TAG" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="TOTAL_PRICE" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+    <ElementType Name="SP_CRUD_PRODUCTResult">
+      <Column Name="ID_PRODUCT" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TOTAL_PRODUCT" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
       <Column Name="DESCRIP_PRICE" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="PRICE_TAG_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PRODUCT_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="PRICE_TAG_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="PRICE_TAG_UPDATEDBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="PRICE_TAG_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="PRICE_TAG_UPDATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.SP_CRUD_RECEIPT" Method="SP_CRUD_RECEIPT">
-    <Parameter Name="p_ACTION" Type="System.Int32" DbType="Int" />
-    <Parameter Name="pID_RECEIPT" Type="System.Int32" DbType="Int" />
-    <Parameter Name="pID_BY" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="pCUSTOMER_NAME" Type="System.String" DbType="VarChar(25)" />
-    <Parameter Name="pQUANTITY" Type="System.Int32" DbType="Int" />
-    <Parameter Name="pTOTAL_RECEIPT" Type="System.Decimal" DbType="Money" />
-    <Parameter Name="pID_PRICE_TAG" Type="System.Int32" DbType="Int" />
-    <Parameter Name="pUNIT_PRICE" Type="System.Decimal" DbType="Money" />
-    <Parameter Name="pCASH" Type="System.Decimal" DbType="Money" />
-    <Parameter Name="pCHANGE" Type="System.Decimal" DbType="Money" />
-    <ElementType Name="SP_CRUD_RECEIPTResult">
-      <Column Name="ID_RECEIPT" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="NAME_CUSTOMER" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="DATE_RECEIPT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="QUANTITY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="TOTAL_RECEIPT" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-      <Column Name="DESCRIP_PRICE" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="UNIT_PRICE" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-      <Column Name="CASH" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-      <Column Name="CHANGE" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-      <Column Name="RECEIPT_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="RECEIPT_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="RECEIPT_UPDATEDBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="RECEIPT_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="RECEIPT_UPDATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PRODUCT_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PRODUCT_UPDATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.SP_CRUD_ROLE" Method="SP_CRUD_ROLE">
@@ -354,6 +326,34 @@
       <Column Name="USER_UPDATEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="USER_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="USER_UPDATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_CRUD_RECEIPT" Method="SP_CRUD_RECEIPT">
+    <Parameter Name="p_ACTION" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pID_RECEIPT" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pID_BY" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="pCUSTOMER_NAME" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="pQUANTITY" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pTOTAL_RECEIPT" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="pID_PRODUCT" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pUNIT_PRICE" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="pCASH" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="pCHANGE" Type="System.Decimal" DbType="Money" />
+    <ElementType Name="SP_CRUD_RECEIPTResult">
+      <Column Name="ID_RECEIPT" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NAME_CUSTOMER" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DATE_RECEIPT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="QUANTITY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TOTAL_RECEIPT" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRIP_PRICE" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UNIT_PRICE" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="CASH" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="CHANGE" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="RECEIPT_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="RECEIPT_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RECEIPT_UPDATEDBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RECEIPT_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RECEIPT_UPDATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>

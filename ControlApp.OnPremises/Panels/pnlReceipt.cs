@@ -23,10 +23,10 @@ namespace ControlApp.OnPremises.Panels
 
     {
         ReceiptManagement ApiAccess = new ReceiptManagement(); //ApiAcces Of Class
-        PricetagManagement ApiAccess_PriceTag = new PricetagManagement(); //ApiAccess Aux
+        ProductManagement ApiAccess_PriceTag = new ProductManagement(); //ApiAccess Aux
         //Object instance
         Receipt ObjReceipt = new Receipt();
-        Price_tag ObjPrice_Tag = new Price_tag();
+        Product ObjPrice_Tag = new Product();
         string pIdSession = MystaticValues.IdSession;
         //Global Variables
         int gIdPrice_Tag = 0;
@@ -94,11 +94,11 @@ namespace ControlApp.OnPremises.Panels
         {
             try
             {
-                var ListPricetag = ApiAccess_PriceTag.RetrieveAllPriceTag<Price_tag>();
-                foreach (Price_tag element in ListPricetag)
+                var ListPricetag = ApiAccess_PriceTag.RetrieveAllProduct<Product>();
+                foreach (Product element in ListPricetag)
                 {
-                    gIdPrice_Tag = element.ID_Price_Tag;
-                    gUnit_Price = element.Total_Price;
+                    gIdPrice_Tag = element.ID_Product;
+                    gUnit_Price = element.Total_Product;
                 }   
             }
             catch (Exception)
@@ -217,11 +217,23 @@ namespace ControlApp.OnPremises.Panels
         }
         private void dgvReceipt_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            btnPrint.Enabled = true;
-            btnDelete.Enabled = true;
-            int Row = dgvReceipt.CurrentRow.Index;
-            txtNameCustomer.Text = dgvReceipt[1, Row].Value.ToString();
-            txtQuantity.Text = dgvReceipt[2, Row].Value.ToString();
+            try
+            {
+                btnPrint.Enabled = true;
+                btnDelete.Enabled = true;
+                int Row = dgvReceipt.CurrentRow.Index;
+                txtNameCustomer.Text = dgvReceipt[1, Row].Value.ToString();
+                txtQuantity.Text = dgvReceipt[2, Row].Value.ToString();
+                txtTotalReceipt.Text = dgvReceipt[3, Row].Value.ToString();
+                txtCash.Text = dgvReceipt[6, Row].Value.ToString();
+                txtCambio.Text = dgvReceipt[7, Row].Value.ToString();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+          
         }
         private void btnCleanFields_Click(object sender, EventArgs e)
         {
@@ -276,7 +288,8 @@ namespace ControlApp.OnPremises.Panels
                         string[] RowPrice;
                         RowPrice = new string[] { element.ID_Receipt.ToString(), element.Customer_name,
                          element.Quantity.ToString(), element.Total_Receipt.ToString(), element.Descrip_Price,
-                         element.Unit_Price.ToString(), element.Date_receipt.ToString() };
+                         element.Unit_Price.ToString(), element.Cash.ToString(), element.Change.ToString(),
+                        element.Date_receipt.ToString() };
                         dgvReceipt.Rows.Add(RowPrice);
                     }
                 }

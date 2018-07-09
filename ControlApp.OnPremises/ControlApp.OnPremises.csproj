@@ -129,11 +129,11 @@
     <Compile Include="Panels\pnlArea.Designer.cs">
       <DependentUpon>pnlArea.cs</DependentUpon>
     </Compile>
-    <Compile Include="Panels\pnlPriceTag.cs">
+    <Compile Include="Panels\pnlProduct.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Panels\pnlPriceTag.Designer.cs">
-      <DependentUpon>pnlPriceTag.cs</DependentUpon>
+    <Compile Include="Panels\pnlProduct.Designer.cs">
+      <DependentUpon>pnlProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="Panels\pnlReceipt.cs">
       <SubType>UserControl</SubType>
@@ -191,8 +191,8 @@
     <EmbeddedResource Include="Panels\pnlPosition.resx">
       <DependentUpon>pnlPosition.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Panels\pnlPriceTag.resx">
-      <DependentUpon>pnlPriceTag.cs</DependentUpon>
+    <EmbeddedResource Include="Panels\pnlProduct.resx">
+      <DependentUpon>pnlProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Panels\pnlReceipt.resx">
       <DependentUpon>pnlReceipt.cs</DependentUpon>

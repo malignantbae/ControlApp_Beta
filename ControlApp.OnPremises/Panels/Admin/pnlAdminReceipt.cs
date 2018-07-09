@@ -27,10 +27,10 @@ namespace ControlApp.OnPremises.Panels.Admin
     public partial class pnlAdminReceipt : pnlSlider , IDisposable
     {
         ReceiptManagement ApiAccess = new ReceiptManagement(); //ApiAcces Of Class
-        PricetagManagement ApiAccess_PriceTag = new PricetagManagement(); //ApiAccess Aux
+        ProductManagement ApiAccess_PriceTag = new ProductManagement(); //ApiAccess Aux
         //Object instance
         Receipt ObjReceipt = new Receipt();
-        Price_tag ObjPrice_Tag = new Price_tag();
+        Product ObjPrice_Tag = new Product();
         string pIdSession = MystaticValues.IdSession;
         //Global Variables
         int gIdPrice_Tag = 0;
@@ -63,8 +63,9 @@ namespace ControlApp.OnPremises.Panels.Admin
                 {
                     string[] RowPrice;
                     RowPrice = new string[] { element.ID_Receipt.ToString(), element.Customer_name,
-                         element.Quantity.ToString(), element.Total_Receipt.ToString(), element.ID_Price_tag.ToString(),
-                         element.Unit_Price.ToString(), element.Date_receipt.ToString(),element.State.ToString(), element.CreateBy,
+                         element.Quantity.ToString(), element.Total_Receipt.ToString(), element.Cash.ToString(), element.Change.ToString(),
+                        element.ID_Price_tag.ToString(),element.Unit_Price.ToString(), element.Date_receipt.ToString(),
+                        element.State.ToString(), element.CreateBy,
                         element.UpdateBy, element.CreateDate.ToString(),element.UpdateDate.ToString()};
                     dgvReceipt.Rows.Add(RowPrice);
                 }
@@ -78,11 +79,11 @@ namespace ControlApp.OnPremises.Panels.Admin
         {
             try
             {
-                var ListPricetag = ApiAccess_PriceTag.RetrieveAllPriceTag<Price_tag>();
-                foreach (Price_tag element in ListPricetag)
+                var ListPricetag = ApiAccess_PriceTag.RetrieveAllProduct<Product>();
+                foreach (Product element in ListPricetag)
                 {
-                    gIdPrice_Tag = element.ID_Price_Tag;
-                    gUnit_Price = element.Total_Price;
+                    gIdPrice_Tag = element.ID_Product;
+                    gUnit_Price = element.Total_Product;
                 }
             }
             catch (Exception)
@@ -359,7 +360,6 @@ namespace ControlApp.OnPremises.Panels.Admin
                 }
             }
         }
-
         private void txtRetrieveByName_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))

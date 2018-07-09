@@ -46,7 +46,7 @@
     <Compile Include="Management\DepartamentManagement.cs" />
     <Compile Include="Management\PermissionManagament.cs" />
     <Compile Include="Management\PositionManagement.cs" />
-    <Compile Include="Management\PricetagManagement.cs" />
+    <Compile Include="Management\ProductManagement.cs" />
     <Compile Include="Management\ReceiptManagement.cs" />
     <Compile Include="Management\RoleManagement.cs" />
     <Compile Include="Management\UserManagement.cs" />

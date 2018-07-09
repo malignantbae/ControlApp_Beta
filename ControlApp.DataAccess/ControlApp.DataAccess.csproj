@@ -48,7 +48,7 @@
     <Compile Include="Crud\CrudFactory.cs" />
     <Compile Include="Crud\CrudPermission.cs" />
     <Compile Include="Crud\CrudPosition.cs" />
-    <Compile Include="Crud\CrudPricetag.cs" />
+    <Compile Include="Crud\CrudProduct.cs" />
     <Compile Include="Crud\CrudReceipt.cs" />
     <Compile Include="Crud\CrudRole.cs" />
     <Compile Include="Crud\CrudUser.cs" />

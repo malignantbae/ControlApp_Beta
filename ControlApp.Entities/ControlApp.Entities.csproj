@@ -46,7 +46,7 @@
     <Compile Include="Objects\Departament.cs" />
     <Compile Include="Objects\Permission.cs" />
     <Compile Include="Objects\Position.cs" />
-    <Compile Include="Objects\Price_tag.cs" />
+    <Compile Include="Objects\Product.cs" />
     <Compile Include="Objects\Receipt.cs" />
     <Compile Include="Objects\Role.cs" />
     <Compile Include="Objects\User.cs" />

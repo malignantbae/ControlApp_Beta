@@ -63,7 +63,7 @@ namespace ControlApp.OnPremises.Forms.Dashboard
         private void mtPriceTag_Click(object sender, EventArgs e)
         {
             this.metroPanel2.Controls.Clear();
-            pnlPriceTag _pnlPriceTag = new pnlPriceTag(this);
+            pnlProduct _pnlPriceTag = new pnlProduct(this);
             this.metroPanel2.Controls.Add(_pnlPriceTag);
             _pnlPriceTag.swipe();
         }
