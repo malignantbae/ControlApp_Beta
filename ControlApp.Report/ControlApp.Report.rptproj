@@ -54,6 +54,7 @@
   <ItemGroup>
     <Report Include="DayReportByUser.rdl" />
     <Report Include="GeneralReceiptReport.rdl" />
+    <Report Include="NewReceipt.rdl" />
     <Report Include="Receipt.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />

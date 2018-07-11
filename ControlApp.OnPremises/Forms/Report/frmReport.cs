@@ -37,7 +37,7 @@ namespace ControlApp.OnPremises.Forms.Report
                 string urlReportServer = "http://tronserver:8282/ReportServer";
                 rptViewer.ProcessingMode = ProcessingMode.Remote; // ProcessingMode will be Either Remote or Local
                 rptViewer.ServerReport.ReportServerUrl = new Uri(urlReportServer); //Set the ReportServer Url
-                rptViewer.ServerReport.ReportPath = "/ControlApp.Report/Receipt"; //Passing the Report Path                
+                rptViewer.ServerReport.ReportPath = "/ControlApp.Report/NewReceipt"; //Passing the Report Path                
 
                 ////Creating an ArrayList for combine the Parameters which will be passed into SSRS Report
                 //ArrayList reportParam = new ArrayList();

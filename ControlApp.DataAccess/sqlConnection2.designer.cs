@@ -22,7 +22,7 @@ namespace ControlApp.DataAccess
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="ControlAppDev")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="ControlApp")]
 	public partial class sqlConnectionDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -63,7 +63,7 @@ namespace ControlApp.DataAccess
     #endregion
 		
 		public sqlConnectionDataContext() : 
-				base(global::ControlApp.DataAccess.Properties.Settings.Default.ControlAppDevConnectionString, mappingSource)
+				base(global::ControlApp.DataAccess.Properties.Settings.Default.ControlAppConnectionString3, mappingSource)
 		{
 			OnCreated();
 		}
@@ -222,6 +222,13 @@ namespace ControlApp.DataAccess
 			return ((ISingleResult<SP_CRUD_PRODUCTResult>)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_RECEIPT")]
+		public ISingleResult<SP_CRUD_RECEIPTResult> SP_CRUD_RECEIPT([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_RECEIPT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(25)")] string pCUSTOMER_NAME, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pQUANTITY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> pTOTAL_RECEIPT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_PRODUCT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> pUNIT_PRICE, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> pCASH, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> pCHANGE)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_RECEIPT, pID_BY, pCUSTOMER_NAME, pQUANTITY, pTOTAL_RECEIPT, pID_PRODUCT, pUNIT_PRICE, pCASH, pCHANGE);
+			return ((ISingleResult<SP_CRUD_RECEIPTResult>)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_ROLE")]
 		public ISingleResult<SP_CRUD_ROLEResult> SP_CRUD_ROLE([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_ROLE, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(75)")] string pNAME_ROLE, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string pDESCRIP_ROLE)
 		{
@@ -241,13 +248,6 @@ namespace ControlApp.DataAccess
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_BY, pID_USER, pUSER_NAME, pUSER_EMAIL, pID_DPT, pID_AREA, pID_PST, pID_ROLE, pUSER_NICKNAME, pUSER_PASSWORD);
 			return ((ISingleResult<SP_CRUD_USERResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_RECEIPT")]
-		public ISingleResult<SP_CRUD_RECEIPTResult> SP_CRUD_RECEIPT([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_RECEIPT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(25)")] string pCUSTOMER_NAME, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pQUANTITY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> pTOTAL_RECEIPT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_PRODUCT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> pUNIT_PRICE, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> pCASH, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> pCHANGE)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_RECEIPT, pID_BY, pCUSTOMER_NAME, pQUANTITY, pTOTAL_RECEIPT, pID_PRODUCT, pUNIT_PRICE, pCASH, pCHANGE);
-			return ((ISingleResult<SP_CRUD_RECEIPTResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -4510,6 +4510,266 @@ namespace ControlApp.DataAccess
 		}
 	}
 	
+	public partial class SP_CRUD_RECEIPTResult
+	{
+		
+		private int _ID_RECEIPT;
+		
+		private string _NAME_CUSTOMER;
+		
+		private System.DateTime _DATE_RECEIPT;
+		
+		private int _QUANTITY;
+		
+		private decimal _TOTAL_RECEIPT;
+		
+		private string _DESCRIP_PRICE;
+		
+		private decimal _UNIT_PRICE;
+		
+		private decimal _CASH;
+		
+		private decimal _CHANGE;
+		
+		private bool _RECEIPT_STATE;
+		
+		private string _RECEIPT_CREATEBY;
+		
+		private string _RECEIPT_UPDATEDBY;
+		
+		private System.DateTime _RECEIPT_CREATEDATE;
+		
+		private System.Nullable<System.DateTime> _RECEIPT_UPDATEDATE;
+		
+		public SP_CRUD_RECEIPTResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_RECEIPT", DbType="Int NOT NULL")]
+		public int ID_RECEIPT
+		{
+			get
+			{
+				return this._ID_RECEIPT;
+			}
+			set
+			{
+				if ((this._ID_RECEIPT != value))
+				{
+					this._ID_RECEIPT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_CUSTOMER", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string NAME_CUSTOMER
+		{
+			get
+			{
+				return this._NAME_CUSTOMER;
+			}
+			set
+			{
+				if ((this._NAME_CUSTOMER != value))
+				{
+					this._NAME_CUSTOMER = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATE_RECEIPT", DbType="DateTime NOT NULL")]
+		public System.DateTime DATE_RECEIPT
+		{
+			get
+			{
+				return this._DATE_RECEIPT;
+			}
+			set
+			{
+				if ((this._DATE_RECEIPT != value))
+				{
+					this._DATE_RECEIPT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QUANTITY", DbType="Int NOT NULL")]
+		public int QUANTITY
+		{
+			get
+			{
+				return this._QUANTITY;
+			}
+			set
+			{
+				if ((this._QUANTITY != value))
+				{
+					this._QUANTITY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TOTAL_RECEIPT", DbType="Money NOT NULL")]
+		public decimal TOTAL_RECEIPT
+		{
+			get
+			{
+				return this._TOTAL_RECEIPT;
+			}
+			set
+			{
+				if ((this._TOTAL_RECEIPT != value))
+				{
+					this._TOTAL_RECEIPT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DESCRIP_PRICE", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string DESCRIP_PRICE
+		{
+			get
+			{
+				return this._DESCRIP_PRICE;
+			}
+			set
+			{
+				if ((this._DESCRIP_PRICE != value))
+				{
+					this._DESCRIP_PRICE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UNIT_PRICE", DbType="Money NOT NULL")]
+		public decimal UNIT_PRICE
+		{
+			get
+			{
+				return this._UNIT_PRICE;
+			}
+			set
+			{
+				if ((this._UNIT_PRICE != value))
+				{
+					this._UNIT_PRICE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CASH", DbType="Money NOT NULL")]
+		public decimal CASH
+		{
+			get
+			{
+				return this._CASH;
+			}
+			set
+			{
+				if ((this._CASH != value))
+				{
+					this._CASH = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CHANGE", DbType="Money NOT NULL")]
+		public decimal CHANGE
+		{
+			get
+			{
+				return this._CHANGE;
+			}
+			set
+			{
+				if ((this._CHANGE != value))
+				{
+					this._CHANGE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RECEIPT_STATE", DbType="Bit NOT NULL")]
+		public bool RECEIPT_STATE
+		{
+			get
+			{
+				return this._RECEIPT_STATE;
+			}
+			set
+			{
+				if ((this._RECEIPT_STATE != value))
+				{
+					this._RECEIPT_STATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RECEIPT_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string RECEIPT_CREATEBY
+		{
+			get
+			{
+				return this._RECEIPT_CREATEBY;
+			}
+			set
+			{
+				if ((this._RECEIPT_CREATEBY != value))
+				{
+					this._RECEIPT_CREATEBY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RECEIPT_UPDATEDBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string RECEIPT_UPDATEDBY
+		{
+			get
+			{
+				return this._RECEIPT_UPDATEDBY;
+			}
+			set
+			{
+				if ((this._RECEIPT_UPDATEDBY != value))
+				{
+					this._RECEIPT_UPDATEDBY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RECEIPT_CREATEDATE", DbType="DateTime NOT NULL")]
+		public System.DateTime RECEIPT_CREATEDATE
+		{
+			get
+			{
+				return this._RECEIPT_CREATEDATE;
+			}
+			set
+			{
+				if ((this._RECEIPT_CREATEDATE != value))
+				{
+					this._RECEIPT_CREATEDATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RECEIPT_UPDATEDATE", DbType="DateTime")]
+		public System.Nullable<System.DateTime> RECEIPT_UPDATEDATE
+		{
+			get
+			{
+				return this._RECEIPT_UPDATEDATE;
+			}
+			set
+			{
+				if ((this._RECEIPT_UPDATEDATE != value))
+				{
+					this._RECEIPT_UPDATEDATE = value;
+				}
+			}
+		}
+	}
+	
 	public partial class SP_CRUD_ROLEResult
 	{
 		
@@ -5051,266 +5311,6 @@ namespace ControlApp.DataAccess
 				if ((this._USER_UPDATEDATE != value))
 				{
 					this._USER_UPDATEDATE = value;
-				}
-			}
-		}
-	}
-	
-	public partial class SP_CRUD_RECEIPTResult
-	{
-		
-		private int _ID_RECEIPT;
-		
-		private string _NAME_CUSTOMER;
-		
-		private System.DateTime _DATE_RECEIPT;
-		
-		private int _QUANTITY;
-		
-		private decimal _TOTAL_RECEIPT;
-		
-		private string _DESCRIP_PRICE;
-		
-		private decimal _UNIT_PRICE;
-		
-		private decimal _CASH;
-		
-		private decimal _CHANGE;
-		
-		private bool _RECEIPT_STATE;
-		
-		private string _RECEIPT_CREATEBY;
-		
-		private string _RECEIPT_UPDATEDBY;
-		
-		private System.DateTime _RECEIPT_CREATEDATE;
-		
-		private System.Nullable<System.DateTime> _RECEIPT_UPDATEDATE;
-		
-		public SP_CRUD_RECEIPTResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_RECEIPT", DbType="Int NOT NULL")]
-		public int ID_RECEIPT
-		{
-			get
-			{
-				return this._ID_RECEIPT;
-			}
-			set
-			{
-				if ((this._ID_RECEIPT != value))
-				{
-					this._ID_RECEIPT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_CUSTOMER", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string NAME_CUSTOMER
-		{
-			get
-			{
-				return this._NAME_CUSTOMER;
-			}
-			set
-			{
-				if ((this._NAME_CUSTOMER != value))
-				{
-					this._NAME_CUSTOMER = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATE_RECEIPT", DbType="DateTime NOT NULL")]
-		public System.DateTime DATE_RECEIPT
-		{
-			get
-			{
-				return this._DATE_RECEIPT;
-			}
-			set
-			{
-				if ((this._DATE_RECEIPT != value))
-				{
-					this._DATE_RECEIPT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QUANTITY", DbType="Int NOT NULL")]
-		public int QUANTITY
-		{
-			get
-			{
-				return this._QUANTITY;
-			}
-			set
-			{
-				if ((this._QUANTITY != value))
-				{
-					this._QUANTITY = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TOTAL_RECEIPT", DbType="Money NOT NULL")]
-		public decimal TOTAL_RECEIPT
-		{
-			get
-			{
-				return this._TOTAL_RECEIPT;
-			}
-			set
-			{
-				if ((this._TOTAL_RECEIPT != value))
-				{
-					this._TOTAL_RECEIPT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DESCRIP_PRICE", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string DESCRIP_PRICE
-		{
-			get
-			{
-				return this._DESCRIP_PRICE;
-			}
-			set
-			{
-				if ((this._DESCRIP_PRICE != value))
-				{
-					this._DESCRIP_PRICE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UNIT_PRICE", DbType="Money NOT NULL")]
-		public decimal UNIT_PRICE
-		{
-			get
-			{
-				return this._UNIT_PRICE;
-			}
-			set
-			{
-				if ((this._UNIT_PRICE != value))
-				{
-					this._UNIT_PRICE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CASH", DbType="Money NOT NULL")]
-		public decimal CASH
-		{
-			get
-			{
-				return this._CASH;
-			}
-			set
-			{
-				if ((this._CASH != value))
-				{
-					this._CASH = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CHANGE", DbType="Money NOT NULL")]
-		public decimal CHANGE
-		{
-			get
-			{
-				return this._CHANGE;
-			}
-			set
-			{
-				if ((this._CHANGE != value))
-				{
-					this._CHANGE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RECEIPT_STATE", DbType="Bit NOT NULL")]
-		public bool RECEIPT_STATE
-		{
-			get
-			{
-				return this._RECEIPT_STATE;
-			}
-			set
-			{
-				if ((this._RECEIPT_STATE != value))
-				{
-					this._RECEIPT_STATE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RECEIPT_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string RECEIPT_CREATEBY
-		{
-			get
-			{
-				return this._RECEIPT_CREATEBY;
-			}
-			set
-			{
-				if ((this._RECEIPT_CREATEBY != value))
-				{
-					this._RECEIPT_CREATEBY = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RECEIPT_UPDATEDBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string RECEIPT_UPDATEDBY
-		{
-			get
-			{
-				return this._RECEIPT_UPDATEDBY;
-			}
-			set
-			{
-				if ((this._RECEIPT_UPDATEDBY != value))
-				{
-					this._RECEIPT_UPDATEDBY = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RECEIPT_CREATEDATE", DbType="DateTime NOT NULL")]
-		public System.DateTime RECEIPT_CREATEDATE
-		{
-			get
-			{
-				return this._RECEIPT_CREATEDATE;
-			}
-			set
-			{
-				if ((this._RECEIPT_CREATEDATE != value))
-				{
-					this._RECEIPT_CREATEDATE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RECEIPT_UPDATEDATE", DbType="DateTime")]
-		public System.Nullable<System.DateTime> RECEIPT_UPDATEDATE
-		{
-			get
-			{
-				return this._RECEIPT_UPDATEDATE;
-			}
-			set
-			{
-				if ((this._RECEIPT_UPDATEDATE != value))
-				{
-					this._RECEIPT_UPDATEDATE = value;
 				}
 			}
 		}

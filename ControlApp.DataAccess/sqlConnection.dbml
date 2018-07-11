@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ControlAppDev" Class="sqlConnectionDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=ControlAppDev;Persist Security Info=True;User ID=sa" SettingsObjectName="ControlApp.DataAccess.Properties.Settings" SettingsPropertyName="ControlAppDevConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ControlApp" Class="sqlConnectionDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.30.206;Initial Catalog=ControlApp;Persist Security Info=True;User ID=sa" SettingsObjectName="ControlApp.DataAccess.Properties.Settings" SettingsPropertyName="ControlAppConnectionString3" Provider="System.Data.SqlClient" />
   <Table Name="dbo.TBL_AREA" Member="TBL_AREAs">
     <Type Name="TBL_AREA">
       <Column Name="ID_AREA" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -265,6 +265,34 @@
       <Column Name="PRODUCT_UPDATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="dbo.SP_CRUD_RECEIPT" Method="SP_CRUD_RECEIPT">
+    <Parameter Name="p_ACTION" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pID_RECEIPT" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pID_BY" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="pCUSTOMER_NAME" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="pQUANTITY" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pTOTAL_RECEIPT" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="pID_PRODUCT" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pUNIT_PRICE" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="pCASH" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="pCHANGE" Type="System.Decimal" DbType="Money" />
+    <ElementType Name="SP_CRUD_RECEIPTResult">
+      <Column Name="ID_RECEIPT" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NAME_CUSTOMER" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DATE_RECEIPT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="QUANTITY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TOTAL_RECEIPT" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRIP_PRICE" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UNIT_PRICE" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="CASH" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="CHANGE" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="RECEIPT_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="RECEIPT_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RECEIPT_UPDATEDBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RECEIPT_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RECEIPT_UPDATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
   <Function Name="dbo.SP_CRUD_ROLE" Method="SP_CRUD_ROLE">
     <Parameter Name="p_ACTION" Type="System.Int32" DbType="Int" />
     <Parameter Name="pID_BY" Type="System.String" DbType="VarChar(50)" />
@@ -326,34 +354,6 @@
       <Column Name="USER_UPDATEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="USER_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="USER_UPDATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.SP_CRUD_RECEIPT" Method="SP_CRUD_RECEIPT">
-    <Parameter Name="p_ACTION" Type="System.Int32" DbType="Int" />
-    <Parameter Name="pID_RECEIPT" Type="System.Int32" DbType="Int" />
-    <Parameter Name="pID_BY" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="pCUSTOMER_NAME" Type="System.String" DbType="VarChar(25)" />
-    <Parameter Name="pQUANTITY" Type="System.Int32" DbType="Int" />
-    <Parameter Name="pTOTAL_RECEIPT" Type="System.Decimal" DbType="Money" />
-    <Parameter Name="pID_PRODUCT" Type="System.Int32" DbType="Int" />
-    <Parameter Name="pUNIT_PRICE" Type="System.Decimal" DbType="Money" />
-    <Parameter Name="pCASH" Type="System.Decimal" DbType="Money" />
-    <Parameter Name="pCHANGE" Type="System.Decimal" DbType="Money" />
-    <ElementType Name="SP_CRUD_RECEIPTResult">
-      <Column Name="ID_RECEIPT" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="NAME_CUSTOMER" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="DATE_RECEIPT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="QUANTITY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="TOTAL_RECEIPT" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-      <Column Name="DESCRIP_PRICE" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="UNIT_PRICE" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-      <Column Name="CASH" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-      <Column Name="CHANGE" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-      <Column Name="RECEIPT_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="RECEIPT_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="RECEIPT_UPDATEDBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="RECEIPT_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="RECEIPT_UPDATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>
