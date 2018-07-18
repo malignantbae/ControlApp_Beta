@@ -31,6 +31,7 @@ namespace ControlApp.OnPremises.Panels
         //Global Variables
         int gIdPrice_Tag = 0;
         decimal gUnit_Price = 0;
+        log4net.ILog log;
         public pnlReceipt(Form owner) : base(owner)
         {
             InitializeComponent();
@@ -38,6 +39,8 @@ namespace ControlApp.OnPremises.Panels
             txtTotalReceipt.Enabled = false;
             dtBegin.CustomFormat = "yyyy/MM/dd HH:mm:ss";
             dtEnd.CustomFormat = "yyyy/MM/dd HH:mm:ss";
+            log4net.Config.XmlConfigurator.Configure();
+            log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         }
         public void CleanFields()
         {
@@ -132,7 +135,7 @@ namespace ControlApp.OnPremises.Panels
                 return;
             }
             try
-            {
+            { 
                 ObjReceipt.Customer_name = NameCustomer;
                 ObjReceipt.Quantity = Convert.ToInt32(Quantity);
                 ObjReceipt.Unit_Price = gUnit_Price;
@@ -142,10 +145,9 @@ namespace ControlApp.OnPremises.Panels
                 ObjReceipt.CreateBy = pIdSession;
                 ApiAccess.CreateReceipt(ObjReceipt);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                log.Error(ex.Message, ex);
             }
             LoadDataGrid();
             CleanFields();
@@ -172,7 +174,7 @@ namespace ControlApp.OnPremises.Panels
         }
         private void GetIdSsrs() // Principal Flow
         {
-            int Row = dgvReceipt.CurrentRow.Index;
+           // int Row = dgvReceipt.CurrentRow.Index;
             MystaticValues.rptSsrs = GetlastIdReceipt();
         }
         private void PrintAF() // Alternate Flow

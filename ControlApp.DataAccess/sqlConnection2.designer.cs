@@ -180,6 +180,14 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
+		public System.Data.Linq.Table<Log> Logs
+		{
+			get
+			{
+				return this.GetTable<Log>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_AREA")]
 		public ISingleResult<SP_CRUD_AREAResult> SP_CRUD_AREA([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_AREA, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_DPT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(25)")] string pAREA_NAME)
 		{
@@ -3613,6 +3621,141 @@ namespace ControlApp.DataAccess
 		{
 			this.SendPropertyChanging();
 			entity.TBL_USER = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[Log]")]
+	public partial class Log
+	{
+		
+		private int _Id;
+		
+		private System.DateTime _Date;
+		
+		private string _Thread;
+		
+		private string _Level;
+		
+		private string _Logger;
+		
+		private string _Message;
+		
+		private string _Exception;
+		
+		public Log()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this._Id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="DateTime NOT NULL")]
+		public System.DateTime Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this._Date = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Thread", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		public string Thread
+		{
+			get
+			{
+				return this._Thread;
+			}
+			set
+			{
+				if ((this._Thread != value))
+				{
+					this._Thread = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Level]", Storage="_Level", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Level
+		{
+			get
+			{
+				return this._Level;
+			}
+			set
+			{
+				if ((this._Level != value))
+				{
+					this._Level = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Logger", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		public string Logger
+		{
+			get
+			{
+				return this._Logger;
+			}
+			set
+			{
+				if ((this._Logger != value))
+				{
+					this._Logger = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="VarChar(4000) NOT NULL", CanBeNull=false)]
+		public string Message
+		{
+			get
+			{
+				return this._Message;
+			}
+			set
+			{
+				if ((this._Message != value))
+				{
+					this._Message = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Exception", DbType="VarChar(2000)")]
+		public string Exception
+		{
+			get
+			{
+				return this._Exception;
+			}
+			set
+			{
+				if ((this._Exception != value))
+				{
+					this._Exception = value;
+				}
+			}
 		}
 	}
 	

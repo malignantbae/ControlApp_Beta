@@ -26,64 +26,11 @@ namespace ControlApp.DataAccess.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=dbo.Receipts;Integrated Security=True")]
-        public string dbo_ReceiptsConnectionString {
-            get {
-                return ((string)(this["dbo_ReceiptsConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=ControlApp;Integrated Security=True")]
-        public string ControlAppConnectionString {
-            get {
-                return ((string)(this["ControlAppConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=ControlApp;Persist Security Info=True;User ID=sa;Pa" +
-            "ssword=GEServerD5")]
-        public string ControlAppConnectionString1 {
-            get {
-                return ((string)(this["ControlAppConnectionString1"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=ControlApp;Persist Security Info=True;User ID=sa;Pa" +
-            "ssword=GEServerD3")]
-        public string ControlAppConnectionString2 {
-            get {
-                return ((string)(this["ControlAppConnectionString2"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.30.206;Initial Catalog=ControlApp;Persist Security Info=True;" +
             "User ID=sa;Password=GEServerD3")]
         public string ControlAppConnectionString3 {
             get {
                 return ((string)(this["ControlAppConnectionString3"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=ControlAppDev;Persist Security Info=True;User ID=sa" +
-            ";Password=GEServerD3")]
-        public string ControlAppDevConnectionString {
-            get {
-                return ((string)(this["ControlAppDevConnectionString"]));
             }
         }
     }

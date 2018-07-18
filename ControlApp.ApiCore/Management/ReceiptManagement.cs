@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ControlApp.DataAccess.Crud;
 using ControlApp.Entities.Objects;
+using log4net;
 
 namespace ControlApp.ApiCore.Management
 {
@@ -14,9 +15,8 @@ namespace ControlApp.ApiCore.Management
         public ReceiptManagement()
         {
             _factory = new CrudReceipt();
-            
         }
-        string ExcepMessage = null; // Management Exception
+        private static readonly ILog log = LogManager.GetLogger(System.Environment.MachineName);
         public void CreateReceipt(Receipt Obj)
         {
             try
@@ -25,7 +25,7 @@ namespace ControlApp.ApiCore.Management
             }
             catch (Exception ex)
             {
-                ExcepMessage = "Logic Error" + ex;
+                log.Error(ex.Message, ex);
             }
         }
         public List<T> SuperRetrieveReceipt<T>()
@@ -42,7 +42,7 @@ namespace ControlApp.ApiCore.Management
             catch (Exception ex)
             {
 
-                ExcepMessage = "Logic Error" + ex;
+                log.Error(ex.Message, ex);
             }
             return lst;
         }
@@ -60,9 +60,9 @@ namespace ControlApp.ApiCore.Management
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //_exMan.ManageException(ex);
+                log.Error(ex.Message, ex);
             }
             return lst;
         }
@@ -80,9 +80,9 @@ namespace ControlApp.ApiCore.Management
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //_exMan.ManageException(ex);
+                log.Error(ex.Message, ex);
             }
             return lst;
         }
@@ -99,8 +99,7 @@ namespace ControlApp.ApiCore.Management
             }
             catch (Exception ex)
             {
-
-                ExcepMessage = "Logic Error" + ex;
+                log.Error(ex.Message, ex);
             }
             return lst;
         }
@@ -118,9 +117,9 @@ namespace ControlApp.ApiCore.Management
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //_exMan.ManageException(ex);
+                log.Error(ex.Message, ex);
             }
             return lst;
         }
@@ -138,9 +137,9 @@ namespace ControlApp.ApiCore.Management
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //_exMan.ManageException(ex);
+                log.Error(ex.Message, ex);
             }
             return lst;
         }
@@ -160,7 +159,7 @@ namespace ControlApp.ApiCore.Management
             }
             catch (Exception ex)
             {
-                ExcepMessage = "Logic Error" + ex;
+                log.Error(ex.Message, ex);
             }
             return lst;
         }
@@ -170,9 +169,10 @@ namespace ControlApp.ApiCore.Management
             {
                 _factory.Update(Obj);
             }
+           
             catch (Exception ex)
             {
-                ExcepMessage = "Logic Error" + ex;
+                log.Error(ex.Message, ex);
             }
         }
         public void DeleteReceipt(Receipt Obj)
@@ -183,7 +183,7 @@ namespace ControlApp.ApiCore.Management
             }
             catch (Exception ex)
             {
-                ExcepMessage = "Logic Error" + ex;
+                log.Error(ex.Message, ex);
             }
         }
         public void ActivateReceipt(Receipt Obj)
@@ -194,7 +194,7 @@ namespace ControlApp.ApiCore.Management
             }
             catch (Exception ex)
             {
-                ExcepMessage = "Logic Error" + ex;
+                log.Error(ex.Message, ex);
             }
         }
     }
