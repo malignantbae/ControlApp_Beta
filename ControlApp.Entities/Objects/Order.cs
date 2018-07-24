@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ControlApp.Entities.Objects
 {
-    public class Order
+    public class Order : BaseEntity
     {
         public int Id_Order { get; set; }
         public int Id_Prepaid { get; set; }
@@ -23,15 +23,29 @@ namespace ControlApp.Entities.Objects
             Order_Date_Delivery = DateTime.Today;
         }
         /// Constructor With parameters of DB
-        public Order(int pId_Order, int pId_Prepaid, int pOrder_Quantity, DateTime Order_Date, DateTime Order_Date_Delivery, bool? pState, 
+        /// 
+        public Order(int pId_Order, int pId_Prepaid, int pOrder_Quantity, DateTime pOrder_Date, DateTime pOrder_Date_Delivery)
+        {
+            this.Id_Order = pId_Order;
+            this.Id_Prepaid = pId_Prepaid;
+            this.Order_Quantity = pOrder_Quantity;
+            this.Order_Date = pOrder_Date;
+            this.Order_Date_Delivery = pOrder_Date_Delivery;
+        }
+        public Order(int pId_Order, int pId_Prepaid, int pOrder_Quantity, DateTime pOrder_Date, DateTime pOrder_Date_Delivery, bool? pState, 
             string pCreateBy, string pUpdateBy, 
             DateTime pCreateDate, DateTime? pUpdateDate)
         {
-            Id_Order = 0;
-            Id_Prepaid = 0;
-            Order_Quantity = 0;
-            Order_Date = DateTime.Today;
-            Order_Date_Delivery = DateTime.Today;
+            this.Id_Order = pId_Order;
+            this.Id_Prepaid = pId_Prepaid;
+            this.Order_Quantity = pOrder_Quantity;
+            this.Order_Date = pOrder_Date;
+            this.Order_Date_Delivery = pOrder_Date_Delivery;
+            this.State = pState;
+            this.CreateBy = pCreateBy;
+            this.UpdateBy = pUpdateBy;
+            this.CreateDate = pCreateDate;
+            this.UpdateDate = pUpdateDate; 
         }
     }
 }

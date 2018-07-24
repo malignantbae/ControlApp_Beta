@@ -8,20 +8,28 @@ namespace ControlApp.Entities.Objects
 {
     public class Customer : BaseEntity
     {
-        public int ID_Customer { get; set; }
+        public string ID_Customer { get; set; }
         public string Customer_name { get; set; }
-        public string Customer_state { get; set; }
         public Customer()
         {
-            ID_Customer = 0;
-            Customer_name = null;
-            Customer_state = null;
+            ID_Customer = "N/A";
+            Customer_name = "N/A";
         }
-        public Customer(int pID_Customer, string pCustomer_name, string pCustomer_state)
+        public Customer(string pID_Customer, string pCustomer_name)
         {
-            ID_Customer = pID_Customer;
-            Customer_name = pCustomer_name;
-            Customer_state = pCustomer_state;
+            this.ID_Customer = pID_Customer;
+            this.Customer_name = pCustomer_name;
+        }
+        public Customer(string pID_Customer, string pCustomer_name, bool pState, string pCreateBy,
+            string pUpdatedBy, DateTime pCreateDate, DateTime? pUpdateDate)
+        {
+            this.ID_Customer = pID_Customer;
+            this.Customer_name = pCustomer_name;
+            this.State = pState;
+            this.CreateBy = pCreateBy;
+            this.UpdateBy = UpdateBy;
+            this.CreateDate = pCreateDate;
+            this.UpdateDate = UpdateDate;
         }
     }
 }

@@ -10,9 +10,11 @@ namespace ControlApp.ApiCore.Management
 {
     public class AreaManagement : BaseManagement
     {
+       
         public AreaManagement()
         {
             _factory = new CrudArea();
+            
         }
         string ExcepMessage = null; // Management Exception
         public void CreateArea(Area Obj)
