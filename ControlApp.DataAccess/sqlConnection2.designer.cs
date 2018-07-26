@@ -33,15 +33,24 @@ namespace ControlApp.DataAccess
     partial void InsertTBL_AREA(TBL_AREA instance);
     partial void UpdateTBL_AREA(TBL_AREA instance);
     partial void DeleteTBL_AREA(TBL_AREA instance);
+    partial void InsertTBL_CUSTOMER(TBL_CUSTOMER instance);
+    partial void UpdateTBL_CUSTOMER(TBL_CUSTOMER instance);
+    partial void DeleteTBL_CUSTOMER(TBL_CUSTOMER instance);
     partial void InsertTBL_DPT(TBL_DPT instance);
     partial void UpdateTBL_DPT(TBL_DPT instance);
     partial void DeleteTBL_DPT(TBL_DPT instance);
+    partial void InsertTBL_ORDER(TBL_ORDER instance);
+    partial void UpdateTBL_ORDER(TBL_ORDER instance);
+    partial void DeleteTBL_ORDER(TBL_ORDER instance);
     partial void InsertTBL_PERMISSION(TBL_PERMISSION instance);
     partial void UpdateTBL_PERMISSION(TBL_PERMISSION instance);
     partial void DeleteTBL_PERMISSION(TBL_PERMISSION instance);
     partial void InsertTBL_POSITION(TBL_POSITION instance);
     partial void UpdateTBL_POSITION(TBL_POSITION instance);
     partial void DeleteTBL_POSITION(TBL_POSITION instance);
+    partial void InsertTBL_PREPAID(TBL_PREPAID instance);
+    partial void UpdateTBL_PREPAID(TBL_PREPAID instance);
+    partial void DeleteTBL_PREPAID(TBL_PREPAID instance);
     partial void InsertTBL_PRODUCT(TBL_PRODUCT instance);
     partial void UpdateTBL_PRODUCT(TBL_PRODUCT instance);
     partial void DeleteTBL_PRODUCT(TBL_PRODUCT instance);
@@ -54,12 +63,12 @@ namespace ControlApp.DataAccess
     partial void InsertTBL_SESSION(TBL_SESSION instance);
     partial void UpdateTBL_SESSION(TBL_SESSION instance);
     partial void DeleteTBL_SESSION(TBL_SESSION instance);
+    partial void InsertTBL_STOCK(TBL_STOCK instance);
+    partial void UpdateTBL_STOCK(TBL_STOCK instance);
+    partial void DeleteTBL_STOCK(TBL_STOCK instance);
     partial void InsertTBL_USER(TBL_USER instance);
     partial void UpdateTBL_USER(TBL_USER instance);
     partial void DeleteTBL_USER(TBL_USER instance);
-    partial void InsertTBL_CUSTOMER(TBL_CUSTOMER instance);
-    partial void UpdateTBL_CUSTOMER(TBL_CUSTOMER instance);
-    partial void DeleteTBL_CUSTOMER(TBL_CUSTOMER instance);
     #endregion
 		
 		public sqlConnectionDataContext() : 
@@ -92,6 +101,14 @@ namespace ControlApp.DataAccess
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<Log> Logs
+		{
+			get
+			{
+				return this.GetTable<Log>();
+			}
+		}
+		
 		public System.Data.Linq.Table<TBL_AREA> TBL_AREAs
 		{
 			get
@@ -100,11 +117,27 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
+		public System.Data.Linq.Table<TBL_CUSTOMER> TBL_CUSTOMERs
+		{
+			get
+			{
+				return this.GetTable<TBL_CUSTOMER>();
+			}
+		}
+		
 		public System.Data.Linq.Table<TBL_DPT> TBL_DPTs
 		{
 			get
 			{
 				return this.GetTable<TBL_DPT>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TBL_ORDER> TBL_ORDERs
+		{
+			get
+			{
+				return this.GetTable<TBL_ORDER>();
 			}
 		}
 		
@@ -121,6 +154,14 @@ namespace ControlApp.DataAccess
 			get
 			{
 				return this.GetTable<TBL_POSITION>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TBL_PREPAID> TBL_PREPAIDs
+		{
+			get
+			{
+				return this.GetTable<TBL_PREPAID>();
 			}
 		}
 		
@@ -164,27 +205,19 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
+		public System.Data.Linq.Table<TBL_STOCK> TBL_STOCKs
+		{
+			get
+			{
+				return this.GetTable<TBL_STOCK>();
+			}
+		}
+		
 		public System.Data.Linq.Table<TBL_USER> TBL_USERs
 		{
 			get
 			{
 				return this.GetTable<TBL_USER>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Log> Logs
-		{
-			get
-			{
-				return this.GetTable<Log>();
-			}
-		}
-		
-		public System.Data.Linq.Table<TBL_CUSTOMER> TBL_CUSTOMERs
-		{
-			get
-			{
-				return this.GetTable<TBL_CUSTOMER>();
 			}
 		}
 		
@@ -251,13 +284,6 @@ namespace ControlApp.DataAccess
 			return ((ISingleResult<SP_CRUD_ROLE_PERResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_STOCK")]
-		public ISingleResult<SP_CRUD_STOCKResult> SP_CRUD_STOCK([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_STOCK, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_PRODUCT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pSTOCK_INITIAL_QUANTITY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pSTOCK_QUANTITY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pSTOCK_ADJUSTMENT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> pSTOCK_DATE_PRODUCT)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_BY, pID_STOCK, pID_PRODUCT, pSTOCK_INITIAL_QUANTITY, pSTOCK_QUANTITY, pSTOCK_ADJUSTMENT, pSTOCK_DATE_PRODUCT);
-			return ((ISingleResult<SP_CRUD_STOCKResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_USER")]
 		public ISingleResult<SP_CRUD_USERResult> SP_CRUD_USER([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string pID_USER, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(150)")] string pUSER_NAME, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(150)")] string pUSER_EMAIL, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_DPT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_AREA, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_PST, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_ROLE, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string pUSER_NICKNAME, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string pUSER_PASSWORD)
 		{
@@ -277,6 +303,148 @@ namespace ControlApp.DataAccess
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_BY, pID_PREPAID, pID_CUSTOMER, pID_PRODUCT, pPREPAID_QUANTITY, pPREPAID_TOTAL, pPREPAID_CASH, pPREPAID_CHANGE, pPREPAID_BALANCE, pCUSTOMER_NAME);
 			return ((ISingleResult<SP_CRUD_PREPAIDResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_STOCK")]
+		public ISingleResult<SP_CRUD_STOCKResult> SP_CRUD_STOCK([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_STOCK, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_PRODUCT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pSTOCK_INITIAL_QUANTITY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pSTOCK_QUANTITY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pSTOCK_ADJUSTMENT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> pSTOCK_DATE_PRODUCT)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_BY, pID_STOCK, pID_PRODUCT, pSTOCK_INITIAL_QUANTITY, pSTOCK_QUANTITY, pSTOCK_ADJUSTMENT, pSTOCK_DATE_PRODUCT);
+			return ((ISingleResult<SP_CRUD_STOCKResult>)(result.ReturnValue));
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[Log]")]
+	public partial class Log
+	{
+		
+		private int _Id;
+		
+		private System.DateTime _Date;
+		
+		private string _Thread;
+		
+		private string _Level;
+		
+		private string _Logger;
+		
+		private string _Message;
+		
+		private string _Exception;
+		
+		public Log()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this._Id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="DateTime NOT NULL")]
+		public System.DateTime Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this._Date = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Thread", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		public string Thread
+		{
+			get
+			{
+				return this._Thread;
+			}
+			set
+			{
+				if ((this._Thread != value))
+				{
+					this._Thread = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Level]", Storage="_Level", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Level
+		{
+			get
+			{
+				return this._Level;
+			}
+			set
+			{
+				if ((this._Level != value))
+				{
+					this._Level = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Logger", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		public string Logger
+		{
+			get
+			{
+				return this._Logger;
+			}
+			set
+			{
+				if ((this._Logger != value))
+				{
+					this._Logger = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="VarChar(4000) NOT NULL", CanBeNull=false)]
+		public string Message
+		{
+			get
+			{
+				return this._Message;
+			}
+			set
+			{
+				if ((this._Message != value))
+				{
+					this._Message = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Exception", DbType="VarChar(2000)")]
+		public string Exception
+		{
+			get
+			{
+				return this._Exception;
+			}
+			set
+			{
+				if ((this._Exception != value))
+				{
+					this._Exception = value;
+				}
+			}
 		}
 	}
 	
@@ -607,6 +775,281 @@ namespace ControlApp.DataAccess
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_CUSTOMER")]
+	public partial class TBL_CUSTOMER : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _ID_CUSTOMER;
+		
+		private string _CUSTOMER_NAME;
+		
+		private bool _CUSTOMER_STATE;
+		
+		private string _CUSTOMER_CREATEBY;
+		
+		private string _CUSTOMER_UPDATEDBY;
+		
+		private System.DateTime _CUSTOMER_CREATEDATE;
+		
+		private System.Nullable<System.DateTime> _CUSTOMER_UPDATEDATE;
+		
+		private EntitySet<TBL_PREPAID> _TBL_PREPAIDs;
+		
+		private EntityRef<TBL_USER> _TBL_USER;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_CUSTOMERChanging(string value);
+    partial void OnID_CUSTOMERChanged();
+    partial void OnCUSTOMER_NAMEChanging(string value);
+    partial void OnCUSTOMER_NAMEChanged();
+    partial void OnCUSTOMER_STATEChanging(bool value);
+    partial void OnCUSTOMER_STATEChanged();
+    partial void OnCUSTOMER_CREATEBYChanging(string value);
+    partial void OnCUSTOMER_CREATEBYChanged();
+    partial void OnCUSTOMER_UPDATEDBYChanging(string value);
+    partial void OnCUSTOMER_UPDATEDBYChanged();
+    partial void OnCUSTOMER_CREATEDATEChanging(System.DateTime value);
+    partial void OnCUSTOMER_CREATEDATEChanged();
+    partial void OnCUSTOMER_UPDATEDATEChanging(System.Nullable<System.DateTime> value);
+    partial void OnCUSTOMER_UPDATEDATEChanged();
+    #endregion
+		
+		public TBL_CUSTOMER()
+		{
+			this._TBL_PREPAIDs = new EntitySet<TBL_PREPAID>(new Action<TBL_PREPAID>(this.attach_TBL_PREPAIDs), new Action<TBL_PREPAID>(this.detach_TBL_PREPAIDs));
+			this._TBL_USER = default(EntityRef<TBL_USER>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_CUSTOMER", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string ID_CUSTOMER
+		{
+			get
+			{
+				return this._ID_CUSTOMER;
+			}
+			set
+			{
+				if ((this._ID_CUSTOMER != value))
+				{
+					this.OnID_CUSTOMERChanging(value);
+					this.SendPropertyChanging();
+					this._ID_CUSTOMER = value;
+					this.SendPropertyChanged("ID_CUSTOMER");
+					this.OnID_CUSTOMERChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUSTOMER_NAME", DbType="VarChar(25) NOT NULL", CanBeNull=false)]
+		public string CUSTOMER_NAME
+		{
+			get
+			{
+				return this._CUSTOMER_NAME;
+			}
+			set
+			{
+				if ((this._CUSTOMER_NAME != value))
+				{
+					this.OnCUSTOMER_NAMEChanging(value);
+					this.SendPropertyChanging();
+					this._CUSTOMER_NAME = value;
+					this.SendPropertyChanged("CUSTOMER_NAME");
+					this.OnCUSTOMER_NAMEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUSTOMER_STATE", DbType="Bit NOT NULL")]
+		public bool CUSTOMER_STATE
+		{
+			get
+			{
+				return this._CUSTOMER_STATE;
+			}
+			set
+			{
+				if ((this._CUSTOMER_STATE != value))
+				{
+					this.OnCUSTOMER_STATEChanging(value);
+					this.SendPropertyChanging();
+					this._CUSTOMER_STATE = value;
+					this.SendPropertyChanged("CUSTOMER_STATE");
+					this.OnCUSTOMER_STATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUSTOMER_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string CUSTOMER_CREATEBY
+		{
+			get
+			{
+				return this._CUSTOMER_CREATEBY;
+			}
+			set
+			{
+				if ((this._CUSTOMER_CREATEBY != value))
+				{
+					if (this._TBL_USER.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCUSTOMER_CREATEBYChanging(value);
+					this.SendPropertyChanging();
+					this._CUSTOMER_CREATEBY = value;
+					this.SendPropertyChanged("CUSTOMER_CREATEBY");
+					this.OnCUSTOMER_CREATEBYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUSTOMER_UPDATEDBY", DbType="VarChar(50)")]
+		public string CUSTOMER_UPDATEDBY
+		{
+			get
+			{
+				return this._CUSTOMER_UPDATEDBY;
+			}
+			set
+			{
+				if ((this._CUSTOMER_UPDATEDBY != value))
+				{
+					this.OnCUSTOMER_UPDATEDBYChanging(value);
+					this.SendPropertyChanging();
+					this._CUSTOMER_UPDATEDBY = value;
+					this.SendPropertyChanged("CUSTOMER_UPDATEDBY");
+					this.OnCUSTOMER_UPDATEDBYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUSTOMER_CREATEDATE", DbType="DateTime NOT NULL")]
+		public System.DateTime CUSTOMER_CREATEDATE
+		{
+			get
+			{
+				return this._CUSTOMER_CREATEDATE;
+			}
+			set
+			{
+				if ((this._CUSTOMER_CREATEDATE != value))
+				{
+					this.OnCUSTOMER_CREATEDATEChanging(value);
+					this.SendPropertyChanging();
+					this._CUSTOMER_CREATEDATE = value;
+					this.SendPropertyChanged("CUSTOMER_CREATEDATE");
+					this.OnCUSTOMER_CREATEDATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUSTOMER_UPDATEDATE", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CUSTOMER_UPDATEDATE
+		{
+			get
+			{
+				return this._CUSTOMER_UPDATEDATE;
+			}
+			set
+			{
+				if ((this._CUSTOMER_UPDATEDATE != value))
+				{
+					this.OnCUSTOMER_UPDATEDATEChanging(value);
+					this.SendPropertyChanging();
+					this._CUSTOMER_UPDATEDATE = value;
+					this.SendPropertyChanged("CUSTOMER_UPDATEDATE");
+					this.OnCUSTOMER_UPDATEDATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_CUSTOMER_TBL_PREPAID", Storage="_TBL_PREPAIDs", ThisKey="ID_CUSTOMER", OtherKey="ID_CUSTOMER")]
+		public EntitySet<TBL_PREPAID> TBL_PREPAIDs
+		{
+			get
+			{
+				return this._TBL_PREPAIDs;
+			}
+			set
+			{
+				this._TBL_PREPAIDs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_USER_TBL_CUSTOMER", Storage="_TBL_USER", ThisKey="CUSTOMER_CREATEBY", OtherKey="ID_USER", IsForeignKey=true)]
+		public TBL_USER TBL_USER
+		{
+			get
+			{
+				return this._TBL_USER.Entity;
+			}
+			set
+			{
+				TBL_USER previousValue = this._TBL_USER.Entity;
+				if (((previousValue != value) 
+							|| (this._TBL_USER.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TBL_USER.Entity = null;
+						previousValue.TBL_CUSTOMERs.Remove(this);
+					}
+					this._TBL_USER.Entity = value;
+					if ((value != null))
+					{
+						value.TBL_CUSTOMERs.Add(this);
+						this._CUSTOMER_CREATEBY = value.ID_USER;
+					}
+					else
+					{
+						this._CUSTOMER_CREATEBY = default(string);
+					}
+					this.SendPropertyChanged("TBL_USER");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_TBL_PREPAIDs(TBL_PREPAID entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_CUSTOMER = this;
+		}
+		
+		private void detach_TBL_PREPAIDs(TBL_PREPAID entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_CUSTOMER = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_DPT")]
 	public partial class TBL_DPT : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -894,6 +1337,366 @@ namespace ControlApp.DataAccess
 		{
 			this.SendPropertyChanging();
 			entity.TBL_DPT = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_ORDER")]
+	public partial class TBL_ORDER : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID_ORDER;
+		
+		private int _ID_PREPAID;
+		
+		private int _ORDER_QUANTITY;
+		
+		private System.DateTime _ORDER_DATE;
+		
+		private System.DateTime _ORDER_DATE_DELIVERY;
+		
+		private bool _ORDER_STATE;
+		
+		private string _ORDER_CREATEBY;
+		
+		private string _ORDER_UPDATEDBY;
+		
+		private System.DateTime _ORDER_CREATEDATE;
+		
+		private System.DateTime _ORDER_UPDATEDATE;
+		
+		private EntityRef<TBL_PREPAID> _TBL_PREPAID;
+		
+		private EntityRef<TBL_USER> _TBL_USER;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_ORDERChanging(int value);
+    partial void OnID_ORDERChanged();
+    partial void OnID_PREPAIDChanging(int value);
+    partial void OnID_PREPAIDChanged();
+    partial void OnORDER_QUANTITYChanging(int value);
+    partial void OnORDER_QUANTITYChanged();
+    partial void OnORDER_DATEChanging(System.DateTime value);
+    partial void OnORDER_DATEChanged();
+    partial void OnORDER_DATE_DELIVERYChanging(System.DateTime value);
+    partial void OnORDER_DATE_DELIVERYChanged();
+    partial void OnORDER_STATEChanging(bool value);
+    partial void OnORDER_STATEChanged();
+    partial void OnORDER_CREATEBYChanging(string value);
+    partial void OnORDER_CREATEBYChanged();
+    partial void OnORDER_UPDATEDBYChanging(string value);
+    partial void OnORDER_UPDATEDBYChanged();
+    partial void OnORDER_CREATEDATEChanging(System.DateTime value);
+    partial void OnORDER_CREATEDATEChanged();
+    partial void OnORDER_UPDATEDATEChanging(System.DateTime value);
+    partial void OnORDER_UPDATEDATEChanged();
+    #endregion
+		
+		public TBL_ORDER()
+		{
+			this._TBL_PREPAID = default(EntityRef<TBL_PREPAID>);
+			this._TBL_USER = default(EntityRef<TBL_USER>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_ORDER", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID_ORDER
+		{
+			get
+			{
+				return this._ID_ORDER;
+			}
+			set
+			{
+				if ((this._ID_ORDER != value))
+				{
+					this.OnID_ORDERChanging(value);
+					this.SendPropertyChanging();
+					this._ID_ORDER = value;
+					this.SendPropertyChanged("ID_ORDER");
+					this.OnID_ORDERChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PREPAID", DbType="Int NOT NULL")]
+		public int ID_PREPAID
+		{
+			get
+			{
+				return this._ID_PREPAID;
+			}
+			set
+			{
+				if ((this._ID_PREPAID != value))
+				{
+					if (this._TBL_PREPAID.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_PREPAIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID_PREPAID = value;
+					this.SendPropertyChanged("ID_PREPAID");
+					this.OnID_PREPAIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_QUANTITY", DbType="Int NOT NULL")]
+		public int ORDER_QUANTITY
+		{
+			get
+			{
+				return this._ORDER_QUANTITY;
+			}
+			set
+			{
+				if ((this._ORDER_QUANTITY != value))
+				{
+					this.OnORDER_QUANTITYChanging(value);
+					this.SendPropertyChanging();
+					this._ORDER_QUANTITY = value;
+					this.SendPropertyChanged("ORDER_QUANTITY");
+					this.OnORDER_QUANTITYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_DATE", DbType="DateTime NOT NULL")]
+		public System.DateTime ORDER_DATE
+		{
+			get
+			{
+				return this._ORDER_DATE;
+			}
+			set
+			{
+				if ((this._ORDER_DATE != value))
+				{
+					this.OnORDER_DATEChanging(value);
+					this.SendPropertyChanging();
+					this._ORDER_DATE = value;
+					this.SendPropertyChanged("ORDER_DATE");
+					this.OnORDER_DATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_DATE_DELIVERY", DbType="DateTime NOT NULL")]
+		public System.DateTime ORDER_DATE_DELIVERY
+		{
+			get
+			{
+				return this._ORDER_DATE_DELIVERY;
+			}
+			set
+			{
+				if ((this._ORDER_DATE_DELIVERY != value))
+				{
+					this.OnORDER_DATE_DELIVERYChanging(value);
+					this.SendPropertyChanging();
+					this._ORDER_DATE_DELIVERY = value;
+					this.SendPropertyChanged("ORDER_DATE_DELIVERY");
+					this.OnORDER_DATE_DELIVERYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_STATE", DbType="Bit NOT NULL")]
+		public bool ORDER_STATE
+		{
+			get
+			{
+				return this._ORDER_STATE;
+			}
+			set
+			{
+				if ((this._ORDER_STATE != value))
+				{
+					this.OnORDER_STATEChanging(value);
+					this.SendPropertyChanging();
+					this._ORDER_STATE = value;
+					this.SendPropertyChanged("ORDER_STATE");
+					this.OnORDER_STATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ORDER_CREATEBY
+		{
+			get
+			{
+				return this._ORDER_CREATEBY;
+			}
+			set
+			{
+				if ((this._ORDER_CREATEBY != value))
+				{
+					if (this._TBL_USER.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnORDER_CREATEBYChanging(value);
+					this.SendPropertyChanging();
+					this._ORDER_CREATEBY = value;
+					this.SendPropertyChanged("ORDER_CREATEBY");
+					this.OnORDER_CREATEBYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_UPDATEDBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ORDER_UPDATEDBY
+		{
+			get
+			{
+				return this._ORDER_UPDATEDBY;
+			}
+			set
+			{
+				if ((this._ORDER_UPDATEDBY != value))
+				{
+					this.OnORDER_UPDATEDBYChanging(value);
+					this.SendPropertyChanging();
+					this._ORDER_UPDATEDBY = value;
+					this.SendPropertyChanged("ORDER_UPDATEDBY");
+					this.OnORDER_UPDATEDBYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_CREATEDATE", DbType="DateTime NOT NULL")]
+		public System.DateTime ORDER_CREATEDATE
+		{
+			get
+			{
+				return this._ORDER_CREATEDATE;
+			}
+			set
+			{
+				if ((this._ORDER_CREATEDATE != value))
+				{
+					this.OnORDER_CREATEDATEChanging(value);
+					this.SendPropertyChanging();
+					this._ORDER_CREATEDATE = value;
+					this.SendPropertyChanged("ORDER_CREATEDATE");
+					this.OnORDER_CREATEDATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_UPDATEDATE", DbType="DateTime NOT NULL")]
+		public System.DateTime ORDER_UPDATEDATE
+		{
+			get
+			{
+				return this._ORDER_UPDATEDATE;
+			}
+			set
+			{
+				if ((this._ORDER_UPDATEDATE != value))
+				{
+					this.OnORDER_UPDATEDATEChanging(value);
+					this.SendPropertyChanging();
+					this._ORDER_UPDATEDATE = value;
+					this.SendPropertyChanged("ORDER_UPDATEDATE");
+					this.OnORDER_UPDATEDATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_PREPAID_TBL_ORDER", Storage="_TBL_PREPAID", ThisKey="ID_PREPAID", OtherKey="ID_PREPAID", IsForeignKey=true)]
+		public TBL_PREPAID TBL_PREPAID
+		{
+			get
+			{
+				return this._TBL_PREPAID.Entity;
+			}
+			set
+			{
+				TBL_PREPAID previousValue = this._TBL_PREPAID.Entity;
+				if (((previousValue != value) 
+							|| (this._TBL_PREPAID.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TBL_PREPAID.Entity = null;
+						previousValue.TBL_ORDERs.Remove(this);
+					}
+					this._TBL_PREPAID.Entity = value;
+					if ((value != null))
+					{
+						value.TBL_ORDERs.Add(this);
+						this._ID_PREPAID = value.ID_PREPAID;
+					}
+					else
+					{
+						this._ID_PREPAID = default(int);
+					}
+					this.SendPropertyChanged("TBL_PREPAID");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_USER_TBL_ORDER", Storage="_TBL_USER", ThisKey="ORDER_CREATEBY", OtherKey="ID_USER", IsForeignKey=true)]
+		public TBL_USER TBL_USER
+		{
+			get
+			{
+				return this._TBL_USER.Entity;
+			}
+			set
+			{
+				TBL_USER previousValue = this._TBL_USER.Entity;
+				if (((previousValue != value) 
+							|| (this._TBL_USER.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TBL_USER.Entity = null;
+						previousValue.TBL_ORDERs.Remove(this);
+					}
+					this._TBL_USER.Entity = value;
+					if ((value != null))
+					{
+						value.TBL_ORDERs.Add(this);
+						this._ORDER_CREATEBY = value.ID_USER;
+					}
+					else
+					{
+						this._ORDER_CREATEBY = default(string);
+					}
+					this.SendPropertyChanged("TBL_USER");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	
@@ -1491,6 +2294,507 @@ namespace ControlApp.DataAccess
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_PREPAID")]
+	public partial class TBL_PREPAID : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID_PREPAID;
+		
+		private string _ID_CUSTOMER;
+		
+		private int _ID_PRODUCT;
+		
+		private int _PREPAID_QUANTITY;
+		
+		private decimal _PREPAID_TOTAL;
+		
+		private decimal _PREPAID_CASH;
+		
+		private decimal _PREPAID_CHANGE;
+		
+		private int _PREPAID_BALANCE;
+		
+		private bool _PREPAID_STATE;
+		
+		private string _PREPAID_CREATEBY;
+		
+		private string _PREPAID_UPDATEDBY;
+		
+		private System.DateTime _PREPAID_CREATEDATE;
+		
+		private System.Nullable<System.DateTime> _PREPAID_UPDATEDATE;
+		
+		private EntitySet<TBL_ORDER> _TBL_ORDERs;
+		
+		private EntityRef<TBL_CUSTOMER> _TBL_CUSTOMER;
+		
+		private EntityRef<TBL_PRODUCT> _TBL_PRODUCT;
+		
+		private EntityRef<TBL_USER> _TBL_USER;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_PREPAIDChanging(int value);
+    partial void OnID_PREPAIDChanged();
+    partial void OnID_CUSTOMERChanging(string value);
+    partial void OnID_CUSTOMERChanged();
+    partial void OnID_PRODUCTChanging(int value);
+    partial void OnID_PRODUCTChanged();
+    partial void OnPREPAID_QUANTITYChanging(int value);
+    partial void OnPREPAID_QUANTITYChanged();
+    partial void OnPREPAID_TOTALChanging(decimal value);
+    partial void OnPREPAID_TOTALChanged();
+    partial void OnPREPAID_CASHChanging(decimal value);
+    partial void OnPREPAID_CASHChanged();
+    partial void OnPREPAID_CHANGEChanging(decimal value);
+    partial void OnPREPAID_CHANGEChanged();
+    partial void OnPREPAID_BALANCEChanging(int value);
+    partial void OnPREPAID_BALANCEChanged();
+    partial void OnPREPAID_STATEChanging(bool value);
+    partial void OnPREPAID_STATEChanged();
+    partial void OnPREPAID_CREATEBYChanging(string value);
+    partial void OnPREPAID_CREATEBYChanged();
+    partial void OnPREPAID_UPDATEDBYChanging(string value);
+    partial void OnPREPAID_UPDATEDBYChanged();
+    partial void OnPREPAID_CREATEDATEChanging(System.DateTime value);
+    partial void OnPREPAID_CREATEDATEChanged();
+    partial void OnPREPAID_UPDATEDATEChanging(System.Nullable<System.DateTime> value);
+    partial void OnPREPAID_UPDATEDATEChanged();
+    #endregion
+		
+		public TBL_PREPAID()
+		{
+			this._TBL_ORDERs = new EntitySet<TBL_ORDER>(new Action<TBL_ORDER>(this.attach_TBL_ORDERs), new Action<TBL_ORDER>(this.detach_TBL_ORDERs));
+			this._TBL_CUSTOMER = default(EntityRef<TBL_CUSTOMER>);
+			this._TBL_PRODUCT = default(EntityRef<TBL_PRODUCT>);
+			this._TBL_USER = default(EntityRef<TBL_USER>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PREPAID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID_PREPAID
+		{
+			get
+			{
+				return this._ID_PREPAID;
+			}
+			set
+			{
+				if ((this._ID_PREPAID != value))
+				{
+					this.OnID_PREPAIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID_PREPAID = value;
+					this.SendPropertyChanged("ID_PREPAID");
+					this.OnID_PREPAIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_CUSTOMER", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ID_CUSTOMER
+		{
+			get
+			{
+				return this._ID_CUSTOMER;
+			}
+			set
+			{
+				if ((this._ID_CUSTOMER != value))
+				{
+					if (this._TBL_CUSTOMER.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_CUSTOMERChanging(value);
+					this.SendPropertyChanging();
+					this._ID_CUSTOMER = value;
+					this.SendPropertyChanged("ID_CUSTOMER");
+					this.OnID_CUSTOMERChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PRODUCT", DbType="Int NOT NULL")]
+		public int ID_PRODUCT
+		{
+			get
+			{
+				return this._ID_PRODUCT;
+			}
+			set
+			{
+				if ((this._ID_PRODUCT != value))
+				{
+					if (this._TBL_PRODUCT.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_PRODUCTChanging(value);
+					this.SendPropertyChanging();
+					this._ID_PRODUCT = value;
+					this.SendPropertyChanged("ID_PRODUCT");
+					this.OnID_PRODUCTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PREPAID_QUANTITY", DbType="Int NOT NULL")]
+		public int PREPAID_QUANTITY
+		{
+			get
+			{
+				return this._PREPAID_QUANTITY;
+			}
+			set
+			{
+				if ((this._PREPAID_QUANTITY != value))
+				{
+					this.OnPREPAID_QUANTITYChanging(value);
+					this.SendPropertyChanging();
+					this._PREPAID_QUANTITY = value;
+					this.SendPropertyChanged("PREPAID_QUANTITY");
+					this.OnPREPAID_QUANTITYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PREPAID_TOTAL", DbType="Money NOT NULL")]
+		public decimal PREPAID_TOTAL
+		{
+			get
+			{
+				return this._PREPAID_TOTAL;
+			}
+			set
+			{
+				if ((this._PREPAID_TOTAL != value))
+				{
+					this.OnPREPAID_TOTALChanging(value);
+					this.SendPropertyChanging();
+					this._PREPAID_TOTAL = value;
+					this.SendPropertyChanged("PREPAID_TOTAL");
+					this.OnPREPAID_TOTALChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PREPAID_CASH", DbType="Money NOT NULL")]
+		public decimal PREPAID_CASH
+		{
+			get
+			{
+				return this._PREPAID_CASH;
+			}
+			set
+			{
+				if ((this._PREPAID_CASH != value))
+				{
+					this.OnPREPAID_CASHChanging(value);
+					this.SendPropertyChanging();
+					this._PREPAID_CASH = value;
+					this.SendPropertyChanged("PREPAID_CASH");
+					this.OnPREPAID_CASHChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PREPAID_CHANGE", DbType="Money NOT NULL")]
+		public decimal PREPAID_CHANGE
+		{
+			get
+			{
+				return this._PREPAID_CHANGE;
+			}
+			set
+			{
+				if ((this._PREPAID_CHANGE != value))
+				{
+					this.OnPREPAID_CHANGEChanging(value);
+					this.SendPropertyChanging();
+					this._PREPAID_CHANGE = value;
+					this.SendPropertyChanged("PREPAID_CHANGE");
+					this.OnPREPAID_CHANGEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PREPAID_BALANCE", DbType="Int NOT NULL")]
+		public int PREPAID_BALANCE
+		{
+			get
+			{
+				return this._PREPAID_BALANCE;
+			}
+			set
+			{
+				if ((this._PREPAID_BALANCE != value))
+				{
+					this.OnPREPAID_BALANCEChanging(value);
+					this.SendPropertyChanging();
+					this._PREPAID_BALANCE = value;
+					this.SendPropertyChanged("PREPAID_BALANCE");
+					this.OnPREPAID_BALANCEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PREPAID_STATE", DbType="Bit NOT NULL")]
+		public bool PREPAID_STATE
+		{
+			get
+			{
+				return this._PREPAID_STATE;
+			}
+			set
+			{
+				if ((this._PREPAID_STATE != value))
+				{
+					this.OnPREPAID_STATEChanging(value);
+					this.SendPropertyChanging();
+					this._PREPAID_STATE = value;
+					this.SendPropertyChanged("PREPAID_STATE");
+					this.OnPREPAID_STATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PREPAID_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string PREPAID_CREATEBY
+		{
+			get
+			{
+				return this._PREPAID_CREATEBY;
+			}
+			set
+			{
+				if ((this._PREPAID_CREATEBY != value))
+				{
+					if (this._TBL_USER.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPREPAID_CREATEBYChanging(value);
+					this.SendPropertyChanging();
+					this._PREPAID_CREATEBY = value;
+					this.SendPropertyChanged("PREPAID_CREATEBY");
+					this.OnPREPAID_CREATEBYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PREPAID_UPDATEDBY", DbType="VarChar(50)")]
+		public string PREPAID_UPDATEDBY
+		{
+			get
+			{
+				return this._PREPAID_UPDATEDBY;
+			}
+			set
+			{
+				if ((this._PREPAID_UPDATEDBY != value))
+				{
+					this.OnPREPAID_UPDATEDBYChanging(value);
+					this.SendPropertyChanging();
+					this._PREPAID_UPDATEDBY = value;
+					this.SendPropertyChanged("PREPAID_UPDATEDBY");
+					this.OnPREPAID_UPDATEDBYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PREPAID_CREATEDATE", DbType="DateTime NOT NULL")]
+		public System.DateTime PREPAID_CREATEDATE
+		{
+			get
+			{
+				return this._PREPAID_CREATEDATE;
+			}
+			set
+			{
+				if ((this._PREPAID_CREATEDATE != value))
+				{
+					this.OnPREPAID_CREATEDATEChanging(value);
+					this.SendPropertyChanging();
+					this._PREPAID_CREATEDATE = value;
+					this.SendPropertyChanged("PREPAID_CREATEDATE");
+					this.OnPREPAID_CREATEDATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PREPAID_UPDATEDATE", DbType="DateTime")]
+		public System.Nullable<System.DateTime> PREPAID_UPDATEDATE
+		{
+			get
+			{
+				return this._PREPAID_UPDATEDATE;
+			}
+			set
+			{
+				if ((this._PREPAID_UPDATEDATE != value))
+				{
+					this.OnPREPAID_UPDATEDATEChanging(value);
+					this.SendPropertyChanging();
+					this._PREPAID_UPDATEDATE = value;
+					this.SendPropertyChanged("PREPAID_UPDATEDATE");
+					this.OnPREPAID_UPDATEDATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_PREPAID_TBL_ORDER", Storage="_TBL_ORDERs", ThisKey="ID_PREPAID", OtherKey="ID_PREPAID")]
+		public EntitySet<TBL_ORDER> TBL_ORDERs
+		{
+			get
+			{
+				return this._TBL_ORDERs;
+			}
+			set
+			{
+				this._TBL_ORDERs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_CUSTOMER_TBL_PREPAID", Storage="_TBL_CUSTOMER", ThisKey="ID_CUSTOMER", OtherKey="ID_CUSTOMER", IsForeignKey=true)]
+		public TBL_CUSTOMER TBL_CUSTOMER
+		{
+			get
+			{
+				return this._TBL_CUSTOMER.Entity;
+			}
+			set
+			{
+				TBL_CUSTOMER previousValue = this._TBL_CUSTOMER.Entity;
+				if (((previousValue != value) 
+							|| (this._TBL_CUSTOMER.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TBL_CUSTOMER.Entity = null;
+						previousValue.TBL_PREPAIDs.Remove(this);
+					}
+					this._TBL_CUSTOMER.Entity = value;
+					if ((value != null))
+					{
+						value.TBL_PREPAIDs.Add(this);
+						this._ID_CUSTOMER = value.ID_CUSTOMER;
+					}
+					else
+					{
+						this._ID_CUSTOMER = default(string);
+					}
+					this.SendPropertyChanged("TBL_CUSTOMER");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_PRODUCT_TBL_PREPAID", Storage="_TBL_PRODUCT", ThisKey="ID_PRODUCT", OtherKey="ID_PRODUCT", IsForeignKey=true)]
+		public TBL_PRODUCT TBL_PRODUCT
+		{
+			get
+			{
+				return this._TBL_PRODUCT.Entity;
+			}
+			set
+			{
+				TBL_PRODUCT previousValue = this._TBL_PRODUCT.Entity;
+				if (((previousValue != value) 
+							|| (this._TBL_PRODUCT.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TBL_PRODUCT.Entity = null;
+						previousValue.TBL_PREPAIDs.Remove(this);
+					}
+					this._TBL_PRODUCT.Entity = value;
+					if ((value != null))
+					{
+						value.TBL_PREPAIDs.Add(this);
+						this._ID_PRODUCT = value.ID_PRODUCT;
+					}
+					else
+					{
+						this._ID_PRODUCT = default(int);
+					}
+					this.SendPropertyChanged("TBL_PRODUCT");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_USER_TBL_PREPAID", Storage="_TBL_USER", ThisKey="PREPAID_CREATEBY", OtherKey="ID_USER", IsForeignKey=true)]
+		public TBL_USER TBL_USER
+		{
+			get
+			{
+				return this._TBL_USER.Entity;
+			}
+			set
+			{
+				TBL_USER previousValue = this._TBL_USER.Entity;
+				if (((previousValue != value) 
+							|| (this._TBL_USER.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TBL_USER.Entity = null;
+						previousValue.TBL_PREPAIDs.Remove(this);
+					}
+					this._TBL_USER.Entity = value;
+					if ((value != null))
+					{
+						value.TBL_PREPAIDs.Add(this);
+						this._PREPAID_CREATEBY = value.ID_USER;
+					}
+					else
+					{
+						this._PREPAID_CREATEBY = default(string);
+					}
+					this.SendPropertyChanged("TBL_USER");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_TBL_ORDERs(TBL_ORDER entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_PREPAID = this;
+		}
+		
+		private void detach_TBL_ORDERs(TBL_ORDER entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_PREPAID = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_PRODUCT")]
 	public partial class TBL_PRODUCT : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1513,7 +2817,13 @@ namespace ControlApp.DataAccess
 		
 		private System.Nullable<System.DateTime> _PRODUCT_UPDATEDATE;
 		
+		private EntitySet<TBL_PREPAID> _TBL_PREPAIDs;
+		
 		private EntitySet<TBL_RECEIPT> _TBL_RECEIPTs;
+		
+		private EntitySet<TBL_STOCK> _TBL_STOCKs;
+		
+		private EntityRef<TBL_USER> _TBL_USER;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1539,7 +2849,10 @@ namespace ControlApp.DataAccess
 		
 		public TBL_PRODUCT()
 		{
+			this._TBL_PREPAIDs = new EntitySet<TBL_PREPAID>(new Action<TBL_PREPAID>(this.attach_TBL_PREPAIDs), new Action<TBL_PREPAID>(this.detach_TBL_PREPAIDs));
 			this._TBL_RECEIPTs = new EntitySet<TBL_RECEIPT>(new Action<TBL_RECEIPT>(this.attach_TBL_RECEIPTs), new Action<TBL_RECEIPT>(this.detach_TBL_RECEIPTs));
+			this._TBL_STOCKs = new EntitySet<TBL_STOCK>(new Action<TBL_STOCK>(this.attach_TBL_STOCKs), new Action<TBL_STOCK>(this.detach_TBL_STOCKs));
+			this._TBL_USER = default(EntityRef<TBL_USER>);
 			OnCreated();
 		}
 		
@@ -1634,6 +2947,10 @@ namespace ControlApp.DataAccess
 			{
 				if ((this._PRODUCT_CREATEBY != value))
 				{
+					if (this._TBL_USER.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnPRODUCT_CREATEBYChanging(value);
 					this.SendPropertyChanging();
 					this._PRODUCT_CREATEBY = value;
@@ -1703,6 +3020,19 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_PRODUCT_TBL_PREPAID", Storage="_TBL_PREPAIDs", ThisKey="ID_PRODUCT", OtherKey="ID_PRODUCT")]
+		public EntitySet<TBL_PREPAID> TBL_PREPAIDs
+		{
+			get
+			{
+				return this._TBL_PREPAIDs;
+			}
+			set
+			{
+				this._TBL_PREPAIDs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_PRODUCT_TBL_RECEIPT", Storage="_TBL_RECEIPTs", ThisKey="ID_PRODUCT", OtherKey="ID_PRODUCT")]
 		public EntitySet<TBL_RECEIPT> TBL_RECEIPTs
 		{
@@ -1713,6 +3043,53 @@ namespace ControlApp.DataAccess
 			set
 			{
 				this._TBL_RECEIPTs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_PRODUCT_TBL_STOCK", Storage="_TBL_STOCKs", ThisKey="ID_PRODUCT", OtherKey="ID_PRODUCT")]
+		public EntitySet<TBL_STOCK> TBL_STOCKs
+		{
+			get
+			{
+				return this._TBL_STOCKs;
+			}
+			set
+			{
+				this._TBL_STOCKs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_USER_TBL_PRODUCT", Storage="_TBL_USER", ThisKey="PRODUCT_CREATEBY", OtherKey="ID_USER", IsForeignKey=true)]
+		public TBL_USER TBL_USER
+		{
+			get
+			{
+				return this._TBL_USER.Entity;
+			}
+			set
+			{
+				TBL_USER previousValue = this._TBL_USER.Entity;
+				if (((previousValue != value) 
+							|| (this._TBL_USER.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TBL_USER.Entity = null;
+						previousValue.TBL_PRODUCTs.Remove(this);
+					}
+					this._TBL_USER.Entity = value;
+					if ((value != null))
+					{
+						value.TBL_PRODUCTs.Add(this);
+						this._PRODUCT_CREATEBY = value.ID_USER;
+					}
+					else
+					{
+						this._PRODUCT_CREATEBY = default(string);
+					}
+					this.SendPropertyChanged("TBL_USER");
+				}
 			}
 		}
 		
@@ -1736,6 +3113,18 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
+		private void attach_TBL_PREPAIDs(TBL_PREPAID entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_PRODUCT = this;
+		}
+		
+		private void detach_TBL_PREPAIDs(TBL_PREPAID entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_PRODUCT = null;
+		}
+		
 		private void attach_TBL_RECEIPTs(TBL_RECEIPT entity)
 		{
 			this.SendPropertyChanging();
@@ -1743,6 +3132,18 @@ namespace ControlApp.DataAccess
 		}
 		
 		private void detach_TBL_RECEIPTs(TBL_RECEIPT entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_PRODUCT = null;
+		}
+		
+		private void attach_TBL_STOCKs(TBL_STOCK entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_PRODUCT = this;
+		}
+		
+		private void detach_TBL_STOCKs(TBL_STOCK entity)
 		{
 			this.SendPropertyChanging();
 			entity.TBL_PRODUCT = null;
@@ -2869,6 +4270,390 @@ namespace ControlApp.DataAccess
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_STOCK")]
+	public partial class TBL_STOCK : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID_STOCK;
+		
+		private int _ID_PRODUCT;
+		
+		private int _STOCK_INITIAL_QUANTITY;
+		
+		private int _STOCK_QUANTITY;
+		
+		private int _STOCK_ADJUSTMENT;
+		
+		private System.DateTime _STOCK_DATE_PRODUCT;
+		
+		private bool _STOCK_STATE;
+		
+		private string _STOCK_CREATEBY;
+		
+		private string _STOCK_UPDATEDBY;
+		
+		private System.DateTime _STOCK_CREATEDATE;
+		
+		private System.Nullable<System.DateTime> _STOCK_UPDATEDATE;
+		
+		private EntityRef<TBL_PRODUCT> _TBL_PRODUCT;
+		
+		private EntityRef<TBL_USER> _TBL_USER;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_STOCKChanging(int value);
+    partial void OnID_STOCKChanged();
+    partial void OnID_PRODUCTChanging(int value);
+    partial void OnID_PRODUCTChanged();
+    partial void OnSTOCK_INITIAL_QUANTITYChanging(int value);
+    partial void OnSTOCK_INITIAL_QUANTITYChanged();
+    partial void OnSTOCK_QUANTITYChanging(int value);
+    partial void OnSTOCK_QUANTITYChanged();
+    partial void OnSTOCK_ADJUSTMENTChanging(int value);
+    partial void OnSTOCK_ADJUSTMENTChanged();
+    partial void OnSTOCK_DATE_PRODUCTChanging(System.DateTime value);
+    partial void OnSTOCK_DATE_PRODUCTChanged();
+    partial void OnSTOCK_STATEChanging(bool value);
+    partial void OnSTOCK_STATEChanged();
+    partial void OnSTOCK_CREATEBYChanging(string value);
+    partial void OnSTOCK_CREATEBYChanged();
+    partial void OnSTOCK_UPDATEDBYChanging(string value);
+    partial void OnSTOCK_UPDATEDBYChanged();
+    partial void OnSTOCK_CREATEDATEChanging(System.DateTime value);
+    partial void OnSTOCK_CREATEDATEChanged();
+    partial void OnSTOCK_UPDATEDATEChanging(System.Nullable<System.DateTime> value);
+    partial void OnSTOCK_UPDATEDATEChanged();
+    #endregion
+		
+		public TBL_STOCK()
+		{
+			this._TBL_PRODUCT = default(EntityRef<TBL_PRODUCT>);
+			this._TBL_USER = default(EntityRef<TBL_USER>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_STOCK", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID_STOCK
+		{
+			get
+			{
+				return this._ID_STOCK;
+			}
+			set
+			{
+				if ((this._ID_STOCK != value))
+				{
+					this.OnID_STOCKChanging(value);
+					this.SendPropertyChanging();
+					this._ID_STOCK = value;
+					this.SendPropertyChanged("ID_STOCK");
+					this.OnID_STOCKChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PRODUCT", DbType="Int NOT NULL")]
+		public int ID_PRODUCT
+		{
+			get
+			{
+				return this._ID_PRODUCT;
+			}
+			set
+			{
+				if ((this._ID_PRODUCT != value))
+				{
+					if (this._TBL_PRODUCT.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_PRODUCTChanging(value);
+					this.SendPropertyChanging();
+					this._ID_PRODUCT = value;
+					this.SendPropertyChanged("ID_PRODUCT");
+					this.OnID_PRODUCTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_INITIAL_QUANTITY", DbType="Int NOT NULL")]
+		public int STOCK_INITIAL_QUANTITY
+		{
+			get
+			{
+				return this._STOCK_INITIAL_QUANTITY;
+			}
+			set
+			{
+				if ((this._STOCK_INITIAL_QUANTITY != value))
+				{
+					this.OnSTOCK_INITIAL_QUANTITYChanging(value);
+					this.SendPropertyChanging();
+					this._STOCK_INITIAL_QUANTITY = value;
+					this.SendPropertyChanged("STOCK_INITIAL_QUANTITY");
+					this.OnSTOCK_INITIAL_QUANTITYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_QUANTITY", DbType="Int NOT NULL")]
+		public int STOCK_QUANTITY
+		{
+			get
+			{
+				return this._STOCK_QUANTITY;
+			}
+			set
+			{
+				if ((this._STOCK_QUANTITY != value))
+				{
+					this.OnSTOCK_QUANTITYChanging(value);
+					this.SendPropertyChanging();
+					this._STOCK_QUANTITY = value;
+					this.SendPropertyChanged("STOCK_QUANTITY");
+					this.OnSTOCK_QUANTITYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_ADJUSTMENT", DbType="Int NOT NULL")]
+		public int STOCK_ADJUSTMENT
+		{
+			get
+			{
+				return this._STOCK_ADJUSTMENT;
+			}
+			set
+			{
+				if ((this._STOCK_ADJUSTMENT != value))
+				{
+					this.OnSTOCK_ADJUSTMENTChanging(value);
+					this.SendPropertyChanging();
+					this._STOCK_ADJUSTMENT = value;
+					this.SendPropertyChanged("STOCK_ADJUSTMENT");
+					this.OnSTOCK_ADJUSTMENTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_DATE_PRODUCT", DbType="DateTime NOT NULL")]
+		public System.DateTime STOCK_DATE_PRODUCT
+		{
+			get
+			{
+				return this._STOCK_DATE_PRODUCT;
+			}
+			set
+			{
+				if ((this._STOCK_DATE_PRODUCT != value))
+				{
+					this.OnSTOCK_DATE_PRODUCTChanging(value);
+					this.SendPropertyChanging();
+					this._STOCK_DATE_PRODUCT = value;
+					this.SendPropertyChanged("STOCK_DATE_PRODUCT");
+					this.OnSTOCK_DATE_PRODUCTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_STATE", DbType="Bit NOT NULL")]
+		public bool STOCK_STATE
+		{
+			get
+			{
+				return this._STOCK_STATE;
+			}
+			set
+			{
+				if ((this._STOCK_STATE != value))
+				{
+					this.OnSTOCK_STATEChanging(value);
+					this.SendPropertyChanging();
+					this._STOCK_STATE = value;
+					this.SendPropertyChanged("STOCK_STATE");
+					this.OnSTOCK_STATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string STOCK_CREATEBY
+		{
+			get
+			{
+				return this._STOCK_CREATEBY;
+			}
+			set
+			{
+				if ((this._STOCK_CREATEBY != value))
+				{
+					if (this._TBL_USER.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSTOCK_CREATEBYChanging(value);
+					this.SendPropertyChanging();
+					this._STOCK_CREATEBY = value;
+					this.SendPropertyChanged("STOCK_CREATEBY");
+					this.OnSTOCK_CREATEBYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_UPDATEDBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string STOCK_UPDATEDBY
+		{
+			get
+			{
+				return this._STOCK_UPDATEDBY;
+			}
+			set
+			{
+				if ((this._STOCK_UPDATEDBY != value))
+				{
+					this.OnSTOCK_UPDATEDBYChanging(value);
+					this.SendPropertyChanging();
+					this._STOCK_UPDATEDBY = value;
+					this.SendPropertyChanged("STOCK_UPDATEDBY");
+					this.OnSTOCK_UPDATEDBYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_CREATEDATE", DbType="DateTime NOT NULL")]
+		public System.DateTime STOCK_CREATEDATE
+		{
+			get
+			{
+				return this._STOCK_CREATEDATE;
+			}
+			set
+			{
+				if ((this._STOCK_CREATEDATE != value))
+				{
+					this.OnSTOCK_CREATEDATEChanging(value);
+					this.SendPropertyChanging();
+					this._STOCK_CREATEDATE = value;
+					this.SendPropertyChanged("STOCK_CREATEDATE");
+					this.OnSTOCK_CREATEDATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_UPDATEDATE", DbType="DateTime")]
+		public System.Nullable<System.DateTime> STOCK_UPDATEDATE
+		{
+			get
+			{
+				return this._STOCK_UPDATEDATE;
+			}
+			set
+			{
+				if ((this._STOCK_UPDATEDATE != value))
+				{
+					this.OnSTOCK_UPDATEDATEChanging(value);
+					this.SendPropertyChanging();
+					this._STOCK_UPDATEDATE = value;
+					this.SendPropertyChanged("STOCK_UPDATEDATE");
+					this.OnSTOCK_UPDATEDATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_PRODUCT_TBL_STOCK", Storage="_TBL_PRODUCT", ThisKey="ID_PRODUCT", OtherKey="ID_PRODUCT", IsForeignKey=true)]
+		public TBL_PRODUCT TBL_PRODUCT
+		{
+			get
+			{
+				return this._TBL_PRODUCT.Entity;
+			}
+			set
+			{
+				TBL_PRODUCT previousValue = this._TBL_PRODUCT.Entity;
+				if (((previousValue != value) 
+							|| (this._TBL_PRODUCT.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TBL_PRODUCT.Entity = null;
+						previousValue.TBL_STOCKs.Remove(this);
+					}
+					this._TBL_PRODUCT.Entity = value;
+					if ((value != null))
+					{
+						value.TBL_STOCKs.Add(this);
+						this._ID_PRODUCT = value.ID_PRODUCT;
+					}
+					else
+					{
+						this._ID_PRODUCT = default(int);
+					}
+					this.SendPropertyChanged("TBL_PRODUCT");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_USER_TBL_STOCK", Storage="_TBL_USER", ThisKey="STOCK_CREATEBY", OtherKey="ID_USER", IsForeignKey=true)]
+		public TBL_USER TBL_USER
+		{
+			get
+			{
+				return this._TBL_USER.Entity;
+			}
+			set
+			{
+				TBL_USER previousValue = this._TBL_USER.Entity;
+				if (((previousValue != value) 
+							|| (this._TBL_USER.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TBL_USER.Entity = null;
+						previousValue.TBL_STOCKs.Remove(this);
+					}
+					this._TBL_USER.Entity = value;
+					if ((value != null))
+					{
+						value.TBL_STOCKs.Add(this);
+						this._STOCK_CREATEBY = value.ID_USER;
+					}
+					else
+					{
+						this._STOCK_CREATEBY = default(string);
+					}
+					this.SendPropertyChanged("TBL_USER");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_USER")]
 	public partial class TBL_USER : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2903,11 +4688,19 @@ namespace ControlApp.DataAccess
 		
 		private System.Nullable<System.DateTime> _USER_UPDATEDATE;
 		
+		private EntitySet<TBL_CUSTOMER> _TBL_CUSTOMERs;
+		
+		private EntitySet<TBL_ORDER> _TBL_ORDERs;
+		
+		private EntitySet<TBL_PREPAID> _TBL_PREPAIDs;
+		
+		private EntitySet<TBL_PRODUCT> _TBL_PRODUCTs;
+		
 		private EntitySet<TBL_RECEIPT> _TBL_RECEIPTs;
 		
 		private EntitySet<TBL_SESSION> _TBL_SESSIONs;
 		
-		private EntitySet<TBL_CUSTOMER> _TBL_CUSTOMERs;
+		private EntitySet<TBL_STOCK> _TBL_STOCKs;
 		
 		private EntityRef<TBL_AREA> _TBL_AREA;
 		
@@ -2953,9 +4746,13 @@ namespace ControlApp.DataAccess
 		
 		public TBL_USER()
 		{
+			this._TBL_CUSTOMERs = new EntitySet<TBL_CUSTOMER>(new Action<TBL_CUSTOMER>(this.attach_TBL_CUSTOMERs), new Action<TBL_CUSTOMER>(this.detach_TBL_CUSTOMERs));
+			this._TBL_ORDERs = new EntitySet<TBL_ORDER>(new Action<TBL_ORDER>(this.attach_TBL_ORDERs), new Action<TBL_ORDER>(this.detach_TBL_ORDERs));
+			this._TBL_PREPAIDs = new EntitySet<TBL_PREPAID>(new Action<TBL_PREPAID>(this.attach_TBL_PREPAIDs), new Action<TBL_PREPAID>(this.detach_TBL_PREPAIDs));
+			this._TBL_PRODUCTs = new EntitySet<TBL_PRODUCT>(new Action<TBL_PRODUCT>(this.attach_TBL_PRODUCTs), new Action<TBL_PRODUCT>(this.detach_TBL_PRODUCTs));
 			this._TBL_RECEIPTs = new EntitySet<TBL_RECEIPT>(new Action<TBL_RECEIPT>(this.attach_TBL_RECEIPTs), new Action<TBL_RECEIPT>(this.detach_TBL_RECEIPTs));
 			this._TBL_SESSIONs = new EntitySet<TBL_SESSION>(new Action<TBL_SESSION>(this.attach_TBL_SESSIONs), new Action<TBL_SESSION>(this.detach_TBL_SESSIONs));
-			this._TBL_CUSTOMERs = new EntitySet<TBL_CUSTOMER>(new Action<TBL_CUSTOMER>(this.attach_TBL_CUSTOMERs), new Action<TBL_CUSTOMER>(this.detach_TBL_CUSTOMERs));
+			this._TBL_STOCKs = new EntitySet<TBL_STOCK>(new Action<TBL_STOCK>(this.attach_TBL_STOCKs), new Action<TBL_STOCK>(this.detach_TBL_STOCKs));
 			this._TBL_AREA = default(EntityRef<TBL_AREA>);
 			this._TBL_DPT = default(EntityRef<TBL_DPT>);
 			this._TBL_POSITION = default(EntityRef<TBL_POSITION>);
@@ -3259,6 +5056,58 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_USER_TBL_CUSTOMER", Storage="_TBL_CUSTOMERs", ThisKey="ID_USER", OtherKey="CUSTOMER_CREATEBY")]
+		public EntitySet<TBL_CUSTOMER> TBL_CUSTOMERs
+		{
+			get
+			{
+				return this._TBL_CUSTOMERs;
+			}
+			set
+			{
+				this._TBL_CUSTOMERs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_USER_TBL_ORDER", Storage="_TBL_ORDERs", ThisKey="ID_USER", OtherKey="ORDER_CREATEBY")]
+		public EntitySet<TBL_ORDER> TBL_ORDERs
+		{
+			get
+			{
+				return this._TBL_ORDERs;
+			}
+			set
+			{
+				this._TBL_ORDERs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_USER_TBL_PREPAID", Storage="_TBL_PREPAIDs", ThisKey="ID_USER", OtherKey="PREPAID_CREATEBY")]
+		public EntitySet<TBL_PREPAID> TBL_PREPAIDs
+		{
+			get
+			{
+				return this._TBL_PREPAIDs;
+			}
+			set
+			{
+				this._TBL_PREPAIDs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_USER_TBL_PRODUCT", Storage="_TBL_PRODUCTs", ThisKey="ID_USER", OtherKey="PRODUCT_CREATEBY")]
+		public EntitySet<TBL_PRODUCT> TBL_PRODUCTs
+		{
+			get
+			{
+				return this._TBL_PRODUCTs;
+			}
+			set
+			{
+				this._TBL_PRODUCTs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_USER_TBL_RECEIPT", Storage="_TBL_RECEIPTs", ThisKey="ID_USER", OtherKey="RECEIPT_CREATEBY")]
 		public EntitySet<TBL_RECEIPT> TBL_RECEIPTs
 		{
@@ -3285,16 +5134,16 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_USER_TBL_CUSTOMER", Storage="_TBL_CUSTOMERs", ThisKey="ID_USER", OtherKey="CUSTOMER_CREATEBY")]
-		public EntitySet<TBL_CUSTOMER> TBL_CUSTOMERs
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_USER_TBL_STOCK", Storage="_TBL_STOCKs", ThisKey="ID_USER", OtherKey="STOCK_CREATEBY")]
+		public EntitySet<TBL_STOCK> TBL_STOCKs
 		{
 			get
 			{
-				return this._TBL_CUSTOMERs;
+				return this._TBL_STOCKs;
 			}
 			set
 			{
-				this._TBL_CUSTOMERs.Assign(value);
+				this._TBL_STOCKs.Assign(value);
 			}
 		}
 		
@@ -3454,6 +5303,54 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
+		private void attach_TBL_CUSTOMERs(TBL_CUSTOMER entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_USER = this;
+		}
+		
+		private void detach_TBL_CUSTOMERs(TBL_CUSTOMER entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_USER = null;
+		}
+		
+		private void attach_TBL_ORDERs(TBL_ORDER entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_USER = this;
+		}
+		
+		private void detach_TBL_ORDERs(TBL_ORDER entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_USER = null;
+		}
+		
+		private void attach_TBL_PREPAIDs(TBL_PREPAID entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_USER = this;
+		}
+		
+		private void detach_TBL_PREPAIDs(TBL_PREPAID entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_USER = null;
+		}
+		
+		private void attach_TBL_PRODUCTs(TBL_PRODUCT entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_USER = this;
+		}
+		
+		private void detach_TBL_PRODUCTs(TBL_PRODUCT entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_USER = null;
+		}
+		
 		private void attach_TBL_RECEIPTs(TBL_RECEIPT entity)
 		{
 			this.SendPropertyChanging();
@@ -3478,398 +5375,16 @@ namespace ControlApp.DataAccess
 			entity.TBL_USER = null;
 		}
 		
-		private void attach_TBL_CUSTOMERs(TBL_CUSTOMER entity)
+		private void attach_TBL_STOCKs(TBL_STOCK entity)
 		{
 			this.SendPropertyChanging();
 			entity.TBL_USER = this;
 		}
 		
-		private void detach_TBL_CUSTOMERs(TBL_CUSTOMER entity)
+		private void detach_TBL_STOCKs(TBL_STOCK entity)
 		{
 			this.SendPropertyChanging();
 			entity.TBL_USER = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[Log]")]
-	public partial class Log
-	{
-		
-		private int _Id;
-		
-		private System.DateTime _Date;
-		
-		private string _Thread;
-		
-		private string _Level;
-		
-		private string _Logger;
-		
-		private string _Message;
-		
-		private string _Exception;
-		
-		public Log()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this._Id = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="DateTime NOT NULL")]
-		public System.DateTime Date
-		{
-			get
-			{
-				return this._Date;
-			}
-			set
-			{
-				if ((this._Date != value))
-				{
-					this._Date = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Thread", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
-		public string Thread
-		{
-			get
-			{
-				return this._Thread;
-			}
-			set
-			{
-				if ((this._Thread != value))
-				{
-					this._Thread = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Level]", Storage="_Level", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Level
-		{
-			get
-			{
-				return this._Level;
-			}
-			set
-			{
-				if ((this._Level != value))
-				{
-					this._Level = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Logger", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
-		public string Logger
-		{
-			get
-			{
-				return this._Logger;
-			}
-			set
-			{
-				if ((this._Logger != value))
-				{
-					this._Logger = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="VarChar(4000) NOT NULL", CanBeNull=false)]
-		public string Message
-		{
-			get
-			{
-				return this._Message;
-			}
-			set
-			{
-				if ((this._Message != value))
-				{
-					this._Message = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Exception", DbType="VarChar(2000)")]
-		public string Exception
-		{
-			get
-			{
-				return this._Exception;
-			}
-			set
-			{
-				if ((this._Exception != value))
-				{
-					this._Exception = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_CUSTOMER")]
-	public partial class TBL_CUSTOMER : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _ID_CUSTOMER;
-		
-		private string _CUSTOMER_NAME;
-		
-		private bool _CUSTOMER_STATE;
-		
-		private string _CUSTOMER_CREATEBY;
-		
-		private string _CUSTOMER_UPDATEDBY;
-		
-		private System.DateTime _CUSTOMER_CREATEDATE;
-		
-		private System.Nullable<System.DateTime> _CUSTOMER_UPDATEDATE;
-		
-		private EntityRef<TBL_USER> _TBL_USER;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnID_CUSTOMERChanging(string value);
-    partial void OnID_CUSTOMERChanged();
-    partial void OnCUSTOMER_NAMEChanging(string value);
-    partial void OnCUSTOMER_NAMEChanged();
-    partial void OnCUSTOMER_STATEChanging(bool value);
-    partial void OnCUSTOMER_STATEChanged();
-    partial void OnCUSTOMER_CREATEBYChanging(string value);
-    partial void OnCUSTOMER_CREATEBYChanged();
-    partial void OnCUSTOMER_UPDATEDBYChanging(string value);
-    partial void OnCUSTOMER_UPDATEDBYChanged();
-    partial void OnCUSTOMER_CREATEDATEChanging(System.DateTime value);
-    partial void OnCUSTOMER_CREATEDATEChanged();
-    partial void OnCUSTOMER_UPDATEDATEChanging(System.Nullable<System.DateTime> value);
-    partial void OnCUSTOMER_UPDATEDATEChanged();
-    #endregion
-		
-		public TBL_CUSTOMER()
-		{
-			this._TBL_USER = default(EntityRef<TBL_USER>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_CUSTOMER", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string ID_CUSTOMER
-		{
-			get
-			{
-				return this._ID_CUSTOMER;
-			}
-			set
-			{
-				if ((this._ID_CUSTOMER != value))
-				{
-					this.OnID_CUSTOMERChanging(value);
-					this.SendPropertyChanging();
-					this._ID_CUSTOMER = value;
-					this.SendPropertyChanged("ID_CUSTOMER");
-					this.OnID_CUSTOMERChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUSTOMER_NAME", DbType="VarChar(25) NOT NULL", CanBeNull=false)]
-		public string CUSTOMER_NAME
-		{
-			get
-			{
-				return this._CUSTOMER_NAME;
-			}
-			set
-			{
-				if ((this._CUSTOMER_NAME != value))
-				{
-					this.OnCUSTOMER_NAMEChanging(value);
-					this.SendPropertyChanging();
-					this._CUSTOMER_NAME = value;
-					this.SendPropertyChanged("CUSTOMER_NAME");
-					this.OnCUSTOMER_NAMEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUSTOMER_STATE", DbType="Bit NOT NULL")]
-		public bool CUSTOMER_STATE
-		{
-			get
-			{
-				return this._CUSTOMER_STATE;
-			}
-			set
-			{
-				if ((this._CUSTOMER_STATE != value))
-				{
-					this.OnCUSTOMER_STATEChanging(value);
-					this.SendPropertyChanging();
-					this._CUSTOMER_STATE = value;
-					this.SendPropertyChanged("CUSTOMER_STATE");
-					this.OnCUSTOMER_STATEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUSTOMER_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string CUSTOMER_CREATEBY
-		{
-			get
-			{
-				return this._CUSTOMER_CREATEBY;
-			}
-			set
-			{
-				if ((this._CUSTOMER_CREATEBY != value))
-				{
-					if (this._TBL_USER.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnCUSTOMER_CREATEBYChanging(value);
-					this.SendPropertyChanging();
-					this._CUSTOMER_CREATEBY = value;
-					this.SendPropertyChanged("CUSTOMER_CREATEBY");
-					this.OnCUSTOMER_CREATEBYChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUSTOMER_UPDATEDBY", DbType="VarChar(50)")]
-		public string CUSTOMER_UPDATEDBY
-		{
-			get
-			{
-				return this._CUSTOMER_UPDATEDBY;
-			}
-			set
-			{
-				if ((this._CUSTOMER_UPDATEDBY != value))
-				{
-					this.OnCUSTOMER_UPDATEDBYChanging(value);
-					this.SendPropertyChanging();
-					this._CUSTOMER_UPDATEDBY = value;
-					this.SendPropertyChanged("CUSTOMER_UPDATEDBY");
-					this.OnCUSTOMER_UPDATEDBYChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUSTOMER_CREATEDATE", DbType="DateTime NOT NULL")]
-		public System.DateTime CUSTOMER_CREATEDATE
-		{
-			get
-			{
-				return this._CUSTOMER_CREATEDATE;
-			}
-			set
-			{
-				if ((this._CUSTOMER_CREATEDATE != value))
-				{
-					this.OnCUSTOMER_CREATEDATEChanging(value);
-					this.SendPropertyChanging();
-					this._CUSTOMER_CREATEDATE = value;
-					this.SendPropertyChanged("CUSTOMER_CREATEDATE");
-					this.OnCUSTOMER_CREATEDATEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUSTOMER_UPDATEDATE", DbType="DateTime")]
-		public System.Nullable<System.DateTime> CUSTOMER_UPDATEDATE
-		{
-			get
-			{
-				return this._CUSTOMER_UPDATEDATE;
-			}
-			set
-			{
-				if ((this._CUSTOMER_UPDATEDATE != value))
-				{
-					this.OnCUSTOMER_UPDATEDATEChanging(value);
-					this.SendPropertyChanging();
-					this._CUSTOMER_UPDATEDATE = value;
-					this.SendPropertyChanged("CUSTOMER_UPDATEDATE");
-					this.OnCUSTOMER_UPDATEDATEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_USER_TBL_CUSTOMER", Storage="_TBL_USER", ThisKey="CUSTOMER_CREATEBY", OtherKey="ID_USER", IsForeignKey=true)]
-		public TBL_USER TBL_USER
-		{
-			get
-			{
-				return this._TBL_USER.Entity;
-			}
-			set
-			{
-				TBL_USER previousValue = this._TBL_USER.Entity;
-				if (((previousValue != value) 
-							|| (this._TBL_USER.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TBL_USER.Entity = null;
-						previousValue.TBL_CUSTOMERs.Remove(this);
-					}
-					this._TBL_USER.Entity = value;
-					if ((value != null))
-					{
-						value.TBL_CUSTOMERs.Add(this);
-						this._CUSTOMER_CREATEBY = value.ID_USER;
-					}
-					else
-					{
-						this._CUSTOMER_CREATEBY = default(string);
-					}
-					this.SendPropertyChanged("TBL_USER");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 	
@@ -5367,212 +6882,6 @@ namespace ControlApp.DataAccess
 		}
 	}
 	
-	public partial class SP_CRUD_STOCKResult
-	{
-		
-		private int _ID_STOCK;
-		
-		private string _DESCRIP_PRICE;
-		
-		private int _STOCK_INITIAL_QUANTITY;
-		
-		private int _STOCK_QUANTITY;
-		
-		private System.Nullable<int> _STOCK_ADJUSTMENT;
-		
-		private System.DateTime _STOCK_DATE_PRODUCT;
-		
-		private bool _STOCK_STATE;
-		
-		private string _PREPAID_CREATEBY;
-		
-		private string _ORDER_UPDATEDBY;
-		
-		private System.DateTime _STOCK_CREATEDATE;
-		
-		private System.Nullable<System.DateTime> _STOCK_UPDATEDATE;
-		
-		public SP_CRUD_STOCKResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_STOCK", DbType="Int NOT NULL")]
-		public int ID_STOCK
-		{
-			get
-			{
-				return this._ID_STOCK;
-			}
-			set
-			{
-				if ((this._ID_STOCK != value))
-				{
-					this._ID_STOCK = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DESCRIP_PRICE", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string DESCRIP_PRICE
-		{
-			get
-			{
-				return this._DESCRIP_PRICE;
-			}
-			set
-			{
-				if ((this._DESCRIP_PRICE != value))
-				{
-					this._DESCRIP_PRICE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_INITIAL_QUANTITY", DbType="Int NOT NULL")]
-		public int STOCK_INITIAL_QUANTITY
-		{
-			get
-			{
-				return this._STOCK_INITIAL_QUANTITY;
-			}
-			set
-			{
-				if ((this._STOCK_INITIAL_QUANTITY != value))
-				{
-					this._STOCK_INITIAL_QUANTITY = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_QUANTITY", DbType="Int NOT NULL")]
-		public int STOCK_QUANTITY
-		{
-			get
-			{
-				return this._STOCK_QUANTITY;
-			}
-			set
-			{
-				if ((this._STOCK_QUANTITY != value))
-				{
-					this._STOCK_QUANTITY = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_ADJUSTMENT", DbType="Int")]
-		public System.Nullable<int> STOCK_ADJUSTMENT
-		{
-			get
-			{
-				return this._STOCK_ADJUSTMENT;
-			}
-			set
-			{
-				if ((this._STOCK_ADJUSTMENT != value))
-				{
-					this._STOCK_ADJUSTMENT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_DATE_PRODUCT", DbType="DateTime NOT NULL")]
-		public System.DateTime STOCK_DATE_PRODUCT
-		{
-			get
-			{
-				return this._STOCK_DATE_PRODUCT;
-			}
-			set
-			{
-				if ((this._STOCK_DATE_PRODUCT != value))
-				{
-					this._STOCK_DATE_PRODUCT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_STATE", DbType="Bit NOT NULL")]
-		public bool STOCK_STATE
-		{
-			get
-			{
-				return this._STOCK_STATE;
-			}
-			set
-			{
-				if ((this._STOCK_STATE != value))
-				{
-					this._STOCK_STATE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PREPAID_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string PREPAID_CREATEBY
-		{
-			get
-			{
-				return this._PREPAID_CREATEBY;
-			}
-			set
-			{
-				if ((this._PREPAID_CREATEBY != value))
-				{
-					this._PREPAID_CREATEBY = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_UPDATEDBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string ORDER_UPDATEDBY
-		{
-			get
-			{
-				return this._ORDER_UPDATEDBY;
-			}
-			set
-			{
-				if ((this._ORDER_UPDATEDBY != value))
-				{
-					this._ORDER_UPDATEDBY = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_CREATEDATE", DbType="DateTime NOT NULL")]
-		public System.DateTime STOCK_CREATEDATE
-		{
-			get
-			{
-				return this._STOCK_CREATEDATE;
-			}
-			set
-			{
-				if ((this._STOCK_CREATEDATE != value))
-				{
-					this._STOCK_CREATEDATE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_UPDATEDATE", DbType="DateTime")]
-		public System.Nullable<System.DateTime> STOCK_UPDATEDATE
-		{
-			get
-			{
-				return this._STOCK_UPDATEDATE;
-			}
-			set
-			{
-				if ((this._STOCK_UPDATEDATE != value))
-				{
-					this._STOCK_UPDATEDATE = value;
-				}
-			}
-		}
-	}
-	
 	public partial class SP_CRUD_USERResult
 	{
 		
@@ -6204,6 +7513,212 @@ namespace ControlApp.DataAccess
 				if ((this._PREPAID_UPDATEDATE != value))
 				{
 					this._PREPAID_UPDATEDATE = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_CRUD_STOCKResult
+	{
+		
+		private int _ID_STOCK;
+		
+		private string _DESCRIP_PRICE;
+		
+		private int _STOCK_INITIAL_QUANTITY;
+		
+		private int _STOCK_QUANTITY;
+		
+		private int _STOCK_ADJUSTMENT;
+		
+		private System.DateTime _STOCK_DATE_PRODUCT;
+		
+		private bool _STOCK_STATE;
+		
+		private string _STOCK_CREATEBY;
+		
+		private string _STOCK_UPDATEDBY;
+		
+		private System.DateTime _STOCK_CREATEDATE;
+		
+		private System.Nullable<System.DateTime> _STOCK_UPDATEDATE;
+		
+		public SP_CRUD_STOCKResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_STOCK", DbType="Int NOT NULL")]
+		public int ID_STOCK
+		{
+			get
+			{
+				return this._ID_STOCK;
+			}
+			set
+			{
+				if ((this._ID_STOCK != value))
+				{
+					this._ID_STOCK = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DESCRIP_PRICE", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string DESCRIP_PRICE
+		{
+			get
+			{
+				return this._DESCRIP_PRICE;
+			}
+			set
+			{
+				if ((this._DESCRIP_PRICE != value))
+				{
+					this._DESCRIP_PRICE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_INITIAL_QUANTITY", DbType="Int NOT NULL")]
+		public int STOCK_INITIAL_QUANTITY
+		{
+			get
+			{
+				return this._STOCK_INITIAL_QUANTITY;
+			}
+			set
+			{
+				if ((this._STOCK_INITIAL_QUANTITY != value))
+				{
+					this._STOCK_INITIAL_QUANTITY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_QUANTITY", DbType="Int NOT NULL")]
+		public int STOCK_QUANTITY
+		{
+			get
+			{
+				return this._STOCK_QUANTITY;
+			}
+			set
+			{
+				if ((this._STOCK_QUANTITY != value))
+				{
+					this._STOCK_QUANTITY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_ADJUSTMENT", DbType="Int NOT NULL")]
+		public int STOCK_ADJUSTMENT
+		{
+			get
+			{
+				return this._STOCK_ADJUSTMENT;
+			}
+			set
+			{
+				if ((this._STOCK_ADJUSTMENT != value))
+				{
+					this._STOCK_ADJUSTMENT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_DATE_PRODUCT", DbType="DateTime NOT NULL")]
+		public System.DateTime STOCK_DATE_PRODUCT
+		{
+			get
+			{
+				return this._STOCK_DATE_PRODUCT;
+			}
+			set
+			{
+				if ((this._STOCK_DATE_PRODUCT != value))
+				{
+					this._STOCK_DATE_PRODUCT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_STATE", DbType="Bit NOT NULL")]
+		public bool STOCK_STATE
+		{
+			get
+			{
+				return this._STOCK_STATE;
+			}
+			set
+			{
+				if ((this._STOCK_STATE != value))
+				{
+					this._STOCK_STATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string STOCK_CREATEBY
+		{
+			get
+			{
+				return this._STOCK_CREATEBY;
+			}
+			set
+			{
+				if ((this._STOCK_CREATEBY != value))
+				{
+					this._STOCK_CREATEBY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_UPDATEDBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string STOCK_UPDATEDBY
+		{
+			get
+			{
+				return this._STOCK_UPDATEDBY;
+			}
+			set
+			{
+				if ((this._STOCK_UPDATEDBY != value))
+				{
+					this._STOCK_UPDATEDBY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_CREATEDATE", DbType="DateTime NOT NULL")]
+		public System.DateTime STOCK_CREATEDATE
+		{
+			get
+			{
+				return this._STOCK_CREATEDATE;
+			}
+			set
+			{
+				if ((this._STOCK_CREATEDATE != value))
+				{
+					this._STOCK_CREATEDATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_UPDATEDATE", DbType="DateTime")]
+		public System.Nullable<System.DateTime> STOCK_UPDATEDATE
+		{
+			get
+			{
+				return this._STOCK_UPDATEDATE;
+			}
+			set
+			{
+				if ((this._STOCK_UPDATEDATE != value))
+				{
+					this._STOCK_UPDATEDATE = value;
 				}
 			}
 		}

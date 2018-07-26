@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Objects\Accountreceivable.cs" />
     <Compile Include="Objects\Area.cs" />
     <Compile Include="Objects\BaseEntity.cs" />
     <Compile Include="Objects\Customer.cs" />
