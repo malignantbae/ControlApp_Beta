@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Crud\CrudAccountreceivable.cs" />
     <Compile Include="Crud\CrudActionEnum.cs" />
     <Compile Include="Crud\CrudArea.cs" />
     <Compile Include="Crud\CrudCustomer.cs" />

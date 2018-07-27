@@ -44,15 +44,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Management\AccountreceivableManagement.cs" />
     <Compile Include="Management\AreaManagement.cs" />
     <Compile Include="Management\BaseManagement.cs" />
     <Compile Include="Management\CustomerManagement.cs" />
     <Compile Include="Management\DepartamentManagement.cs" />
+    <Compile Include="Management\OrderManagement.cs" />
     <Compile Include="Management\PermissionManagament.cs" />
     <Compile Include="Management\PositionManagement.cs" />
+    <Compile Include="Management\PrepaidManagement.cs" />
     <Compile Include="Management\ProductManagement.cs" />
     <Compile Include="Management\ReceiptManagement.cs" />
     <Compile Include="Management\RoleManagement.cs" />
+    <Compile Include="Management\StockManagement.cs" />
     <Compile Include="Management\UserManagement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
