@@ -100,8 +100,11 @@ namespace ControlApp.OnPremises.Panels
                 var ListPricetag = ApiAccess_PriceTag.RetrieveAllProduct<Product>();
                 foreach (Product element in ListPricetag)
                 {
-                    gIdPrice_Tag = element.ID_Product;
-                    gUnit_Price = element.Total_Product;
+                    if (element.ID_Product == 7) // PRECIO ACTUAL DEL PRODUCTO 7= new ID_PRODUCT
+                    {
+                        gIdPrice_Tag = element.ID_Product;
+                        gUnit_Price = element.Total_Product;
+                    }
                 }   
             }
             catch (Exception)

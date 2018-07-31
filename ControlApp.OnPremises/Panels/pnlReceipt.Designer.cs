@@ -57,6 +57,7 @@
             this.metroStyleExtender1 = new MetroFramework.Components.MetroStyleExtender(this.components);
             this.mtPrincipal = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
+            this.btnStock = new MetroFramework.Controls.MetroTile();
             this.txtCambio = new MetroFramework.Controls.MetroTextBox();
             this.lblCambio = new MetroFramework.Controls.MetroLabel();
             this.txtCash = new MetroFramework.Controls.MetroTextBox();
@@ -68,7 +69,6 @@
             this.btnLoadRpt = new MetroFramework.Controls.MetroTile();
             this.lblEnd = new MetroFramework.Controls.MetroLabel();
             this.lblBegin = new MetroFramework.Controls.MetroLabel();
-            this.btnStock = new MetroFramework.Controls.MetroTile();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceipt)).BeginInit();
             this.mtPrincipal.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
@@ -451,6 +451,17 @@
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
             // 
+            // btnStock
+            // 
+            this.btnStock.ActiveControl = null;
+            this.btnStock.Location = new System.Drawing.Point(359, 6);
+            this.btnStock.Name = "btnStock";
+            this.btnStock.Size = new System.Drawing.Size(83, 60);
+            this.btnStock.TabIndex = 60;
+            this.btnStock.Text = "Inventario";
+            this.btnStock.UseSelectable = true;
+            this.btnStock.Visible = false;
+            // 
             // txtCambio
             // 
             // 
@@ -614,16 +625,6 @@
             this.lblBegin.TabIndex = 3;
             this.lblBegin.Text = "Fecha Inicio";
             this.lblBegin.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // btnStock
-            // 
-            this.btnStock.ActiveControl = null;
-            this.btnStock.Location = new System.Drawing.Point(359, 6);
-            this.btnStock.Name = "btnStock";
-            this.btnStock.Size = new System.Drawing.Size(83, 60);
-            this.btnStock.TabIndex = 60;
-            this.btnStock.Text = "Inventario";
-            this.btnStock.UseSelectable = true;
             // 
             // pnlReceipt
             // 
