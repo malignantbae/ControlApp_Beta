@@ -57,6 +57,8 @@
             this.metroStyleExtender1 = new MetroFramework.Components.MetroStyleExtender(this.components);
             this.mtPrincipal = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
+            this.lblStock = new MetroFramework.Controls.MetroLabel();
+            this.txtStock = new MetroFramework.Controls.MetroTextBox();
             this.btnStock = new MetroFramework.Controls.MetroTile();
             this.txtCambio = new MetroFramework.Controls.MetroTextBox();
             this.lblCambio = new MetroFramework.Controls.MetroLabel();
@@ -251,7 +253,7 @@
             this.dgvReceipt.EnableHeadersVisualStyles = false;
             this.dgvReceipt.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgvReceipt.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.dgvReceipt.Location = new System.Drawing.Point(3, 192);
+            this.dgvReceipt.Location = new System.Drawing.Point(3, 221);
             this.dgvReceipt.Name = "dgvReceipt";
             this.dgvReceipt.ReadOnly = true;
             this.dgvReceipt.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -265,7 +267,7 @@
             this.dgvReceipt.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvReceipt.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvReceipt.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvReceipt.Size = new System.Drawing.Size(640, 270);
+            this.dgvReceipt.Size = new System.Drawing.Size(660, 241);
             this.dgvReceipt.TabIndex = 15;
             this.dgvReceipt.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.dgvReceipt.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReceipt_CellClick);
@@ -346,7 +348,7 @@
             this.txtRetrieveByName.CustomButton.UseSelectable = true;
             this.txtRetrieveByName.CustomButton.Visible = false;
             this.txtRetrieveByName.Lines = new string[0];
-            this.txtRetrieveByName.Location = new System.Drawing.Point(508, 72);
+            this.txtRetrieveByName.Location = new System.Drawing.Point(531, 6);
             this.txtRetrieveByName.MaxLength = 32767;
             this.txtRetrieveByName.Name = "txtRetrieveByName";
             this.txtRetrieveByName.PasswordChar = '\0';
@@ -366,7 +368,7 @@
             // lblRetrieve
             // 
             this.lblRetrieve.AutoSize = true;
-            this.lblRetrieve.Location = new System.Drawing.Point(455, 76);
+            this.lblRetrieve.Location = new System.Drawing.Point(475, 10);
             this.lblRetrieve.Name = "lblRetrieve";
             this.lblRetrieve.Size = new System.Drawing.Size(47, 19);
             this.lblRetrieve.TabIndex = 39;
@@ -420,6 +422,8 @@
             // 
             // metroTabPage1
             // 
+            this.metroTabPage1.Controls.Add(this.lblStock);
+            this.metroTabPage1.Controls.Add(this.txtStock);
             this.metroTabPage1.Controls.Add(this.btnStock);
             this.metroTabPage1.Controls.Add(this.txtCambio);
             this.metroTabPage1.Controls.Add(this.lblCambio);
@@ -451,12 +455,54 @@
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
             // 
+            // lblStock
+            // 
+            this.lblStock.AutoSize = true;
+            this.lblStock.Location = new System.Drawing.Point(475, 39);
+            this.lblStock.Name = "lblStock";
+            this.lblStock.Size = new System.Drawing.Size(66, 19);
+            this.lblStock.TabIndex = 62;
+            this.lblStock.Text = "Inventario";
+            this.lblStock.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // txtStock
+            // 
+            // 
+            // 
+            // 
+            this.txtStock.CustomButton.Image = null;
+            this.txtStock.CustomButton.Location = new System.Drawing.Point(97, 1);
+            this.txtStock.CustomButton.Name = "";
+            this.txtStock.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtStock.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtStock.CustomButton.TabIndex = 1;
+            this.txtStock.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtStock.CustomButton.UseSelectable = true;
+            this.txtStock.CustomButton.Visible = false;
+            this.txtStock.Enabled = false;
+            this.txtStock.Lines = new string[0];
+            this.txtStock.Location = new System.Drawing.Point(547, 35);
+            this.txtStock.MaxLength = 32767;
+            this.txtStock.Name = "txtStock";
+            this.txtStock.PasswordChar = '\0';
+            this.txtStock.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtStock.SelectedText = "";
+            this.txtStock.SelectionLength = 0;
+            this.txtStock.SelectionStart = 0;
+            this.txtStock.ShortcutsEnabled = true;
+            this.txtStock.Size = new System.Drawing.Size(119, 23);
+            this.txtStock.TabIndex = 61;
+            this.txtStock.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.txtStock.UseSelectable = true;
+            this.txtStock.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtStock.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
             // btnStock
             // 
             this.btnStock.ActiveControl = null;
             this.btnStock.Location = new System.Drawing.Point(359, 6);
             this.btnStock.Name = "btnStock";
-            this.btnStock.Size = new System.Drawing.Size(83, 60);
+            this.btnStock.Size = new System.Drawing.Size(110, 60);
             this.btnStock.TabIndex = 60;
             this.btnStock.Text = "Inventario";
             this.btnStock.UseSelectable = true;
@@ -478,7 +524,7 @@
             this.txtCambio.CustomButton.Visible = false;
             this.txtCambio.Enabled = false;
             this.txtCambio.Lines = new string[0];
-            this.txtCambio.Location = new System.Drawing.Point(299, 159);
+            this.txtCambio.Location = new System.Drawing.Point(92, 192);
             this.txtCambio.MaxLength = 32767;
             this.txtCambio.Name = "txtCambio";
             this.txtCambio.PasswordChar = '\0';
@@ -497,7 +543,7 @@
             // lblCambio
             // 
             this.lblCambio.AutoSize = true;
-            this.lblCambio.Location = new System.Drawing.Point(237, 163);
+            this.lblCambio.Location = new System.Drawing.Point(30, 196);
             this.lblCambio.Name = "lblCambio";
             this.lblCambio.Size = new System.Drawing.Size(56, 19);
             this.lblCambio.TabIndex = 58;
@@ -683,5 +729,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CHANGE;
         private System.Windows.Forms.DataGridViewTextBoxColumn DATE_RECEIPT;
         private MetroFramework.Controls.MetroTile btnStock;
+        private MetroFramework.Controls.MetroLabel lblStock;
+        private MetroFramework.Controls.MetroTextBox txtStock;
     }
 }
