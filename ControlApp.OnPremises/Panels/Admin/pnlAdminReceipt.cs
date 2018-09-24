@@ -342,7 +342,18 @@ namespace ControlApp.OnPremises.Panels.Admin
                 try
                 {
                     dgvReceipt.Rows.Clear();
-                    ObjReceipt.ID_Receipt = Convert.ToInt32(txtRetrieveByName.Text);
+
+                    int ejem = 0;// Variable para el Trypare
+                    if (int.TryParse(txtRetrieveByName.Text, out ejem))
+                    {
+                        ObjReceipt.ID_Receipt = Convert.ToInt32(txtRetrieveByName.Text);
+                    }
+                    else
+                    {
+                        ObjReceipt.Customer_name = txtRetrieveByName.Text;
+                    }
+
+
                     var ListReceipt = ApiAccess.SuperRetrieveByIdReceipt<Receipt>(ObjReceipt);
                     foreach (Receipt element in ListReceipt)
                     {
@@ -354,18 +365,20 @@ namespace ControlApp.OnPremises.Panels.Admin
                         dgvReceipt.Rows.Add(RowPrice);
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    throw;
+
+                    MetroMessageBox.Show(this, "La Petición -" + txtRetrieveByName.Text +
+                        "- no es Valida. ", "Error en Busqueda" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
         }
         private void txtRetrieveByName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
+            //if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            //{
+            //    e.Handled = true;
+            //}
         }
     }
 }

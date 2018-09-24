@@ -141,8 +141,20 @@ namespace ControlApp.OnPremises.Panels
                 try
                 {
                     dgvReceipt.Rows.Clear();
-                    ObjReceipt.ID_Receipt = Convert.ToInt32(txtRetrieveByName.Text);
+
+                    int ejem = 0;// Variable para el Trypare
+                    if (int.TryParse(txtRetrieveByName.Text, out ejem))
+                    {
+                        ObjReceipt.ID_Receipt = Convert.ToInt32(txtRetrieveByName.Text);
+                    }
+                    else
+                    {
+                        ObjReceipt.Customer_name = txtRetrieveByName.Text;
+                    }
+
                     var ListReceipt = ApiAccess.RetrieveAllByIdReceipt<Receipt>(ObjReceipt);
+
+
                     foreach (Receipt element in ListReceipt)
                     {
                         string[] RowPrice;
@@ -153,9 +165,11 @@ namespace ControlApp.OnPremises.Panels
                         dgvReceipt.Rows.Add(RowPrice);
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    throw;
+                    
+                    MetroMessageBox.Show(this, "La Petición -" + txtRetrieveByName.Text + 
+                        "- no es Valida. ", "Error en Busqueda" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
         }
@@ -190,7 +204,17 @@ namespace ControlApp.OnPremises.Panels
             }
         }
         /// </CrudReceipt>
-        
+
+
+
+        /// <CrudStock>
+        public void CreateStock()
+        {
+
+        }
+        /// </CrudEvents>
+
+
         /// <Eventpnl>
         /// Event Load
         private void pnlReceipt_Load(object sender, EventArgs e)
@@ -382,7 +406,14 @@ namespace ControlApp.OnPremises.Panels
         {
             PrintAF();
         }
+
+        private void btnStock_Click(object sender, EventArgs e)
+        {
+
+        }
+
         /// </RptEvents>
+
 
 
     }

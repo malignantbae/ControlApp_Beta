@@ -46,15 +46,6 @@
             this.txtNameCustomer = new MetroFramework.Controls.MetroTextBox();
             this.lblNameCustomer = new MetroFramework.Controls.MetroLabel();
             this.dgvReceipt = new MetroFramework.Controls.MetroGrid();
-            this.btnCreate = new MetroFramework.Controls.MetroTile();
-            this.btnUpdate = new MetroFramework.Controls.MetroTile();
-            this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
-            this.dtEnd = new System.Windows.Forms.DateTimePicker();
-            this.dtBegin = new System.Windows.Forms.DateTimePicker();
-            this.btnRefresh = new MetroFramework.Controls.MetroTile();
-            this.btnLoadRpt = new MetroFramework.Controls.MetroTile();
-            this.lblEnd = new MetroFramework.Controls.MetroLabel();
-            this.lblBegin = new MetroFramework.Controls.MetroLabel();
             this.ID_RECEIPT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NAME_CUSTOMER = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QUANTITY = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,6 +60,15 @@
             this.RECEIPT_UPDATEBY = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RECEIPT_CREATEDATE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RECEIPT_UPDATEDATE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnCreate = new MetroFramework.Controls.MetroTile();
+            this.btnUpdate = new MetroFramework.Controls.MetroTile();
+            this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
+            this.dtEnd = new System.Windows.Forms.DateTimePicker();
+            this.dtBegin = new System.Windows.Forms.DateTimePicker();
+            this.btnRefresh = new MetroFramework.Controls.MetroTile();
+            this.btnLoadRpt = new MetroFramework.Controls.MetroTile();
+            this.lblEnd = new MetroFramework.Controls.MetroLabel();
+            this.lblBegin = new MetroFramework.Controls.MetroLabel();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceipt)).BeginInit();
@@ -392,106 +392,6 @@
             this.dgvReceipt.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.dgvReceipt.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReceipt_CellClick);
             // 
-            // btnCreate
-            // 
-            this.btnCreate.ActiveControl = null;
-            this.btnCreate.Location = new System.Drawing.Point(0, 3);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(83, 60);
-            this.btnCreate.TabIndex = 55;
-            this.btnCreate.Text = "Agregar";
-            this.btnCreate.UseSelectable = true;
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.ActiveControl = null;
-            this.btnUpdate.Location = new System.Drawing.Point(89, 3);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(83, 60);
-            this.btnUpdate.TabIndex = 56;
-            this.btnUpdate.Text = "Actualizar";
-            this.btnUpdate.UseSelectable = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // metroTabPage2
-            // 
-            this.metroTabPage2.Controls.Add(this.dtEnd);
-            this.metroTabPage2.Controls.Add(this.dtBegin);
-            this.metroTabPage2.Controls.Add(this.btnRefresh);
-            this.metroTabPage2.Controls.Add(this.btnLoadRpt);
-            this.metroTabPage2.Controls.Add(this.lblEnd);
-            this.metroTabPage2.Controls.Add(this.lblBegin);
-            this.metroTabPage2.HorizontalScrollbarBarColor = true;
-            this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage2.HorizontalScrollbarSize = 10;
-            this.metroTabPage2.Location = new System.Drawing.Point(4, 38);
-            this.metroTabPage2.Name = "metroTabPage2";
-            this.metroTabPage2.Size = new System.Drawing.Size(686, 526);
-            this.metroTabPage2.TabIndex = 2;
-            this.metroTabPage2.Text = "Reportes";
-            this.metroTabPage2.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroTabPage2.VerticalScrollbarBarColor = true;
-            this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
-            this.metroTabPage2.VerticalScrollbarSize = 10;
-            // 
-            // dtEnd
-            // 
-            this.dtEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtEnd.Location = new System.Drawing.Point(92, 102);
-            this.dtEnd.Name = "dtEnd";
-            this.dtEnd.Size = new System.Drawing.Size(168, 20);
-            this.dtEnd.TabIndex = 21;
-            // 
-            // dtBegin
-            // 
-            this.dtBegin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtBegin.Location = new System.Drawing.Point(92, 76);
-            this.dtBegin.Name = "dtBegin";
-            this.dtBegin.Size = new System.Drawing.Size(168, 20);
-            this.dtBegin.TabIndex = 20;
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.ActiveControl = null;
-            this.btnRefresh.Location = new System.Drawing.Point(92, 3);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(83, 60);
-            this.btnRefresh.TabIndex = 15;
-            this.btnRefresh.Text = "Refrescar";
-            this.btnRefresh.UseSelectable = true;
-            // 
-            // btnLoadRpt
-            // 
-            this.btnLoadRpt.ActiveControl = null;
-            this.btnLoadRpt.Location = new System.Drawing.Point(3, 3);
-            this.btnLoadRpt.Name = "btnLoadRpt";
-            this.btnLoadRpt.Size = new System.Drawing.Size(83, 60);
-            this.btnLoadRpt.TabIndex = 14;
-            this.btnLoadRpt.Text = "Generar";
-            this.btnLoadRpt.UseSelectable = true;
-            this.btnLoadRpt.Click += new System.EventHandler(this.btnLoadRpt_Click);
-            // 
-            // lblEnd
-            // 
-            this.lblEnd.AutoSize = true;
-            this.lblEnd.Location = new System.Drawing.Point(3, 103);
-            this.lblEnd.Name = "lblEnd";
-            this.lblEnd.Size = new System.Drawing.Size(64, 19);
-            this.lblEnd.TabIndex = 5;
-            this.lblEnd.Text = "Fecha Fin";
-            this.lblEnd.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // lblBegin
-            // 
-            this.lblBegin.AutoSize = true;
-            this.lblBegin.Location = new System.Drawing.Point(3, 77);
-            this.lblBegin.Name = "lblBegin";
-            this.lblBegin.Size = new System.Drawing.Size(77, 19);
-            this.lblBegin.TabIndex = 3;
-            this.lblBegin.Text = "Fecha Inicio";
-            this.lblBegin.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
             // ID_RECEIPT
             // 
             this.ID_RECEIPT.FillWeight = 60F;
@@ -594,6 +494,106 @@
             this.RECEIPT_UPDATEDATE.Name = "RECEIPT_UPDATEDATE";
             this.RECEIPT_UPDATEDATE.ReadOnly = true;
             this.RECEIPT_UPDATEDATE.Width = 130;
+            // 
+            // btnCreate
+            // 
+            this.btnCreate.ActiveControl = null;
+            this.btnCreate.Location = new System.Drawing.Point(0, 3);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(83, 60);
+            this.btnCreate.TabIndex = 55;
+            this.btnCreate.Text = "Agregar";
+            this.btnCreate.UseSelectable = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.ActiveControl = null;
+            this.btnUpdate.Location = new System.Drawing.Point(89, 3);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(83, 60);
+            this.btnUpdate.TabIndex = 56;
+            this.btnUpdate.Text = "Actualizar";
+            this.btnUpdate.UseSelectable = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // metroTabPage2
+            // 
+            this.metroTabPage2.Controls.Add(this.dtEnd);
+            this.metroTabPage2.Controls.Add(this.dtBegin);
+            this.metroTabPage2.Controls.Add(this.btnRefresh);
+            this.metroTabPage2.Controls.Add(this.btnLoadRpt);
+            this.metroTabPage2.Controls.Add(this.lblEnd);
+            this.metroTabPage2.Controls.Add(this.lblBegin);
+            this.metroTabPage2.HorizontalScrollbarBarColor = true;
+            this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroTabPage2.HorizontalScrollbarSize = 10;
+            this.metroTabPage2.Location = new System.Drawing.Point(4, 38);
+            this.metroTabPage2.Name = "metroTabPage2";
+            this.metroTabPage2.Size = new System.Drawing.Size(686, 526);
+            this.metroTabPage2.TabIndex = 2;
+            this.metroTabPage2.Text = "Reportes";
+            this.metroTabPage2.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroTabPage2.VerticalScrollbarBarColor = true;
+            this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
+            this.metroTabPage2.VerticalScrollbarSize = 10;
+            // 
+            // dtEnd
+            // 
+            this.dtEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtEnd.Location = new System.Drawing.Point(92, 102);
+            this.dtEnd.Name = "dtEnd";
+            this.dtEnd.Size = new System.Drawing.Size(168, 20);
+            this.dtEnd.TabIndex = 21;
+            // 
+            // dtBegin
+            // 
+            this.dtBegin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtBegin.Location = new System.Drawing.Point(92, 76);
+            this.dtBegin.Name = "dtBegin";
+            this.dtBegin.Size = new System.Drawing.Size(168, 20);
+            this.dtBegin.TabIndex = 20;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.ActiveControl = null;
+            this.btnRefresh.Location = new System.Drawing.Point(92, 3);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(83, 60);
+            this.btnRefresh.TabIndex = 15;
+            this.btnRefresh.Text = "Refrescar";
+            this.btnRefresh.UseSelectable = true;
+            // 
+            // btnLoadRpt
+            // 
+            this.btnLoadRpt.ActiveControl = null;
+            this.btnLoadRpt.Location = new System.Drawing.Point(3, 3);
+            this.btnLoadRpt.Name = "btnLoadRpt";
+            this.btnLoadRpt.Size = new System.Drawing.Size(83, 60);
+            this.btnLoadRpt.TabIndex = 14;
+            this.btnLoadRpt.Text = "Generar";
+            this.btnLoadRpt.UseSelectable = true;
+            this.btnLoadRpt.Click += new System.EventHandler(this.btnLoadRpt_Click);
+            // 
+            // lblEnd
+            // 
+            this.lblEnd.AutoSize = true;
+            this.lblEnd.Location = new System.Drawing.Point(3, 103);
+            this.lblEnd.Name = "lblEnd";
+            this.lblEnd.Size = new System.Drawing.Size(64, 19);
+            this.lblEnd.TabIndex = 5;
+            this.lblEnd.Text = "Fecha Fin";
+            this.lblEnd.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // lblBegin
+            // 
+            this.lblBegin.AutoSize = true;
+            this.lblBegin.Location = new System.Drawing.Point(3, 77);
+            this.lblBegin.Name = "lblBegin";
+            this.lblBegin.Size = new System.Drawing.Size(77, 19);
+            this.lblBegin.TabIndex = 3;
+            this.lblBegin.Text = "Fecha Inicio";
+            this.lblBegin.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // pnlAdminReceipt
             // 
