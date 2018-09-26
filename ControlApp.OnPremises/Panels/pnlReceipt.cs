@@ -55,6 +55,7 @@ namespace ControlApp.OnPremises.Panels
             txtTotalReceipt.Enabled = false;
             dtBegin.CustomFormat = "yyyy/MM/dd HH:mm:ss";
             dtEnd.CustomFormat = "yyyy/MM/dd HH:mm:ss";
+            btnStock.Style = MetroFramework.MetroColorStyle.Green;
             log4net.Config.XmlConfigurator.Configure();
             log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         }
@@ -406,12 +407,17 @@ namespace ControlApp.OnPremises.Panels
         {
             PrintAF();
         }
-
         private void btnStock_Click(object sender, EventArgs e)
         {
-
+            
+            pnlStock.Visible = true;
         }
-
+        private void btnOCStock_Click(object sender, EventArgs e)
+        {
+            btnStock.Style = MetroFramework.MetroColorStyle.Red;
+            btnStock.Text = "Cerrar";
+            pnlStock.Visible = false;
+        }
         /// </RptEvents>
 
 
