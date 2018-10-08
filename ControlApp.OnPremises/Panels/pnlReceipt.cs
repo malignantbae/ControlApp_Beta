@@ -23,11 +23,18 @@ namespace ControlApp.OnPremises.Panels
 
     {
         // Variables for ApiCore
-        ReceiptManagement ApiAccess = new ReceiptManagement(); // Global of de Class
-        ProductManagement ApiAccess_PriceTag = new ProductManagement(); // Product
-        StockManagement ApiAccess_Stock = new StockManagement(); //Stock
-        AccountreceivableManagement Apiccess_CXC = new AccountreceivableManagement(); //CXC
-        PrepaidManagement Apiccess_Prepaid = new PrepaidManagement(); // Prepaid
+        ReceiptManagement ApiAccess = new ReceiptManagement(); 
+        // Global of de Class
+        ProductManagement ApiAccess_PriceTag = new ProductManagement(); 
+        // Product
+        StockManagement ApiAccess_Stock = new StockManagement(); 
+        //Stock
+        AccountreceivableManagement Apiccess_CXC = new AccountreceivableManagement();
+        //CXC
+        PrepaidManagement ApiAccess_Prepaid = new PrepaidManagement();
+        // Prepaid
+        CustomerManagement ApiAccess_Customer = new CustomerManagement(); 
+        // Customer
 
         //Object instance
         Receipt ObjReceipt = new Receipt();
@@ -35,6 +42,7 @@ namespace ControlApp.OnPremises.Panels
         Stock ObjStock = new Stock();
         Accountreceivable ObjCXC = new Accountreceivable();
         Prepaid ObjPrepaid = new Prepaid();
+        Customer ObjCustomer = new Customer();
 
         //ID Session for Security
         string pIdSession = MystaticValues.IdSession;
@@ -181,13 +189,15 @@ namespace ControlApp.OnPremises.Panels
             int IdReceipt = Convert.ToInt32(dgvReceipt[0, Row].Value);
             if (dgvReceipt[0, Row].Value == null)
             {
-                MetroMessageBox.Show(this, "Debe Seleccionar Al menos Algún Valor para Inactivar. \n Favor Intentelo Nuevamente", "Error en Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MetroMessageBox.Show(this, "Debe Seleccionar Al menos Algún Valor para Inactivar. \n Favor Intentelo Nuevamente", 
+                    "Error en Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 dgvReceipt.Focus();
                 return;
             }
             else
             {
-                if (MetroFramework.MetroMessageBox.Show(this, "¿Desea Anular el Recibo N-° : " + IdReceipt.ToString() + "?", "Confirmación de Acción", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                if (MetroFramework.MetroMessageBox.Show(this, "¿Desea Anular el Recibo N-° : " + IdReceipt.ToString() + "?", 
+                    "Confirmación de Acción", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
                     try
                     {
@@ -195,9 +205,10 @@ namespace ControlApp.OnPremises.Panels
                         ObjReceipt.IdSession = pIdSession;
                         ApiAccess.DeleteReceipt(ObjReceipt);
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        throw;
+                        MetroMessageBox.Show(this, "Error Al momento de Agregar",
+                            "Error en Crud" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                     CleanFields();
                     LoadDataGrid();
@@ -206,15 +217,113 @@ namespace ControlApp.OnPremises.Panels
         }
         /// </CrudReceipt>
 
+        /// <CrudCustomer>
+        /// Create
+        private void btnCreateCustomer_Click(object sender, EventArgs e)
+        {
+            string IDCustomer = txtIDCustomer.Text;
+            string NameCustomer = txtNCustomer.Text;
+            if (string.IsNullOrEmpty(IDCustomer.Trim()))
+            {
+                MetroMessageBox.Show(this, "La cédula -" + IDCustomer + "- no es Valida. \n Favor Digite un valor Valido", "Error en Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtIDCustomer.Focus();
+                return;
+            }
+            if (string.IsNullOrEmpty(NameCustomer.Trim()))
+            {
+                MetroMessageBox.Show(this, "El nombre -" + NameCustomer + "- no es Valido. \n Favor Digite un valor Valido", "Error en Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtNCustomer.Focus();
+                return;
+            }
+        
+                try
+                {
+                    ObjCustomer.Customer_name = NameCustomer;
+                    ObjCustomer.ID_Customer = IDCustomer;
+                    ObjCustomer.CreateBy = pIdSession;
+                    ApiAccess_Customer.Create(ObjCustomer);
 
+                }
+                catch (Exception ex)
+                {
+                    MetroMessageBox.Show(this, "Error Al momento de Agregar",
+                        "Error en Crud" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                btnRefreshCustomer.PerformClick();
+
+        }
+        /// Update
+        private void btnUpdateCustomer_Click(object sender, EventArgs e)
+        {
+            string IDCustomer = txtIDCustomer.Text;
+            string NameCustomer = txtNCustomer.Text;
+            if (string.IsNullOrEmpty(IDCustomer.Trim()))
+            {
+                MetroMessageBox.Show(this, "La cédula -" + IDCustomer + "- no es Valida. \n Favor Digite un valor Valido", "Error en Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtIDCustomer.Focus();
+                return;
+            }
+            if (string.IsNullOrEmpty(NameCustomer.Trim()))
+            {
+                MetroMessageBox.Show(this, "El nombre -" + NameCustomer + "- no es Valido. \n Favor Digite un valor Valido", "Error en Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtNCustomer.Focus();
+                return;
+            }
+            if (MetroFramework.MetroMessageBox.Show(this, "¿Desea Actualizar al Cliente: " + txtNameCustomer.Text + "?",
+                   "Confirmación de Acción", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                try
+                {
+                    ObjCustomer.Customer_name = NameCustomer;
+                    ObjCustomer.ID_Customer = IDCustomer;
+                    ObjCustomer.UpdateBy = pIdSession;
+                    ApiAccess_Customer.Update(ObjCustomer);
+
+                }
+                catch (Exception ex)
+                {
+                    MetroMessageBox.Show(this, "Error Al momento de Agregar",
+                        "Error en Crud" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                btnRefreshCustomer.PerformClick();
+            }
+        }
+        /// Retrieve 
+        public void LoadDataGridCustomer()
+        {
+
+            try
+            {
+                dgvCustomer.Rows.Clear();
+                var ListCustomer = ApiAccess_Customer.RetrieveAll<Customer>();
+                foreach (Customer element in ListCustomer)
+                {
+                    string[] RowCustomer;
+                    RowCustomer = new string[] { element.ID_Customer.ToString(), element.Customer_name };
+                    dgvCustomer.Rows.Add(RowCustomer);
+                }
+            }
+            catch (Exception ex)
+            {
+                MetroMessageBox.Show(this, "Error Al momento de Cargar el Grid",
+                    "Error en Busqueda" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void btnRefreshCustomer_Click(object sender, EventArgs e)
+        {
+            LoadDataGridCustomer();
+            CleanFieldsCustomer();
+            btnUpdateCustomer.Enabled = false;
+        }
+        /// </CrudCustomer> 
 
         /// <CrudStock>
         public void CreateStock()
         {
 
         }
-        /// </CrudEvents>
-
+        /// </CrudStock>
 
         /// <Eventpnl>
         /// Event Load
@@ -222,6 +331,7 @@ namespace ControlApp.OnPremises.Panels
         {
             LoadDataGrid();
             LoadPriceTag();
+            LoadDataGridCustomer();
             btnPrint.Enabled = false;
             btnDelete.Enabled = false;
         }
@@ -234,6 +344,13 @@ namespace ControlApp.OnPremises.Panels
             }
         }
         private void txtCash_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+        private void txtIDCustomer_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
@@ -297,11 +414,27 @@ namespace ControlApp.OnPremises.Panels
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                MetroMessageBox.Show(this, "Error Al momento de Cargar el Grid",
+                    "Error en Busqueda" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
 
         }
+        private void dgvCustomer_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                btnUpdateCustomer.Enabled = true;
+                int Row = dgvCustomer.CurrentRow.Index;
+                txtIDCustomer.Text = dgvCustomer[0, Row].Value.ToString();
+                txtNCustomer.Text = dgvCustomer[1, Row].Value.ToString();
+            }
+            catch (Exception ex)
+            {
+                MetroMessageBox.Show(this, "Error Al momento de Cargar el Grid",
+                    "Error en Busqueda" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
         /// Click for pnl
         private void btnCleanFields_Click(object sender, EventArgs e)
         {
@@ -312,9 +445,6 @@ namespace ControlApp.OnPremises.Panels
         {
             ShowReportByUser();
         }
-        /// </Eventpnl>
-
-        /// <ExtraEvents> 
         public void CleanFields()
         {
             btnPrint.Enabled = false;
@@ -343,7 +473,7 @@ namespace ControlApp.OnPremises.Panels
             {
                 throw;
             }
-        } 
+        }
         public void LoadPriceTag()
         {
             try
@@ -356,7 +486,7 @@ namespace ControlApp.OnPremises.Panels
                         gIdPrice_Tag = element.ID_Product;
                         gUnit_Price = element.Total_Product;
                     }
-                }   
+                }
             }
             catch (Exception)
             {
@@ -364,7 +494,12 @@ namespace ControlApp.OnPremises.Panels
             }
 
         } //get the Price and ID of Product 
-          /// </ExtraEvents>  
+        public void CleanFieldsCustomer()
+        {
+            txtIDCustomer.Text = "";
+            txtNCustomer.Text = "";
+        }
+        /// </Eventpnl> 
 
         /// <RptEvents>
         private void GetIdSsrs() // Principal Flow
@@ -419,8 +554,6 @@ namespace ControlApp.OnPremises.Panels
             pnlStock.Visible = false;
         }
         /// </RptEvents>
-
-
 
     }
 }
