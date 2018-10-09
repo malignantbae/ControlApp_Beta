@@ -16,6 +16,7 @@ using System.Text.RegularExpressions;
 using Microsoft.Reporting.WinForms;
 using ControlApp.Util;
 using ControlApp.OnPremises.Forms.Report;
+using MetroFramework.Controls;
 
 namespace ControlApp.OnPremises.Panels
 {
@@ -25,7 +26,7 @@ namespace ControlApp.OnPremises.Panels
         // Variables for ApiCore
         ReceiptManagement ApiAccess = new ReceiptManagement(); 
         // Global of de Class
-        ProductManagement ApiAccess_PriceTag = new ProductManagement(); 
+        ProductManagement ApiAccess_Product = new ProductManagement(); 
         // Product
         StockManagement ApiAccess_Stock = new StockManagement(); 
         //Stock
@@ -136,10 +137,12 @@ namespace ControlApp.OnPremises.Panels
             {
                 throw;
             }
+
         }
         /// RetrieveByName  
         private void txtRetrieveByName_TextChanged(object sender, EventArgs e)
         {
+            btnDelete.Enabled = false;
             if (txtRetrieveByName.Text == "")
             {
                 LoadDataGrid();
@@ -250,13 +253,15 @@ namespace ControlApp.OnPremises.Panels
                         "Error en Crud" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 btnRefreshCustomer.PerformClick();
-
         }
         /// Update
         private void btnUpdateCustomer_Click(object sender, EventArgs e)
         {
             string IDCustomer = txtIDCustomer.Text;
             string NameCustomer = txtNCustomer.Text;
+            // DGV ROWS
+            int Row = dgvCustomer.CurrentRow.Index;
+            string update = dgvCustomer[1, Row].Value.ToString();
             if (string.IsNullOrEmpty(IDCustomer.Trim()))
             {
                 MetroMessageBox.Show(this, "La cédula -" + IDCustomer + "- no es Valida. \n Favor Digite un valor Valido", "Error en Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -268,8 +273,8 @@ namespace ControlApp.OnPremises.Panels
                 MetroMessageBox.Show(this, "El nombre -" + NameCustomer + "- no es Valido. \n Favor Digite un valor Valido", "Error en Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtNCustomer.Focus();
                 return;
-            }
-            if (MetroFramework.MetroMessageBox.Show(this, "¿Desea Actualizar al Cliente: " + txtNameCustomer.Text + "?",
+            } 
+            if (MetroFramework.MetroMessageBox.Show(this, "¿Desea Actualizar el Cliente: " + update + " a " + txtNCustomer.Text + "?",
                    "Confirmación de Acción", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 try
@@ -309,7 +314,65 @@ namespace ControlApp.OnPremises.Panels
                     "Error en Busqueda" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
+        private void txtSearchCustomer_TextChanged(object sender, EventArgs e)
+        {
+            if (txtSearchCustomer.Text == "")
+            {
+                LoadDataGridCustomer();
+                CleanFieldsCustomer();
+            }
+            else
+            {
+                try
+                {
+                    dgvCustomer.Rows.Clear();
 
+
+                        ObjCustomer.ID_Customer = txtSearchCustomer.Text;
+                        ObjCustomer.Customer_name = txtSearchCustomer.Text;
+
+                    var ListCustomer = ApiAccess_Customer.RetrieveAllById<Customer>(ObjCustomer);
+
+
+                    foreach (Customer element in ListCustomer)
+                    {
+                        string[] RowCustomer;
+                        RowCustomer = new string[] { element.ID_Customer.ToString(), element.Customer_name };
+                        dgvCustomer.Rows.Add(RowCustomer);
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    MetroMessageBox.Show(this, "La Petición -" + txtSearchCustomer.Text +
+                        "- no es Valida. ", "Error en Busqueda" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+        }
+        private string SearchIdCustomer(string pNameCustomer)
+        {
+            string IdCustomer = "N/A";
+            ObjCustomer.Customer_name = pNameCustomer;
+            List<Customer> MyList = new List<Customer>();
+            try
+            {
+                MyList = ApiAccess_Customer.RetrieveAllById<Customer>(ObjCustomer);
+                foreach (Customer element in MyList)
+                {
+                    if (element.Customer_name == pNameCustomer)
+                    {
+                         element.ID_Customer = IdCustomer;
+                    }
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MetroMessageBox.Show(this, "Error Al momento de Buscar ID Cliente",
+                    "Error en Crud" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            return IdCustomer;
+        }
         private void btnRefreshCustomer_Click(object sender, EventArgs e)
         {
             LoadDataGridCustomer();
@@ -317,6 +380,67 @@ namespace ControlApp.OnPremises.Panels
             btnUpdateCustomer.Enabled = false;
         }
         /// </CrudCustomer> 
+
+        /// <CrudPrepaid>
+        /// Create
+        private void btnCreatePrepaid_Click(object sender, EventArgs e)
+        {
+            
+            string IDCustomer = SearchIdCustomer(txtNCustomerPrepaid.Text);
+            if (string.IsNullOrEmpty(IDCustomer.Trim()))
+            {
+                MetroMessageBox.Show(this, "El Cliente -" + txtNCustomerPrepaid.Text + 
+                    "- no es Valido. \n Favor Digite un valor Valido", "Error en Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtIDCustomer.Focus();
+                return;
+            }
+            try
+            {
+                ObjPrepaid.Id_Customer = IDCustomer;
+                ObjCustomer.CreateBy = pIdSession;
+                ApiAccess_Customer.Create(ObjCustomer);
+            }
+            catch (Exception ex)
+            {
+                MetroMessageBox.Show(this, "Error Al momento de Agregar",
+                    "Error en Crud" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            mpOrder.Visible = true;
+            LoadDataGridPrepaid();
+        }
+        /// Update
+        /// Retrieve
+        public void LoadtxtCustomerPrepaid(MetroTextBox txt)
+        {
+            List<Customer> MyList = new List<Customer>();
+            MyList = ApiAccess_Customer.RetrieveAll<Customer>();
+            foreach (Customer element in MyList)
+            {
+                txt.AutoCompleteCustomSource.Add(element.Customer_name);
+            }
+        }
+        public void LoadDataGridPrepaid()
+        {
+
+            try
+            {
+                dgvPrepaid.Rows.Clear();
+                var ListPrepaid = ApiAccess_Prepaid.RetrieveAll<Prepaid>();
+                foreach (Prepaid element in ListPrepaid)
+                {
+                    string[] RowPrepaid;
+                    RowPrepaid = new string[] { element.Id_Prepaid.ToString(), element.Name_Customer, element.Prepaid_Quantity.ToString(),
+                    element.Prepaid_Total.ToString(), element.Prepaid_Cash.ToString(), element.Prepaid_Balance.ToString()};
+                    dgvCustomer.Rows.Add(RowPrepaid);
+                }
+            }
+            catch (Exception ex)
+            {
+                MetroMessageBox.Show(this, "Error Al momento de Cargar el Grid",
+                    "Error en Busqueda" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+        /// </CrudPrepaid>
 
         /// <CrudStock>
         public void CreateStock()
@@ -332,6 +456,7 @@ namespace ControlApp.OnPremises.Panels
             LoadDataGrid();
             LoadPriceTag();
             LoadDataGridCustomer();
+            LoadtxtCustomerPrepaid(txtNCustomerPrepaid);
             btnPrint.Enabled = false;
             btnDelete.Enabled = false;
         }
@@ -356,6 +481,10 @@ namespace ControlApp.OnPremises.Panels
             {
                 e.Handled = true;
             }
+        }
+        private void txtNCustomer_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
         }
         /// TextChanged
         private void txtQuantity_TextChanged(object sender, EventArgs e)
@@ -478,7 +607,7 @@ namespace ControlApp.OnPremises.Panels
         {
             try
             {
-                var ListPricetag = ApiAccess_PriceTag.RetrieveAllProduct<Product>();
+                var ListPricetag = ApiAccess_Product.RetrieveAllProduct<Product>();
                 foreach (Product element in ListPricetag)
                 {
                     if (element.ID_Product == 7) // PRECIO ACTUAL DEL PRODUCTO 7= new ID_PRODUCT

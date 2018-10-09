@@ -41,6 +41,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnCreate = new MetroFramework.Controls.MetroTile();
             this.lblTotal = new MetroFramework.Controls.MetroLabel();
             this.txtTotalReceipt = new MetroFramework.Controls.MetroTextBox();
@@ -114,18 +117,27 @@
             this.btnCreateCxc = new MetroFramework.Controls.MetroTile();
             this.metroTile4 = new MetroFramework.Controls.MetroTile();
             this.mtPrepaid = new MetroFramework.Controls.MetroTabPage();
-            this.metroTextBox15 = new MetroFramework.Controls.MetroTextBox();
-            this.metroTextBox10 = new MetroFramework.Controls.MetroTextBox();
+            this.mpOrder = new MetroFramework.Controls.MetroPanel();
+            this.btnDeleteOrden = new MetroFramework.Controls.MetroButton();
+            this.btnUpdateOrden = new MetroFramework.Controls.MetroButton();
+            this.btnCreateOrden = new MetroFramework.Controls.MetroButton();
+            this.metroGrid3 = new MetroFramework.Controls.MetroGrid();
+            this.txtDateOrder = new MetroFramework.Controls.MetroLabel();
+            this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
+            this.txtQuantityOrder = new MetroFramework.Controls.MetroTextBox();
+            this.lblQuantityOrder = new MetroFramework.Controls.MetroLabel();
+            this.txtNCustomerPrepaid = new MetroFramework.Controls.MetroTextBox();
+            this.txtChangePrepaid = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
-            this.metroTextBox11 = new MetroFramework.Controls.MetroTextBox();
+            this.txtCashPrepaid = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
-            this.metroTextBox12 = new MetroFramework.Controls.MetroTextBox();
-            this.metroTextBox14 = new MetroFramework.Controls.MetroTextBox();
+            this.txtTotalPrepaid = new MetroFramework.Controls.MetroTextBox();
+            this.txtQuantityPrepaid = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.metroTextBox9 = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.metroGrid2 = new MetroFramework.Controls.MetroGrid();
+            this.dgvPrepaid = new MetroFramework.Controls.MetroGrid();
             this.ID_PREPAID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NAME_CUSTOMER_PREPAID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NAME_PRODUCT_PREPAID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -134,19 +146,17 @@
             this.PREPAID_CASH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PREPAID_CHANGE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PREPAID_BALANCE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.metroTextBox13 = new MetroFramework.Controls.MetroTextBox();
-            this.lblProductPrepaid = new MetroFramework.Controls.MetroLabel();
             this.lblCustomer = new MetroFramework.Controls.MetroLabel();
             this.metroTile3 = new MetroFramework.Controls.MetroTile();
             this.metroTile5 = new MetroFramework.Controls.MetroTile();
-            this.btnRetreatReturn = new MetroFramework.Controls.MetroTile();
+            this.btnCreatePrepaid = new MetroFramework.Controls.MetroTile();
             this.metroTile7 = new MetroFramework.Controls.MetroTile();
             this.mtCustomer = new MetroFramework.Controls.MetroTabPage();
             this.txtIDCustomer = new MetroFramework.Controls.MetroTextBox();
             this.txtNCustomer = new MetroFramework.Controls.MetroTextBox();
             this.lblNCustomer = new MetroFramework.Controls.MetroLabel();
             this.lblIdCustomer = new MetroFramework.Controls.MetroLabel();
-            this.metroTextBox21 = new MetroFramework.Controls.MetroTextBox();
+            this.txtSearchCustomer = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.dgvCustomer = new MetroFramework.Controls.MetroGrid();
             this.ID_CUSTOMER = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -162,7 +172,9 @@
             this.mtCxc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
             this.mtPrepaid.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.metroGrid2)).BeginInit();
+            this.mpOrder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.metroGrid3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPrepaid)).BeginInit();
             this.mtCustomer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
             this.SuspendLayout();
@@ -507,7 +519,7 @@
             this.mtPrincipal.Controls.Add(this.mtCustomer);
             this.mtPrincipal.Location = new System.Drawing.Point(3, 3);
             this.mtPrincipal.Name = "mtPrincipal";
-            this.mtPrincipal.SelectedIndex = 4;
+            this.mtPrincipal.SelectedIndex = 3;
             this.mtPrincipal.Size = new System.Drawing.Size(674, 549);
             this.mtPrincipal.TabIndex = 56;
             this.mtPrincipal.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -1348,24 +1360,23 @@
             // 
             // mtPrepaid
             // 
-            this.mtPrepaid.Controls.Add(this.metroTextBox15);
-            this.mtPrepaid.Controls.Add(this.metroTextBox10);
+            this.mtPrepaid.Controls.Add(this.mpOrder);
+            this.mtPrepaid.Controls.Add(this.txtNCustomerPrepaid);
+            this.mtPrepaid.Controls.Add(this.txtChangePrepaid);
             this.mtPrepaid.Controls.Add(this.metroLabel4);
-            this.mtPrepaid.Controls.Add(this.metroTextBox11);
+            this.mtPrepaid.Controls.Add(this.txtCashPrepaid);
             this.mtPrepaid.Controls.Add(this.metroLabel5);
             this.mtPrepaid.Controls.Add(this.metroLabel6);
-            this.mtPrepaid.Controls.Add(this.metroTextBox12);
-            this.mtPrepaid.Controls.Add(this.metroTextBox14);
+            this.mtPrepaid.Controls.Add(this.txtTotalPrepaid);
+            this.mtPrepaid.Controls.Add(this.txtQuantityPrepaid);
             this.mtPrepaid.Controls.Add(this.metroLabel7);
             this.mtPrepaid.Controls.Add(this.metroTextBox9);
             this.mtPrepaid.Controls.Add(this.metroLabel3);
-            this.mtPrepaid.Controls.Add(this.metroGrid2);
-            this.mtPrepaid.Controls.Add(this.metroTextBox13);
-            this.mtPrepaid.Controls.Add(this.lblProductPrepaid);
+            this.mtPrepaid.Controls.Add(this.dgvPrepaid);
             this.mtPrepaid.Controls.Add(this.lblCustomer);
             this.mtPrepaid.Controls.Add(this.metroTile3);
             this.mtPrepaid.Controls.Add(this.metroTile5);
-            this.mtPrepaid.Controls.Add(this.btnRetreatReturn);
+            this.mtPrepaid.Controls.Add(this.btnCreatePrepaid);
             this.mtPrepaid.Controls.Add(this.metroTile7);
             this.mtPrepaid.HorizontalScrollbarBarColor = true;
             this.mtPrepaid.HorizontalScrollbarHighlightOnWheel = false;
@@ -1380,115 +1391,277 @@
             this.mtPrepaid.VerticalScrollbarHighlightOnWheel = false;
             this.mtPrepaid.VerticalScrollbarSize = 10;
             // 
-            // metroTextBox15
+            // mpOrder
+            // 
+            this.mpOrder.Controls.Add(this.btnDeleteOrden);
+            this.mpOrder.Controls.Add(this.btnUpdateOrden);
+            this.mpOrder.Controls.Add(this.btnCreateOrden);
+            this.mpOrder.Controls.Add(this.metroGrid3);
+            this.mpOrder.Controls.Add(this.txtDateOrder);
+            this.mpOrder.Controls.Add(this.metroDateTime1);
+            this.mpOrder.Controls.Add(this.txtQuantityOrder);
+            this.mpOrder.Controls.Add(this.lblQuantityOrder);
+            this.mpOrder.Enabled = false;
+            this.mpOrder.HorizontalScrollbarBarColor = true;
+            this.mpOrder.HorizontalScrollbarHighlightOnWheel = false;
+            this.mpOrder.HorizontalScrollbarSize = 10;
+            this.mpOrder.Location = new System.Drawing.Point(270, 82);
+            this.mpOrder.Name = "mpOrder";
+            this.mpOrder.Size = new System.Drawing.Size(390, 194);
+            this.mpOrder.TabIndex = 84;
+            this.mpOrder.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.mpOrder.VerticalScrollbarBarColor = true;
+            this.mpOrder.VerticalScrollbarHighlightOnWheel = false;
+            this.mpOrder.VerticalScrollbarSize = 10;
+            this.mpOrder.Visible = false;
+            // 
+            // btnDeleteOrden
+            // 
+            this.btnDeleteOrden.Location = new System.Drawing.Point(170, 48);
+            this.btnDeleteOrden.Name = "btnDeleteOrden";
+            this.btnDeleteOrden.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteOrden.TabIndex = 74;
+            this.btnDeleteOrden.Text = "Eliminar";
+            this.btnDeleteOrden.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.btnDeleteOrden.UseSelectable = true;
+            // 
+            // btnUpdateOrden
+            // 
+            this.btnUpdateOrden.Location = new System.Drawing.Point(89, 48);
+            this.btnUpdateOrden.Name = "btnUpdateOrden";
+            this.btnUpdateOrden.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdateOrden.TabIndex = 73;
+            this.btnUpdateOrden.Text = "Actualizar";
+            this.btnUpdateOrden.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.btnUpdateOrden.UseSelectable = true;
+            // 
+            // btnCreateOrden
+            // 
+            this.btnCreateOrden.Location = new System.Drawing.Point(8, 48);
+            this.btnCreateOrden.Name = "btnCreateOrden";
+            this.btnCreateOrden.Size = new System.Drawing.Size(75, 23);
+            this.btnCreateOrden.TabIndex = 72;
+            this.btnCreateOrden.Text = "Crear";
+            this.btnCreateOrden.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.btnCreateOrden.UseSelectable = true;
+            // 
+            // metroGrid3
+            // 
+            this.metroGrid3.AllowUserToResizeRows = false;
+            this.metroGrid3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.metroGrid3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.metroGrid3.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.metroGrid3.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.metroGrid3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.metroGrid3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.metroGrid3.DefaultCellStyle = dataGridViewCellStyle8;
+            this.metroGrid3.EnableHeadersVisualStyles = false;
+            this.metroGrid3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.metroGrid3.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.metroGrid3.Location = new System.Drawing.Point(3, 77);
+            this.metroGrid3.Name = "metroGrid3";
+            this.metroGrid3.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.metroGrid3.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.metroGrid3.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.metroGrid3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.metroGrid3.Size = new System.Drawing.Size(384, 114);
+            this.metroGrid3.TabIndex = 70;
+            this.metroGrid3.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // txtDateOrder
+            // 
+            this.txtDateOrder.AutoSize = true;
+            this.txtDateOrder.Location = new System.Drawing.Point(8, 14);
+            this.txtDateOrder.Name = "txtDateOrder";
+            this.txtDateOrder.Size = new System.Drawing.Size(43, 19);
+            this.txtDateOrder.TabIndex = 71;
+            this.txtDateOrder.Text = "Fecha";
+            this.txtDateOrder.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // metroDateTime1
+            // 
+            this.metroDateTime1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.metroDateTime1.Location = new System.Drawing.Point(58, 10);
+            this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
+            this.metroDateTime1.Name = "metroDateTime1";
+            this.metroDateTime1.Size = new System.Drawing.Size(106, 29);
+            this.metroDateTime1.TabIndex = 69;
+            this.metroDateTime1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // txtQuantityOrder
             // 
             // 
             // 
             // 
-            this.metroTextBox15.CustomButton.Image = null;
-            this.metroTextBox15.CustomButton.Location = new System.Drawing.Point(117, 1);
-            this.metroTextBox15.CustomButton.Name = "";
-            this.metroTextBox15.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.metroTextBox15.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox15.CustomButton.TabIndex = 1;
-            this.metroTextBox15.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox15.CustomButton.UseSelectable = true;
-            this.metroTextBox15.CustomButton.Visible = false;
-            this.metroTextBox15.Lines = new string[0];
-            this.metroTextBox15.Location = new System.Drawing.Point(103, 82);
-            this.metroTextBox15.MaxLength = 32767;
-            this.metroTextBox15.Name = "metroTextBox15";
-            this.metroTextBox15.PasswordChar = '\0';
-            this.metroTextBox15.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox15.SelectedText = "";
-            this.metroTextBox15.SelectionLength = 0;
-            this.metroTextBox15.SelectionStart = 0;
-            this.metroTextBox15.ShortcutsEnabled = true;
-            this.metroTextBox15.Size = new System.Drawing.Size(139, 23);
-            this.metroTextBox15.TabIndex = 83;
-            this.metroTextBox15.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroTextBox15.UseSelectable = true;
-            this.metroTextBox15.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox15.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtQuantityOrder.CustomButton.Image = null;
+            this.txtQuantityOrder.CustomButton.Location = new System.Drawing.Point(74, 1);
+            this.txtQuantityOrder.CustomButton.Name = "";
+            this.txtQuantityOrder.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.txtQuantityOrder.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtQuantityOrder.CustomButton.TabIndex = 1;
+            this.txtQuantityOrder.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtQuantityOrder.CustomButton.UseSelectable = true;
+            this.txtQuantityOrder.CustomButton.Visible = false;
+            this.txtQuantityOrder.Lines = new string[0];
+            this.txtQuantityOrder.Location = new System.Drawing.Point(280, 10);
+            this.txtQuantityOrder.MaxLength = 32767;
+            this.txtQuantityOrder.MinimumSize = new System.Drawing.Size(0, 29);
+            this.txtQuantityOrder.Name = "txtQuantityOrder";
+            this.txtQuantityOrder.PasswordChar = '\0';
+            this.txtQuantityOrder.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtQuantityOrder.SelectedText = "";
+            this.txtQuantityOrder.SelectionLength = 0;
+            this.txtQuantityOrder.SelectionStart = 0;
+            this.txtQuantityOrder.ShortcutsEnabled = true;
+            this.txtQuantityOrder.Size = new System.Drawing.Size(102, 29);
+            this.txtQuantityOrder.TabIndex = 64;
+            this.txtQuantityOrder.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.txtQuantityOrder.UseSelectable = true;
+            this.txtQuantityOrder.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtQuantityOrder.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // metroTextBox10
+            // lblQuantityOrder
+            // 
+            this.lblQuantityOrder.AutoSize = true;
+            this.lblQuantityOrder.Location = new System.Drawing.Point(170, 14);
+            this.lblQuantityOrder.Name = "lblQuantityOrder";
+            this.lblQuantityOrder.Size = new System.Drawing.Size(104, 19);
+            this.lblQuantityOrder.TabIndex = 65;
+            this.lblQuantityOrder.Text = "Cantidad Orden";
+            this.lblQuantityOrder.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // txtNCustomerPrepaid
+            // 
+            this.txtNCustomerPrepaid.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtNCustomerPrepaid.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            // 
+            // 
+            // 
+            this.txtNCustomerPrepaid.CustomButton.Image = null;
+            this.txtNCustomerPrepaid.CustomButton.Location = new System.Drawing.Point(139, 1);
+            this.txtNCustomerPrepaid.CustomButton.Name = "";
+            this.txtNCustomerPrepaid.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtNCustomerPrepaid.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtNCustomerPrepaid.CustomButton.TabIndex = 1;
+            this.txtNCustomerPrepaid.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtNCustomerPrepaid.CustomButton.UseSelectable = true;
+            this.txtNCustomerPrepaid.CustomButton.Visible = false;
+            this.txtNCustomerPrepaid.Lines = new string[0];
+            this.txtNCustomerPrepaid.Location = new System.Drawing.Point(103, 82);
+            this.txtNCustomerPrepaid.MaxLength = 32767;
+            this.txtNCustomerPrepaid.Name = "txtNCustomerPrepaid";
+            this.txtNCustomerPrepaid.PasswordChar = '\0';
+            this.txtNCustomerPrepaid.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtNCustomerPrepaid.SelectedText = "";
+            this.txtNCustomerPrepaid.SelectionLength = 0;
+            this.txtNCustomerPrepaid.SelectionStart = 0;
+            this.txtNCustomerPrepaid.ShortcutsEnabled = true;
+            this.txtNCustomerPrepaid.Size = new System.Drawing.Size(161, 23);
+            this.txtNCustomerPrepaid.TabIndex = 83;
+            this.txtNCustomerPrepaid.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.txtNCustomerPrepaid.UseSelectable = true;
+            this.txtNCustomerPrepaid.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtNCustomerPrepaid.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // txtChangePrepaid
             // 
             // 
             // 
             // 
-            this.metroTextBox10.CustomButton.Image = null;
-            this.metroTextBox10.CustomButton.Location = new System.Drawing.Point(117, 1);
-            this.metroTextBox10.CustomButton.Name = "";
-            this.metroTextBox10.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.metroTextBox10.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox10.CustomButton.TabIndex = 1;
-            this.metroTextBox10.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox10.CustomButton.UseSelectable = true;
-            this.metroTextBox10.CustomButton.Visible = false;
-            this.metroTextBox10.Enabled = false;
-            this.metroTextBox10.Lines = new string[0];
-            this.metroTextBox10.Location = new System.Drawing.Point(103, 227);
-            this.metroTextBox10.MaxLength = 32767;
-            this.metroTextBox10.Name = "metroTextBox10";
-            this.metroTextBox10.PasswordChar = '\0';
-            this.metroTextBox10.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox10.SelectedText = "";
-            this.metroTextBox10.SelectionLength = 0;
-            this.metroTextBox10.SelectionStart = 0;
-            this.metroTextBox10.ShortcutsEnabled = true;
-            this.metroTextBox10.Size = new System.Drawing.Size(139, 23);
-            this.metroTextBox10.TabIndex = 82;
-            this.metroTextBox10.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroTextBox10.UseSelectable = true;
-            this.metroTextBox10.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox10.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtChangePrepaid.CustomButton.Image = null;
+            this.txtChangePrepaid.CustomButton.Location = new System.Drawing.Point(139, 1);
+            this.txtChangePrepaid.CustomButton.Name = "";
+            this.txtChangePrepaid.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtChangePrepaid.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtChangePrepaid.CustomButton.TabIndex = 1;
+            this.txtChangePrepaid.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtChangePrepaid.CustomButton.UseSelectable = true;
+            this.txtChangePrepaid.CustomButton.Visible = false;
+            this.txtChangePrepaid.Enabled = false;
+            this.txtChangePrepaid.Lines = new string[0];
+            this.txtChangePrepaid.Location = new System.Drawing.Point(103, 198);
+            this.txtChangePrepaid.MaxLength = 32767;
+            this.txtChangePrepaid.Name = "txtChangePrepaid";
+            this.txtChangePrepaid.PasswordChar = '\0';
+            this.txtChangePrepaid.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtChangePrepaid.SelectedText = "";
+            this.txtChangePrepaid.SelectionLength = 0;
+            this.txtChangePrepaid.SelectionStart = 0;
+            this.txtChangePrepaid.ShortcutsEnabled = true;
+            this.txtChangePrepaid.Size = new System.Drawing.Size(161, 23);
+            this.txtChangePrepaid.TabIndex = 82;
+            this.txtChangePrepaid.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.txtChangePrepaid.UseSelectable = true;
+            this.txtChangePrepaid.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtChangePrepaid.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(3, 231);
+            this.metroLabel4.Location = new System.Drawing.Point(3, 202);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(56, 19);
             this.metroLabel4.TabIndex = 81;
             this.metroLabel4.Text = "Cambio";
             this.metroLabel4.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
-            // metroTextBox11
+            // txtCashPrepaid
             // 
             // 
             // 
             // 
-            this.metroTextBox11.CustomButton.Image = null;
-            this.metroTextBox11.CustomButton.Location = new System.Drawing.Point(117, 1);
-            this.metroTextBox11.CustomButton.Name = "";
-            this.metroTextBox11.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.metroTextBox11.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox11.CustomButton.TabIndex = 1;
-            this.metroTextBox11.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox11.CustomButton.UseSelectable = true;
-            this.metroTextBox11.CustomButton.Visible = false;
-            this.metroTextBox11.Enabled = false;
-            this.metroTextBox11.Lines = new string[0];
-            this.metroTextBox11.Location = new System.Drawing.Point(103, 198);
-            this.metroTextBox11.MaxLength = 32767;
-            this.metroTextBox11.Name = "metroTextBox11";
-            this.metroTextBox11.PasswordChar = '\0';
-            this.metroTextBox11.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox11.SelectedText = "";
-            this.metroTextBox11.SelectionLength = 0;
-            this.metroTextBox11.SelectionStart = 0;
-            this.metroTextBox11.ShortcutsEnabled = true;
-            this.metroTextBox11.Size = new System.Drawing.Size(139, 23);
-            this.metroTextBox11.TabIndex = 76;
-            this.metroTextBox11.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroTextBox11.UseSelectable = true;
-            this.metroTextBox11.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox11.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtCashPrepaid.CustomButton.Image = null;
+            this.txtCashPrepaid.CustomButton.Location = new System.Drawing.Point(139, 1);
+            this.txtCashPrepaid.CustomButton.Name = "";
+            this.txtCashPrepaid.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtCashPrepaid.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtCashPrepaid.CustomButton.TabIndex = 1;
+            this.txtCashPrepaid.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtCashPrepaid.CustomButton.UseSelectable = true;
+            this.txtCashPrepaid.CustomButton.Visible = false;
+            this.txtCashPrepaid.Enabled = false;
+            this.txtCashPrepaid.Lines = new string[0];
+            this.txtCashPrepaid.Location = new System.Drawing.Point(103, 169);
+            this.txtCashPrepaid.MaxLength = 32767;
+            this.txtCashPrepaid.Name = "txtCashPrepaid";
+            this.txtCashPrepaid.PasswordChar = '\0';
+            this.txtCashPrepaid.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtCashPrepaid.SelectedText = "";
+            this.txtCashPrepaid.SelectionLength = 0;
+            this.txtCashPrepaid.SelectionStart = 0;
+            this.txtCashPrepaid.ShortcutsEnabled = true;
+            this.txtCashPrepaid.Size = new System.Drawing.Size(161, 23);
+            this.txtCashPrepaid.TabIndex = 76;
+            this.txtCashPrepaid.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.txtCashPrepaid.UseSelectable = true;
+            this.txtCashPrepaid.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtCashPrepaid.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(3, 202);
+            this.metroLabel5.Location = new System.Drawing.Point(3, 173);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(54, 19);
             this.metroLabel5.TabIndex = 80;
@@ -1498,79 +1671,79 @@
             // metroLabel6
             // 
             this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(3, 173);
+            this.metroLabel6.Location = new System.Drawing.Point(3, 144);
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(36, 19);
             this.metroLabel6.TabIndex = 79;
             this.metroLabel6.Text = "Total";
             this.metroLabel6.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
-            // metroTextBox12
+            // txtTotalPrepaid
             // 
             // 
             // 
             // 
-            this.metroTextBox12.CustomButton.Image = null;
-            this.metroTextBox12.CustomButton.Location = new System.Drawing.Point(117, 1);
-            this.metroTextBox12.CustomButton.Name = "";
-            this.metroTextBox12.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.metroTextBox12.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox12.CustomButton.TabIndex = 1;
-            this.metroTextBox12.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox12.CustomButton.UseSelectable = true;
-            this.metroTextBox12.CustomButton.Visible = false;
-            this.metroTextBox12.Lines = new string[0];
-            this.metroTextBox12.Location = new System.Drawing.Point(103, 169);
-            this.metroTextBox12.MaxLength = 32767;
-            this.metroTextBox12.Name = "metroTextBox12";
-            this.metroTextBox12.PasswordChar = '\0';
-            this.metroTextBox12.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox12.SelectedText = "";
-            this.metroTextBox12.SelectionLength = 0;
-            this.metroTextBox12.SelectionStart = 0;
-            this.metroTextBox12.ShortcutsEnabled = true;
-            this.metroTextBox12.Size = new System.Drawing.Size(139, 23);
-            this.metroTextBox12.TabIndex = 78;
-            this.metroTextBox12.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroTextBox12.UseSelectable = true;
-            this.metroTextBox12.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox12.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtTotalPrepaid.CustomButton.Image = null;
+            this.txtTotalPrepaid.CustomButton.Location = new System.Drawing.Point(139, 1);
+            this.txtTotalPrepaid.CustomButton.Name = "";
+            this.txtTotalPrepaid.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtTotalPrepaid.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtTotalPrepaid.CustomButton.TabIndex = 1;
+            this.txtTotalPrepaid.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtTotalPrepaid.CustomButton.UseSelectable = true;
+            this.txtTotalPrepaid.CustomButton.Visible = false;
+            this.txtTotalPrepaid.Lines = new string[0];
+            this.txtTotalPrepaid.Location = new System.Drawing.Point(103, 140);
+            this.txtTotalPrepaid.MaxLength = 32767;
+            this.txtTotalPrepaid.Name = "txtTotalPrepaid";
+            this.txtTotalPrepaid.PasswordChar = '\0';
+            this.txtTotalPrepaid.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtTotalPrepaid.SelectedText = "";
+            this.txtTotalPrepaid.SelectionLength = 0;
+            this.txtTotalPrepaid.SelectionStart = 0;
+            this.txtTotalPrepaid.ShortcutsEnabled = true;
+            this.txtTotalPrepaid.Size = new System.Drawing.Size(161, 23);
+            this.txtTotalPrepaid.TabIndex = 78;
+            this.txtTotalPrepaid.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.txtTotalPrepaid.UseSelectable = true;
+            this.txtTotalPrepaid.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtTotalPrepaid.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // metroTextBox14
-            // 
-            // 
+            // txtQuantityPrepaid
             // 
             // 
-            this.metroTextBox14.CustomButton.Image = null;
-            this.metroTextBox14.CustomButton.Location = new System.Drawing.Point(117, 1);
-            this.metroTextBox14.CustomButton.Name = "";
-            this.metroTextBox14.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.metroTextBox14.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox14.CustomButton.TabIndex = 1;
-            this.metroTextBox14.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox14.CustomButton.UseSelectable = true;
-            this.metroTextBox14.CustomButton.Visible = false;
-            this.metroTextBox14.Lines = new string[0];
-            this.metroTextBox14.Location = new System.Drawing.Point(103, 140);
-            this.metroTextBox14.MaxLength = 32767;
-            this.metroTextBox14.Name = "metroTextBox14";
-            this.metroTextBox14.PasswordChar = '\0';
-            this.metroTextBox14.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox14.SelectedText = "";
-            this.metroTextBox14.SelectionLength = 0;
-            this.metroTextBox14.SelectionStart = 0;
-            this.metroTextBox14.ShortcutsEnabled = true;
-            this.metroTextBox14.Size = new System.Drawing.Size(139, 23);
-            this.metroTextBox14.TabIndex = 75;
-            this.metroTextBox14.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroTextBox14.UseSelectable = true;
-            this.metroTextBox14.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox14.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // 
+            this.txtQuantityPrepaid.CustomButton.Image = null;
+            this.txtQuantityPrepaid.CustomButton.Location = new System.Drawing.Point(139, 1);
+            this.txtQuantityPrepaid.CustomButton.Name = "";
+            this.txtQuantityPrepaid.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtQuantityPrepaid.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtQuantityPrepaid.CustomButton.TabIndex = 1;
+            this.txtQuantityPrepaid.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtQuantityPrepaid.CustomButton.UseSelectable = true;
+            this.txtQuantityPrepaid.CustomButton.Visible = false;
+            this.txtQuantityPrepaid.Lines = new string[0];
+            this.txtQuantityPrepaid.Location = new System.Drawing.Point(103, 111);
+            this.txtQuantityPrepaid.MaxLength = 32767;
+            this.txtQuantityPrepaid.Name = "txtQuantityPrepaid";
+            this.txtQuantityPrepaid.PasswordChar = '\0';
+            this.txtQuantityPrepaid.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtQuantityPrepaid.SelectedText = "";
+            this.txtQuantityPrepaid.SelectionLength = 0;
+            this.txtQuantityPrepaid.SelectionStart = 0;
+            this.txtQuantityPrepaid.ShortcutsEnabled = true;
+            this.txtQuantityPrepaid.Size = new System.Drawing.Size(161, 23);
+            this.txtQuantityPrepaid.TabIndex = 75;
+            this.txtQuantityPrepaid.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.txtQuantityPrepaid.UseSelectable = true;
+            this.txtQuantityPrepaid.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtQuantityPrepaid.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // metroLabel7
             // 
             this.metroLabel7.AutoSize = true;
-            this.metroLabel7.Location = new System.Drawing.Point(3, 144);
+            this.metroLabel7.Location = new System.Drawing.Point(3, 115);
             this.metroLabel7.Name = "metroLabel7";
             this.metroLabel7.Size = new System.Drawing.Size(62, 19);
             this.metroLabel7.TabIndex = 77;
@@ -1618,25 +1791,25 @@
             this.metroLabel3.Text = "Buscar";
             this.metroLabel3.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
-            // metroGrid2
+            // dgvPrepaid
             // 
-            this.metroGrid2.AllowUserToAddRows = false;
-            this.metroGrid2.AllowUserToDeleteRows = false;
-            this.metroGrid2.AllowUserToResizeRows = false;
-            this.metroGrid2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.metroGrid2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.metroGrid2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.metroGrid2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGrid2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.metroGrid2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.metroGrid2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvPrepaid.AllowUserToAddRows = false;
+            this.dgvPrepaid.AllowUserToDeleteRows = false;
+            this.dgvPrepaid.AllowUserToResizeRows = false;
+            this.dgvPrepaid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.dgvPrepaid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvPrepaid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvPrepaid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPrepaid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            this.dgvPrepaid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPrepaid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID_PREPAID,
             this.NAME_CUSTOMER_PREPAID,
             this.NAME_PRODUCT_PREPAID,
@@ -1645,34 +1818,34 @@
             this.PREPAID_CASH,
             this.PREPAID_CHANGE,
             this.PREPAID_BALANCE});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.metroGrid2.DefaultCellStyle = dataGridViewCellStyle8;
-            this.metroGrid2.EnableHeadersVisualStyles = false;
-            this.metroGrid2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.metroGrid2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.metroGrid2.Location = new System.Drawing.Point(0, 256);
-            this.metroGrid2.Name = "metroGrid2";
-            this.metroGrid2.ReadOnly = true;
-            this.metroGrid2.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGrid2.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.metroGrid2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.metroGrid2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid2.Size = new System.Drawing.Size(660, 248);
-            this.metroGrid2.TabIndex = 72;
-            this.metroGrid2.Theme = MetroFramework.MetroThemeStyle.Dark;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPrepaid.DefaultCellStyle = dataGridViewCellStyle11;
+            this.dgvPrepaid.EnableHeadersVisualStyles = false;
+            this.dgvPrepaid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dgvPrepaid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.dgvPrepaid.Location = new System.Drawing.Point(3, 282);
+            this.dgvPrepaid.Name = "dgvPrepaid";
+            this.dgvPrepaid.ReadOnly = true;
+            this.dgvPrepaid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPrepaid.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            this.dgvPrepaid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvPrepaid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPrepaid.Size = new System.Drawing.Size(660, 229);
+            this.dgvPrepaid.TabIndex = 72;
+            this.dgvPrepaid.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // ID_PREPAID
             // 
@@ -1730,47 +1903,6 @@
             this.PREPAID_BALANCE.ReadOnly = true;
             this.PREPAID_BALANCE.Width = 75;
             // 
-            // metroTextBox13
-            // 
-            // 
-            // 
-            // 
-            this.metroTextBox13.CustomButton.Image = null;
-            this.metroTextBox13.CustomButton.Location = new System.Drawing.Point(117, 1);
-            this.metroTextBox13.CustomButton.Name = "";
-            this.metroTextBox13.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.metroTextBox13.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox13.CustomButton.TabIndex = 1;
-            this.metroTextBox13.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox13.CustomButton.UseSelectable = true;
-            this.metroTextBox13.CustomButton.Visible = false;
-            this.metroTextBox13.Lines = new string[0];
-            this.metroTextBox13.Location = new System.Drawing.Point(103, 111);
-            this.metroTextBox13.MaxLength = 32767;
-            this.metroTextBox13.Name = "metroTextBox13";
-            this.metroTextBox13.PasswordChar = '\0';
-            this.metroTextBox13.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox13.SelectedText = "";
-            this.metroTextBox13.SelectionLength = 0;
-            this.metroTextBox13.SelectionStart = 0;
-            this.metroTextBox13.ShortcutsEnabled = true;
-            this.metroTextBox13.Size = new System.Drawing.Size(139, 23);
-            this.metroTextBox13.TabIndex = 61;
-            this.metroTextBox13.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroTextBox13.UseSelectable = true;
-            this.metroTextBox13.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox13.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // lblProductPrepaid
-            // 
-            this.lblProductPrepaid.AutoSize = true;
-            this.lblProductPrepaid.Location = new System.Drawing.Point(3, 115);
-            this.lblProductPrepaid.Name = "lblProductPrepaid";
-            this.lblProductPrepaid.Size = new System.Drawing.Size(67, 19);
-            this.lblProductPrepaid.TabIndex = 63;
-            this.lblProductPrepaid.Text = "Producto ";
-            this.lblProductPrepaid.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
             // lblCustomer
             // 
             this.lblCustomer.AutoSize = true;
@@ -1801,15 +1933,16 @@
             this.metroTile5.Text = "Anular";
             this.metroTile5.UseSelectable = true;
             // 
-            // btnRetreatReturn
+            // btnCreatePrepaid
             // 
-            this.btnRetreatReturn.ActiveControl = null;
-            this.btnRetreatReturn.Location = new System.Drawing.Point(3, 6);
-            this.btnRetreatReturn.Name = "btnRetreatReturn";
-            this.btnRetreatReturn.Size = new System.Drawing.Size(83, 60);
-            this.btnRetreatReturn.TabIndex = 56;
-            this.btnRetreatReturn.Text = "Retiro";
-            this.btnRetreatReturn.UseSelectable = true;
+            this.btnCreatePrepaid.ActiveControl = null;
+            this.btnCreatePrepaid.Location = new System.Drawing.Point(3, 6);
+            this.btnCreatePrepaid.Name = "btnCreatePrepaid";
+            this.btnCreatePrepaid.Size = new System.Drawing.Size(83, 60);
+            this.btnCreatePrepaid.TabIndex = 56;
+            this.btnCreatePrepaid.Text = "Vender";
+            this.btnCreatePrepaid.UseSelectable = true;
+            this.btnCreatePrepaid.Click += new System.EventHandler(this.btnCreatePrepaid_Click);
             // 
             // metroTile7
             // 
@@ -1827,7 +1960,7 @@
             this.mtCustomer.Controls.Add(this.txtNCustomer);
             this.mtCustomer.Controls.Add(this.lblNCustomer);
             this.mtCustomer.Controls.Add(this.lblIdCustomer);
-            this.mtCustomer.Controls.Add(this.metroTextBox21);
+            this.mtCustomer.Controls.Add(this.txtSearchCustomer);
             this.mtCustomer.Controls.Add(this.metroLabel8);
             this.mtCustomer.Controls.Add(this.dgvCustomer);
             this.mtCustomer.Controls.Add(this.btnRefreshCustomer);
@@ -1908,6 +2041,7 @@
             this.txtNCustomer.UseSelectable = true;
             this.txtNCustomer.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtNCustomer.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtNCustomer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNCustomer_KeyPress);
             // 
             // lblNCustomer
             // 
@@ -1929,36 +2063,37 @@
             this.lblIdCustomer.Text = "Cédula";
             this.lblIdCustomer.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
-            // metroTextBox21
+            // txtSearchCustomer
             // 
             // 
             // 
             // 
-            this.metroTextBox21.CustomButton.Image = null;
-            this.metroTextBox21.CustomButton.Location = new System.Drawing.Point(113, 1);
-            this.metroTextBox21.CustomButton.Name = "";
-            this.metroTextBox21.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.metroTextBox21.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox21.CustomButton.TabIndex = 1;
-            this.metroTextBox21.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox21.CustomButton.UseSelectable = true;
-            this.metroTextBox21.CustomButton.Visible = false;
-            this.metroTextBox21.Lines = new string[0];
-            this.metroTextBox21.Location = new System.Drawing.Point(530, 41);
-            this.metroTextBox21.MaxLength = 32767;
-            this.metroTextBox21.Name = "metroTextBox21";
-            this.metroTextBox21.PasswordChar = '\0';
-            this.metroTextBox21.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox21.SelectedText = "";
-            this.metroTextBox21.SelectionLength = 0;
-            this.metroTextBox21.SelectionStart = 0;
-            this.metroTextBox21.ShortcutsEnabled = true;
-            this.metroTextBox21.Size = new System.Drawing.Size(135, 23);
-            this.metroTextBox21.TabIndex = 90;
-            this.metroTextBox21.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroTextBox21.UseSelectable = true;
-            this.metroTextBox21.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox21.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtSearchCustomer.CustomButton.Image = null;
+            this.txtSearchCustomer.CustomButton.Location = new System.Drawing.Point(113, 1);
+            this.txtSearchCustomer.CustomButton.Name = "";
+            this.txtSearchCustomer.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtSearchCustomer.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtSearchCustomer.CustomButton.TabIndex = 1;
+            this.txtSearchCustomer.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtSearchCustomer.CustomButton.UseSelectable = true;
+            this.txtSearchCustomer.CustomButton.Visible = false;
+            this.txtSearchCustomer.Lines = new string[0];
+            this.txtSearchCustomer.Location = new System.Drawing.Point(530, 41);
+            this.txtSearchCustomer.MaxLength = 32767;
+            this.txtSearchCustomer.Name = "txtSearchCustomer";
+            this.txtSearchCustomer.PasswordChar = '\0';
+            this.txtSearchCustomer.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtSearchCustomer.SelectedText = "";
+            this.txtSearchCustomer.SelectionLength = 0;
+            this.txtSearchCustomer.SelectionStart = 0;
+            this.txtSearchCustomer.ShortcutsEnabled = true;
+            this.txtSearchCustomer.Size = new System.Drawing.Size(135, 23);
+            this.txtSearchCustomer.TabIndex = 90;
+            this.txtSearchCustomer.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.txtSearchCustomer.UseSelectable = true;
+            this.txtSearchCustomer.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtSearchCustomer.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtSearchCustomer.TextChanged += new System.EventHandler(this.txtSearchCustomer_TextChanged);
             // 
             // metroLabel8
             // 
@@ -1979,26 +2114,26 @@
             this.dgvCustomer.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvCustomer.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvCustomer.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCustomer.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCustomer.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCustomer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID_CUSTOMER,
             this.CUSTOMER_NAME});
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCustomer.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCustomer.DefaultCellStyle = dataGridViewCellStyle14;
             this.dgvCustomer.EnableHeadersVisualStyles = false;
             this.dgvCustomer.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgvCustomer.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
@@ -2006,14 +2141,14 @@
             this.dgvCustomer.Name = "dgvCustomer";
             this.dgvCustomer.ReadOnly = true;
             this.dgvCustomer.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCustomer.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCustomer.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dgvCustomer.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCustomer.Size = new System.Drawing.Size(658, 125);
@@ -2090,7 +2225,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).EndInit();
             this.mtPrepaid.ResumeLayout(false);
             this.mtPrepaid.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.metroGrid2)).EndInit();
+            this.mpOrder.ResumeLayout(false);
+            this.mpOrder.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.metroGrid3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPrepaid)).EndInit();
             this.mtCustomer.ResumeLayout(false);
             this.mtCustomer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).EndInit();
@@ -2171,24 +2309,22 @@
         private MetroFramework.Controls.MetroTextBox metroTextBox5;
         private MetroFramework.Controls.MetroLabel lblRetreat;
         private MetroFramework.Controls.MetroTabPage mtPrepaid;
-        private MetroFramework.Controls.MetroTextBox metroTextBox15;
-        private MetroFramework.Controls.MetroTextBox metroTextBox10;
+        private MetroFramework.Controls.MetroTextBox txtNCustomerPrepaid;
+        private MetroFramework.Controls.MetroTextBox txtChangePrepaid;
         private MetroFramework.Controls.MetroLabel metroLabel4;
-        private MetroFramework.Controls.MetroTextBox metroTextBox11;
+        private MetroFramework.Controls.MetroTextBox txtCashPrepaid;
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroLabel metroLabel6;
-        private MetroFramework.Controls.MetroTextBox metroTextBox12;
-        private MetroFramework.Controls.MetroTextBox metroTextBox14;
+        private MetroFramework.Controls.MetroTextBox txtTotalPrepaid;
+        private MetroFramework.Controls.MetroTextBox txtQuantityPrepaid;
         private MetroFramework.Controls.MetroLabel metroLabel7;
         private MetroFramework.Controls.MetroTextBox metroTextBox9;
         private MetroFramework.Controls.MetroLabel metroLabel3;
-        private MetroFramework.Controls.MetroGrid metroGrid2;
-        private MetroFramework.Controls.MetroTextBox metroTextBox13;
-        private MetroFramework.Controls.MetroLabel lblProductPrepaid;
+        private MetroFramework.Controls.MetroGrid dgvPrepaid;
         private MetroFramework.Controls.MetroLabel lblCustomer;
         private MetroFramework.Controls.MetroTile metroTile3;
         private MetroFramework.Controls.MetroTile metroTile5;
-        private MetroFramework.Controls.MetroTile btnRetreatReturn;
+        private MetroFramework.Controls.MetroTile btnCreatePrepaid;
         private MetroFramework.Controls.MetroTile metroTile7;
         private MetroFramework.Controls.MetroTabPage mtCustomer;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_PREPAID;
@@ -2199,7 +2335,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PREPAID_CASH;
         private System.Windows.Forms.DataGridViewTextBoxColumn PREPAID_CHANGE;
         private System.Windows.Forms.DataGridViewTextBoxColumn PREPAID_BALANCE;
-        private MetroFramework.Controls.MetroTextBox metroTextBox21;
+        private MetroFramework.Controls.MetroTextBox txtSearchCustomer;
         private MetroFramework.Controls.MetroLabel metroLabel8;
         private MetroFramework.Controls.MetroGrid dgvCustomer;
         private MetroFramework.Controls.MetroTile btnRefreshCustomer;
@@ -2212,5 +2348,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_CUSTOMER;
         private System.Windows.Forms.DataGridViewTextBoxColumn CUSTOMER_NAME;
         private MetroFramework.Controls.MetroTextBox metroTextBox16;
+        private MetroFramework.Controls.MetroPanel mpOrder;
+        private MetroFramework.Controls.MetroButton btnDeleteOrden;
+        private MetroFramework.Controls.MetroButton btnUpdateOrden;
+        private MetroFramework.Controls.MetroButton btnCreateOrden;
+        private MetroFramework.Controls.MetroGrid metroGrid3;
+        private MetroFramework.Controls.MetroLabel txtDateOrder;
+        private MetroFramework.Controls.MetroDateTime metroDateTime1;
+        private MetroFramework.Controls.MetroTextBox txtQuantityOrder;
+        private MetroFramework.Controls.MetroLabel lblQuantityOrder;
     }
 }
