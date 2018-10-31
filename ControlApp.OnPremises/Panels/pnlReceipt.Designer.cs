@@ -118,12 +118,11 @@
             this.metroTile4 = new MetroFramework.Controls.MetroTile();
             this.mtPrepaid = new MetroFramework.Controls.MetroTabPage();
             this.mpOrder = new MetroFramework.Controls.MetroPanel();
-            this.btnDeleteOrden = new MetroFramework.Controls.MetroButton();
-            this.btnUpdateOrden = new MetroFramework.Controls.MetroButton();
+            this.btnDeleteOrder = new MetroFramework.Controls.MetroButton();
             this.btnCreateOrden = new MetroFramework.Controls.MetroButton();
-            this.metroGrid3 = new MetroFramework.Controls.MetroGrid();
+            this.dgvOrder = new MetroFramework.Controls.MetroGrid();
             this.txtDateOrder = new MetroFramework.Controls.MetroLabel();
-            this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
+            this.dtOrder = new MetroFramework.Controls.MetroDateTime();
             this.txtQuantityOrder = new MetroFramework.Controls.MetroTextBox();
             this.lblQuantityOrder = new MetroFramework.Controls.MetroLabel();
             this.txtNCustomerPrepaid = new MetroFramework.Controls.MetroTextBox();
@@ -164,6 +163,11 @@
             this.btnRefreshCustomer = new MetroFramework.Controls.MetroTile();
             this.btnCreateCustomer = new MetroFramework.Controls.MetroTile();
             this.btnUpdateCustomer = new MetroFramework.Controls.MetroTile();
+            this.btnUpdateOrden = new MetroFramework.Controls.MetroButton();
+            this.ID_ORDER = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_PREPAID_ORDER = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ORDER_QUANTITY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ORDER_DATE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceipt)).BeginInit();
             this.mtPrincipal.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
@@ -173,7 +177,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
             this.mtPrepaid.SuspendLayout();
             this.mpOrder.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.metroGrid3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrepaid)).BeginInit();
             this.mtCustomer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
@@ -1393,12 +1397,12 @@
             // 
             // mpOrder
             // 
-            this.mpOrder.Controls.Add(this.btnDeleteOrden);
             this.mpOrder.Controls.Add(this.btnUpdateOrden);
+            this.mpOrder.Controls.Add(this.btnDeleteOrder);
             this.mpOrder.Controls.Add(this.btnCreateOrden);
-            this.mpOrder.Controls.Add(this.metroGrid3);
+            this.mpOrder.Controls.Add(this.dgvOrder);
             this.mpOrder.Controls.Add(this.txtDateOrder);
-            this.mpOrder.Controls.Add(this.metroDateTime1);
+            this.mpOrder.Controls.Add(this.dtOrder);
             this.mpOrder.Controls.Add(this.txtQuantityOrder);
             this.mpOrder.Controls.Add(this.lblQuantityOrder);
             this.mpOrder.Enabled = false;
@@ -1415,25 +1419,16 @@
             this.mpOrder.VerticalScrollbarSize = 10;
             this.mpOrder.Visible = false;
             // 
-            // btnDeleteOrden
+            // btnDeleteOrder
             // 
-            this.btnDeleteOrden.Location = new System.Drawing.Point(170, 48);
-            this.btnDeleteOrden.Name = "btnDeleteOrden";
-            this.btnDeleteOrden.Size = new System.Drawing.Size(75, 23);
-            this.btnDeleteOrden.TabIndex = 74;
-            this.btnDeleteOrden.Text = "Eliminar";
-            this.btnDeleteOrden.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.btnDeleteOrden.UseSelectable = true;
-            // 
-            // btnUpdateOrden
-            // 
-            this.btnUpdateOrden.Location = new System.Drawing.Point(89, 48);
-            this.btnUpdateOrden.Name = "btnUpdateOrden";
-            this.btnUpdateOrden.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdateOrden.TabIndex = 73;
-            this.btnUpdateOrden.Text = "Actualizar";
-            this.btnUpdateOrden.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.btnUpdateOrden.UseSelectable = true;
+            this.btnDeleteOrder.Location = new System.Drawing.Point(170, 48);
+            this.btnDeleteOrder.Name = "btnDeleteOrder";
+            this.btnDeleteOrder.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteOrder.TabIndex = 74;
+            this.btnDeleteOrder.Text = "Eliminar";
+            this.btnDeleteOrder.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.btnDeleteOrder.UseSelectable = true;
+            this.btnDeleteOrder.Click += new System.EventHandler(this.btnDeleteOrden_Click);
             // 
             // btnCreateOrden
             // 
@@ -1444,14 +1439,15 @@
             this.btnCreateOrden.Text = "Crear";
             this.btnCreateOrden.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.btnCreateOrden.UseSelectable = true;
+            this.btnCreateOrden.Click += new System.EventHandler(this.btnCreateOrden_Click);
             // 
-            // metroGrid3
+            // dgvOrder
             // 
-            this.metroGrid3.AllowUserToResizeRows = false;
-            this.metroGrid3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.metroGrid3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.metroGrid3.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.metroGrid3.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvOrder.AllowUserToResizeRows = false;
+            this.dgvOrder.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.dgvOrder.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvOrder.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvOrder.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -1459,8 +1455,13 @@
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGrid3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.metroGrid3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOrder.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOrder.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID_ORDER,
+            this.ID_PREPAID_ORDER,
+            this.ORDER_QUANTITY,
+            this.ORDER_DATE});
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -1468,13 +1469,13 @@
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.metroGrid3.DefaultCellStyle = dataGridViewCellStyle8;
-            this.metroGrid3.EnableHeadersVisualStyles = false;
-            this.metroGrid3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.metroGrid3.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.metroGrid3.Location = new System.Drawing.Point(3, 77);
-            this.metroGrid3.Name = "metroGrid3";
-            this.metroGrid3.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvOrder.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dgvOrder.EnableHeadersVisualStyles = false;
+            this.dgvOrder.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dgvOrder.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.dgvOrder.Location = new System.Drawing.Point(3, 77);
+            this.dgvOrder.Name = "dgvOrder";
+            this.dgvOrder.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
             dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -1482,32 +1483,33 @@
             dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGrid3.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.metroGrid3.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.metroGrid3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid3.Size = new System.Drawing.Size(384, 114);
-            this.metroGrid3.TabIndex = 70;
-            this.metroGrid3.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.dgvOrder.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.dgvOrder.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvOrder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvOrder.Size = new System.Drawing.Size(384, 114);
+            this.dgvOrder.TabIndex = 70;
+            this.dgvOrder.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.dgvOrder.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrder_CellClick);
             // 
             // txtDateOrder
             // 
             this.txtDateOrder.AutoSize = true;
-            this.txtDateOrder.Location = new System.Drawing.Point(8, 14);
+            this.txtDateOrder.Location = new System.Drawing.Point(226, 14);
             this.txtDateOrder.Name = "txtDateOrder";
             this.txtDateOrder.Size = new System.Drawing.Size(43, 19);
             this.txtDateOrder.TabIndex = 71;
             this.txtDateOrder.Text = "Fecha";
             this.txtDateOrder.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
-            // metroDateTime1
+            // dtOrder
             // 
-            this.metroDateTime1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.metroDateTime1.Location = new System.Drawing.Point(58, 10);
-            this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
-            this.metroDateTime1.Name = "metroDateTime1";
-            this.metroDateTime1.Size = new System.Drawing.Size(106, 29);
-            this.metroDateTime1.TabIndex = 69;
-            this.metroDateTime1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.dtOrder.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtOrder.Location = new System.Drawing.Point(275, 8);
+            this.dtOrder.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dtOrder.Name = "dtOrder";
+            this.dtOrder.Size = new System.Drawing.Size(106, 29);
+            this.dtOrder.TabIndex = 69;
+            this.dtOrder.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // txtQuantityOrder
             // 
@@ -1524,7 +1526,7 @@
             this.txtQuantityOrder.CustomButton.UseSelectable = true;
             this.txtQuantityOrder.CustomButton.Visible = false;
             this.txtQuantityOrder.Lines = new string[0];
-            this.txtQuantityOrder.Location = new System.Drawing.Point(280, 10);
+            this.txtQuantityOrder.Location = new System.Drawing.Point(118, 8);
             this.txtQuantityOrder.MaxLength = 32767;
             this.txtQuantityOrder.MinimumSize = new System.Drawing.Size(0, 29);
             this.txtQuantityOrder.Name = "txtQuantityOrder";
@@ -1544,7 +1546,7 @@
             // lblQuantityOrder
             // 
             this.lblQuantityOrder.AutoSize = true;
-            this.lblQuantityOrder.Location = new System.Drawing.Point(170, 14);
+            this.lblQuantityOrder.Location = new System.Drawing.Point(8, 14);
             this.lblQuantityOrder.Name = "lblQuantityOrder";
             this.lblQuantityOrder.Size = new System.Drawing.Size(104, 19);
             this.lblQuantityOrder.TabIndex = 65;
@@ -1723,6 +1725,7 @@
             this.txtQuantityPrepaid.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtQuantityPrepaid.CustomButton.UseSelectable = true;
             this.txtQuantityPrepaid.CustomButton.Visible = false;
+            this.txtQuantityPrepaid.Enabled = false;
             this.txtQuantityPrepaid.Lines = new string[0];
             this.txtQuantityPrepaid.Location = new System.Drawing.Point(103, 111);
             this.txtQuantityPrepaid.MaxLength = 32767;
@@ -1940,7 +1943,7 @@
             this.btnCreatePrepaid.Name = "btnCreatePrepaid";
             this.btnCreatePrepaid.Size = new System.Drawing.Size(83, 60);
             this.btnCreatePrepaid.TabIndex = 56;
-            this.btnCreatePrepaid.Text = "Vender";
+            this.btnCreatePrepaid.Text = "Crear";
             this.btnCreatePrepaid.UseSelectable = true;
             this.btnCreatePrepaid.Click += new System.EventHandler(this.btnCreatePrepaid_Click);
             // 
@@ -2203,6 +2206,39 @@
             this.btnUpdateCustomer.UseSelectable = true;
             this.btnUpdateCustomer.Click += new System.EventHandler(this.btnUpdateCustomer_Click);
             // 
+            // btnUpdateOrden
+            // 
+            this.btnUpdateOrden.Location = new System.Drawing.Point(89, 48);
+            this.btnUpdateOrden.Name = "btnUpdateOrden";
+            this.btnUpdateOrden.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdateOrden.TabIndex = 75;
+            this.btnUpdateOrden.Text = "Actualizar";
+            this.btnUpdateOrden.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.btnUpdateOrden.UseSelectable = true;
+            this.btnUpdateOrden.Click += new System.EventHandler(this.btnUpdateOrden_Click);
+            // 
+            // ID_ORDER
+            // 
+            this.ID_ORDER.HeaderText = "ID";
+            this.ID_ORDER.Name = "ID_ORDER";
+            this.ID_ORDER.Visible = false;
+            // 
+            // ID_PREPAID_ORDER
+            // 
+            this.ID_PREPAID_ORDER.HeaderText = "ID_PREPAID";
+            this.ID_PREPAID_ORDER.Name = "ID_PREPAID_ORDER";
+            this.ID_PREPAID_ORDER.Visible = false;
+            // 
+            // ORDER_QUANTITY
+            // 
+            this.ORDER_QUANTITY.HeaderText = "Cantidad";
+            this.ORDER_QUANTITY.Name = "ORDER_QUANTITY";
+            // 
+            // ORDER_DATE
+            // 
+            this.ORDER_DATE.HeaderText = "Fecha";
+            this.ORDER_DATE.Name = "ORDER_DATE";
+            // 
             // pnlReceipt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2227,7 +2263,7 @@
             this.mtPrepaid.PerformLayout();
             this.mpOrder.ResumeLayout(false);
             this.mpOrder.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.metroGrid3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrepaid)).EndInit();
             this.mtCustomer.ResumeLayout(false);
             this.mtCustomer.PerformLayout();
@@ -2349,13 +2385,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CUSTOMER_NAME;
         private MetroFramework.Controls.MetroTextBox metroTextBox16;
         private MetroFramework.Controls.MetroPanel mpOrder;
-        private MetroFramework.Controls.MetroButton btnDeleteOrden;
-        private MetroFramework.Controls.MetroButton btnUpdateOrden;
+        private MetroFramework.Controls.MetroButton btnDeleteOrder;
         private MetroFramework.Controls.MetroButton btnCreateOrden;
-        private MetroFramework.Controls.MetroGrid metroGrid3;
+        private MetroFramework.Controls.MetroGrid dgvOrder;
         private MetroFramework.Controls.MetroLabel txtDateOrder;
-        private MetroFramework.Controls.MetroDateTime metroDateTime1;
+        private MetroFramework.Controls.MetroDateTime dtOrder;
         private MetroFramework.Controls.MetroTextBox txtQuantityOrder;
         private MetroFramework.Controls.MetroLabel lblQuantityOrder;
+        private MetroFramework.Controls.MetroButton btnUpdateOrden;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_ORDER;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_PREPAID_ORDER;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ORDER_QUANTITY;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ORDER_DATE;
     }
 }

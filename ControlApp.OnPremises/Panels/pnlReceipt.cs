@@ -34,8 +34,10 @@ namespace ControlApp.OnPremises.Panels
         //CXC
         PrepaidManagement ApiAccess_Prepaid = new PrepaidManagement();
         // Prepaid
-        CustomerManagement ApiAccess_Customer = new CustomerManagement(); 
+        CustomerManagement ApiAccess_Customer = new CustomerManagement();
         // Customer
+        OrderManagement ApiAccess_Order = new OrderManagement();
+        // Order
 
         //Object instance
         Receipt ObjReceipt = new Receipt();
@@ -44,6 +46,7 @@ namespace ControlApp.OnPremises.Panels
         Accountreceivable ObjCXC = new Accountreceivable();
         Prepaid ObjPrepaid = new Prepaid();
         Customer ObjCustomer = new Customer();
+        Order ObjOrder = new Order();
 
         //ID Session for Security
         string pIdSession = MystaticValues.IdSession;
@@ -386,26 +389,33 @@ namespace ControlApp.OnPremises.Panels
         private void btnCreatePrepaid_Click(object sender, EventArgs e)
         {
             
-            string IDCustomer = SearchIdCustomer(txtNCustomerPrepaid.Text);
-            if (string.IsNullOrEmpty(IDCustomer.Trim()))
+            string NameCustomer = txtNCustomerPrepaid.Text;
+            if (string.IsNullOrEmpty(NameCustomer.Trim()))
             {
                 MetroMessageBox.Show(this, "El Cliente -" + txtNCustomerPrepaid.Text + 
                     "- no es Valido. \n Favor Digite un valor Valido", "Error en Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtIDCustomer.Focus();
                 return;
             }
-            try
+            else
             {
-                ObjPrepaid.Id_Customer = IDCustomer;
-                ObjCustomer.CreateBy = pIdSession;
-                ApiAccess_Customer.Create(ObjCustomer);
+                try
+                {
+                    mpOrder.Visible = true;
+                    mpOrder.Enabled = true;
+                    
+                    //
+                    ObjPrepaid.Id_Customer = SearchIdCustomer(txtNCustomerPrepaid.Text);
+                    ObjPrepaid.CreateBy = pIdSession;
+                    ApiAccess_Prepaid.Create(ObjPrepaid);
+                    btnCreatePrepaid.Text = "Finalizar";
+                }
+                catch (Exception ex)
+                {
+                    MetroMessageBox.Show(this, "Error Al momento de Agregar",
+                        "Error en Crud" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
             }
-            catch (Exception ex)
-            {
-                MetroMessageBox.Show(this, "Error Al momento de Agregar",
-                    "Error en Crud" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            mpOrder.Visible = true;
             LoadDataGridPrepaid();
         }
         /// Update
@@ -450,6 +460,88 @@ namespace ControlApp.OnPremises.Panels
         /// </CrudStock>
 
         /// <Eventpnl>
+
+        /// <CrudOrder>
+        /// Create
+        private void btnCreateOrden_Click(object sender, EventArgs e)
+        {
+            string DateOrder = dtOrder.Text;
+            string QuantityOrder = txtQuantityOrder.Text;
+            int Row = dgvPrepaid.CurrentRow.Index;
+            string Id_Prepaid = dgvPrepaid[0, Row].Value.ToString();
+            if (string.IsNullOrEmpty(DateOrder.Trim()))
+            {
+                MetroMessageBox.Show(this, "La Fecha -" + DateOrder +
+                    "- no es Valida. \n Favor Seleccione un valor Valido", "Error en Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtOrder.Focus();
+                return;
+            }
+            if (string.IsNullOrEmpty(QuantityOrder.Trim()))
+            {
+                MetroMessageBox.Show(this, "La Cantidad -" + QuantityOrder +
+                    "- no es Valida. \n Favor Seleccione un valor Valido", "Error en Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtQuantityOrder.Focus();
+                return;
+            }
+            if (string.IsNullOrEmpty(Id_Prepaid.Trim()))
+            {
+                MetroMessageBox.Show(this, "Debe de Seleccionar una cuenta en el Grid -" + Id_Prepaid +
+                    " \n Favor Seleccione un valor Valido", "Error en Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtQuantityOrder.Focus();
+                return;
+            }
+            else
+            {
+                try
+                {
+                    ObjOrder.Id_Prepaid = Convert.ToInt32(Id_Prepaid);
+                    ObjOrder.Order_Quantity = Convert.ToInt32(QuantityOrder);
+                    ObjOrder.Order_Date = Convert.ToDateTime(DateOrder);
+                    ObjOrder.CreateBy = pIdSession;
+                    ApiAccess_Prepaid.Create(ObjPrepaid);
+                    btnCreatePrepaid.Text = "Finalizar";
+                }
+                catch (Exception ex)
+                {
+                    MetroMessageBox.Show(this, "Error Al momento de Agregar",
+                        "Error en Crud" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+        }
+        /// Update
+        private void btnUpdateOrden_Click(object sender, EventArgs e)
+        {
+
+        }
+        /// Retrieve
+        public void LoadDataGridOrder()
+        {
+
+            try
+            {
+                dgvOrder.Rows.Clear();
+                var ListOrder = ApiAccess_Order.RetrieveAll<Order>();
+                foreach (Order element in ListOrder)
+                {
+                    string[] RowOrder;
+                    RowOrder = new string[] { element.Id_Order.ToString(),element.Id_Prepaid.ToString(), element.Order_Quantity.ToString(),
+                    element.Order_Date.ToString()};
+                    dgvCustomer.Rows.Add(RowOrder);
+                }
+            }
+            catch (Exception ex)
+            {
+                MetroMessageBox.Show(this, "Error Al momento de Cargar el Grid",
+                    "Error en Busqueda" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+        /// Delete
+        private void btnDeleteOrden_Click(object sender, EventArgs e)
+        {
+
+        }
+        /// </CrudOrder>
+
         /// Event Load
         private void pnlReceipt_Load(object sender, EventArgs e)
         {
@@ -555,6 +647,22 @@ namespace ControlApp.OnPremises.Panels
                 btnUpdateCustomer.Enabled = true;
                 int Row = dgvCustomer.CurrentRow.Index;
                 txtIDCustomer.Text = dgvCustomer[0, Row].Value.ToString();
+                txtNCustomer.Text = dgvCustomer[1, Row].Value.ToString();
+            }
+            catch (Exception ex)
+            {
+                MetroMessageBox.Show(this, "Error Al momento de Cargar el Grid",
+                    "Error en Busqueda" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+        private void dgvOrder_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                btnUpdateOrden.Enabled = true;
+                btnDeleteOrder.Enabled = true;
+                int Row = dgvOrder.CurrentRow.Index;
+                txtQuantityOrder.Text = dgvOrder[0, Row].Value.ToString();
                 txtNCustomer.Text = dgvCustomer[1, Row].Value.ToString();
             }
             catch (Exception ex)
@@ -682,6 +790,9 @@ namespace ControlApp.OnPremises.Panels
             btnStock.Text = "Cerrar";
             pnlStock.Visible = false;
         }
+
+        
+
         /// </RptEvents>
 
     }
