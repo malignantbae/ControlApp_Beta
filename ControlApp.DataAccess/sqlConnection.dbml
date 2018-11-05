@@ -54,22 +54,6 @@
       <Association Name="TBL_DPT_TBL_USER" Member="TBL_USERs" ThisKey="ID_DPT" OtherKey="ID_DPT" Type="TBL_USER" />
     </Type>
   </Table>
-  <Table Name="dbo.TBL_ORDER" Member="TBL_ORDERs">
-    <Type Name="TBL_ORDER">
-      <Column Name="ID_ORDER" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ID_PREPAID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ORDER_QUANTITY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ORDER_DATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="ORDER_DATE_DELIVERY" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="ORDER_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="ORDER_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="ORDER_UPDATEDBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="ORDER_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="ORDER_UPDATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="TBL_PREPAID_TBL_ORDER" Member="TBL_PREPAID" ThisKey="ID_PREPAID" OtherKey="ID_PREPAID" Type="TBL_PREPAID" IsForeignKey="true" />
-      <Association Name="TBL_USER_TBL_ORDER" Member="TBL_USER" ThisKey="ORDER_CREATEBY" OtherKey="ID_USER" Type="TBL_USER" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.TBL_PERMISSION" Member="TBL_PERMISSIONs">
     <Type Name="TBL_PERMISSION">
       <Column Name="ID_PER" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -231,13 +215,13 @@
       <Column Name="USER_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="USER_UPDATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="TBL_USER_TBL_CUSTOMER" Member="TBL_CUSTOMERs" ThisKey="ID_USER" OtherKey="CUSTOMER_CREATEBY" Type="TBL_CUSTOMER" />
-      <Association Name="TBL_USER_TBL_ORDER" Member="TBL_ORDERs" ThisKey="ID_USER" OtherKey="ORDER_CREATEBY" Type="TBL_ORDER" />
       <Association Name="TBL_USER_TBL_PREPAID" Member="TBL_PREPAIDs" ThisKey="ID_USER" OtherKey="PREPAID_CREATEBY" Type="TBL_PREPAID" />
       <Association Name="TBL_USER_TBL_PRODUCT" Member="TBL_PRODUCTs" ThisKey="ID_USER" OtherKey="PRODUCT_CREATEBY" Type="TBL_PRODUCT" />
       <Association Name="TBL_USER_TBL_RECEIPT" Member="TBL_RECEIPTs" ThisKey="ID_USER" OtherKey="RECEIPT_CREATEBY" Type="TBL_RECEIPT" />
       <Association Name="TBL_USER_TBL_SESSION" Member="TBL_SESSIONs" ThisKey="ID_USER" OtherKey="ID_USER" Type="TBL_SESSION" />
       <Association Name="TBL_USER_TBL_STOCK" Member="TBL_STOCKs" ThisKey="ID_USER" OtherKey="STOCK_CREATEBY" Type="TBL_STOCK" />
       <Association Name="TBL_USER_TBL_CXC" Member="TBL_CXCs" ThisKey="ID_USER" OtherKey="CXC_CREATEBY" Type="TBL_CXC" />
+      <Association Name="TBL_USER_TBL_ORDER" Member="TBL_ORDERs" ThisKey="ID_USER" OtherKey="ORDER_CREATEBY" Type="TBL_ORDER" />
       <Association Name="TBL_AREA_TBL_USER" Member="TBL_AREA" ThisKey="ID_AREA" OtherKey="ID_AREA" Type="TBL_AREA" IsForeignKey="true" />
       <Association Name="TBL_DPT_TBL_USER" Member="TBL_DPT" ThisKey="ID_DPT" OtherKey="ID_DPT" Type="TBL_DPT" IsForeignKey="true" />
       <Association Name="TBL_POSITION_TBL_USER" Member="TBL_POSITION" ThisKey="ID_POSITION" OtherKey="ID_POSITION" Type="TBL_POSITION" IsForeignKey="true" />
@@ -261,6 +245,22 @@
       <Association Name="TBL_CUSTOMER_TBL_CXC" Member="TBL_CUSTOMER" ThisKey="ID_CUSTOMER" OtherKey="ID_CUSTOMER" Type="TBL_CUSTOMER" IsForeignKey="true" />
       <Association Name="TBL_PRODUCT_TBL_CXC" Member="TBL_PRODUCT" ThisKey="ID_PRODUCT" OtherKey="ID_PRODUCT" Type="TBL_PRODUCT" IsForeignKey="true" />
       <Association Name="TBL_USER_TBL_CXC" Member="TBL_USER" ThisKey="CXC_CREATEBY" OtherKey="ID_USER" Type="TBL_USER" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TBL_ORDER" Member="TBL_ORDERs">
+    <Type Name="TBL_ORDER">
+      <Column Name="ID_ORDER" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_PREPAID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ORDER_QUANTITY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ORDER_DATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ORDER_DELIVERY" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ORDER_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ORDER_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ORDER_UPDATEDBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ORDER_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ORDER_UPDATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="TBL_PREPAID_TBL_ORDER" Member="TBL_PREPAID" ThisKey="ID_PREPAID" OtherKey="ID_PREPAID" Type="TBL_PREPAID" IsForeignKey="true" />
+      <Association Name="TBL_USER_TBL_ORDER" Member="TBL_USER" ThisKey="ORDER_CREATEBY" OtherKey="ID_USER" Type="TBL_USER" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.SP_CRUD_AREA" Method="SP_CRUD_AREA">
@@ -293,27 +293,6 @@
       <Column Name="UPDATEBY_DPT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="CREATEDATE_DPT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="UPDATEDATE_DPT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.SP_CRUD_ORDER" Method="SP_CRUD_ORDER">
-    <Parameter Name="p_ACTION" Type="System.Int32" DbType="Int" />
-    <Parameter Name="pID_BY" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="pID_ORDER" Type="System.Int32" DbType="Int" />
-    <Parameter Name="pID_PREPAID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="pORDER_QUANTITY" Type="System.Int32" DbType="Int" />
-    <Parameter Name="pORDER_DATE" Type="System.DateTime" DbType="DateTime" />
-    <Parameter Name="pORDER_DATE_DELIVERY" Type="System.DateTime" DbType="DateTime" />
-    <ElementType Name="SP_CRUD_ORDERResult">
-      <Column Name="ID_ORDER" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ID_PREPAID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ORDER_QUANTITY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ORDER_DATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="ORDER_DATE_DELIVERY" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="ORDER_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="ORDER_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="ORDER_UPDATEDBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="ORDER_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="ORDER_UPDATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
   <Function Name="dbo.SP_CRUD_PER" Method="SP_CRUD_PER">
@@ -475,34 +454,6 @@
       <Column Name="CUSTOMER_UPDATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.SP_CRUD_PREPAID" Method="SP_CRUD_PREPAID">
-    <Parameter Name="p_ACTION" Type="System.Int32" DbType="Int" />
-    <Parameter Name="pID_BY" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="pID_PREPAID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="pID_CUSTOMER" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="pID_PRODUCT" Type="System.Int32" DbType="Int" />
-    <Parameter Name="pPREPAID_QUANTITY" Type="System.Int32" DbType="Int" />
-    <Parameter Name="pPREPAID_TOTAL" Type="System.Decimal" DbType="Money" />
-    <Parameter Name="pPREPAID_CASH" Type="System.Decimal" DbType="Money" />
-    <Parameter Name="pPREPAID_CHANGE" Type="System.Decimal" DbType="Money" />
-    <Parameter Name="pPREPAID_BALANCE" Type="System.Int32" DbType="Int" />
-    <Parameter Name="pCUSTOMER_NAME" Type="System.String" DbType="VarChar(50)" />
-    <ElementType Name="SP_CRUD_PREPAIDResult">
-      <Column Name="ID_PREPAID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CUSTOMER_NAME" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
-      <Column Name="DESCRIP_PRICE" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="PREPAID_QUANTITY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="PREPAID_TOTAL" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-      <Column Name="PREPAID_CASH" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-      <Column Name="PREPAID_CHANGE" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-      <Column Name="PREPAID_BALANCE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="PREPAID_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="PREPAID_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="PREPAID_UPDATEDBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="PREPAID_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="PREPAID_UPDATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.SP_CRUD_STOCK" Method="SP_CRUD_STOCK">
     <Parameter Name="p_ACTION" Type="System.Int32" DbType="Int" />
     <Parameter Name="pID_BY" Type="System.String" DbType="VarChar(50)" />
@@ -551,6 +502,55 @@
       <Column Name="CXC_UPDATEDBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="CXC_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="CXC_UPDATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_CRUD_PREPAID" Method="SP_CRUD_PREPAID">
+    <Parameter Name="p_ACTION" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pID_BY" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="pID_PREPAID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pID_CUSTOMER" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="pID_PRODUCT" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pPREPAID_QUANTITY" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pPREPAID_TOTAL" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="pPREPAID_CASH" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="pPREPAID_CHANGE" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="pPREPAID_BALANCE" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pCUSTOMER_NAME" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="SP_CRUD_PREPAIDResult">
+      <Column Name="ID_PREPAID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CUSTOMER_NAME" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRIP_PRICE" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PREPAID_QUANTITY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PREPAID_TOTAL" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="PREPAID_CASH" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="PREPAID_CHANGE" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="PREPAID_BALANCE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PREPAID_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PREPAID_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PREPAID_UPDATEDBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PREPAID_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PREPAID_UPDATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_CRUD_ORDER" Method="SP_CRUD_ORDER">
+    <Parameter Name="p_ACTION" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pID_BY" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="pID_ORDER" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pID_PREPAID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pORDER_QUANTITY" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pORDER_DATE" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="pORDER_DELIVERY" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="SP_CRUD_ORDERResult">
+      <Column Name="ID_ORDER" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_PREPAID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ORDER_QUANTITY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ORDER_DATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ORDER_DELIVERY" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ORDER_STATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ORDER_CREATEBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ORDER_UPDATEDBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ORDER_CREATEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ORDER_UPDATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>
