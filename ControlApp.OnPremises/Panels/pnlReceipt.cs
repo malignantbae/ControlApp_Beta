@@ -386,6 +386,9 @@ namespace ControlApp.OnPremises.Panels
                 btnCreatePrepaid.Style = MetroFramework.MetroColorStyle.Green;
                 btnCreatePrepaid.Text = "Crear";
                 mpOrder.Visible = false;
+                dgvPrepaid.Enabled = true;
+                CleanFieldsPrepaid();
+                LoadDataGridPrepaid();
             }
             else
             {
@@ -451,6 +454,37 @@ namespace ControlApp.OnPremises.Panels
                 MetroMessageBox.Show(this, "Error Al momento de Cargar el Grid",
                     "Error en Busqueda" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+        }
+        private void dgvPrepaid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            try
+            {
+
+                btnPrintPrepaid.Enabled = true;
+                btnDeletePrepaid.Enabled = true;
+                btnDeletePrepaid.Enabled = true;
+                int Row = dgvPrepaid.CurrentRow.Index;
+                txtNCustomerPrepaid.Text = dgvPrepaid[1, Row].Value.ToString();
+                txtQuantityPrepaid.Text = dgvPrepaid[3, Row].Value.ToString();
+                // Flow Principal of permission/buttoms
+                mpOrder.Visible = true;
+                mpOrder.Enabled = true;
+                btnCreateOrden.Enabled = false;
+                btnUpdateOrden.Enabled = false;
+                btnDeleteOrder.Enabled = false;
+                dgvOrder.Enabled = false;
+                LoadDataGridOrder();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        private void btnRefreshPrepaid_Click(object sender, EventArgs e)
+        {
+            CleanFieldsPrepaid();
         }
         /// </CrudPrepaid>
 
@@ -560,8 +594,11 @@ namespace ControlApp.OnPremises.Panels
         {
             try
             {
-               
-
+                CleanFieldsOrder();
+                if (mtoggleOrder.Checked == false)
+                {
+                    btnCreateOrden.Enabled = false;
+                }
                 dgvOrder.Rows.Clear();
                 int Row = dgvPrepaid.CurrentRow.Index;
                 ObjOrder.Id_Prepaid = Convert.ToInt32(dgvPrepaid[0, Row].Value);
@@ -579,8 +616,6 @@ namespace ControlApp.OnPremises.Panels
                 MetroMessageBox.Show(this, "Error Al momento de Cargar el Grid",
                     "Error en Busqueda" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            btnUpdateOrden.Enabled = false;
-            btnDeleteOrder.Enabled = false;
         }
         /// Delete
         private void btnDeleteOrden_Click(object sender, EventArgs e)
@@ -735,9 +770,11 @@ namespace ControlApp.OnPremises.Panels
             {
                 btnUpdateOrden.Enabled = true;
                 btnDeleteOrder.Enabled = true;
+                btnCreateOrden.Enabled = false;
                 int Row = dgvOrder.CurrentRow.Index;
                 txtQuantityOrder.Text = dgvOrder[2, Row].Value.ToString();
                 dtOrder.Text = dgvOrder[3, Row].Value.ToString();
+
             }
             catch (Exception ex)
             {
@@ -810,6 +847,25 @@ namespace ControlApp.OnPremises.Panels
             txtIDCustomer.Text = "";
             txtNCustomer.Text = "";
         }
+        public void CleanFieldsPrepaid()
+        {
+            txtNCustomerPrepaid.Text = "";
+            txtQuantityPrepaid.Text = "";
+            txtTotalPrepaid.Text = "";
+            txtCashPrepaid.Text = "";
+            txtChangePrepaid.Text = "";
+            mpOrder.Visible = false;
+            txtQuantityOrder.Text = "";
+            txtSearchPrepaid.Text = "";
+        }
+        public void CleanFieldsOrder()
+        {
+            btnCreateOrden.Enabled = true;
+            btnUpdateOrden.Enabled = false;
+            btnDeleteOrder.Enabled = false;
+            txtQuantityOrder.Text = "";
+            dtOrder.Text = DateTime.Today.ToString();
+        }
         /// </Eventpnl> 
 
         /// <RptEvents>
@@ -865,25 +921,34 @@ namespace ControlApp.OnPremises.Panels
             pnlStock.Visible = false;
         }
 
-        private void dgvPrepaid_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void mtoggleOrder_CheckedChanged(object sender, EventArgs e)
         {
-            
-            try
+            //mtoggleOrder.Checke
+            if(mtoggleOrder.Checked == false)
             {
-               
-                btnPrintPrepaid.Enabled = true;
-                btnDeletePrepaid.Enabled = true;
-                btnDeletePrepaid.Enabled = true;
-                int Row = dgvPrepaid.CurrentRow.Index;
-                txtNCustomerPrepaid.Text = dgvPrepaid[1, Row].Value.ToString();
-                txtQuantityPrepaid.Text = dgvPrepaid[3, Row].Value.ToString();
-                mpOrder.Visible = true;
-                LoadDataGridOrder();
+                dgvOrder.Enabled = false;
+                btnCreatePrepaid.Text = "Crear";
+                btnCreatePrepaid.Style = MetroFramework.MetroColorStyle.Green;
+                dgvPrepaid.Enabled = true;
+                CleanFieldsOrder();
+                btnCreateOrden.Enabled = false;
             }
-            catch (Exception)
+            else
             {
+                btnCreateOrden.Enabled = true;
+                dgvOrder.Enabled = true;
+                btnCreatePrepaid.Text = "Finalizar";
+                btnCreatePrepaid.Style = MetroFramework.MetroColorStyle.Red;
+                dgvPrepaid.Enabled = false;
+            }
+            
+        }
 
-                throw;
+        private void txtQuantityOrder_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
 
