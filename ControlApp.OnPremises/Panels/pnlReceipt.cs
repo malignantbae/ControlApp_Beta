@@ -378,17 +378,38 @@ namespace ControlApp.OnPremises.Panels
         /// </CrudCustomer> 
 
         /// <CrudPrepaid>
-        /// Create
+        /// Create - Update
         private void btnCreatePrepaid_Click(object sender, EventArgs e)
         {
             if(btnCreatePrepaid.Text == "Finalizar")
             {
-                btnCreatePrepaid.Style = MetroFramework.MetroColorStyle.Green;
-                btnCreatePrepaid.Text = "Crear";
-                mpOrder.Visible = false;
-                dgvPrepaid.Enabled = true;
-                CleanFieldsPrepaid();
-                LoadDataGridPrepaid();
+                try
+                {
+                    int Row = dgvPrepaid.CurrentRow.Index;
+                    ObjPrepaid.Id_Prepaid = Convert.ToInt32(dgvPrepaid[0, Row].Value);
+                    ObjPrepaid.Id_Customer = SearchIdCustomer(txtNCustomerPrepaid.Text);
+                    ObjPrepaid.Id_Product = gIdPrice_Tag;
+                    ObjPrepaid.UpdateBy = pIdSession;
+                    ObjPrepaid.Prepaid_Quantity = Convert.ToInt32(txtQuantityPrepaid.Text);
+                    ObjPrepaid.Prepaid_Total = Convert.ToDecimal(txtTotalPrepaid.Text);
+                    ObjPrepaid.Prepaid_Cash = Convert.ToDecimal(txtCashPrepaid.Text);
+                    ObjPrepaid.Prepaid_Change = Convert.ToDecimal(txtChangePrepaid.Text);
+                    ApiAccess_Prepaid.Update(ObjPrepaid);
+
+                    btnCreatePrepaid.Style = MetroFramework.MetroColorStyle.Green;
+                    btnCreatePrepaid.Text = "Crear";
+                    mpOrder.Visible = false;
+                    dgvPrepaid.Enabled = true;
+                    CleanFieldsPrepaid();
+                    LoadDataGridPrepaid();
+                    mtoggleOrder.Checked = false;
+                    CleanFieldsOrder();
+                }
+                catch (Exception ex)
+                {
+                    MetroMessageBox.Show(this, "Error Al momento de Actualizar",
+                        "Error en Crud" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
             }
             else
             {
@@ -406,6 +427,9 @@ namespace ControlApp.OnPremises.Panels
                     {
                         mpOrder.Visible = true;
                         mpOrder.Enabled = true;
+                        btnUpdateOrden.Enabled = false;
+                        btnDeleteOrder.Enabled = false;
+                        mtoggleOrder.Checked = true;
                         //
                         ObjPrepaid.Id_Customer = SearchIdCustomer(txtNCustomerPrepaid.Text);
                         ObjPrepaid.CreateBy = pIdSession;
@@ -423,7 +447,6 @@ namespace ControlApp.OnPremises.Panels
                 LoadDataGridPrepaid();
             }
         }
-        /// Update
         /// Retrieve
         public void LoadtxtCustomerPrepaid(MetroTextBox txt)
         {
@@ -610,6 +633,7 @@ namespace ControlApp.OnPremises.Panels
                     element.Order_Date.ToString()};
                     dgvOrder.Rows.Add(RowOrder);
                 }
+               txtQuantityPrepaid.Text = CalculateRowsQuantity().ToString();
             }
             catch (Exception ex)
             {
@@ -646,6 +670,17 @@ namespace ControlApp.OnPremises.Panels
                 LoadDataGridOrder();
             }
         }
+
+        private int CalculateRowsQuantity()
+        {
+            int TotalRows = 0;
+            foreach (DataGridViewRow row in dgvOrder.Rows)
+            {
+                TotalRows += Convert.ToInt32(row.Cells["ORDER_QUANTITY"].Value);
+            }
+            return TotalRows;
+        }
+
         /// </CrudOrder>
 
         /// Event Load
@@ -857,6 +892,8 @@ namespace ControlApp.OnPremises.Panels
             mpOrder.Visible = false;
             txtQuantityOrder.Text = "";
             txtSearchPrepaid.Text = "";
+            btnCreatePrepaid.Text = "Crear";
+            btnCreatePrepaid.Style = MetroFramework.MetroColorStyle.Blue;
         }
         public void CleanFieldsOrder()
         {
@@ -865,6 +902,7 @@ namespace ControlApp.OnPremises.Panels
             btnDeleteOrder.Enabled = false;
             txtQuantityOrder.Text = "";
             dtOrder.Text = DateTime.Today.ToString();
+            
         }
         /// </Eventpnl> 
 
@@ -920,7 +958,6 @@ namespace ControlApp.OnPremises.Panels
             btnStock.Text = "Cerrar";
             pnlStock.Visible = false;
         }
-
         private void mtoggleOrder_CheckedChanged(object sender, EventArgs e)
         {
             //mtoggleOrder.Checke
@@ -943,8 +980,51 @@ namespace ControlApp.OnPremises.Panels
             }
             
         }
-
         private void txtQuantityOrder_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+        private void txtQuantityPrepaid_TextChanged(object sender, EventArgs e)
+        {
+            if (txtQuantityPrepaid.Text == "")
+            {
+                txtTotalPrepaid.Text = "";
+                txtCashPrepaid.Text = "";
+            }
+            else
+            {
+                int Quantity = Convert.ToInt32(txtQuantityPrepaid.Text);
+                txtTotalPrepaid.Text = Math.Round((Quantity * gUnit_Price), 2).ToString();
+            }
+        }
+
+        private void txtCashPrepaid_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtCashPrepaid.Text == "")
+                {
+                    txtCashPrepaid.Text = "";
+                    txtChangePrepaid.Text = "";
+                }
+                else
+                {
+                    decimal TotalPrepaid = Convert.ToDecimal(txtTotalPrepaid.Text);
+                    decimal CashPrepaid = Convert.ToDecimal(txtCashPrepaid.Text);
+                    txtChangePrepaid.Text = (CashPrepaid - TotalPrepaid).ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MetroMessageBox.Show(this, "Error Al momento de Calcular",
+                    "Error en Validación" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void txtCashPrepaid_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {

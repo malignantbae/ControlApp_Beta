@@ -185,7 +185,7 @@ namespace ControlApp.DataAccess.Crud
         public override bool Update(BaseEntity entity)
         {
             var ObjPrepaid = (Prepaid)entity;
-            Context.SP_CRUD_PREPAID((int)CrudActionEnum.Update, ObjPrepaid.CreateBy, ObjPrepaid.Id_Prepaid, ObjPrepaid.Id_Customer,
+            Context.SP_CRUD_PREPAID((int)CrudActionEnum.Update, ObjPrepaid.UpdateBy, ObjPrepaid.Id_Prepaid, ObjPrepaid.Id_Customer,
                 ObjPrepaid.Id_Product, ObjPrepaid.Prepaid_Quantity, ObjPrepaid.Prepaid_Total, ObjPrepaid.Prepaid_Cash,
                 ObjPrepaid.Prepaid_Change, ObjPrepaid.Prepaid_Balance, ObjPrepaid.Name_Customer);
             return true;
