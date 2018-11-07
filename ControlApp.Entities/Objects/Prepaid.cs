@@ -52,9 +52,9 @@ namespace ControlApp.Entities.Objects
             this.Name_Customer = pName_Customer;
             this.Name_Product = pName_Product;
             this.Prepaid_Quantity = pPrepaid_Quantity;
-            this.Prepaid_Total = pPrepaid_Total;
-            this.Prepaid_Cash = pPrepaid_Cash;
-            this.Prepaid_Change = pPrepaid_Change;
+            this.Prepaid_Total = Math.Round(pPrepaid_Total, 2);
+            this.Prepaid_Cash = Math.Round(pPrepaid_Cash, 2);
+            this.Prepaid_Change = Math.Round(pPrepaid_Change, 2);
             this.Prepaid_Balance = pPrepaid_Balance;
         }
         /// Constructor With parameters of DB and esthetic
@@ -66,9 +66,9 @@ namespace ControlApp.Entities.Objects
             this.Name_Customer = pName_Customer;
             this.Name_Product = pName_Product;
             this.Prepaid_Quantity = pPrepaid_Quantity;
-            this.Prepaid_Total = pPrepaid_Total;
-            this.Prepaid_Cash = pPrepaid_Cash;
-            this.Prepaid_Change = pPrepaid_Change;
+            this.Prepaid_Total = Math.Round(pPrepaid_Total, 2);
+            this.Prepaid_Cash = Math.Round(pPrepaid_Cash, 2);
+            this.Prepaid_Change = Math.Round(pPrepaid_Change, 2);
             this.Prepaid_Balance = pPrepaid_Balance;
             this.State = pState;
             this.CreateBy = CreateBy;

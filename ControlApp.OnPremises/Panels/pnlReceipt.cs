@@ -381,7 +381,8 @@ namespace ControlApp.OnPremises.Panels
         /// Create - Update
         private void btnCreatePrepaid_Click(object sender, EventArgs e)
         {
-            if(btnCreatePrepaid.Text == "Finalizar")
+            string ID_Customer = SearchIdCustomer(txtNCustomerPrepaid.Text);
+            if (btnCreatePrepaid.Text == "Finalizar")
             {
                 try
                 {
@@ -421,6 +422,13 @@ namespace ControlApp.OnPremises.Panels
                     txtIDCustomer.Focus();
                     return;
                 }
+                if (ID_Customer == "N/A")
+                {
+                    MetroMessageBox.Show(this, "El Cliente -" + txtNCustomerPrepaid.Text +
+                        "- no es Valido. \n Favor Digite un valor Valido", "Error en Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtIDCustomer.Focus();
+                    return;
+                }
                 else
                 {
                     try
@@ -431,7 +439,7 @@ namespace ControlApp.OnPremises.Panels
                         btnDeleteOrder.Enabled = false;
                         mtoggleOrder.Checked = true;
                         //
-                        ObjPrepaid.Id_Customer = SearchIdCustomer(txtNCustomerPrepaid.Text);
+                        ObjPrepaid.Id_Customer = ID_Customer;
                         ObjPrepaid.CreateBy = pIdSession;
                         ObjPrepaid.Id_Product = gIdPrice_Tag;
                         ApiAccess_Prepaid.Create(ObjPrepaid);
@@ -468,7 +476,7 @@ namespace ControlApp.OnPremises.Panels
                 {
                     string[] RowPrepaid;
                     RowPrepaid = new string[] { element.Id_Prepaid.ToString(), element.Name_Customer, element.Name_Product, element.Prepaid_Quantity.ToString(),
-                    element.Prepaid_Total.ToString(), element.Prepaid_Cash.ToString(), element.Prepaid_Balance.ToString()};
+                    element.Prepaid_Total.ToString(), element.Prepaid_Cash.ToString(), element.Prepaid_Change.ToString(), element.Prepaid_Balance.ToString()};
                     dgvPrepaid.Rows.Add(RowPrepaid);
                 }
             }
@@ -508,7 +516,42 @@ namespace ControlApp.OnPremises.Panels
         private void btnRefreshPrepaid_Click(object sender, EventArgs e)
         {
             CleanFieldsPrepaid();
+            CleanFieldsOrder();
         }
+        private void btnDeletePrepaid_Click(object sender, EventArgs e)
+        {
+            int Row = dgvPrepaid.CurrentRow.Index;
+            int IdPrepaid = Convert.ToInt32(dgvPrepaid[0, Row].Value);
+            if (dgvPrepaid[0, Row].Value == null)
+            {
+                MetroMessageBox.Show(this, "Debe Seleccionar Al menos Algún Valor para Inactivar. \n Favor Intentelo Nuevamente",
+                    "Error en Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dgvPrepaid.Focus();
+                return;
+            }
+            else
+            {
+                if (MetroFramework.MetroMessageBox.Show(this, "¿Desea Anular La Cuenta N-° : " + IdPrepaid.ToString() + "?",
+                    "Confirmación de Acción", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    try
+                    {
+                        ObjPrepaid.Id_Prepaid = IdPrepaid;
+                        ObjPrepaid.UpdateBy = pIdSession;
+                        ApiAccess_Prepaid.Delete(ObjPrepaid);
+                    }
+                    catch (Exception ex)
+                    {
+                        MetroMessageBox.Show(this, "Error Al momento de Eliminar",
+                            "Error en Crud" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    CleanFieldsPrepaid();
+                    CleanFieldsOrder();
+                    LoadDataGridPrepaid();
+                }
+            }
+        }
+        /// Delete
         /// </CrudPrepaid>
 
         /// <CrudStock>
@@ -718,7 +761,7 @@ namespace ControlApp.OnPremises.Panels
         }
         private void txtNCustomer_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+            
         }
         /// TextChanged
         private void txtQuantity_TextChanged(object sender, EventArgs e)
@@ -902,6 +945,7 @@ namespace ControlApp.OnPremises.Panels
             btnDeleteOrder.Enabled = false;
             txtQuantityOrder.Text = "";
             dtOrder.Text = DateTime.Today.ToString();
+            dgvOrder.Rows.Clear();
             
         }
         /// </Eventpnl> 
@@ -1032,6 +1076,7 @@ namespace ControlApp.OnPremises.Panels
             }
         }
 
+        
         /// </RptEvents>
 
     }
