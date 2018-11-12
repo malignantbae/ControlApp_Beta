@@ -64,7 +64,17 @@ namespace ControlApp.OnPremises.Panels
             log4net.Config.XmlConfigurator.Configure();
             log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         }
-
+        /// Event Load
+        private void pnlReceipt_Load(object sender, EventArgs e)
+        {
+            LoadDataGrid();
+            LoadPriceTag();
+            LoadDataGridCustomer();
+            LoadDataGridPrepaid();
+            LoadtxtCustomerPrepaid(txtNCustomerPrepaid);
+            btnPrint.Enabled = false;
+            btnDelete.Enabled = false;
+        }
         /// <CrudReceipt>
         /// Create
         private void btnCreate_Click(object sender, EventArgs e)
@@ -433,6 +443,7 @@ namespace ControlApp.OnPremises.Panels
                 {
                     try
                     {
+                        CleanFieldsOrder();
                         mpOrder.Visible = true;
                         mpOrder.Enabled = true;
                         btnUpdateOrden.Enabled = false;
@@ -475,8 +486,9 @@ namespace ControlApp.OnPremises.Panels
                 foreach (Prepaid element in ListPrepaid)
                 {
                     string[] RowPrepaid;
-                    RowPrepaid = new string[] { element.Id_Prepaid.ToString(), element.Name_Customer, element.Name_Product, element.Prepaid_Quantity.ToString(),
-                    element.Prepaid_Total.ToString(), element.Prepaid_Cash.ToString(), element.Prepaid_Change.ToString(), element.Prepaid_Balance.ToString()};
+                    RowPrepaid = new string[] { element.Id_Prepaid.ToString(), element.Name_Customer, element.Name_Product,
+                        element.Prepaid_Quantity.ToString(),element.Prepaid_Total.ToString(), element.Prepaid_Cash.ToString(),
+                        element.Prepaid_Change.ToString(), element.Prepaid_Balance.ToString()};
                     dgvPrepaid.Rows.Add(RowPrepaid);
                 }
             }
@@ -518,6 +530,49 @@ namespace ControlApp.OnPremises.Panels
             CleanFieldsPrepaid();
             CleanFieldsOrder();
         }
+        private void txtSearchPrepaid_TextChanged(object sender, EventArgs e)
+        {
+            if (txtSearchPrepaid.Text == "")
+            {
+                LoadDataGridPrepaid();
+                CleanFieldsPrepaid();
+            }
+            else
+            {
+                try
+                {
+                    dgvPrepaid.Rows.Clear();
+                    int ejem = 0;//  Trypare
+                    if (int.TryParse(txtSearchPrepaid.Text, out ejem))
+                    {
+                        ObjPrepaid.Id_Prepaid = Convert.ToInt32(txtSearchPrepaid.Text);
+                    }
+                    else
+                    {
+                        ObjPrepaid.Name_Customer = txtSearchPrepaid.Text;
+                    }
+                    var ListPrepaid = ApiAccess_Prepaid.RetrieveAllById<Prepaid>(ObjPrepaid);
+
+
+                    foreach (Prepaid element in ListPrepaid)
+                    {
+                        string[] RowPrepaid;
+                        RowPrepaid = new string[] { element.Id_Prepaid.ToString(), element.Name_Customer, element.Name_Product,
+                            element.Prepaid_Quantity.ToString(), element.Prepaid_Total.ToString(), element.Prepaid_Cash.ToString(),
+                        element.Prepaid_Change.ToString(), element.Prepaid_Balance.ToString()};
+                        dgvPrepaid.Rows.Add(RowPrepaid);
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    MetroMessageBox.Show(this, "La Petición -" + txtSearchPrepaid.Text +
+                        "- no es Valida. ", "Error en Busqueda" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+        }
+
+        /// Delete
         private void btnDeletePrepaid_Click(object sender, EventArgs e)
         {
             int Row = dgvPrepaid.CurrentRow.Index;
@@ -551,7 +606,6 @@ namespace ControlApp.OnPremises.Panels
                 }
             }
         }
-        /// Delete
         /// </CrudPrepaid>
 
         /// <CrudStock>
@@ -565,14 +619,18 @@ namespace ControlApp.OnPremises.Panels
         /// Create
         private void btnCreateOrden_Click(object sender, EventArgs e)
         {
-            string DateOrder = dtOrder.Text;
+           
             string QuantityOrder = txtQuantityOrder.Text;
             int Row = dgvPrepaid.CurrentRow.Index;
             string Id_Prepaid = dgvPrepaid[0, Row].Value.ToString();
-            if (string.IsNullOrEmpty(DateOrder.Trim()))
+            DateTime DateOrder = Convert.ToDateTime(dtOrder.Text);
+            DateTime dateAlert = DateTime.Today;
+            int result = DateTime.Compare(DateOrder, dateAlert);
+
+            if (string.IsNullOrEmpty(DateOrder.ToString()) || result <= 0)
             {
-                MetroMessageBox.Show(this, "La Fecha -" + DateOrder +
-                    "- no es Valida. \n Favor Seleccione un valor Valido", "Error en Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MetroMessageBox.Show(this, "La Fecha - " + DateOrder +
+                    " - no es Valida. \n Favor Seleccione un valor Valido", "Error en Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 dtOrder.Focus();
                 return;
             }
@@ -611,6 +669,53 @@ namespace ControlApp.OnPremises.Panels
         }
         /// Update
         private void btnUpdateOrden_Click(object sender, EventArgs e)
+        {
+            DateTime DateOrder = Convert.ToDateTime(dtOrder.Text);
+            DateTime dateAlert = DateTime.Today.AddDays(-1);
+            int result = DateTime.Compare(DateOrder, dateAlert);
+            string QuantityOrder = txtQuantityOrder.Text;
+            int Row = dgvOrder.CurrentRow.Index;
+            string Id_Order = dgvOrder[0, Row].Value.ToString();
+            if (string.IsNullOrEmpty(DateOrder.ToString()) || result <= 0)
+            {
+                MetroMessageBox.Show(this, "La Fecha -" + DateOrder +
+                    "- no es Valida. \n Favor Seleccione un valor Valido", "Error en Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtOrder.Focus();
+                return;
+            }
+            if (string.IsNullOrEmpty(QuantityOrder.Trim()))
+            {
+                MetroMessageBox.Show(this, "La Cantidad -" + QuantityOrder +
+                    "- no es Valida. \n Favor Seleccione un valor Valido", "Error en Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtQuantityOrder.Focus();
+                return;
+            }
+            if (string.IsNullOrEmpty(Id_Order.Trim()))
+            {
+                MetroMessageBox.Show(this, "Debe de Seleccionar una cuenta en el Grid -" + Id_Order +
+                    " \n Favor Seleccione un valor Valido", "Error en Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtQuantityOrder.Focus();
+                return;
+            }
+            else
+            {
+                try
+                {
+                    ObjOrder.Id_Order = Convert.ToInt32(Id_Order);
+                    ObjOrder.Order_Quantity = Convert.ToInt32(QuantityOrder);
+                    ObjOrder.Order_Date = Convert.ToDateTime(DateOrder);
+                    ObjOrder.UpdateBy = pIdSession;
+                    ApiAccess_Order.Update(ObjOrder);
+                }
+                catch (Exception ex)
+                {
+                    MetroMessageBox.Show(this, "Error Al momento de Actualizar",
+                        "Error en Crud" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                LoadDataGridOrder();
+            }
+        }
+        private void btnCreateRetreat_Click(object sender, EventArgs e)
         {
             string DateOrder = dtOrder.Text;
             string QuantityOrder = txtQuantityOrder.Text;
@@ -654,6 +759,7 @@ namespace ControlApp.OnPremises.Panels
                 }
                 LoadDataGridOrder();
             }
+
         }
         /// Retrieve
         public void LoadDataGridOrder()
@@ -677,6 +783,30 @@ namespace ControlApp.OnPremises.Panels
                     dgvOrder.Rows.Add(RowOrder);
                 }
                txtQuantityPrepaid.Text = CalculateRowsQuantity().ToString();
+            }
+            catch (Exception ex)
+            {
+                MetroMessageBox.Show(this, "Error Al momento de Cargar el Grid",
+                    "Error en Busqueda" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+        public void LoadDataGridROrder()
+        {
+            try
+            {
+                dgvROrder.Rows.Clear();
+                int Row = dgvROrder.CurrentRow.Index;
+                var ListOrder = ApiAccess_Order.RetrieveAll<Order>();
+                foreach (Order element in ListOrder)
+                {
+                    if(element.Order_Date == DateTime.Today)
+                    {
+                        string[] RowOrder;
+                        RowOrder = new string[] { element.Id_Order.ToString(),element.Id_Prepaid.ToString(), element.Order_Quantity.ToString(),
+                        element.Order_Date.ToString(), element.Order_Delivery.ToString()};
+                        dgvROrder.Rows.Add(RowOrder);
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -713,7 +843,6 @@ namespace ControlApp.OnPremises.Panels
                 LoadDataGridOrder();
             }
         }
-
         private int CalculateRowsQuantity()
         {
             int TotalRows = 0;
@@ -723,20 +852,7 @@ namespace ControlApp.OnPremises.Panels
             }
             return TotalRows;
         }
-
         /// </CrudOrder>
-
-        /// Event Load
-        private void pnlReceipt_Load(object sender, EventArgs e)
-        {
-            LoadDataGrid();
-            LoadPriceTag();
-            LoadDataGridCustomer();
-            LoadDataGridPrepaid();
-            LoadtxtCustomerPrepaid(txtNCustomerPrepaid);
-            btnPrint.Enabled = false;
-            btnDelete.Enabled = false;
-        }
         /// KeyPress
         private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -860,7 +976,6 @@ namespace ControlApp.OnPremises.Panels
                     "Error en Busqueda" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
-        
         /// Click for pnl
         private void btnCleanFields_Click(object sender, EventArgs e)
         {
@@ -944,9 +1059,14 @@ namespace ControlApp.OnPremises.Panels
             btnUpdateOrden.Enabled = false;
             btnDeleteOrder.Enabled = false;
             txtQuantityOrder.Text = "";
-            dtOrder.Text = DateTime.Today.ToString();
+            dtOrder.Text = DateTime.Today.AddDays(1).ToString();
             dgvOrder.Rows.Clear();
             
+        }
+        public void CleanFieldsROrder()
+        {
+            txtSearchRetreat.Text = "";
+            txtCustomerRetreat.Text = "";
         }
         /// </Eventpnl> 
 
@@ -1076,7 +1196,7 @@ namespace ControlApp.OnPremises.Panels
             }
         }
 
-        
+
         /// </RptEvents>
 
     }
