@@ -394,32 +394,43 @@ namespace ControlApp.OnPremises.Panels
             string ID_Customer = SearchIdCustomer(txtNCustomerPrepaid.Text);
             if (btnCreatePrepaid.Text == "Finalizar")
             {
-                try
+                if (Convert.ToDecimal(txtTotalPrepaid.Text) > Convert.ToDecimal(txtCashPrepaid.Text))
                 {
-                    int Row = dgvPrepaid.CurrentRow.Index;
-                    ObjPrepaid.Id_Prepaid = Convert.ToInt32(dgvPrepaid[0, Row].Value);
-                    ObjPrepaid.Id_Customer = SearchIdCustomer(txtNCustomerPrepaid.Text);
-                    ObjPrepaid.Id_Product = gIdPrice_Tag;
-                    ObjPrepaid.UpdateBy = pIdSession;
-                    ObjPrepaid.Prepaid_Quantity = Convert.ToInt32(txtQuantityPrepaid.Text);
-                    ObjPrepaid.Prepaid_Total = Convert.ToDecimal(txtTotalPrepaid.Text);
-                    ObjPrepaid.Prepaid_Cash = Convert.ToDecimal(txtCashPrepaid.Text);
-                    ObjPrepaid.Prepaid_Change = Convert.ToDecimal(txtChangePrepaid.Text);
-                    ApiAccess_Prepaid.Update(ObjPrepaid);
-
-                    btnCreatePrepaid.Style = MetroFramework.MetroColorStyle.Green;
-                    btnCreatePrepaid.Text = "Crear";
-                    mpOrder.Visible = false;
-                    dgvPrepaid.Enabled = true;
-                    CleanFieldsPrepaid();
-                    LoadDataGridPrepaid();
-                    mtoggleOrder.Checked = false;
-                    CleanFieldsOrder();
+                    MetroMessageBox.Show(this, "El efectivo -" + txtCashPrepaid.Text +
+                   "- no es suficiente. \n Se requiere un monto igual o mayor al total", "Error en Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtCashPrepaid.Focus();
                 }
-                catch (Exception ex)
+                else
                 {
-                    MetroMessageBox.Show(this, "Error Al momento de Actualizar",
-                        "Error en Crud" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    try
+                    {
+
+                        int Row = dgvPrepaid.CurrentRow.Index;
+                        ObjPrepaid.Id_Prepaid = Convert.ToInt32(dgvPrepaid[0, Row].Value);
+                        ObjPrepaid.Id_Customer = SearchIdCustomer(txtNCustomerPrepaid.Text);
+                        ObjPrepaid.Id_Product = gIdPrice_Tag;
+                        ObjPrepaid.UpdateBy = pIdSession;
+                        ObjPrepaid.Prepaid_Quantity = Convert.ToInt32(txtQuantityPrepaid.Text);
+                        ObjPrepaid.Prepaid_Total = Convert.ToDecimal(txtTotalPrepaid.Text);
+                        ObjPrepaid.Prepaid_Cash = Convert.ToDecimal(txtCashPrepaid.Text);
+                        ObjPrepaid.Prepaid_Change = Convert.ToDecimal(txtChangePrepaid.Text);
+                        ObjPrepaid.Prepaid_Balance = Convert.ToInt32(txtQuantityPrepaid.Text);
+                        ApiAccess_Prepaid.Update(ObjPrepaid);
+
+                        btnCreatePrepaid.Style = MetroFramework.MetroColorStyle.Green;
+                        btnCreatePrepaid.Text = "Crear";
+                        mpOrder.Visible = false;
+                        dgvPrepaid.Enabled = true;
+                        CleanFieldsPrepaid();
+                        LoadDataGridPrepaid();
+                        mtoggleOrder.Checked = false;
+                        CleanFieldsOrder();
+                    }
+                    catch (Exception ex)
+                    {
+                        MetroMessageBox.Show(this, "Error Al momento de Actualizar",
+                            "Error en Crud" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
                 }
             }
             else
@@ -503,13 +514,14 @@ namespace ControlApp.OnPremises.Panels
 
             try
             {
-
                 btnPrintPrepaid.Enabled = true;
                 btnDeletePrepaid.Enabled = true;
                 btnDeletePrepaid.Enabled = true;
                 int Row = dgvPrepaid.CurrentRow.Index;
                 txtNCustomerPrepaid.Text = dgvPrepaid[1, Row].Value.ToString();
                 txtQuantityPrepaid.Text = dgvPrepaid[3, Row].Value.ToString();
+                txtCashPrepaid.Text = dgvPrepaid[5, Row].Value.ToString();
+                txtChangePrepaid.Text = dgvPrepaid[6, Row].Value.ToString();
                 // Flow Principal of permission/buttoms
                 mpOrder.Visible = true;
                 mpOrder.Enabled = true;
@@ -658,6 +670,7 @@ namespace ControlApp.OnPremises.Panels
                     ObjOrder.CreateBy = pIdSession;
                     ApiAccess_Order.Create(ObjOrder);
                     btnCreatePrepaid.Text = "Finalizar";
+                    txtCashPrepaid_TextChanged(sender, e);
                 }
                 catch (Exception ex)
                 {
@@ -665,6 +678,12 @@ namespace ControlApp.OnPremises.Panels
                         "Error en Crud" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 LoadDataGridOrder();
+                //Add days dgv
+                int Rowdate = dgvOrder.CurrentRow.Index;
+                dtOrder.Text = dgvOrder[2, Row].Value.ToString();
+                DateTime dateup = Convert.ToDateTime(dtOrder.Text);
+                dateup = dateup.AddDays(1);
+                dtOrder.Text = dateup.ToString();
             }
         }
         /// Update
@@ -706,6 +725,7 @@ namespace ControlApp.OnPremises.Panels
                     ObjOrder.Order_Date = Convert.ToDateTime(DateOrder);
                     ObjOrder.UpdateBy = pIdSession;
                     ApiAccess_Order.Update(ObjOrder);
+                    txtCashPrepaid_TextChanged(sender, e);
                 }
                 catch (Exception ex)
                 {
@@ -834,6 +854,7 @@ namespace ControlApp.OnPremises.Panels
                     ObjOrder.Id_Order = Convert.ToInt32(Id_Order);
                     ObjOrder.UpdateBy = pIdSession;
                     ApiAccess_Order.Delete(ObjOrder);
+                    txtCashPrepaid_TextChanged(sender, e);
                 }
                 catch (Exception ex)
                 {
@@ -958,8 +979,6 @@ namespace ControlApp.OnPremises.Panels
         }
         private void dgvOrder_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
-            
             try
             {
                 btnUpdateOrden.Enabled = true;
@@ -968,7 +987,6 @@ namespace ControlApp.OnPremises.Panels
                 int Row = dgvOrder.CurrentRow.Index;
                 txtQuantityOrder.Text = dgvOrder[2, Row].Value.ToString();
                 dtOrder.Text = dgvOrder[3, Row].Value.ToString();
-
             }
             catch (Exception ex)
             {
@@ -1048,6 +1066,8 @@ namespace ControlApp.OnPremises.Panels
             txtCashPrepaid.Text = "";
             txtChangePrepaid.Text = "";
             mpOrder.Visible = false;
+            dgvPrepaid.Enabled = true;
+            dgvOrder.Rows.Clear();
             txtQuantityOrder.Text = "";
             txtSearchPrepaid.Text = "";
             btnCreatePrepaid.Text = "Crear";
@@ -1058,6 +1078,7 @@ namespace ControlApp.OnPremises.Panels
             btnCreateOrden.Enabled = true;
             btnUpdateOrden.Enabled = false;
             btnDeleteOrder.Enabled = false;
+            mtoggleOrder.Checked = false;
             txtQuantityOrder.Text = "";
             dtOrder.Text = DateTime.Today.AddDays(1).ToString();
             dgvOrder.Rows.Clear();
@@ -1164,7 +1185,6 @@ namespace ControlApp.OnPremises.Panels
                 txtTotalPrepaid.Text = Math.Round((Quantity * gUnit_Price), 2).ToString();
             }
         }
-
         private void txtCashPrepaid_TextChanged(object sender, EventArgs e)
         {
             try
@@ -1195,8 +1215,6 @@ namespace ControlApp.OnPremises.Panels
                 e.Handled = true;
             }
         }
-
-
         /// </RptEvents>
 
     }
