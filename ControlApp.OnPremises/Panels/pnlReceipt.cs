@@ -679,8 +679,8 @@ namespace ControlApp.OnPremises.Panels
                 }
                 LoadDataGridOrder();
                 //Add days dgv
-                int Rowdate = dgvOrder.CurrentRow.Index;
-                dtOrder.Text = dgvOrder[2, Row].Value.ToString();
+               // int Rowdate = dgvOrder.CurrentRow.Index;
+                //dtOrder.Text = dgvOrder[2, Row].Value.ToString();
                 DateTime dateup = Convert.ToDateTime(dtOrder.Text);
                 dateup = dateup.AddDays(1);
                 dtOrder.Text = dateup.ToString();

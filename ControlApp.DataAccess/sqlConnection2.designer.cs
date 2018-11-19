@@ -22,7 +22,7 @@ namespace ControlApp.DataAccess
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="ControlApp")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="ControlAppDev")]
 	public partial class sqlConnectionDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -36,9 +36,15 @@ namespace ControlApp.DataAccess
     partial void InsertTBL_CUSTOMER(TBL_CUSTOMER instance);
     partial void UpdateTBL_CUSTOMER(TBL_CUSTOMER instance);
     partial void DeleteTBL_CUSTOMER(TBL_CUSTOMER instance);
+    partial void InsertTBL_CXC(TBL_CXC instance);
+    partial void UpdateTBL_CXC(TBL_CXC instance);
+    partial void DeleteTBL_CXC(TBL_CXC instance);
     partial void InsertTBL_DPT(TBL_DPT instance);
     partial void UpdateTBL_DPT(TBL_DPT instance);
     partial void DeleteTBL_DPT(TBL_DPT instance);
+    partial void InsertTBL_ORDER(TBL_ORDER instance);
+    partial void UpdateTBL_ORDER(TBL_ORDER instance);
+    partial void DeleteTBL_ORDER(TBL_ORDER instance);
     partial void InsertTBL_PERMISSION(TBL_PERMISSION instance);
     partial void UpdateTBL_PERMISSION(TBL_PERMISSION instance);
     partial void DeleteTBL_PERMISSION(TBL_PERMISSION instance);
@@ -66,16 +72,10 @@ namespace ControlApp.DataAccess
     partial void InsertTBL_USER(TBL_USER instance);
     partial void UpdateTBL_USER(TBL_USER instance);
     partial void DeleteTBL_USER(TBL_USER instance);
-    partial void InsertTBL_CXC(TBL_CXC instance);
-    partial void UpdateTBL_CXC(TBL_CXC instance);
-    partial void DeleteTBL_CXC(TBL_CXC instance);
-    partial void InsertTBL_ORDER(TBL_ORDER instance);
-    partial void UpdateTBL_ORDER(TBL_ORDER instance);
-    partial void DeleteTBL_ORDER(TBL_ORDER instance);
     #endregion
 		
 		public sqlConnectionDataContext() : 
-				base(global::ControlApp.DataAccess.Properties.Settings.Default.ControlAppConnectionString3, mappingSource)
+				base(global::ControlApp.DataAccess.Properties.Settings.Default.ControlAppDevConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -128,11 +128,27 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
+		public System.Data.Linq.Table<TBL_CXC> TBL_CXCs
+		{
+			get
+			{
+				return this.GetTable<TBL_CXC>();
+			}
+		}
+		
 		public System.Data.Linq.Table<TBL_DPT> TBL_DPTs
 		{
 			get
 			{
 				return this.GetTable<TBL_DPT>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TBL_ORDER> TBL_ORDERs
+		{
+			get
+			{
+				return this.GetTable<TBL_ORDER>();
 			}
 		}
 		
@@ -216,22 +232,6 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
-		public System.Data.Linq.Table<TBL_CXC> TBL_CXCs
-		{
-			get
-			{
-				return this.GetTable<TBL_CXC>();
-			}
-		}
-		
-		public System.Data.Linq.Table<TBL_ORDER> TBL_ORDERs
-		{
-			get
-			{
-				return this.GetTable<TBL_ORDER>();
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_AREA")]
 		public ISingleResult<SP_CRUD_AREAResult> SP_CRUD_AREA([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_AREA, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_DPT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(25)")] string pAREA_NAME)
 		{
@@ -239,11 +239,32 @@ namespace ControlApp.DataAccess
 			return ((ISingleResult<SP_CRUD_AREAResult>)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_CUSTOMER")]
+		public ISingleResult<SP_CRUD_CUSTOMERResult> SP_CRUD_CUSTOMER([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_CUSTOMER, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(25)")] string pCUSTOMER_NAME)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_BY, pID_CUSTOMER, pCUSTOMER_NAME);
+			return ((ISingleResult<SP_CRUD_CUSTOMERResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_CXC")]
+		public ISingleResult<SP_CRUD_CXCResult> SP_CRUD_CXC([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_CXC, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_CUSTOMER, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_PRODUCT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pQUANTITY_RETREAT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pQUANTITY_RETURN, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> pTOTAL_CXC, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pBALANCE_CXC, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pCUSTOMER_NAME, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pPRODUCT_NAME)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_BY, pID_CXC, pID_CUSTOMER, pID_PRODUCT, pQUANTITY_RETREAT, pQUANTITY_RETURN, pTOTAL_CXC, pBALANCE_CXC, pCUSTOMER_NAME, pPRODUCT_NAME);
+			return ((ISingleResult<SP_CRUD_CXCResult>)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_DPT")]
 		public ISingleResult<SP_CRUD_DPTResult> SP_CRUD_DPT([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_DPT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(75)")] string pNAME_DPT)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_DPT, pID_BY, pNAME_DPT);
 			return ((ISingleResult<SP_CRUD_DPTResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_ORDER")]
+		public ISingleResult<SP_CRUD_ORDERResult> SP_CRUD_ORDER([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_ORDER, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_PREPAID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pORDER_QUANTITY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> pORDER_DATE, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> pORDER_DELIVERY)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_BY, pID_ORDER, pID_PREPAID, pORDER_QUANTITY, pORDER_DATE, pORDER_DELIVERY);
+			return ((ISingleResult<SP_CRUD_ORDERResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_PER")]
@@ -258,6 +279,13 @@ namespace ControlApp.DataAccess
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_PST, pID_AREA, pID_BY, pNAME_PST);
 			return ((ISingleResult<SP_CRUD_POSITIONResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_PREPAID")]
+		public ISingleResult<SP_CRUD_PREPAIDResult> SP_CRUD_PREPAID([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_PREPAID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_CUSTOMER, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_PRODUCT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pPREPAID_QUANTITY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> pPREPAID_TOTAL, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> pPREPAID_CASH, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> pPREPAID_CHANGE, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pPREPAID_BALANCE, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pCUSTOMER_NAME)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_BY, pID_PREPAID, pID_CUSTOMER, pID_PRODUCT, pPREPAID_QUANTITY, pPREPAID_TOTAL, pPREPAID_CASH, pPREPAID_CHANGE, pPREPAID_BALANCE, pCUSTOMER_NAME);
+			return ((ISingleResult<SP_CRUD_PREPAIDResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_PRODUCT")]
@@ -288,20 +316,6 @@ namespace ControlApp.DataAccess
 			return ((ISingleResult<SP_CRUD_ROLE_PERResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_USER")]
-		public ISingleResult<SP_CRUD_USERResult> SP_CRUD_USER([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string pID_USER, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(150)")] string pUSER_NAME, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(150)")] string pUSER_EMAIL, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_DPT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_AREA, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_PST, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_ROLE, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string pUSER_NICKNAME, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string pUSER_PASSWORD)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_BY, pID_USER, pUSER_NAME, pUSER_EMAIL, pID_DPT, pID_AREA, pID_PST, pID_ROLE, pUSER_NICKNAME, pUSER_PASSWORD);
-			return ((ISingleResult<SP_CRUD_USERResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_CUSTOMER")]
-		public ISingleResult<SP_CRUD_CUSTOMERResult> SP_CRUD_CUSTOMER([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_CUSTOMER, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(25)")] string pCUSTOMER_NAME)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_BY, pID_CUSTOMER, pCUSTOMER_NAME);
-			return ((ISingleResult<SP_CRUD_CUSTOMERResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_STOCK")]
 		public ISingleResult<SP_CRUD_STOCKResult> SP_CRUD_STOCK([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_STOCK, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_PRODUCT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pSTOCK_INITIAL_QUANTITY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pSTOCK_QUANTITY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pSTOCK_ADJUSTMENT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> pSTOCK_DATE_PRODUCT)
 		{
@@ -309,25 +323,11 @@ namespace ControlApp.DataAccess
 			return ((ISingleResult<SP_CRUD_STOCKResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_CXC")]
-		public ISingleResult<SP_CRUD_CXCResult> SP_CRUD_CXC([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_CXC, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_CUSTOMER, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_PRODUCT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pQUANTITY_RETREAT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pQUANTITY_RETURN, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> pTOTAL_CXC, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pBALANCE_CXC, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pCUSTOMER_NAME, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pPRODUCT_NAME)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_USER")]
+		public ISingleResult<SP_CRUD_USERResult> SP_CRUD_USER([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string pID_USER, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(150)")] string pUSER_NAME, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(150)")] string pUSER_EMAIL, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_DPT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_AREA, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_PST, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_ROLE, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string pUSER_NICKNAME, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string pUSER_PASSWORD)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_BY, pID_CXC, pID_CUSTOMER, pID_PRODUCT, pQUANTITY_RETREAT, pQUANTITY_RETURN, pTOTAL_CXC, pBALANCE_CXC, pCUSTOMER_NAME, pPRODUCT_NAME);
-			return ((ISingleResult<SP_CRUD_CXCResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_PREPAID")]
-		public ISingleResult<SP_CRUD_PREPAIDResult> SP_CRUD_PREPAID([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_PREPAID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_CUSTOMER, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_PRODUCT, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pPREPAID_QUANTITY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> pPREPAID_TOTAL, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> pPREPAID_CASH, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> pPREPAID_CHANGE, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pPREPAID_BALANCE, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pCUSTOMER_NAME)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_BY, pID_PREPAID, pID_CUSTOMER, pID_PRODUCT, pPREPAID_QUANTITY, pPREPAID_TOTAL, pPREPAID_CASH, pPREPAID_CHANGE, pPREPAID_BALANCE, pCUSTOMER_NAME);
-			return ((ISingleResult<SP_CRUD_PREPAIDResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_CRUD_ORDER")]
-		public ISingleResult<SP_CRUD_ORDERResult> SP_CRUD_ORDER([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> p_ACTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pID_BY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_ORDER, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pID_PREPAID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pORDER_QUANTITY, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> pORDER_DATE, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> pORDER_DELIVERY)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_BY, pID_ORDER, pID_PREPAID, pORDER_QUANTITY, pORDER_DATE, pORDER_DELIVERY);
-			return ((ISingleResult<SP_CRUD_ORDERResult>)(result.ReturnValue));
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_ACTION, pID_BY, pID_USER, pUSER_NAME, pUSER_EMAIL, pID_DPT, pID_AREA, pID_PST, pID_ROLE, pUSER_NICKNAME, pUSER_PASSWORD);
+			return ((ISingleResult<SP_CRUD_USERResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -813,9 +813,9 @@ namespace ControlApp.DataAccess
 		
 		private System.Nullable<System.DateTime> _CUSTOMER_UPDATEDATE;
 		
-		private EntitySet<TBL_PREPAID> _TBL_PREPAIDs;
-		
 		private EntitySet<TBL_CXC> _TBL_CXCs;
+		
+		private EntitySet<TBL_PREPAID> _TBL_PREPAIDs;
 		
 		private EntityRef<TBL_USER> _TBL_USER;
 		
@@ -841,8 +841,8 @@ namespace ControlApp.DataAccess
 		
 		public TBL_CUSTOMER()
 		{
-			this._TBL_PREPAIDs = new EntitySet<TBL_PREPAID>(new Action<TBL_PREPAID>(this.attach_TBL_PREPAIDs), new Action<TBL_PREPAID>(this.detach_TBL_PREPAIDs));
 			this._TBL_CXCs = new EntitySet<TBL_CXC>(new Action<TBL_CXC>(this.attach_TBL_CXCs), new Action<TBL_CXC>(this.detach_TBL_CXCs));
+			this._TBL_PREPAIDs = new EntitySet<TBL_PREPAID>(new Action<TBL_PREPAID>(this.attach_TBL_PREPAIDs), new Action<TBL_PREPAID>(this.detach_TBL_PREPAIDs));
 			this._TBL_USER = default(EntityRef<TBL_USER>);
 			OnCreated();
 		}
@@ -991,19 +991,6 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_CUSTOMER_TBL_PREPAID", Storage="_TBL_PREPAIDs", ThisKey="ID_CUSTOMER", OtherKey="ID_CUSTOMER")]
-		public EntitySet<TBL_PREPAID> TBL_PREPAIDs
-		{
-			get
-			{
-				return this._TBL_PREPAIDs;
-			}
-			set
-			{
-				this._TBL_PREPAIDs.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_CUSTOMER_TBL_CXC", Storage="_TBL_CXCs", ThisKey="ID_CUSTOMER", OtherKey="ID_CUSTOMER")]
 		public EntitySet<TBL_CXC> TBL_CXCs
 		{
@@ -1014,6 +1001,19 @@ namespace ControlApp.DataAccess
 			set
 			{
 				this._TBL_CXCs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_CUSTOMER_TBL_PREPAID", Storage="_TBL_PREPAIDs", ThisKey="ID_CUSTOMER", OtherKey="ID_CUSTOMER")]
+		public EntitySet<TBL_PREPAID> TBL_PREPAIDs
+		{
+			get
+			{
+				return this._TBL_PREPAIDs;
+			}
+			set
+			{
+				this._TBL_PREPAIDs.Assign(value);
 			}
 		}
 		
@@ -1071,6 +1071,18 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
+		private void attach_TBL_CXCs(TBL_CXC entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_CUSTOMER = this;
+		}
+		
+		private void detach_TBL_CXCs(TBL_CXC entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_CUSTOMER = null;
+		}
+		
 		private void attach_TBL_PREPAIDs(TBL_PREPAID entity)
 		{
 			this.SendPropertyChanging();
@@ -1082,17 +1094,454 @@ namespace ControlApp.DataAccess
 			this.SendPropertyChanging();
 			entity.TBL_CUSTOMER = null;
 		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_CXC")]
+	public partial class TBL_CXC : INotifyPropertyChanging, INotifyPropertyChanged
+	{
 		
-		private void attach_TBL_CXCs(TBL_CXC entity)
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID_CXC;
+		
+		private string _ID_CUSTOMER;
+		
+		private int _ID_PRODUCT;
+		
+		private int _QUANTITY_RETREAT;
+		
+		private int _QUANTITY_RETURN;
+		
+		private decimal _TOTAL_CXC;
+		
+		private int _BALANCE_CXC;
+		
+		private bool _CXC_STATE;
+		
+		private string _CXC_CREATEBY;
+		
+		private string _CXC_UPDATEDBY;
+		
+		private System.DateTime _CXC_CREATEDATE;
+		
+		private System.DateTime _CXC_UPDATEDATE;
+		
+		private EntityRef<TBL_CUSTOMER> _TBL_CUSTOMER;
+		
+		private EntityRef<TBL_PRODUCT> _TBL_PRODUCT;
+		
+		private EntityRef<TBL_USER> _TBL_USER;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_CXCChanging(int value);
+    partial void OnID_CXCChanged();
+    partial void OnID_CUSTOMERChanging(string value);
+    partial void OnID_CUSTOMERChanged();
+    partial void OnID_PRODUCTChanging(int value);
+    partial void OnID_PRODUCTChanged();
+    partial void OnQUANTITY_RETREATChanging(int value);
+    partial void OnQUANTITY_RETREATChanged();
+    partial void OnQUANTITY_RETURNChanging(int value);
+    partial void OnQUANTITY_RETURNChanged();
+    partial void OnTOTAL_CXCChanging(decimal value);
+    partial void OnTOTAL_CXCChanged();
+    partial void OnBALANCE_CXCChanging(int value);
+    partial void OnBALANCE_CXCChanged();
+    partial void OnCXC_STATEChanging(bool value);
+    partial void OnCXC_STATEChanged();
+    partial void OnCXC_CREATEBYChanging(string value);
+    partial void OnCXC_CREATEBYChanged();
+    partial void OnCXC_UPDATEDBYChanging(string value);
+    partial void OnCXC_UPDATEDBYChanged();
+    partial void OnCXC_CREATEDATEChanging(System.DateTime value);
+    partial void OnCXC_CREATEDATEChanged();
+    partial void OnCXC_UPDATEDATEChanging(System.DateTime value);
+    partial void OnCXC_UPDATEDATEChanged();
+    #endregion
+		
+		public TBL_CXC()
 		{
-			this.SendPropertyChanging();
-			entity.TBL_CUSTOMER = this;
+			this._TBL_CUSTOMER = default(EntityRef<TBL_CUSTOMER>);
+			this._TBL_PRODUCT = default(EntityRef<TBL_PRODUCT>);
+			this._TBL_USER = default(EntityRef<TBL_USER>);
+			OnCreated();
 		}
 		
-		private void detach_TBL_CXCs(TBL_CXC entity)
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_CXC", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID_CXC
 		{
-			this.SendPropertyChanging();
-			entity.TBL_CUSTOMER = null;
+			get
+			{
+				return this._ID_CXC;
+			}
+			set
+			{
+				if ((this._ID_CXC != value))
+				{
+					this.OnID_CXCChanging(value);
+					this.SendPropertyChanging();
+					this._ID_CXC = value;
+					this.SendPropertyChanged("ID_CXC");
+					this.OnID_CXCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_CUSTOMER", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ID_CUSTOMER
+		{
+			get
+			{
+				return this._ID_CUSTOMER;
+			}
+			set
+			{
+				if ((this._ID_CUSTOMER != value))
+				{
+					if (this._TBL_CUSTOMER.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_CUSTOMERChanging(value);
+					this.SendPropertyChanging();
+					this._ID_CUSTOMER = value;
+					this.SendPropertyChanged("ID_CUSTOMER");
+					this.OnID_CUSTOMERChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PRODUCT", DbType="Int NOT NULL")]
+		public int ID_PRODUCT
+		{
+			get
+			{
+				return this._ID_PRODUCT;
+			}
+			set
+			{
+				if ((this._ID_PRODUCT != value))
+				{
+					if (this._TBL_PRODUCT.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_PRODUCTChanging(value);
+					this.SendPropertyChanging();
+					this._ID_PRODUCT = value;
+					this.SendPropertyChanged("ID_PRODUCT");
+					this.OnID_PRODUCTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QUANTITY_RETREAT", DbType="Int NOT NULL")]
+		public int QUANTITY_RETREAT
+		{
+			get
+			{
+				return this._QUANTITY_RETREAT;
+			}
+			set
+			{
+				if ((this._QUANTITY_RETREAT != value))
+				{
+					this.OnQUANTITY_RETREATChanging(value);
+					this.SendPropertyChanging();
+					this._QUANTITY_RETREAT = value;
+					this.SendPropertyChanged("QUANTITY_RETREAT");
+					this.OnQUANTITY_RETREATChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QUANTITY_RETURN", DbType="Int NOT NULL")]
+		public int QUANTITY_RETURN
+		{
+			get
+			{
+				return this._QUANTITY_RETURN;
+			}
+			set
+			{
+				if ((this._QUANTITY_RETURN != value))
+				{
+					this.OnQUANTITY_RETURNChanging(value);
+					this.SendPropertyChanging();
+					this._QUANTITY_RETURN = value;
+					this.SendPropertyChanged("QUANTITY_RETURN");
+					this.OnQUANTITY_RETURNChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TOTAL_CXC", DbType="Money NOT NULL")]
+		public decimal TOTAL_CXC
+		{
+			get
+			{
+				return this._TOTAL_CXC;
+			}
+			set
+			{
+				if ((this._TOTAL_CXC != value))
+				{
+					this.OnTOTAL_CXCChanging(value);
+					this.SendPropertyChanging();
+					this._TOTAL_CXC = value;
+					this.SendPropertyChanged("TOTAL_CXC");
+					this.OnTOTAL_CXCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BALANCE_CXC", DbType="Int NOT NULL")]
+		public int BALANCE_CXC
+		{
+			get
+			{
+				return this._BALANCE_CXC;
+			}
+			set
+			{
+				if ((this._BALANCE_CXC != value))
+				{
+					this.OnBALANCE_CXCChanging(value);
+					this.SendPropertyChanging();
+					this._BALANCE_CXC = value;
+					this.SendPropertyChanged("BALANCE_CXC");
+					this.OnBALANCE_CXCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CXC_STATE", DbType="Bit NOT NULL")]
+		public bool CXC_STATE
+		{
+			get
+			{
+				return this._CXC_STATE;
+			}
+			set
+			{
+				if ((this._CXC_STATE != value))
+				{
+					this.OnCXC_STATEChanging(value);
+					this.SendPropertyChanging();
+					this._CXC_STATE = value;
+					this.SendPropertyChanged("CXC_STATE");
+					this.OnCXC_STATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CXC_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string CXC_CREATEBY
+		{
+			get
+			{
+				return this._CXC_CREATEBY;
+			}
+			set
+			{
+				if ((this._CXC_CREATEBY != value))
+				{
+					if (this._TBL_USER.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCXC_CREATEBYChanging(value);
+					this.SendPropertyChanging();
+					this._CXC_CREATEBY = value;
+					this.SendPropertyChanged("CXC_CREATEBY");
+					this.OnCXC_CREATEBYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CXC_UPDATEDBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string CXC_UPDATEDBY
+		{
+			get
+			{
+				return this._CXC_UPDATEDBY;
+			}
+			set
+			{
+				if ((this._CXC_UPDATEDBY != value))
+				{
+					this.OnCXC_UPDATEDBYChanging(value);
+					this.SendPropertyChanging();
+					this._CXC_UPDATEDBY = value;
+					this.SendPropertyChanged("CXC_UPDATEDBY");
+					this.OnCXC_UPDATEDBYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CXC_CREATEDATE", DbType="DateTime NOT NULL")]
+		public System.DateTime CXC_CREATEDATE
+		{
+			get
+			{
+				return this._CXC_CREATEDATE;
+			}
+			set
+			{
+				if ((this._CXC_CREATEDATE != value))
+				{
+					this.OnCXC_CREATEDATEChanging(value);
+					this.SendPropertyChanging();
+					this._CXC_CREATEDATE = value;
+					this.SendPropertyChanged("CXC_CREATEDATE");
+					this.OnCXC_CREATEDATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CXC_UPDATEDATE", DbType="DateTime NOT NULL")]
+		public System.DateTime CXC_UPDATEDATE
+		{
+			get
+			{
+				return this._CXC_UPDATEDATE;
+			}
+			set
+			{
+				if ((this._CXC_UPDATEDATE != value))
+				{
+					this.OnCXC_UPDATEDATEChanging(value);
+					this.SendPropertyChanging();
+					this._CXC_UPDATEDATE = value;
+					this.SendPropertyChanged("CXC_UPDATEDATE");
+					this.OnCXC_UPDATEDATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_CUSTOMER_TBL_CXC", Storage="_TBL_CUSTOMER", ThisKey="ID_CUSTOMER", OtherKey="ID_CUSTOMER", IsForeignKey=true)]
+		public TBL_CUSTOMER TBL_CUSTOMER
+		{
+			get
+			{
+				return this._TBL_CUSTOMER.Entity;
+			}
+			set
+			{
+				TBL_CUSTOMER previousValue = this._TBL_CUSTOMER.Entity;
+				if (((previousValue != value) 
+							|| (this._TBL_CUSTOMER.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TBL_CUSTOMER.Entity = null;
+						previousValue.TBL_CXCs.Remove(this);
+					}
+					this._TBL_CUSTOMER.Entity = value;
+					if ((value != null))
+					{
+						value.TBL_CXCs.Add(this);
+						this._ID_CUSTOMER = value.ID_CUSTOMER;
+					}
+					else
+					{
+						this._ID_CUSTOMER = default(string);
+					}
+					this.SendPropertyChanged("TBL_CUSTOMER");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_PRODUCT_TBL_CXC", Storage="_TBL_PRODUCT", ThisKey="ID_PRODUCT", OtherKey="ID_PRODUCT", IsForeignKey=true)]
+		public TBL_PRODUCT TBL_PRODUCT
+		{
+			get
+			{
+				return this._TBL_PRODUCT.Entity;
+			}
+			set
+			{
+				TBL_PRODUCT previousValue = this._TBL_PRODUCT.Entity;
+				if (((previousValue != value) 
+							|| (this._TBL_PRODUCT.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TBL_PRODUCT.Entity = null;
+						previousValue.TBL_CXCs.Remove(this);
+					}
+					this._TBL_PRODUCT.Entity = value;
+					if ((value != null))
+					{
+						value.TBL_CXCs.Add(this);
+						this._ID_PRODUCT = value.ID_PRODUCT;
+					}
+					else
+					{
+						this._ID_PRODUCT = default(int);
+					}
+					this.SendPropertyChanged("TBL_PRODUCT");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_USER_TBL_CXC", Storage="_TBL_USER", ThisKey="CXC_CREATEBY", OtherKey="ID_USER", IsForeignKey=true)]
+		public TBL_USER TBL_USER
+		{
+			get
+			{
+				return this._TBL_USER.Entity;
+			}
+			set
+			{
+				TBL_USER previousValue = this._TBL_USER.Entity;
+				if (((previousValue != value) 
+							|| (this._TBL_USER.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TBL_USER.Entity = null;
+						previousValue.TBL_CXCs.Remove(this);
+					}
+					this._TBL_USER.Entity = value;
+					if ((value != null))
+					{
+						value.TBL_CXCs.Add(this);
+						this._CXC_CREATEBY = value.ID_USER;
+					}
+					else
+					{
+						this._CXC_CREATEBY = default(string);
+					}
+					this.SendPropertyChanged("TBL_USER");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	
@@ -1383,6 +1832,366 @@ namespace ControlApp.DataAccess
 		{
 			this.SendPropertyChanging();
 			entity.TBL_DPT = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_ORDER")]
+	public partial class TBL_ORDER : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID_ORDER;
+		
+		private int _ID_PREPAID;
+		
+		private int _ORDER_QUANTITY;
+		
+		private System.DateTime _ORDER_DATE;
+		
+		private bool _ORDER_DELIVERY;
+		
+		private bool _ORDER_STATE;
+		
+		private string _ORDER_CREATEBY;
+		
+		private string _ORDER_UPDATEDBY;
+		
+		private System.DateTime _ORDER_CREATEDATE;
+		
+		private System.Nullable<System.DateTime> _ORDER_UPDATEDATE;
+		
+		private EntityRef<TBL_PREPAID> _TBL_PREPAID;
+		
+		private EntityRef<TBL_USER> _TBL_USER;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_ORDERChanging(int value);
+    partial void OnID_ORDERChanged();
+    partial void OnID_PREPAIDChanging(int value);
+    partial void OnID_PREPAIDChanged();
+    partial void OnORDER_QUANTITYChanging(int value);
+    partial void OnORDER_QUANTITYChanged();
+    partial void OnORDER_DATEChanging(System.DateTime value);
+    partial void OnORDER_DATEChanged();
+    partial void OnORDER_DELIVERYChanging(bool value);
+    partial void OnORDER_DELIVERYChanged();
+    partial void OnORDER_STATEChanging(bool value);
+    partial void OnORDER_STATEChanged();
+    partial void OnORDER_CREATEBYChanging(string value);
+    partial void OnORDER_CREATEBYChanged();
+    partial void OnORDER_UPDATEDBYChanging(string value);
+    partial void OnORDER_UPDATEDBYChanged();
+    partial void OnORDER_CREATEDATEChanging(System.DateTime value);
+    partial void OnORDER_CREATEDATEChanged();
+    partial void OnORDER_UPDATEDATEChanging(System.Nullable<System.DateTime> value);
+    partial void OnORDER_UPDATEDATEChanged();
+    #endregion
+		
+		public TBL_ORDER()
+		{
+			this._TBL_PREPAID = default(EntityRef<TBL_PREPAID>);
+			this._TBL_USER = default(EntityRef<TBL_USER>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_ORDER", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID_ORDER
+		{
+			get
+			{
+				return this._ID_ORDER;
+			}
+			set
+			{
+				if ((this._ID_ORDER != value))
+				{
+					this.OnID_ORDERChanging(value);
+					this.SendPropertyChanging();
+					this._ID_ORDER = value;
+					this.SendPropertyChanged("ID_ORDER");
+					this.OnID_ORDERChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PREPAID", DbType="Int NOT NULL")]
+		public int ID_PREPAID
+		{
+			get
+			{
+				return this._ID_PREPAID;
+			}
+			set
+			{
+				if ((this._ID_PREPAID != value))
+				{
+					if (this._TBL_PREPAID.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_PREPAIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID_PREPAID = value;
+					this.SendPropertyChanged("ID_PREPAID");
+					this.OnID_PREPAIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_QUANTITY", DbType="Int NOT NULL")]
+		public int ORDER_QUANTITY
+		{
+			get
+			{
+				return this._ORDER_QUANTITY;
+			}
+			set
+			{
+				if ((this._ORDER_QUANTITY != value))
+				{
+					this.OnORDER_QUANTITYChanging(value);
+					this.SendPropertyChanging();
+					this._ORDER_QUANTITY = value;
+					this.SendPropertyChanged("ORDER_QUANTITY");
+					this.OnORDER_QUANTITYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_DATE", DbType="DateTime NOT NULL")]
+		public System.DateTime ORDER_DATE
+		{
+			get
+			{
+				return this._ORDER_DATE;
+			}
+			set
+			{
+				if ((this._ORDER_DATE != value))
+				{
+					this.OnORDER_DATEChanging(value);
+					this.SendPropertyChanging();
+					this._ORDER_DATE = value;
+					this.SendPropertyChanged("ORDER_DATE");
+					this.OnORDER_DATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_DELIVERY", DbType="Bit NOT NULL")]
+		public bool ORDER_DELIVERY
+		{
+			get
+			{
+				return this._ORDER_DELIVERY;
+			}
+			set
+			{
+				if ((this._ORDER_DELIVERY != value))
+				{
+					this.OnORDER_DELIVERYChanging(value);
+					this.SendPropertyChanging();
+					this._ORDER_DELIVERY = value;
+					this.SendPropertyChanged("ORDER_DELIVERY");
+					this.OnORDER_DELIVERYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_STATE", DbType="Bit NOT NULL")]
+		public bool ORDER_STATE
+		{
+			get
+			{
+				return this._ORDER_STATE;
+			}
+			set
+			{
+				if ((this._ORDER_STATE != value))
+				{
+					this.OnORDER_STATEChanging(value);
+					this.SendPropertyChanging();
+					this._ORDER_STATE = value;
+					this.SendPropertyChanged("ORDER_STATE");
+					this.OnORDER_STATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ORDER_CREATEBY
+		{
+			get
+			{
+				return this._ORDER_CREATEBY;
+			}
+			set
+			{
+				if ((this._ORDER_CREATEBY != value))
+				{
+					if (this._TBL_USER.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnORDER_CREATEBYChanging(value);
+					this.SendPropertyChanging();
+					this._ORDER_CREATEBY = value;
+					this.SendPropertyChanged("ORDER_CREATEBY");
+					this.OnORDER_CREATEBYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_UPDATEDBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ORDER_UPDATEDBY
+		{
+			get
+			{
+				return this._ORDER_UPDATEDBY;
+			}
+			set
+			{
+				if ((this._ORDER_UPDATEDBY != value))
+				{
+					this.OnORDER_UPDATEDBYChanging(value);
+					this.SendPropertyChanging();
+					this._ORDER_UPDATEDBY = value;
+					this.SendPropertyChanged("ORDER_UPDATEDBY");
+					this.OnORDER_UPDATEDBYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_CREATEDATE", DbType="DateTime NOT NULL")]
+		public System.DateTime ORDER_CREATEDATE
+		{
+			get
+			{
+				return this._ORDER_CREATEDATE;
+			}
+			set
+			{
+				if ((this._ORDER_CREATEDATE != value))
+				{
+					this.OnORDER_CREATEDATEChanging(value);
+					this.SendPropertyChanging();
+					this._ORDER_CREATEDATE = value;
+					this.SendPropertyChanged("ORDER_CREATEDATE");
+					this.OnORDER_CREATEDATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_UPDATEDATE", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ORDER_UPDATEDATE
+		{
+			get
+			{
+				return this._ORDER_UPDATEDATE;
+			}
+			set
+			{
+				if ((this._ORDER_UPDATEDATE != value))
+				{
+					this.OnORDER_UPDATEDATEChanging(value);
+					this.SendPropertyChanging();
+					this._ORDER_UPDATEDATE = value;
+					this.SendPropertyChanged("ORDER_UPDATEDATE");
+					this.OnORDER_UPDATEDATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_PREPAID_TBL_ORDER", Storage="_TBL_PREPAID", ThisKey="ID_PREPAID", OtherKey="ID_PREPAID", IsForeignKey=true)]
+		public TBL_PREPAID TBL_PREPAID
+		{
+			get
+			{
+				return this._TBL_PREPAID.Entity;
+			}
+			set
+			{
+				TBL_PREPAID previousValue = this._TBL_PREPAID.Entity;
+				if (((previousValue != value) 
+							|| (this._TBL_PREPAID.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TBL_PREPAID.Entity = null;
+						previousValue.TBL_ORDERs.Remove(this);
+					}
+					this._TBL_PREPAID.Entity = value;
+					if ((value != null))
+					{
+						value.TBL_ORDERs.Add(this);
+						this._ID_PREPAID = value.ID_PREPAID;
+					}
+					else
+					{
+						this._ID_PREPAID = default(int);
+					}
+					this.SendPropertyChanged("TBL_PREPAID");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_USER_TBL_ORDER", Storage="_TBL_USER", ThisKey="ORDER_CREATEBY", OtherKey="ID_USER", IsForeignKey=true)]
+		public TBL_USER TBL_USER
+		{
+			get
+			{
+				return this._TBL_USER.Entity;
+			}
+			set
+			{
+				TBL_USER previousValue = this._TBL_USER.Entity;
+				if (((previousValue != value) 
+							|| (this._TBL_USER.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TBL_USER.Entity = null;
+						previousValue.TBL_ORDERs.Remove(this);
+					}
+					this._TBL_USER.Entity = value;
+					if ((value != null))
+					{
+						value.TBL_ORDERs.Add(this);
+						this._ORDER_CREATEBY = value.ID_USER;
+					}
+					else
+					{
+						this._ORDER_CREATEBY = default(string);
+					}
+					this.SendPropertyChanged("TBL_USER");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	
@@ -2061,7 +2870,7 @@ namespace ControlApp.DataAccess
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PREPAID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PREPAID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int ID_PREPAID
 		{
 			get
@@ -2503,13 +3312,13 @@ namespace ControlApp.DataAccess
 		
 		private System.Nullable<System.DateTime> _PRODUCT_UPDATEDATE;
 		
+		private EntitySet<TBL_CXC> _TBL_CXCs;
+		
 		private EntitySet<TBL_PREPAID> _TBL_PREPAIDs;
 		
 		private EntitySet<TBL_RECEIPT> _TBL_RECEIPTs;
 		
 		private EntitySet<TBL_STOCK> _TBL_STOCKs;
-		
-		private EntitySet<TBL_CXC> _TBL_CXCs;
 		
 		private EntityRef<TBL_USER> _TBL_USER;
 		
@@ -2537,10 +3346,10 @@ namespace ControlApp.DataAccess
 		
 		public TBL_PRODUCT()
 		{
+			this._TBL_CXCs = new EntitySet<TBL_CXC>(new Action<TBL_CXC>(this.attach_TBL_CXCs), new Action<TBL_CXC>(this.detach_TBL_CXCs));
 			this._TBL_PREPAIDs = new EntitySet<TBL_PREPAID>(new Action<TBL_PREPAID>(this.attach_TBL_PREPAIDs), new Action<TBL_PREPAID>(this.detach_TBL_PREPAIDs));
 			this._TBL_RECEIPTs = new EntitySet<TBL_RECEIPT>(new Action<TBL_RECEIPT>(this.attach_TBL_RECEIPTs), new Action<TBL_RECEIPT>(this.detach_TBL_RECEIPTs));
 			this._TBL_STOCKs = new EntitySet<TBL_STOCK>(new Action<TBL_STOCK>(this.attach_TBL_STOCKs), new Action<TBL_STOCK>(this.detach_TBL_STOCKs));
-			this._TBL_CXCs = new EntitySet<TBL_CXC>(new Action<TBL_CXC>(this.attach_TBL_CXCs), new Action<TBL_CXC>(this.detach_TBL_CXCs));
 			this._TBL_USER = default(EntityRef<TBL_USER>);
 			OnCreated();
 		}
@@ -2709,6 +3518,19 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_PRODUCT_TBL_CXC", Storage="_TBL_CXCs", ThisKey="ID_PRODUCT", OtherKey="ID_PRODUCT")]
+		public EntitySet<TBL_CXC> TBL_CXCs
+		{
+			get
+			{
+				return this._TBL_CXCs;
+			}
+			set
+			{
+				this._TBL_CXCs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_PRODUCT_TBL_PREPAID", Storage="_TBL_PREPAIDs", ThisKey="ID_PRODUCT", OtherKey="ID_PRODUCT")]
 		public EntitySet<TBL_PREPAID> TBL_PREPAIDs
 		{
@@ -2745,19 +3567,6 @@ namespace ControlApp.DataAccess
 			set
 			{
 				this._TBL_STOCKs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_PRODUCT_TBL_CXC", Storage="_TBL_CXCs", ThisKey="ID_PRODUCT", OtherKey="ID_PRODUCT")]
-		public EntitySet<TBL_CXC> TBL_CXCs
-		{
-			get
-			{
-				return this._TBL_CXCs;
-			}
-			set
-			{
-				this._TBL_CXCs.Assign(value);
 			}
 		}
 		
@@ -2815,6 +3624,18 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
+		private void attach_TBL_CXCs(TBL_CXC entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_PRODUCT = this;
+		}
+		
+		private void detach_TBL_CXCs(TBL_CXC entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_PRODUCT = null;
+		}
+		
 		private void attach_TBL_PREPAIDs(TBL_PREPAID entity)
 		{
 			this.SendPropertyChanging();
@@ -2846,18 +3667,6 @@ namespace ControlApp.DataAccess
 		}
 		
 		private void detach_TBL_STOCKs(TBL_STOCK entity)
-		{
-			this.SendPropertyChanging();
-			entity.TBL_PRODUCT = null;
-		}
-		
-		private void attach_TBL_CXCs(TBL_CXC entity)
-		{
-			this.SendPropertyChanging();
-			entity.TBL_PRODUCT = this;
-		}
-		
-		private void detach_TBL_CXCs(TBL_CXC entity)
 		{
 			this.SendPropertyChanging();
 			entity.TBL_PRODUCT = null;
@@ -4404,6 +5213,10 @@ namespace ControlApp.DataAccess
 		
 		private EntitySet<TBL_CUSTOMER> _TBL_CUSTOMERs;
 		
+		private EntitySet<TBL_CXC> _TBL_CXCs;
+		
+		private EntitySet<TBL_ORDER> _TBL_ORDERs;
+		
 		private EntitySet<TBL_PREPAID> _TBL_PREPAIDs;
 		
 		private EntitySet<TBL_PRODUCT> _TBL_PRODUCTs;
@@ -4413,10 +5226,6 @@ namespace ControlApp.DataAccess
 		private EntitySet<TBL_SESSION> _TBL_SESSIONs;
 		
 		private EntitySet<TBL_STOCK> _TBL_STOCKs;
-		
-		private EntitySet<TBL_CXC> _TBL_CXCs;
-		
-		private EntitySet<TBL_ORDER> _TBL_ORDERs;
 		
 		private EntityRef<TBL_AREA> _TBL_AREA;
 		
@@ -4463,13 +5272,13 @@ namespace ControlApp.DataAccess
 		public TBL_USER()
 		{
 			this._TBL_CUSTOMERs = new EntitySet<TBL_CUSTOMER>(new Action<TBL_CUSTOMER>(this.attach_TBL_CUSTOMERs), new Action<TBL_CUSTOMER>(this.detach_TBL_CUSTOMERs));
+			this._TBL_CXCs = new EntitySet<TBL_CXC>(new Action<TBL_CXC>(this.attach_TBL_CXCs), new Action<TBL_CXC>(this.detach_TBL_CXCs));
+			this._TBL_ORDERs = new EntitySet<TBL_ORDER>(new Action<TBL_ORDER>(this.attach_TBL_ORDERs), new Action<TBL_ORDER>(this.detach_TBL_ORDERs));
 			this._TBL_PREPAIDs = new EntitySet<TBL_PREPAID>(new Action<TBL_PREPAID>(this.attach_TBL_PREPAIDs), new Action<TBL_PREPAID>(this.detach_TBL_PREPAIDs));
 			this._TBL_PRODUCTs = new EntitySet<TBL_PRODUCT>(new Action<TBL_PRODUCT>(this.attach_TBL_PRODUCTs), new Action<TBL_PRODUCT>(this.detach_TBL_PRODUCTs));
 			this._TBL_RECEIPTs = new EntitySet<TBL_RECEIPT>(new Action<TBL_RECEIPT>(this.attach_TBL_RECEIPTs), new Action<TBL_RECEIPT>(this.detach_TBL_RECEIPTs));
 			this._TBL_SESSIONs = new EntitySet<TBL_SESSION>(new Action<TBL_SESSION>(this.attach_TBL_SESSIONs), new Action<TBL_SESSION>(this.detach_TBL_SESSIONs));
 			this._TBL_STOCKs = new EntitySet<TBL_STOCK>(new Action<TBL_STOCK>(this.attach_TBL_STOCKs), new Action<TBL_STOCK>(this.detach_TBL_STOCKs));
-			this._TBL_CXCs = new EntitySet<TBL_CXC>(new Action<TBL_CXC>(this.attach_TBL_CXCs), new Action<TBL_CXC>(this.detach_TBL_CXCs));
-			this._TBL_ORDERs = new EntitySet<TBL_ORDER>(new Action<TBL_ORDER>(this.attach_TBL_ORDERs), new Action<TBL_ORDER>(this.detach_TBL_ORDERs));
 			this._TBL_AREA = default(EntityRef<TBL_AREA>);
 			this._TBL_DPT = default(EntityRef<TBL_DPT>);
 			this._TBL_POSITION = default(EntityRef<TBL_POSITION>);
@@ -4786,6 +5595,32 @@ namespace ControlApp.DataAccess
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_USER_TBL_CXC", Storage="_TBL_CXCs", ThisKey="ID_USER", OtherKey="CXC_CREATEBY")]
+		public EntitySet<TBL_CXC> TBL_CXCs
+		{
+			get
+			{
+				return this._TBL_CXCs;
+			}
+			set
+			{
+				this._TBL_CXCs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_USER_TBL_ORDER", Storage="_TBL_ORDERs", ThisKey="ID_USER", OtherKey="ORDER_CREATEBY")]
+		public EntitySet<TBL_ORDER> TBL_ORDERs
+		{
+			get
+			{
+				return this._TBL_ORDERs;
+			}
+			set
+			{
+				this._TBL_ORDERs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_USER_TBL_PREPAID", Storage="_TBL_PREPAIDs", ThisKey="ID_USER", OtherKey="PREPAID_CREATEBY")]
 		public EntitySet<TBL_PREPAID> TBL_PREPAIDs
 		{
@@ -4848,32 +5683,6 @@ namespace ControlApp.DataAccess
 			set
 			{
 				this._TBL_STOCKs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_USER_TBL_CXC", Storage="_TBL_CXCs", ThisKey="ID_USER", OtherKey="CXC_CREATEBY")]
-		public EntitySet<TBL_CXC> TBL_CXCs
-		{
-			get
-			{
-				return this._TBL_CXCs;
-			}
-			set
-			{
-				this._TBL_CXCs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_USER_TBL_ORDER", Storage="_TBL_ORDERs", ThisKey="ID_USER", OtherKey="ORDER_CREATEBY")]
-		public EntitySet<TBL_ORDER> TBL_ORDERs
-		{
-			get
-			{
-				return this._TBL_ORDERs;
-			}
-			set
-			{
-				this._TBL_ORDERs.Assign(value);
 			}
 		}
 		
@@ -5045,6 +5854,30 @@ namespace ControlApp.DataAccess
 			entity.TBL_USER = null;
 		}
 		
+		private void attach_TBL_CXCs(TBL_CXC entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_USER = this;
+		}
+		
+		private void detach_TBL_CXCs(TBL_CXC entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_USER = null;
+		}
+		
+		private void attach_TBL_ORDERs(TBL_ORDER entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_USER = this;
+		}
+		
+		private void detach_TBL_ORDERs(TBL_ORDER entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBL_USER = null;
+		}
+		
 		private void attach_TBL_PREPAIDs(TBL_PREPAID entity)
 		{
 			this.SendPropertyChanging();
@@ -5103,839 +5936,6 @@ namespace ControlApp.DataAccess
 		{
 			this.SendPropertyChanging();
 			entity.TBL_USER = null;
-		}
-		
-		private void attach_TBL_CXCs(TBL_CXC entity)
-		{
-			this.SendPropertyChanging();
-			entity.TBL_USER = this;
-		}
-		
-		private void detach_TBL_CXCs(TBL_CXC entity)
-		{
-			this.SendPropertyChanging();
-			entity.TBL_USER = null;
-		}
-		
-		private void attach_TBL_ORDERs(TBL_ORDER entity)
-		{
-			this.SendPropertyChanging();
-			entity.TBL_USER = this;
-		}
-		
-		private void detach_TBL_ORDERs(TBL_ORDER entity)
-		{
-			this.SendPropertyChanging();
-			entity.TBL_USER = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_CXC")]
-	public partial class TBL_CXC : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID_CXC;
-		
-		private string _ID_CUSTOMER;
-		
-		private int _ID_PRODUCT;
-		
-		private int _QUANTITY_RETREAT;
-		
-		private int _QUANTITY_RETURN;
-		
-		private decimal _TOTAL_CXC;
-		
-		private int _BALANCE_CXC;
-		
-		private bool _CXC_STATE;
-		
-		private string _CXC_CREATEBY;
-		
-		private string _CXC_UPDATEDBY;
-		
-		private System.DateTime _CXC_CREATEDATE;
-		
-		private System.DateTime _CXC_UPDATEDATE;
-		
-		private EntityRef<TBL_CUSTOMER> _TBL_CUSTOMER;
-		
-		private EntityRef<TBL_PRODUCT> _TBL_PRODUCT;
-		
-		private EntityRef<TBL_USER> _TBL_USER;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnID_CXCChanging(int value);
-    partial void OnID_CXCChanged();
-    partial void OnID_CUSTOMERChanging(string value);
-    partial void OnID_CUSTOMERChanged();
-    partial void OnID_PRODUCTChanging(int value);
-    partial void OnID_PRODUCTChanged();
-    partial void OnQUANTITY_RETREATChanging(int value);
-    partial void OnQUANTITY_RETREATChanged();
-    partial void OnQUANTITY_RETURNChanging(int value);
-    partial void OnQUANTITY_RETURNChanged();
-    partial void OnTOTAL_CXCChanging(decimal value);
-    partial void OnTOTAL_CXCChanged();
-    partial void OnBALANCE_CXCChanging(int value);
-    partial void OnBALANCE_CXCChanged();
-    partial void OnCXC_STATEChanging(bool value);
-    partial void OnCXC_STATEChanged();
-    partial void OnCXC_CREATEBYChanging(string value);
-    partial void OnCXC_CREATEBYChanged();
-    partial void OnCXC_UPDATEDBYChanging(string value);
-    partial void OnCXC_UPDATEDBYChanged();
-    partial void OnCXC_CREATEDATEChanging(System.DateTime value);
-    partial void OnCXC_CREATEDATEChanged();
-    partial void OnCXC_UPDATEDATEChanging(System.DateTime value);
-    partial void OnCXC_UPDATEDATEChanged();
-    #endregion
-		
-		public TBL_CXC()
-		{
-			this._TBL_CUSTOMER = default(EntityRef<TBL_CUSTOMER>);
-			this._TBL_PRODUCT = default(EntityRef<TBL_PRODUCT>);
-			this._TBL_USER = default(EntityRef<TBL_USER>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_CXC", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int ID_CXC
-		{
-			get
-			{
-				return this._ID_CXC;
-			}
-			set
-			{
-				if ((this._ID_CXC != value))
-				{
-					this.OnID_CXCChanging(value);
-					this.SendPropertyChanging();
-					this._ID_CXC = value;
-					this.SendPropertyChanged("ID_CXC");
-					this.OnID_CXCChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_CUSTOMER", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string ID_CUSTOMER
-		{
-			get
-			{
-				return this._ID_CUSTOMER;
-			}
-			set
-			{
-				if ((this._ID_CUSTOMER != value))
-				{
-					if (this._TBL_CUSTOMER.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnID_CUSTOMERChanging(value);
-					this.SendPropertyChanging();
-					this._ID_CUSTOMER = value;
-					this.SendPropertyChanged("ID_CUSTOMER");
-					this.OnID_CUSTOMERChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PRODUCT", DbType="Int NOT NULL")]
-		public int ID_PRODUCT
-		{
-			get
-			{
-				return this._ID_PRODUCT;
-			}
-			set
-			{
-				if ((this._ID_PRODUCT != value))
-				{
-					if (this._TBL_PRODUCT.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnID_PRODUCTChanging(value);
-					this.SendPropertyChanging();
-					this._ID_PRODUCT = value;
-					this.SendPropertyChanged("ID_PRODUCT");
-					this.OnID_PRODUCTChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QUANTITY_RETREAT", DbType="Int NOT NULL")]
-		public int QUANTITY_RETREAT
-		{
-			get
-			{
-				return this._QUANTITY_RETREAT;
-			}
-			set
-			{
-				if ((this._QUANTITY_RETREAT != value))
-				{
-					this.OnQUANTITY_RETREATChanging(value);
-					this.SendPropertyChanging();
-					this._QUANTITY_RETREAT = value;
-					this.SendPropertyChanged("QUANTITY_RETREAT");
-					this.OnQUANTITY_RETREATChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QUANTITY_RETURN", DbType="Int NOT NULL")]
-		public int QUANTITY_RETURN
-		{
-			get
-			{
-				return this._QUANTITY_RETURN;
-			}
-			set
-			{
-				if ((this._QUANTITY_RETURN != value))
-				{
-					this.OnQUANTITY_RETURNChanging(value);
-					this.SendPropertyChanging();
-					this._QUANTITY_RETURN = value;
-					this.SendPropertyChanged("QUANTITY_RETURN");
-					this.OnQUANTITY_RETURNChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TOTAL_CXC", DbType="Money NOT NULL")]
-		public decimal TOTAL_CXC
-		{
-			get
-			{
-				return this._TOTAL_CXC;
-			}
-			set
-			{
-				if ((this._TOTAL_CXC != value))
-				{
-					this.OnTOTAL_CXCChanging(value);
-					this.SendPropertyChanging();
-					this._TOTAL_CXC = value;
-					this.SendPropertyChanged("TOTAL_CXC");
-					this.OnTOTAL_CXCChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BALANCE_CXC", DbType="Int NOT NULL")]
-		public int BALANCE_CXC
-		{
-			get
-			{
-				return this._BALANCE_CXC;
-			}
-			set
-			{
-				if ((this._BALANCE_CXC != value))
-				{
-					this.OnBALANCE_CXCChanging(value);
-					this.SendPropertyChanging();
-					this._BALANCE_CXC = value;
-					this.SendPropertyChanged("BALANCE_CXC");
-					this.OnBALANCE_CXCChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CXC_STATE", DbType="Bit NOT NULL")]
-		public bool CXC_STATE
-		{
-			get
-			{
-				return this._CXC_STATE;
-			}
-			set
-			{
-				if ((this._CXC_STATE != value))
-				{
-					this.OnCXC_STATEChanging(value);
-					this.SendPropertyChanging();
-					this._CXC_STATE = value;
-					this.SendPropertyChanged("CXC_STATE");
-					this.OnCXC_STATEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CXC_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string CXC_CREATEBY
-		{
-			get
-			{
-				return this._CXC_CREATEBY;
-			}
-			set
-			{
-				if ((this._CXC_CREATEBY != value))
-				{
-					if (this._TBL_USER.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnCXC_CREATEBYChanging(value);
-					this.SendPropertyChanging();
-					this._CXC_CREATEBY = value;
-					this.SendPropertyChanged("CXC_CREATEBY");
-					this.OnCXC_CREATEBYChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CXC_UPDATEDBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string CXC_UPDATEDBY
-		{
-			get
-			{
-				return this._CXC_UPDATEDBY;
-			}
-			set
-			{
-				if ((this._CXC_UPDATEDBY != value))
-				{
-					this.OnCXC_UPDATEDBYChanging(value);
-					this.SendPropertyChanging();
-					this._CXC_UPDATEDBY = value;
-					this.SendPropertyChanged("CXC_UPDATEDBY");
-					this.OnCXC_UPDATEDBYChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CXC_CREATEDATE", DbType="DateTime NOT NULL")]
-		public System.DateTime CXC_CREATEDATE
-		{
-			get
-			{
-				return this._CXC_CREATEDATE;
-			}
-			set
-			{
-				if ((this._CXC_CREATEDATE != value))
-				{
-					this.OnCXC_CREATEDATEChanging(value);
-					this.SendPropertyChanging();
-					this._CXC_CREATEDATE = value;
-					this.SendPropertyChanged("CXC_CREATEDATE");
-					this.OnCXC_CREATEDATEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CXC_UPDATEDATE", DbType="DateTime NOT NULL")]
-		public System.DateTime CXC_UPDATEDATE
-		{
-			get
-			{
-				return this._CXC_UPDATEDATE;
-			}
-			set
-			{
-				if ((this._CXC_UPDATEDATE != value))
-				{
-					this.OnCXC_UPDATEDATEChanging(value);
-					this.SendPropertyChanging();
-					this._CXC_UPDATEDATE = value;
-					this.SendPropertyChanged("CXC_UPDATEDATE");
-					this.OnCXC_UPDATEDATEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_CUSTOMER_TBL_CXC", Storage="_TBL_CUSTOMER", ThisKey="ID_CUSTOMER", OtherKey="ID_CUSTOMER", IsForeignKey=true)]
-		public TBL_CUSTOMER TBL_CUSTOMER
-		{
-			get
-			{
-				return this._TBL_CUSTOMER.Entity;
-			}
-			set
-			{
-				TBL_CUSTOMER previousValue = this._TBL_CUSTOMER.Entity;
-				if (((previousValue != value) 
-							|| (this._TBL_CUSTOMER.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TBL_CUSTOMER.Entity = null;
-						previousValue.TBL_CXCs.Remove(this);
-					}
-					this._TBL_CUSTOMER.Entity = value;
-					if ((value != null))
-					{
-						value.TBL_CXCs.Add(this);
-						this._ID_CUSTOMER = value.ID_CUSTOMER;
-					}
-					else
-					{
-						this._ID_CUSTOMER = default(string);
-					}
-					this.SendPropertyChanged("TBL_CUSTOMER");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_PRODUCT_TBL_CXC", Storage="_TBL_PRODUCT", ThisKey="ID_PRODUCT", OtherKey="ID_PRODUCT", IsForeignKey=true)]
-		public TBL_PRODUCT TBL_PRODUCT
-		{
-			get
-			{
-				return this._TBL_PRODUCT.Entity;
-			}
-			set
-			{
-				TBL_PRODUCT previousValue = this._TBL_PRODUCT.Entity;
-				if (((previousValue != value) 
-							|| (this._TBL_PRODUCT.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TBL_PRODUCT.Entity = null;
-						previousValue.TBL_CXCs.Remove(this);
-					}
-					this._TBL_PRODUCT.Entity = value;
-					if ((value != null))
-					{
-						value.TBL_CXCs.Add(this);
-						this._ID_PRODUCT = value.ID_PRODUCT;
-					}
-					else
-					{
-						this._ID_PRODUCT = default(int);
-					}
-					this.SendPropertyChanged("TBL_PRODUCT");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_USER_TBL_CXC", Storage="_TBL_USER", ThisKey="CXC_CREATEBY", OtherKey="ID_USER", IsForeignKey=true)]
-		public TBL_USER TBL_USER
-		{
-			get
-			{
-				return this._TBL_USER.Entity;
-			}
-			set
-			{
-				TBL_USER previousValue = this._TBL_USER.Entity;
-				if (((previousValue != value) 
-							|| (this._TBL_USER.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TBL_USER.Entity = null;
-						previousValue.TBL_CXCs.Remove(this);
-					}
-					this._TBL_USER.Entity = value;
-					if ((value != null))
-					{
-						value.TBL_CXCs.Add(this);
-						this._CXC_CREATEBY = value.ID_USER;
-					}
-					else
-					{
-						this._CXC_CREATEBY = default(string);
-					}
-					this.SendPropertyChanged("TBL_USER");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_ORDER")]
-	public partial class TBL_ORDER : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID_ORDER;
-		
-		private int _ID_PREPAID;
-		
-		private int _ORDER_QUANTITY;
-		
-		private System.DateTime _ORDER_DATE;
-		
-		private bool _ORDER_DELIVERY;
-		
-		private bool _ORDER_STATE;
-		
-		private string _ORDER_CREATEBY;
-		
-		private string _ORDER_UPDATEDBY;
-		
-		private System.DateTime _ORDER_CREATEDATE;
-		
-		private System.Nullable<System.DateTime> _ORDER_UPDATEDATE;
-		
-		private EntityRef<TBL_PREPAID> _TBL_PREPAID;
-		
-		private EntityRef<TBL_USER> _TBL_USER;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnID_ORDERChanging(int value);
-    partial void OnID_ORDERChanged();
-    partial void OnID_PREPAIDChanging(int value);
-    partial void OnID_PREPAIDChanged();
-    partial void OnORDER_QUANTITYChanging(int value);
-    partial void OnORDER_QUANTITYChanged();
-    partial void OnORDER_DATEChanging(System.DateTime value);
-    partial void OnORDER_DATEChanged();
-    partial void OnORDER_DELIVERYChanging(bool value);
-    partial void OnORDER_DELIVERYChanged();
-    partial void OnORDER_STATEChanging(bool value);
-    partial void OnORDER_STATEChanged();
-    partial void OnORDER_CREATEBYChanging(string value);
-    partial void OnORDER_CREATEBYChanged();
-    partial void OnORDER_UPDATEDBYChanging(string value);
-    partial void OnORDER_UPDATEDBYChanged();
-    partial void OnORDER_CREATEDATEChanging(System.DateTime value);
-    partial void OnORDER_CREATEDATEChanged();
-    partial void OnORDER_UPDATEDATEChanging(System.Nullable<System.DateTime> value);
-    partial void OnORDER_UPDATEDATEChanged();
-    #endregion
-		
-		public TBL_ORDER()
-		{
-			this._TBL_PREPAID = default(EntityRef<TBL_PREPAID>);
-			this._TBL_USER = default(EntityRef<TBL_USER>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_ORDER", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID_ORDER
-		{
-			get
-			{
-				return this._ID_ORDER;
-			}
-			set
-			{
-				if ((this._ID_ORDER != value))
-				{
-					this.OnID_ORDERChanging(value);
-					this.SendPropertyChanging();
-					this._ID_ORDER = value;
-					this.SendPropertyChanged("ID_ORDER");
-					this.OnID_ORDERChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PREPAID", DbType="Int NOT NULL")]
-		public int ID_PREPAID
-		{
-			get
-			{
-				return this._ID_PREPAID;
-			}
-			set
-			{
-				if ((this._ID_PREPAID != value))
-				{
-					if (this._TBL_PREPAID.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnID_PREPAIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID_PREPAID = value;
-					this.SendPropertyChanged("ID_PREPAID");
-					this.OnID_PREPAIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_QUANTITY", DbType="Int NOT NULL")]
-		public int ORDER_QUANTITY
-		{
-			get
-			{
-				return this._ORDER_QUANTITY;
-			}
-			set
-			{
-				if ((this._ORDER_QUANTITY != value))
-				{
-					this.OnORDER_QUANTITYChanging(value);
-					this.SendPropertyChanging();
-					this._ORDER_QUANTITY = value;
-					this.SendPropertyChanged("ORDER_QUANTITY");
-					this.OnORDER_QUANTITYChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_DATE", DbType="DateTime NOT NULL")]
-		public System.DateTime ORDER_DATE
-		{
-			get
-			{
-				return this._ORDER_DATE;
-			}
-			set
-			{
-				if ((this._ORDER_DATE != value))
-				{
-					this.OnORDER_DATEChanging(value);
-					this.SendPropertyChanging();
-					this._ORDER_DATE = value;
-					this.SendPropertyChanged("ORDER_DATE");
-					this.OnORDER_DATEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_DELIVERY", DbType="Bit NOT NULL")]
-		public bool ORDER_DELIVERY
-		{
-			get
-			{
-				return this._ORDER_DELIVERY;
-			}
-			set
-			{
-				if ((this._ORDER_DELIVERY != value))
-				{
-					this.OnORDER_DELIVERYChanging(value);
-					this.SendPropertyChanging();
-					this._ORDER_DELIVERY = value;
-					this.SendPropertyChanged("ORDER_DELIVERY");
-					this.OnORDER_DELIVERYChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_STATE", DbType="Bit NOT NULL")]
-		public bool ORDER_STATE
-		{
-			get
-			{
-				return this._ORDER_STATE;
-			}
-			set
-			{
-				if ((this._ORDER_STATE != value))
-				{
-					this.OnORDER_STATEChanging(value);
-					this.SendPropertyChanging();
-					this._ORDER_STATE = value;
-					this.SendPropertyChanged("ORDER_STATE");
-					this.OnORDER_STATEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string ORDER_CREATEBY
-		{
-			get
-			{
-				return this._ORDER_CREATEBY;
-			}
-			set
-			{
-				if ((this._ORDER_CREATEBY != value))
-				{
-					if (this._TBL_USER.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnORDER_CREATEBYChanging(value);
-					this.SendPropertyChanging();
-					this._ORDER_CREATEBY = value;
-					this.SendPropertyChanged("ORDER_CREATEBY");
-					this.OnORDER_CREATEBYChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_UPDATEDBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string ORDER_UPDATEDBY
-		{
-			get
-			{
-				return this._ORDER_UPDATEDBY;
-			}
-			set
-			{
-				if ((this._ORDER_UPDATEDBY != value))
-				{
-					this.OnORDER_UPDATEDBYChanging(value);
-					this.SendPropertyChanging();
-					this._ORDER_UPDATEDBY = value;
-					this.SendPropertyChanged("ORDER_UPDATEDBY");
-					this.OnORDER_UPDATEDBYChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_CREATEDATE", DbType="DateTime NOT NULL")]
-		public System.DateTime ORDER_CREATEDATE
-		{
-			get
-			{
-				return this._ORDER_CREATEDATE;
-			}
-			set
-			{
-				if ((this._ORDER_CREATEDATE != value))
-				{
-					this.OnORDER_CREATEDATEChanging(value);
-					this.SendPropertyChanging();
-					this._ORDER_CREATEDATE = value;
-					this.SendPropertyChanged("ORDER_CREATEDATE");
-					this.OnORDER_CREATEDATEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_UPDATEDATE", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ORDER_UPDATEDATE
-		{
-			get
-			{
-				return this._ORDER_UPDATEDATE;
-			}
-			set
-			{
-				if ((this._ORDER_UPDATEDATE != value))
-				{
-					this.OnORDER_UPDATEDATEChanging(value);
-					this.SendPropertyChanging();
-					this._ORDER_UPDATEDATE = value;
-					this.SendPropertyChanged("ORDER_UPDATEDATE");
-					this.OnORDER_UPDATEDATEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_PREPAID_TBL_ORDER", Storage="_TBL_PREPAID", ThisKey="ID_PREPAID", OtherKey="ID_PREPAID", IsForeignKey=true)]
-		public TBL_PREPAID TBL_PREPAID
-		{
-			get
-			{
-				return this._TBL_PREPAID.Entity;
-			}
-			set
-			{
-				TBL_PREPAID previousValue = this._TBL_PREPAID.Entity;
-				if (((previousValue != value) 
-							|| (this._TBL_PREPAID.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TBL_PREPAID.Entity = null;
-						previousValue.TBL_ORDERs.Remove(this);
-					}
-					this._TBL_PREPAID.Entity = value;
-					if ((value != null))
-					{
-						value.TBL_ORDERs.Add(this);
-						this._ID_PREPAID = value.ID_PREPAID;
-					}
-					else
-					{
-						this._ID_PREPAID = default(int);
-					}
-					this.SendPropertyChanged("TBL_PREPAID");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBL_USER_TBL_ORDER", Storage="_TBL_USER", ThisKey="ORDER_CREATEBY", OtherKey="ID_USER", IsForeignKey=true)]
-		public TBL_USER TBL_USER
-		{
-			get
-			{
-				return this._TBL_USER.Entity;
-			}
-			set
-			{
-				TBL_USER previousValue = this._TBL_USER.Entity;
-				if (((previousValue != value) 
-							|| (this._TBL_USER.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TBL_USER.Entity = null;
-						previousValue.TBL_ORDERs.Remove(this);
-					}
-					this._TBL_USER.Entity = value;
-					if ((value != null))
-					{
-						value.TBL_ORDERs.Add(this);
-						this._ORDER_CREATEBY = value.ID_USER;
-					}
-					else
-					{
-						this._ORDER_CREATEBY = default(string);
-					}
-					this.SendPropertyChanged("TBL_USER");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 	
@@ -6091,6 +6091,364 @@ namespace ControlApp.DataAccess
 		}
 	}
 	
+	public partial class SP_CRUD_CUSTOMERResult
+	{
+		
+		private string _ID_CUSTOMER;
+		
+		private string _CUSTOMER_NAME;
+		
+		private bool _CUSTOMER_STATE;
+		
+		private string _CUSTOMER_CREATEBY;
+		
+		private string _CUSTOMER_UPDATEDBY;
+		
+		private System.DateTime _CUSTOMER_CREATEDATE;
+		
+		private System.Nullable<System.DateTime> _CUSTOMER_UPDATEDATE;
+		
+		public SP_CRUD_CUSTOMERResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_CUSTOMER", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ID_CUSTOMER
+		{
+			get
+			{
+				return this._ID_CUSTOMER;
+			}
+			set
+			{
+				if ((this._ID_CUSTOMER != value))
+				{
+					this._ID_CUSTOMER = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUSTOMER_NAME", DbType="VarChar(25) NOT NULL", CanBeNull=false)]
+		public string CUSTOMER_NAME
+		{
+			get
+			{
+				return this._CUSTOMER_NAME;
+			}
+			set
+			{
+				if ((this._CUSTOMER_NAME != value))
+				{
+					this._CUSTOMER_NAME = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUSTOMER_STATE", DbType="Bit NOT NULL")]
+		public bool CUSTOMER_STATE
+		{
+			get
+			{
+				return this._CUSTOMER_STATE;
+			}
+			set
+			{
+				if ((this._CUSTOMER_STATE != value))
+				{
+					this._CUSTOMER_STATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUSTOMER_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string CUSTOMER_CREATEBY
+		{
+			get
+			{
+				return this._CUSTOMER_CREATEBY;
+			}
+			set
+			{
+				if ((this._CUSTOMER_CREATEBY != value))
+				{
+					this._CUSTOMER_CREATEBY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUSTOMER_UPDATEDBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string CUSTOMER_UPDATEDBY
+		{
+			get
+			{
+				return this._CUSTOMER_UPDATEDBY;
+			}
+			set
+			{
+				if ((this._CUSTOMER_UPDATEDBY != value))
+				{
+					this._CUSTOMER_UPDATEDBY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUSTOMER_CREATEDATE", DbType="DateTime NOT NULL")]
+		public System.DateTime CUSTOMER_CREATEDATE
+		{
+			get
+			{
+				return this._CUSTOMER_CREATEDATE;
+			}
+			set
+			{
+				if ((this._CUSTOMER_CREATEDATE != value))
+				{
+					this._CUSTOMER_CREATEDATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUSTOMER_UPDATEDATE", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CUSTOMER_UPDATEDATE
+		{
+			get
+			{
+				return this._CUSTOMER_UPDATEDATE;
+			}
+			set
+			{
+				if ((this._CUSTOMER_UPDATEDATE != value))
+				{
+					this._CUSTOMER_UPDATEDATE = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_CRUD_CXCResult
+	{
+		
+		private int _ID_CXC;
+		
+		private string _CUSTOMER_NAME;
+		
+		private string _DESCRIP_PRICE;
+		
+		private int _QUANTITY_RETREAT;
+		
+		private int _QUANTITY_RETURN;
+		
+		private decimal _TOTAL_CXC;
+		
+		private int _BALANCE_CXC;
+		
+		private bool _CXC_STATE;
+		
+		private string _CXC_CREATEBY;
+		
+		private string _CXC_UPDATEDBY;
+		
+		private System.DateTime _CXC_CREATEDATE;
+		
+		private System.DateTime _CXC_UPDATEDATE;
+		
+		public SP_CRUD_CXCResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_CXC", DbType="Int NOT NULL")]
+		public int ID_CXC
+		{
+			get
+			{
+				return this._ID_CXC;
+			}
+			set
+			{
+				if ((this._ID_CXC != value))
+				{
+					this._ID_CXC = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUSTOMER_NAME", DbType="VarChar(25) NOT NULL", CanBeNull=false)]
+		public string CUSTOMER_NAME
+		{
+			get
+			{
+				return this._CUSTOMER_NAME;
+			}
+			set
+			{
+				if ((this._CUSTOMER_NAME != value))
+				{
+					this._CUSTOMER_NAME = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DESCRIP_PRICE", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string DESCRIP_PRICE
+		{
+			get
+			{
+				return this._DESCRIP_PRICE;
+			}
+			set
+			{
+				if ((this._DESCRIP_PRICE != value))
+				{
+					this._DESCRIP_PRICE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QUANTITY_RETREAT", DbType="Int NOT NULL")]
+		public int QUANTITY_RETREAT
+		{
+			get
+			{
+				return this._QUANTITY_RETREAT;
+			}
+			set
+			{
+				if ((this._QUANTITY_RETREAT != value))
+				{
+					this._QUANTITY_RETREAT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QUANTITY_RETURN", DbType="Int NOT NULL")]
+		public int QUANTITY_RETURN
+		{
+			get
+			{
+				return this._QUANTITY_RETURN;
+			}
+			set
+			{
+				if ((this._QUANTITY_RETURN != value))
+				{
+					this._QUANTITY_RETURN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TOTAL_CXC", DbType="Money NOT NULL")]
+		public decimal TOTAL_CXC
+		{
+			get
+			{
+				return this._TOTAL_CXC;
+			}
+			set
+			{
+				if ((this._TOTAL_CXC != value))
+				{
+					this._TOTAL_CXC = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BALANCE_CXC", DbType="Int NOT NULL")]
+		public int BALANCE_CXC
+		{
+			get
+			{
+				return this._BALANCE_CXC;
+			}
+			set
+			{
+				if ((this._BALANCE_CXC != value))
+				{
+					this._BALANCE_CXC = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CXC_STATE", DbType="Bit NOT NULL")]
+		public bool CXC_STATE
+		{
+			get
+			{
+				return this._CXC_STATE;
+			}
+			set
+			{
+				if ((this._CXC_STATE != value))
+				{
+					this._CXC_STATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CXC_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string CXC_CREATEBY
+		{
+			get
+			{
+				return this._CXC_CREATEBY;
+			}
+			set
+			{
+				if ((this._CXC_CREATEBY != value))
+				{
+					this._CXC_CREATEBY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CXC_UPDATEDBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string CXC_UPDATEDBY
+		{
+			get
+			{
+				return this._CXC_UPDATEDBY;
+			}
+			set
+			{
+				if ((this._CXC_UPDATEDBY != value))
+				{
+					this._CXC_UPDATEDBY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CXC_CREATEDATE", DbType="DateTime NOT NULL")]
+		public System.DateTime CXC_CREATEDATE
+		{
+			get
+			{
+				return this._CXC_CREATEDATE;
+			}
+			set
+			{
+				if ((this._CXC_CREATEDATE != value))
+				{
+					this._CXC_CREATEDATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CXC_UPDATEDATE", DbType="DateTime NOT NULL")]
+		public System.DateTime CXC_UPDATEDATE
+		{
+			get
+			{
+				return this._CXC_UPDATEDATE;
+			}
+			set
+			{
+				if ((this._CXC_UPDATEDATE != value))
+				{
+					this._CXC_UPDATEDATE = value;
+				}
+			}
+		}
+	}
+	
 	public partial class SP_CRUD_DPTResult
 	{
 		
@@ -6220,6 +6578,194 @@ namespace ControlApp.DataAccess
 				if ((this._UPDATEDATE_DPT != value))
 				{
 					this._UPDATEDATE_DPT = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_CRUD_ORDERResult
+	{
+		
+		private int _ID_ORDER;
+		
+		private int _ID_PREPAID;
+		
+		private int _ORDER_QUANTITY;
+		
+		private System.DateTime _ORDER_DATE;
+		
+		private bool _ORDER_DELIVERY;
+		
+		private bool _ORDER_STATE;
+		
+		private string _ORDER_CREATEBY;
+		
+		private string _ORDER_UPDATEDBY;
+		
+		private System.DateTime _ORDER_CREATEDATE;
+		
+		private System.Nullable<System.DateTime> _ORDER_UPDATEDATE;
+		
+		public SP_CRUD_ORDERResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_ORDER", DbType="Int NOT NULL")]
+		public int ID_ORDER
+		{
+			get
+			{
+				return this._ID_ORDER;
+			}
+			set
+			{
+				if ((this._ID_ORDER != value))
+				{
+					this._ID_ORDER = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PREPAID", DbType="Int NOT NULL")]
+		public int ID_PREPAID
+		{
+			get
+			{
+				return this._ID_PREPAID;
+			}
+			set
+			{
+				if ((this._ID_PREPAID != value))
+				{
+					this._ID_PREPAID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_QUANTITY", DbType="Int NOT NULL")]
+		public int ORDER_QUANTITY
+		{
+			get
+			{
+				return this._ORDER_QUANTITY;
+			}
+			set
+			{
+				if ((this._ORDER_QUANTITY != value))
+				{
+					this._ORDER_QUANTITY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_DATE", DbType="DateTime NOT NULL")]
+		public System.DateTime ORDER_DATE
+		{
+			get
+			{
+				return this._ORDER_DATE;
+			}
+			set
+			{
+				if ((this._ORDER_DATE != value))
+				{
+					this._ORDER_DATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_DELIVERY", DbType="Bit NOT NULL")]
+		public bool ORDER_DELIVERY
+		{
+			get
+			{
+				return this._ORDER_DELIVERY;
+			}
+			set
+			{
+				if ((this._ORDER_DELIVERY != value))
+				{
+					this._ORDER_DELIVERY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_STATE", DbType="Bit NOT NULL")]
+		public bool ORDER_STATE
+		{
+			get
+			{
+				return this._ORDER_STATE;
+			}
+			set
+			{
+				if ((this._ORDER_STATE != value))
+				{
+					this._ORDER_STATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ORDER_CREATEBY
+		{
+			get
+			{
+				return this._ORDER_CREATEBY;
+			}
+			set
+			{
+				if ((this._ORDER_CREATEBY != value))
+				{
+					this._ORDER_CREATEBY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_UPDATEDBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ORDER_UPDATEDBY
+		{
+			get
+			{
+				return this._ORDER_UPDATEDBY;
+			}
+			set
+			{
+				if ((this._ORDER_UPDATEDBY != value))
+				{
+					this._ORDER_UPDATEDBY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_CREATEDATE", DbType="DateTime NOT NULL")]
+		public System.DateTime ORDER_CREATEDATE
+		{
+			get
+			{
+				return this._ORDER_CREATEDATE;
+			}
+			set
+			{
+				if ((this._ORDER_CREATEDATE != value))
+				{
+					this._ORDER_CREATEDATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_UPDATEDATE", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ORDER_UPDATEDATE
+		{
+			get
+			{
+				return this._ORDER_UPDATEDATE;
+			}
+			set
+			{
+				if ((this._ORDER_UPDATEDATE != value))
+				{
+					this._ORDER_UPDATEDATE = value;
 				}
 			}
 		}
@@ -6542,6 +7088,248 @@ namespace ControlApp.DataAccess
 				if ((this._POSITION_UPDATEDATE != value))
 				{
 					this._POSITION_UPDATEDATE = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_CRUD_PREPAIDResult
+	{
+		
+		private int _ID_PREPAID;
+		
+		private string _CUSTOMER_NAME;
+		
+		private string _DESCRIP_PRICE;
+		
+		private int _PREPAID_QUANTITY;
+		
+		private decimal _PREPAID_TOTAL;
+		
+		private decimal _PREPAID_CASH;
+		
+		private decimal _PREPAID_CHANGE;
+		
+		private int _PREPAID_BALANCE;
+		
+		private bool _PREPAID_STATE;
+		
+		private string _PREPAID_CREATEBY;
+		
+		private string _PREPAID_UPDATEDBY;
+		
+		private System.DateTime _PREPAID_CREATEDATE;
+		
+		private System.Nullable<System.DateTime> _PREPAID_UPDATEDATE;
+		
+		public SP_CRUD_PREPAIDResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PREPAID", DbType="Int NOT NULL")]
+		public int ID_PREPAID
+		{
+			get
+			{
+				return this._ID_PREPAID;
+			}
+			set
+			{
+				if ((this._ID_PREPAID != value))
+				{
+					this._ID_PREPAID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUSTOMER_NAME", DbType="VarChar(25) NOT NULL", CanBeNull=false)]
+		public string CUSTOMER_NAME
+		{
+			get
+			{
+				return this._CUSTOMER_NAME;
+			}
+			set
+			{
+				if ((this._CUSTOMER_NAME != value))
+				{
+					this._CUSTOMER_NAME = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DESCRIP_PRICE", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string DESCRIP_PRICE
+		{
+			get
+			{
+				return this._DESCRIP_PRICE;
+			}
+			set
+			{
+				if ((this._DESCRIP_PRICE != value))
+				{
+					this._DESCRIP_PRICE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PREPAID_QUANTITY", DbType="Int NOT NULL")]
+		public int PREPAID_QUANTITY
+		{
+			get
+			{
+				return this._PREPAID_QUANTITY;
+			}
+			set
+			{
+				if ((this._PREPAID_QUANTITY != value))
+				{
+					this._PREPAID_QUANTITY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PREPAID_TOTAL", DbType="Money NOT NULL")]
+		public decimal PREPAID_TOTAL
+		{
+			get
+			{
+				return this._PREPAID_TOTAL;
+			}
+			set
+			{
+				if ((this._PREPAID_TOTAL != value))
+				{
+					this._PREPAID_TOTAL = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PREPAID_CASH", DbType="Money NOT NULL")]
+		public decimal PREPAID_CASH
+		{
+			get
+			{
+				return this._PREPAID_CASH;
+			}
+			set
+			{
+				if ((this._PREPAID_CASH != value))
+				{
+					this._PREPAID_CASH = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PREPAID_CHANGE", DbType="Money NOT NULL")]
+		public decimal PREPAID_CHANGE
+		{
+			get
+			{
+				return this._PREPAID_CHANGE;
+			}
+			set
+			{
+				if ((this._PREPAID_CHANGE != value))
+				{
+					this._PREPAID_CHANGE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PREPAID_BALANCE", DbType="Int NOT NULL")]
+		public int PREPAID_BALANCE
+		{
+			get
+			{
+				return this._PREPAID_BALANCE;
+			}
+			set
+			{
+				if ((this._PREPAID_BALANCE != value))
+				{
+					this._PREPAID_BALANCE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PREPAID_STATE", DbType="Bit NOT NULL")]
+		public bool PREPAID_STATE
+		{
+			get
+			{
+				return this._PREPAID_STATE;
+			}
+			set
+			{
+				if ((this._PREPAID_STATE != value))
+				{
+					this._PREPAID_STATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PREPAID_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string PREPAID_CREATEBY
+		{
+			get
+			{
+				return this._PREPAID_CREATEBY;
+			}
+			set
+			{
+				if ((this._PREPAID_CREATEBY != value))
+				{
+					this._PREPAID_CREATEBY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PREPAID_UPDATEDBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string PREPAID_UPDATEDBY
+		{
+			get
+			{
+				return this._PREPAID_UPDATEDBY;
+			}
+			set
+			{
+				if ((this._PREPAID_UPDATEDBY != value))
+				{
+					this._PREPAID_UPDATEDBY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PREPAID_CREATEDATE", DbType="DateTime NOT NULL")]
+		public System.DateTime PREPAID_CREATEDATE
+		{
+			get
+			{
+				return this._PREPAID_CREATEDATE;
+			}
+			set
+			{
+				if ((this._PREPAID_CREATEDATE != value))
+				{
+					this._PREPAID_CREATEDATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PREPAID_UPDATEDATE", DbType="DateTime")]
+		public System.Nullable<System.DateTime> PREPAID_UPDATEDATE
+		{
+			get
+			{
+				return this._PREPAID_UPDATEDATE;
+			}
+			set
+			{
+				if ((this._PREPAID_UPDATEDATE != value))
+				{
+					this._PREPAID_UPDATEDATE = value;
 				}
 			}
 		}
@@ -7245,6 +8033,212 @@ namespace ControlApp.DataAccess
 		}
 	}
 	
+	public partial class SP_CRUD_STOCKResult
+	{
+		
+		private int _ID_STOCK;
+		
+		private string _DESCRIP_PRICE;
+		
+		private int _STOCK_INITIAL_QUANTITY;
+		
+		private int _STOCK_QUANTITY;
+		
+		private int _STOCK_ADJUSTMENT;
+		
+		private System.DateTime _STOCK_DATE_PRODUCT;
+		
+		private bool _STOCK_STATE;
+		
+		private string _STOCK_CREATEBY;
+		
+		private string _STOCK_UPDATEDBY;
+		
+		private System.DateTime _STOCK_CREATEDATE;
+		
+		private System.Nullable<System.DateTime> _STOCK_UPDATEDATE;
+		
+		public SP_CRUD_STOCKResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_STOCK", DbType="Int NOT NULL")]
+		public int ID_STOCK
+		{
+			get
+			{
+				return this._ID_STOCK;
+			}
+			set
+			{
+				if ((this._ID_STOCK != value))
+				{
+					this._ID_STOCK = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DESCRIP_PRICE", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string DESCRIP_PRICE
+		{
+			get
+			{
+				return this._DESCRIP_PRICE;
+			}
+			set
+			{
+				if ((this._DESCRIP_PRICE != value))
+				{
+					this._DESCRIP_PRICE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_INITIAL_QUANTITY", DbType="Int NOT NULL")]
+		public int STOCK_INITIAL_QUANTITY
+		{
+			get
+			{
+				return this._STOCK_INITIAL_QUANTITY;
+			}
+			set
+			{
+				if ((this._STOCK_INITIAL_QUANTITY != value))
+				{
+					this._STOCK_INITIAL_QUANTITY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_QUANTITY", DbType="Int NOT NULL")]
+		public int STOCK_QUANTITY
+		{
+			get
+			{
+				return this._STOCK_QUANTITY;
+			}
+			set
+			{
+				if ((this._STOCK_QUANTITY != value))
+				{
+					this._STOCK_QUANTITY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_ADJUSTMENT", DbType="Int NOT NULL")]
+		public int STOCK_ADJUSTMENT
+		{
+			get
+			{
+				return this._STOCK_ADJUSTMENT;
+			}
+			set
+			{
+				if ((this._STOCK_ADJUSTMENT != value))
+				{
+					this._STOCK_ADJUSTMENT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_DATE_PRODUCT", DbType="DateTime NOT NULL")]
+		public System.DateTime STOCK_DATE_PRODUCT
+		{
+			get
+			{
+				return this._STOCK_DATE_PRODUCT;
+			}
+			set
+			{
+				if ((this._STOCK_DATE_PRODUCT != value))
+				{
+					this._STOCK_DATE_PRODUCT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_STATE", DbType="Bit NOT NULL")]
+		public bool STOCK_STATE
+		{
+			get
+			{
+				return this._STOCK_STATE;
+			}
+			set
+			{
+				if ((this._STOCK_STATE != value))
+				{
+					this._STOCK_STATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string STOCK_CREATEBY
+		{
+			get
+			{
+				return this._STOCK_CREATEBY;
+			}
+			set
+			{
+				if ((this._STOCK_CREATEBY != value))
+				{
+					this._STOCK_CREATEBY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_UPDATEDBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string STOCK_UPDATEDBY
+		{
+			get
+			{
+				return this._STOCK_UPDATEDBY;
+			}
+			set
+			{
+				if ((this._STOCK_UPDATEDBY != value))
+				{
+					this._STOCK_UPDATEDBY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_CREATEDATE", DbType="DateTime NOT NULL")]
+		public System.DateTime STOCK_CREATEDATE
+		{
+			get
+			{
+				return this._STOCK_CREATEDATE;
+			}
+			set
+			{
+				if ((this._STOCK_CREATEDATE != value))
+				{
+					this._STOCK_CREATEDATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_UPDATEDATE", DbType="DateTime")]
+		public System.Nullable<System.DateTime> STOCK_UPDATEDATE
+		{
+			get
+			{
+				return this._STOCK_UPDATEDATE;
+			}
+			set
+			{
+				if ((this._STOCK_UPDATEDATE != value))
+				{
+					this._STOCK_UPDATEDATE = value;
+				}
+			}
+		}
+	}
+	
 	public partial class SP_CRUD_USERResult
 	{
 		
@@ -7500,1000 +8494,6 @@ namespace ControlApp.DataAccess
 				if ((this._USER_UPDATEDATE != value))
 				{
 					this._USER_UPDATEDATE = value;
-				}
-			}
-		}
-	}
-	
-	public partial class SP_CRUD_CUSTOMERResult
-	{
-		
-		private string _ID_CUSTOMER;
-		
-		private string _CUSTOMER_NAME;
-		
-		private bool _CUSTOMER_STATE;
-		
-		private string _CUSTOMER_CREATEBY;
-		
-		private string _CUSTOMER_UPDATEDBY;
-		
-		private System.DateTime _CUSTOMER_CREATEDATE;
-		
-		private System.Nullable<System.DateTime> _CUSTOMER_UPDATEDATE;
-		
-		public SP_CRUD_CUSTOMERResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_CUSTOMER", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string ID_CUSTOMER
-		{
-			get
-			{
-				return this._ID_CUSTOMER;
-			}
-			set
-			{
-				if ((this._ID_CUSTOMER != value))
-				{
-					this._ID_CUSTOMER = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUSTOMER_NAME", DbType="VarChar(25) NOT NULL", CanBeNull=false)]
-		public string CUSTOMER_NAME
-		{
-			get
-			{
-				return this._CUSTOMER_NAME;
-			}
-			set
-			{
-				if ((this._CUSTOMER_NAME != value))
-				{
-					this._CUSTOMER_NAME = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUSTOMER_STATE", DbType="Bit NOT NULL")]
-		public bool CUSTOMER_STATE
-		{
-			get
-			{
-				return this._CUSTOMER_STATE;
-			}
-			set
-			{
-				if ((this._CUSTOMER_STATE != value))
-				{
-					this._CUSTOMER_STATE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUSTOMER_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string CUSTOMER_CREATEBY
-		{
-			get
-			{
-				return this._CUSTOMER_CREATEBY;
-			}
-			set
-			{
-				if ((this._CUSTOMER_CREATEBY != value))
-				{
-					this._CUSTOMER_CREATEBY = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUSTOMER_UPDATEDBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string CUSTOMER_UPDATEDBY
-		{
-			get
-			{
-				return this._CUSTOMER_UPDATEDBY;
-			}
-			set
-			{
-				if ((this._CUSTOMER_UPDATEDBY != value))
-				{
-					this._CUSTOMER_UPDATEDBY = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUSTOMER_CREATEDATE", DbType="DateTime NOT NULL")]
-		public System.DateTime CUSTOMER_CREATEDATE
-		{
-			get
-			{
-				return this._CUSTOMER_CREATEDATE;
-			}
-			set
-			{
-				if ((this._CUSTOMER_CREATEDATE != value))
-				{
-					this._CUSTOMER_CREATEDATE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUSTOMER_UPDATEDATE", DbType="DateTime")]
-		public System.Nullable<System.DateTime> CUSTOMER_UPDATEDATE
-		{
-			get
-			{
-				return this._CUSTOMER_UPDATEDATE;
-			}
-			set
-			{
-				if ((this._CUSTOMER_UPDATEDATE != value))
-				{
-					this._CUSTOMER_UPDATEDATE = value;
-				}
-			}
-		}
-	}
-	
-	public partial class SP_CRUD_STOCKResult
-	{
-		
-		private int _ID_STOCK;
-		
-		private string _DESCRIP_PRICE;
-		
-		private int _STOCK_INITIAL_QUANTITY;
-		
-		private int _STOCK_QUANTITY;
-		
-		private int _STOCK_ADJUSTMENT;
-		
-		private System.DateTime _STOCK_DATE_PRODUCT;
-		
-		private bool _STOCK_STATE;
-		
-		private string _STOCK_CREATEBY;
-		
-		private string _STOCK_UPDATEDBY;
-		
-		private System.DateTime _STOCK_CREATEDATE;
-		
-		private System.Nullable<System.DateTime> _STOCK_UPDATEDATE;
-		
-		public SP_CRUD_STOCKResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_STOCK", DbType="Int NOT NULL")]
-		public int ID_STOCK
-		{
-			get
-			{
-				return this._ID_STOCK;
-			}
-			set
-			{
-				if ((this._ID_STOCK != value))
-				{
-					this._ID_STOCK = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DESCRIP_PRICE", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string DESCRIP_PRICE
-		{
-			get
-			{
-				return this._DESCRIP_PRICE;
-			}
-			set
-			{
-				if ((this._DESCRIP_PRICE != value))
-				{
-					this._DESCRIP_PRICE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_INITIAL_QUANTITY", DbType="Int NOT NULL")]
-		public int STOCK_INITIAL_QUANTITY
-		{
-			get
-			{
-				return this._STOCK_INITIAL_QUANTITY;
-			}
-			set
-			{
-				if ((this._STOCK_INITIAL_QUANTITY != value))
-				{
-					this._STOCK_INITIAL_QUANTITY = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_QUANTITY", DbType="Int NOT NULL")]
-		public int STOCK_QUANTITY
-		{
-			get
-			{
-				return this._STOCK_QUANTITY;
-			}
-			set
-			{
-				if ((this._STOCK_QUANTITY != value))
-				{
-					this._STOCK_QUANTITY = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_ADJUSTMENT", DbType="Int NOT NULL")]
-		public int STOCK_ADJUSTMENT
-		{
-			get
-			{
-				return this._STOCK_ADJUSTMENT;
-			}
-			set
-			{
-				if ((this._STOCK_ADJUSTMENT != value))
-				{
-					this._STOCK_ADJUSTMENT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_DATE_PRODUCT", DbType="DateTime NOT NULL")]
-		public System.DateTime STOCK_DATE_PRODUCT
-		{
-			get
-			{
-				return this._STOCK_DATE_PRODUCT;
-			}
-			set
-			{
-				if ((this._STOCK_DATE_PRODUCT != value))
-				{
-					this._STOCK_DATE_PRODUCT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_STATE", DbType="Bit NOT NULL")]
-		public bool STOCK_STATE
-		{
-			get
-			{
-				return this._STOCK_STATE;
-			}
-			set
-			{
-				if ((this._STOCK_STATE != value))
-				{
-					this._STOCK_STATE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string STOCK_CREATEBY
-		{
-			get
-			{
-				return this._STOCK_CREATEBY;
-			}
-			set
-			{
-				if ((this._STOCK_CREATEBY != value))
-				{
-					this._STOCK_CREATEBY = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_UPDATEDBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string STOCK_UPDATEDBY
-		{
-			get
-			{
-				return this._STOCK_UPDATEDBY;
-			}
-			set
-			{
-				if ((this._STOCK_UPDATEDBY != value))
-				{
-					this._STOCK_UPDATEDBY = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_CREATEDATE", DbType="DateTime NOT NULL")]
-		public System.DateTime STOCK_CREATEDATE
-		{
-			get
-			{
-				return this._STOCK_CREATEDATE;
-			}
-			set
-			{
-				if ((this._STOCK_CREATEDATE != value))
-				{
-					this._STOCK_CREATEDATE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_UPDATEDATE", DbType="DateTime")]
-		public System.Nullable<System.DateTime> STOCK_UPDATEDATE
-		{
-			get
-			{
-				return this._STOCK_UPDATEDATE;
-			}
-			set
-			{
-				if ((this._STOCK_UPDATEDATE != value))
-				{
-					this._STOCK_UPDATEDATE = value;
-				}
-			}
-		}
-	}
-	
-	public partial class SP_CRUD_CXCResult
-	{
-		
-		private int _ID_CXC;
-		
-		private string _CUSTOMER_NAME;
-		
-		private string _DESCRIP_PRICE;
-		
-		private int _QUANTITY_RETREAT;
-		
-		private int _QUANTITY_RETURN;
-		
-		private decimal _TOTAL_CXC;
-		
-		private int _BALANCE_CXC;
-		
-		private bool _CXC_STATE;
-		
-		private string _CXC_CREATEBY;
-		
-		private string _CXC_UPDATEDBY;
-		
-		private System.DateTime _CXC_CREATEDATE;
-		
-		private System.DateTime _CXC_UPDATEDATE;
-		
-		public SP_CRUD_CXCResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_CXC", DbType="Int NOT NULL")]
-		public int ID_CXC
-		{
-			get
-			{
-				return this._ID_CXC;
-			}
-			set
-			{
-				if ((this._ID_CXC != value))
-				{
-					this._ID_CXC = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUSTOMER_NAME", DbType="VarChar(25) NOT NULL", CanBeNull=false)]
-		public string CUSTOMER_NAME
-		{
-			get
-			{
-				return this._CUSTOMER_NAME;
-			}
-			set
-			{
-				if ((this._CUSTOMER_NAME != value))
-				{
-					this._CUSTOMER_NAME = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DESCRIP_PRICE", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string DESCRIP_PRICE
-		{
-			get
-			{
-				return this._DESCRIP_PRICE;
-			}
-			set
-			{
-				if ((this._DESCRIP_PRICE != value))
-				{
-					this._DESCRIP_PRICE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QUANTITY_RETREAT", DbType="Int NOT NULL")]
-		public int QUANTITY_RETREAT
-		{
-			get
-			{
-				return this._QUANTITY_RETREAT;
-			}
-			set
-			{
-				if ((this._QUANTITY_RETREAT != value))
-				{
-					this._QUANTITY_RETREAT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QUANTITY_RETURN", DbType="Int NOT NULL")]
-		public int QUANTITY_RETURN
-		{
-			get
-			{
-				return this._QUANTITY_RETURN;
-			}
-			set
-			{
-				if ((this._QUANTITY_RETURN != value))
-				{
-					this._QUANTITY_RETURN = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TOTAL_CXC", DbType="Money NOT NULL")]
-		public decimal TOTAL_CXC
-		{
-			get
-			{
-				return this._TOTAL_CXC;
-			}
-			set
-			{
-				if ((this._TOTAL_CXC != value))
-				{
-					this._TOTAL_CXC = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BALANCE_CXC", DbType="Int NOT NULL")]
-		public int BALANCE_CXC
-		{
-			get
-			{
-				return this._BALANCE_CXC;
-			}
-			set
-			{
-				if ((this._BALANCE_CXC != value))
-				{
-					this._BALANCE_CXC = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CXC_STATE", DbType="Bit NOT NULL")]
-		public bool CXC_STATE
-		{
-			get
-			{
-				return this._CXC_STATE;
-			}
-			set
-			{
-				if ((this._CXC_STATE != value))
-				{
-					this._CXC_STATE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CXC_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string CXC_CREATEBY
-		{
-			get
-			{
-				return this._CXC_CREATEBY;
-			}
-			set
-			{
-				if ((this._CXC_CREATEBY != value))
-				{
-					this._CXC_CREATEBY = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CXC_UPDATEDBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string CXC_UPDATEDBY
-		{
-			get
-			{
-				return this._CXC_UPDATEDBY;
-			}
-			set
-			{
-				if ((this._CXC_UPDATEDBY != value))
-				{
-					this._CXC_UPDATEDBY = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CXC_CREATEDATE", DbType="DateTime NOT NULL")]
-		public System.DateTime CXC_CREATEDATE
-		{
-			get
-			{
-				return this._CXC_CREATEDATE;
-			}
-			set
-			{
-				if ((this._CXC_CREATEDATE != value))
-				{
-					this._CXC_CREATEDATE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CXC_UPDATEDATE", DbType="DateTime NOT NULL")]
-		public System.DateTime CXC_UPDATEDATE
-		{
-			get
-			{
-				return this._CXC_UPDATEDATE;
-			}
-			set
-			{
-				if ((this._CXC_UPDATEDATE != value))
-				{
-					this._CXC_UPDATEDATE = value;
-				}
-			}
-		}
-	}
-	
-	public partial class SP_CRUD_PREPAIDResult
-	{
-		
-		private int _ID_PREPAID;
-		
-		private string _CUSTOMER_NAME;
-		
-		private string _DESCRIP_PRICE;
-		
-		private int _PREPAID_QUANTITY;
-		
-		private decimal _PREPAID_TOTAL;
-		
-		private decimal _PREPAID_CASH;
-		
-		private decimal _PREPAID_CHANGE;
-		
-		private int _PREPAID_BALANCE;
-		
-		private bool _PREPAID_STATE;
-		
-		private string _PREPAID_CREATEBY;
-		
-		private string _PREPAID_UPDATEDBY;
-		
-		private System.DateTime _PREPAID_CREATEDATE;
-		
-		private System.Nullable<System.DateTime> _PREPAID_UPDATEDATE;
-		
-		public SP_CRUD_PREPAIDResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PREPAID", DbType="Int NOT NULL")]
-		public int ID_PREPAID
-		{
-			get
-			{
-				return this._ID_PREPAID;
-			}
-			set
-			{
-				if ((this._ID_PREPAID != value))
-				{
-					this._ID_PREPAID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUSTOMER_NAME", DbType="VarChar(25) NOT NULL", CanBeNull=false)]
-		public string CUSTOMER_NAME
-		{
-			get
-			{
-				return this._CUSTOMER_NAME;
-			}
-			set
-			{
-				if ((this._CUSTOMER_NAME != value))
-				{
-					this._CUSTOMER_NAME = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DESCRIP_PRICE", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string DESCRIP_PRICE
-		{
-			get
-			{
-				return this._DESCRIP_PRICE;
-			}
-			set
-			{
-				if ((this._DESCRIP_PRICE != value))
-				{
-					this._DESCRIP_PRICE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PREPAID_QUANTITY", DbType="Int NOT NULL")]
-		public int PREPAID_QUANTITY
-		{
-			get
-			{
-				return this._PREPAID_QUANTITY;
-			}
-			set
-			{
-				if ((this._PREPAID_QUANTITY != value))
-				{
-					this._PREPAID_QUANTITY = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PREPAID_TOTAL", DbType="Money NOT NULL")]
-		public decimal PREPAID_TOTAL
-		{
-			get
-			{
-				return this._PREPAID_TOTAL;
-			}
-			set
-			{
-				if ((this._PREPAID_TOTAL != value))
-				{
-					this._PREPAID_TOTAL = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PREPAID_CASH", DbType="Money NOT NULL")]
-		public decimal PREPAID_CASH
-		{
-			get
-			{
-				return this._PREPAID_CASH;
-			}
-			set
-			{
-				if ((this._PREPAID_CASH != value))
-				{
-					this._PREPAID_CASH = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PREPAID_CHANGE", DbType="Money NOT NULL")]
-		public decimal PREPAID_CHANGE
-		{
-			get
-			{
-				return this._PREPAID_CHANGE;
-			}
-			set
-			{
-				if ((this._PREPAID_CHANGE != value))
-				{
-					this._PREPAID_CHANGE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PREPAID_BALANCE", DbType="Int NOT NULL")]
-		public int PREPAID_BALANCE
-		{
-			get
-			{
-				return this._PREPAID_BALANCE;
-			}
-			set
-			{
-				if ((this._PREPAID_BALANCE != value))
-				{
-					this._PREPAID_BALANCE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PREPAID_STATE", DbType="Bit NOT NULL")]
-		public bool PREPAID_STATE
-		{
-			get
-			{
-				return this._PREPAID_STATE;
-			}
-			set
-			{
-				if ((this._PREPAID_STATE != value))
-				{
-					this._PREPAID_STATE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PREPAID_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string PREPAID_CREATEBY
-		{
-			get
-			{
-				return this._PREPAID_CREATEBY;
-			}
-			set
-			{
-				if ((this._PREPAID_CREATEBY != value))
-				{
-					this._PREPAID_CREATEBY = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PREPAID_UPDATEDBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string PREPAID_UPDATEDBY
-		{
-			get
-			{
-				return this._PREPAID_UPDATEDBY;
-			}
-			set
-			{
-				if ((this._PREPAID_UPDATEDBY != value))
-				{
-					this._PREPAID_UPDATEDBY = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PREPAID_CREATEDATE", DbType="DateTime NOT NULL")]
-		public System.DateTime PREPAID_CREATEDATE
-		{
-			get
-			{
-				return this._PREPAID_CREATEDATE;
-			}
-			set
-			{
-				if ((this._PREPAID_CREATEDATE != value))
-				{
-					this._PREPAID_CREATEDATE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PREPAID_UPDATEDATE", DbType="DateTime")]
-		public System.Nullable<System.DateTime> PREPAID_UPDATEDATE
-		{
-			get
-			{
-				return this._PREPAID_UPDATEDATE;
-			}
-			set
-			{
-				if ((this._PREPAID_UPDATEDATE != value))
-				{
-					this._PREPAID_UPDATEDATE = value;
-				}
-			}
-		}
-	}
-	
-	public partial class SP_CRUD_ORDERResult
-	{
-		
-		private int _ID_ORDER;
-		
-		private int _ID_PREPAID;
-		
-		private int _ORDER_QUANTITY;
-		
-		private System.DateTime _ORDER_DATE;
-		
-		private bool _ORDER_DELIVERY;
-		
-		private bool _ORDER_STATE;
-		
-		private string _ORDER_CREATEBY;
-		
-		private string _ORDER_UPDATEDBY;
-		
-		private System.DateTime _ORDER_CREATEDATE;
-		
-		private System.Nullable<System.DateTime> _ORDER_UPDATEDATE;
-		
-		public SP_CRUD_ORDERResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_ORDER", DbType="Int NOT NULL")]
-		public int ID_ORDER
-		{
-			get
-			{
-				return this._ID_ORDER;
-			}
-			set
-			{
-				if ((this._ID_ORDER != value))
-				{
-					this._ID_ORDER = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PREPAID", DbType="Int NOT NULL")]
-		public int ID_PREPAID
-		{
-			get
-			{
-				return this._ID_PREPAID;
-			}
-			set
-			{
-				if ((this._ID_PREPAID != value))
-				{
-					this._ID_PREPAID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_QUANTITY", DbType="Int NOT NULL")]
-		public int ORDER_QUANTITY
-		{
-			get
-			{
-				return this._ORDER_QUANTITY;
-			}
-			set
-			{
-				if ((this._ORDER_QUANTITY != value))
-				{
-					this._ORDER_QUANTITY = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_DATE", DbType="DateTime NOT NULL")]
-		public System.DateTime ORDER_DATE
-		{
-			get
-			{
-				return this._ORDER_DATE;
-			}
-			set
-			{
-				if ((this._ORDER_DATE != value))
-				{
-					this._ORDER_DATE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_DELIVERY", DbType="Bit NOT NULL")]
-		public bool ORDER_DELIVERY
-		{
-			get
-			{
-				return this._ORDER_DELIVERY;
-			}
-			set
-			{
-				if ((this._ORDER_DELIVERY != value))
-				{
-					this._ORDER_DELIVERY = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_STATE", DbType="Bit NOT NULL")]
-		public bool ORDER_STATE
-		{
-			get
-			{
-				return this._ORDER_STATE;
-			}
-			set
-			{
-				if ((this._ORDER_STATE != value))
-				{
-					this._ORDER_STATE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_CREATEBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string ORDER_CREATEBY
-		{
-			get
-			{
-				return this._ORDER_CREATEBY;
-			}
-			set
-			{
-				if ((this._ORDER_CREATEBY != value))
-				{
-					this._ORDER_CREATEBY = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_UPDATEDBY", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string ORDER_UPDATEDBY
-		{
-			get
-			{
-				return this._ORDER_UPDATEDBY;
-			}
-			set
-			{
-				if ((this._ORDER_UPDATEDBY != value))
-				{
-					this._ORDER_UPDATEDBY = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_CREATEDATE", DbType="DateTime NOT NULL")]
-		public System.DateTime ORDER_CREATEDATE
-		{
-			get
-			{
-				return this._ORDER_CREATEDATE;
-			}
-			set
-			{
-				if ((this._ORDER_CREATEDATE != value))
-				{
-					this._ORDER_CREATEDATE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORDER_UPDATEDATE", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ORDER_UPDATEDATE
-		{
-			get
-			{
-				return this._ORDER_UPDATEDATE;
-			}
-			set
-			{
-				if ((this._ORDER_UPDATEDATE != value))
-				{
-					this._ORDER_UPDATEDATE = value;
 				}
 			}
 		}
